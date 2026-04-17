@@ -1,6 +1,9 @@
+<div align="center">
+
+<img src="assets/icon.png" width="128" height="128" alt="SCAXE-GO Logo" />
+
 # SCAXE-GO
 
-<div align="center">
 
 ![Go Version](https://img.shields.io/badge/Go-1.22+-00ADD8?style=flat&logo=go)
 ![MCPE Version](https://img.shields.io/badge/MCPE-0.14.3-green?style=flat)
