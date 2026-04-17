@@ -2,10 +2,10 @@ package protocol
 
 type BlockEntityDataPacket struct {
 	BasePacket
-	X       int32
-	Y       int32
-	Z       int32
-	NBTData []byte
+	X	int32
+	Y	int32
+	Z	int32
+	NBTData	[]byte
 }
 
 func NewBlockEntityDataPacket() *BlockEntityDataPacket {

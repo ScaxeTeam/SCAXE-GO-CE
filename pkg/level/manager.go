@@ -11,11 +11,11 @@ import (
 )
 
 type LevelManager struct {
-	mu sync.RWMutex
+	mu	sync.RWMutex
 
-	levels       map[string]*Level
-	defaultLevel *Level
-	basePath     string
+	levels		map[string]*Level
+	defaultLevel	*Level
+	basePath	string
 }
 
 func NewLevelManager(basePath string) *LevelManager {
@@ -26,8 +26,8 @@ func NewLevelManager(basePath string) *LevelManager {
 	}
 
 	return &LevelManager{
-		levels:   make(map[string]*Level),
-		basePath: basePath,
+		levels:		make(map[string]*Level),
+		basePath:	basePath,
 	}
 }
 

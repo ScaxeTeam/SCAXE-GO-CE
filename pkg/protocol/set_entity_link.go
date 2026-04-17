@@ -1,16 +1,16 @@
 package protocol
 
 const (
-	LinkTypeRemove    byte = 0
-	LinkTypeRider     byte = 1
-	LinkTypePassenger byte = 2
+	LinkTypeRemove		byte	= 0
+	LinkTypeRider		byte	= 1
+	LinkTypePassenger	byte	= 2
 )
 
 type SetEntityLinkPacket struct {
 	BasePacket
-	From     int64
-	To       int64
-	LinkType byte
+	From		int64
+	To		int64
+	LinkType	byte
 }
 
 func NewSetEntityLinkPacket() *SetEntityLinkPacket {

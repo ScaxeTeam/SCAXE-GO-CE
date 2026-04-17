@@ -4,13 +4,13 @@ type ModeSelector func(l *GenLayerZoom, v1, v2, v3, v4 int) int
 
 type GenLayerZoom struct {
 	*BaseLayer
-	Selector ModeSelector
+	Selector	ModeSelector
 }
 
 func NewGenLayerZoom(seed int64, parent GenLayer) *GenLayerZoom {
 	z := &GenLayerZoom{
-		BaseLayer: NewBaseLayer(seed),
-		Selector:  selectModeOrRandom,
+		BaseLayer:	NewBaseLayer(seed),
+		Selector:	selectModeOrRandom,
 	}
 	z.Parent = parent
 	return z
@@ -18,8 +18,8 @@ func NewGenLayerZoom(seed int64, parent GenLayer) *GenLayerZoom {
 
 func NewGenLayerFuzzyZoom(seed int64, parent GenLayer) *GenLayerZoom {
 	z := &GenLayerZoom{
-		BaseLayer: NewBaseLayer(seed),
-		Selector:  selectRandom,
+		BaseLayer:	NewBaseLayer(seed),
+		Selector:	selectRandom,
 	}
 	z.Parent = parent
 	return z

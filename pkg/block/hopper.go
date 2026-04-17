@@ -7,10 +7,10 @@ type HopperBlock struct {
 func NewHopperBlock() *HopperBlock {
 	return &HopperBlock{
 		TransparentBase: TransparentBase{
-			BlockID:       HOPPER_BLOCK,
-			BlockName:     "Hopper",
-			BlockHardness: 3,
-			BlockToolType: ToolTypePickaxe,
+			BlockID:	HOPPER_BLOCK,
+			BlockName:	"Hopper",
+			BlockHardness:	3,
+			BlockToolType:	ToolTypePickaxe,
 		},
 	}
 }

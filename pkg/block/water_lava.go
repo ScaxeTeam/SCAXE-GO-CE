@@ -1,12 +1,14 @@
 package block
+
 type HardenResult uint8
 
 const (
-	HardenNone     HardenResult = iota
+	HardenNone	HardenResult	= iota
 	HardenObsidian
 	HardenCobble
 	HardenStone
 )
+
 func HardenResultBlockID(r HardenResult) uint8 {
 	switch r {
 	case HardenObsidian:
@@ -47,7 +49,9 @@ func CheckLavaFlowIntoWater(targetBlockID uint8) HardenResult {
 	}
 	return HardenNone
 }
+
 var LavaHardenCheckSides = [5]int{1, 2, 3, 4, 5}
+
 func CheckAdjacentWater(checker BlockChecker, x, y, z int) bool {
 	id, _ := checker.GetBlockIDMeta(x, y+1, z)
 	if IsWaterBlock(id) {
@@ -71,28 +75,32 @@ func CheckAdjacentWater(checker BlockChecker, x, y, z int) bool {
 	}
 	return false
 }
+
 type WaterEntityEffect struct {
-	ExtinguishFire    bool
-	ResetFallDistance bool
+	ExtinguishFire		bool
+	ResetFallDistance	bool
 }
+
 func GetWaterEntityEffect() WaterEntityEffect {
 	return WaterEntityEffect{
-		ExtinguishFire:    true,
-		ResetFallDistance: true,
+		ExtinguishFire:		true,
+		ResetFallDistance:	true,
 	}
 }
+
 type LavaEntityEffect struct {
-	Damage            float64
-	HalveFallDistance bool
-	SetOnFireDuration int
-	ResetFallDistance bool
+	Damage			float64
+	HalveFallDistance	bool
+	SetOnFireDuration	int
+	ResetFallDistance	bool
 }
+
 func GetLavaEntityEffect() LavaEntityEffect {
 	return LavaEntityEffect{
-		Damage:            4,
-		HalveFallDistance: true,
-		SetOnFireDuration: 15,
-		ResetFallDistance: true,
+		Damage:			4,
+		HalveFallDistance:	true,
+		SetOnFireDuration:	15,
+		ResetFallDistance:	true,
 	}
 }
 func GetLavaTickRate(isNether bool) int {

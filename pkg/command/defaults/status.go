@@ -10,18 +10,18 @@ import (
 
 type StatusCommand struct {
 	command.BaseCommand
-	Server Server
+	Server	Server
 }
 
 func NewStatusCommand(s Server) *StatusCommand {
 	return &StatusCommand{
 		BaseCommand: command.BaseCommand{
-			Name:        "status",
-			Description: "Reads back the server's performance.",
-			Usage:       "/status",
-			Permission:  "pocketmine.command.status",
+			Name:		"status",
+			Description:	"Reads back the server's performance.",
+			Usage:		"/status",
+			Permission:	"pocketmine.command.status",
 		},
-		Server: s,
+		Server:	s,
 	}
 }
 

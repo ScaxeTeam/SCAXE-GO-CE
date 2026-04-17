@@ -1,30 +1,30 @@
 package attribute
 
 const (
-	Health              = "minecraft:health"
-	MovementSpeed       = "minecraft:movement_speed"
-	Absorption          = "minecraft:absorption"
-	KnockbackResistance = "minecraft:knockback_resistance"
-	FollowRange         = "minecraft:follow_range"
-	AttackDamage        = "minecraft:attack_damage"
+	Health			= "minecraft:health"
+	MovementSpeed		= "minecraft:movement_speed"
+	Absorption		= "minecraft:absorption"
+	KnockbackResistance	= "minecraft:knockback_resistance"
+	FollowRange		= "minecraft:follow_range"
+	AttackDamage		= "minecraft:attack_damage"
 )
 
 type Attribute struct {
-	ID           uint32
-	Name         string
-	MinValue     float32
-	MaxValue     float32
-	DefaultValue float32
-	CurrentValue float32
+	ID		uint32
+	Name		string
+	MinValue	float32
+	MaxValue	float32
+	DefaultValue	float32
+	CurrentValue	float32
 }
 
 func NewAttribute(name string, min, max, def float32) *Attribute {
 	return &Attribute{
-		Name:         name,
-		MinValue:     min,
-		MaxValue:     max,
-		DefaultValue: def,
-		CurrentValue: def,
+		Name:		name,
+		MinValue:	min,
+		MaxValue:	max,
+		DefaultValue:	def,
+		CurrentValue:	def,
 	}
 }
 

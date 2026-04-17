@@ -9,22 +9,22 @@ import (
 )
 
 type OverworldPopulator struct {
-	Populators          []populator.Populator
-	CavePopulator       *CavePopulator
-	OrePopulator        *OrePopulator
-	TreePopulator       *TreePopulator
-	VegetationPopulator *VegetationPopulator
-	SnowPopulator       *SnowPopulator
+	Populators		[]populator.Populator
+	CavePopulator		*CavePopulator
+	OrePopulator		*OrePopulator
+	TreePopulator		*TreePopulator
+	VegetationPopulator	*VegetationPopulator
+	SnowPopulator		*SnowPopulator
 }
 
 func NewOverworldPopulator() *OverworldPopulator {
 	op := &OverworldPopulator{
-		Populators:          make([]populator.Populator, 0),
-		CavePopulator:       NewCavePopulator(),
-		OrePopulator:        NewOrePopulator(make([]object.OreType, 0)),
-		TreePopulator:       NewTreePopulator(0),
-		VegetationPopulator: NewVegetationPopulator(),
-		SnowPopulator:       NewSnowPopulator(),
+		Populators:		make([]populator.Populator, 0),
+		CavePopulator:		NewCavePopulator(),
+		OrePopulator:		NewOrePopulator(make([]object.OreType, 0)),
+		TreePopulator:		NewTreePopulator(0),
+		VegetationPopulator:	NewVegetationPopulator(),
+		SnowPopulator:		NewSnowPopulator(),
 	}
 
 	return op

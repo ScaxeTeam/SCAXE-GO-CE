@@ -9,25 +9,25 @@ import (
 
 type AddPlayerPacket struct {
 	BasePacket
-	UUID     string
-	RawUUID  []byte
-	Username string
-	EntityID int64
-	X        float32
-	Y        float32
-	Z        float32
-	SpeedX   float32
-	SpeedY   float32
-	SpeedZ   float32
-	Yaw      float32
-	Pitch    float32
-	Metadata map[int]interface{}
+	UUID		string
+	RawUUID		[]byte
+	Username	string
+	EntityID	int64
+	X		float32
+	Y		float32
+	Z		float32
+	SpeedX		float32
+	SpeedY		float32
+	SpeedZ		float32
+	Yaw		float32
+	Pitch		float32
+	Metadata	map[int]interface{}
 }
 
 func NewAddPlayerPacket() *AddPlayerPacket {
 	return &AddPlayerPacket{
-		BasePacket: BasePacket{PacketID: IDAddPlayer},
-		Metadata:   make(map[int]interface{}),
+		BasePacket:	BasePacket{PacketID: IDAddPlayer},
+		Metadata:	make(map[int]interface{}),
 	}
 }
 

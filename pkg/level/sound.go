@@ -1,6 +1,7 @@
 package level
 
 import "github.com/scaxe/scaxe-go/pkg/protocol"
+
 func NewSoundPacket(x, y, z float32, soundID int16, pitch float32) *protocol.LevelEventPacket {
 	pk := protocol.NewLevelEventPacket()
 	pk.EventID = uint16(soundID)

@@ -7,22 +7,22 @@ import (
 type Living struct {
 	*Entity
 
-	AttackTime   int
-	LastDamage   float64
-	DeathTime    int
-	JumpVelocity float64
+	AttackTime	int
+	LastDamage	float64
+	DeathTime	int
+	JumpVelocity	float64
 
-	HeadYaw float32
+	HeadYaw	float32
 }
 
 func NewLiving() *Living {
 	l := &Living{
-		Entity:       NewEntity(),
-		AttackTime:   0,
-		LastDamage:   0,
-		DeathTime:    0,
-		JumpVelocity: 0.42,
-		HeadYaw:      0,
+		Entity:		NewEntity(),
+		AttackTime:	0,
+		LastDamage:	0,
+		DeathTime:	0,
+		JumpVelocity:	0.42,
+		HeadYaw:	0,
 	}
 	l.initLivingAttributes()
 	return l
@@ -140,22 +140,22 @@ func (l *Living) GetMovementSpeed() float64 {
 }
 
 const (
-	DamageCauseContact         = 0
-	DamageCauseEntityAttack    = 1
-	DamageCauseProjectile      = 2
-	DamageCauseSuffocation     = 3
-	DamageCauseFall            = 4
-	DamageCauseFire            = 5
-	DamageCauseFireTick        = 6
-	DamageCauseLava            = 7
-	DamageCauseDrowning        = 8
-	DamageCauseBlockExplosion  = 9
-	DamageCauseEntityExplosion = 10
-	DamageCauseVoid            = 11
-	DamageCauseSuicide         = 12
-	DamageCauseMagic           = 13
-	DamageCauseStarvation      = 14
-	DamageCauseCustom          = 15
+	DamageCauseContact		= 0
+	DamageCauseEntityAttack		= 1
+	DamageCauseProjectile		= 2
+	DamageCauseSuffocation		= 3
+	DamageCauseFall			= 4
+	DamageCauseFire			= 5
+	DamageCauseFireTick		= 6
+	DamageCauseLava			= 7
+	DamageCauseDrowning		= 8
+	DamageCauseBlockExplosion	= 9
+	DamageCauseEntityExplosion	= 10
+	DamageCauseVoid			= 11
+	DamageCauseSuicide		= 12
+	DamageCauseMagic		= 13
+	DamageCauseStarvation		= 14
+	DamageCauseCustom		= 15
 )
 
 func (l *Living) IsAlive() bool {

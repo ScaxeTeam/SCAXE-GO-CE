@@ -8,16 +8,16 @@ import (
 )
 
 type DarkOakTree struct {
-	TrunkBlock int
-	LeafBlock  int
-	Type       int
+	TrunkBlock	int
+	LeafBlock	int
+	Type		int
 }
 
 func NewDarkOakTree() *DarkOakTree {
 	return &DarkOakTree{
-		TrunkBlock: block.WOOD2,
-		LeafBlock:  block.LEAVES2,
-		Type:       1,
+		TrunkBlock:	block.WOOD2,
+		LeafBlock:	block.LEAVES2,
+		Type:		1,
 	}
 }
 

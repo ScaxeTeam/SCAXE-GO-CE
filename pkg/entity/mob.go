@@ -9,16 +9,16 @@ import (
 type Mob struct {
 	*Living
 
-	BehaviorManager *ai.BehaviorManager
-	Jumping         bool
-	levelAccess     ai.LevelAccess
+	BehaviorManager	*ai.BehaviorManager
+	Jumping		bool
+	levelAccess	ai.LevelAccess
 }
 
 func NewMob() *Mob {
 	m := &Mob{
-		Living:          NewLiving(),
-		BehaviorManager: ai.NewBehaviorManager(),
-		Jumping:         false,
+		Living:			NewLiving(),
+		BehaviorManager:	ai.NewBehaviorManager(),
+		Jumping:		false,
 	}
 	return m
 }

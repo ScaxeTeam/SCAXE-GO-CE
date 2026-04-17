@@ -8,12 +8,12 @@ func init() {
 
 type MobEquipmentPacket struct {
 	BasePacket
-	EntityID     int64
-	ItemID       int16
-	ItemCount    int8
-	ItemMeta     uint16
-	Slot         uint8
-	SelectedSlot uint8
+	EntityID	int64
+	ItemID		int16
+	ItemCount	int8
+	ItemMeta	uint16
+	Slot		uint8
+	SelectedSlot	uint8
 }
 
 func NewMobEquipmentPacket() *MobEquipmentPacket {

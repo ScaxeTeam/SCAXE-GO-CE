@@ -7,17 +7,17 @@ import (
 
 type ContainerSetContentPacket struct {
 	BasePacket
-	WindowID    byte
-	Items       []item.Item
-	HotbarTypes []int32
+	WindowID	byte
+	Items		[]item.Item
+	HotbarTypes	[]int32
 }
 
 func NewContainerSetContentPacket(windowID byte, items []item.Item) *ContainerSetContentPacket {
 	return &ContainerSetContentPacket{
-		BasePacket:  BasePacket{PacketID: IDContainerSetContent},
-		WindowID:    windowID,
-		Items:       items,
-		HotbarTypes: nil,
+		BasePacket:	BasePacket{PacketID: IDContainerSetContent},
+		WindowID:	windowID,
+		Items:		items,
+		HotbarTypes:	nil,
 	}
 }
 

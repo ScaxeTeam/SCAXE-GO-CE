@@ -7,11 +7,11 @@ type BrewingStandBlockType struct {
 func NewBrewingStandBlockType() *BrewingStandBlockType {
 	return &BrewingStandBlockType{
 		TransparentBase: TransparentBase{
-			BlockID:         BREWING_STAND_BLOCK,
-			BlockName:       "Brewing Stand",
-			BlockHardness:   0.5,
-			BlockLightLevel: 1,
-			BlockToolType:   ToolTypePickaxe,
+			BlockID:		BREWING_STAND_BLOCK,
+			BlockName:		"Brewing Stand",
+			BlockHardness:		0.5,
+			BlockLightLevel:	1,
+			BlockToolType:		ToolTypePickaxe,
 		},
 	}
 }

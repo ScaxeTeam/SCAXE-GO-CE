@@ -3,6 +3,7 @@ package entity
 import "math/rand"
 
 const CaveSpiderNetworkID = 40
+
 func NewCaveSpider() *Monster {
 	m := NewMonster(CaveSpiderNetworkID, "Cave Spider", 12, 0.7, 0.5, 2)
 	m.DropExpMin = 5
@@ -11,8 +12,8 @@ func NewCaveSpider() *Monster {
 }
 func CaveSpiderDrops() []ZombieDropItem {
 	const (
-		SpiderEye = 375
-		String    = 287
+		SpiderEye	= 375
+		String		= 287
 	)
 	if rand.Intn(3) < 1 {
 		return []ZombieDropItem{{ItemID: SpiderEye, Count: 1}}
@@ -21,11 +22,13 @@ func CaveSpiderDrops() []ZombieDropItem {
 }
 
 const PigZombieNetworkID = 36
+
 type PigZombie struct {
 	*Monster
-	Angry bool
-	AngerTimer int
+	Angry		bool
+	AngerTimer	int
 }
+
 func NewPigZombie() *PigZombie {
 	m := NewMonster(PigZombieNetworkID, "Zombie Pigman", 20, 0.6, 1.8, 5)
 	m.DropExpMin = 5
@@ -59,8 +62,8 @@ func (p *PigZombie) TickAnger() {
 }
 func PigZombieDrops() []ZombieDropItem {
 	const (
-		GoldNugget = 371
-		GoldSword  = 283
+		GoldNugget	= 371
+		GoldSword	= 283
 	)
 
 	drops := []ZombieDropItem{
@@ -74,6 +77,7 @@ func PigZombieDrops() []ZombieDropItem {
 }
 
 const WitchNetworkID = 45
+
 func NewWitch() *Monster {
 	m := NewMonster(WitchNetworkID, "Witch", 26, 0.6, 1.8, 0)
 	m.DropExpMin = 5
@@ -82,13 +86,13 @@ func NewWitch() *Monster {
 }
 func WitchDrops() []ZombieDropItem {
 	const (
-		GlassBottle   = 374
-		GlowstoneDust = 348
-		Gunpowder     = 289
-		Redstone      = 331
-		SpiderEye     = 375
-		Sugar         = 353
-		Stick         = 280
+		GlassBottle	= 374
+		GlowstoneDust	= 348
+		Gunpowder	= 289
+		Redstone	= 331
+		SpiderEye	= 375
+		Sugar		= 353
+		Stick		= 280
 	)
 
 	possibleDrops := []int{GlassBottle, GlowstoneDust, Gunpowder, Redstone, SpiderEye, Sugar, Stick}
@@ -97,8 +101,8 @@ func WitchDrops() []ZombieDropItem {
 	for i := 0; i < count && i < len(possibleDrops); i++ {
 		idx := rand.Intn(len(possibleDrops))
 		drops = append(drops, ZombieDropItem{
-			ItemID: possibleDrops[idx],
-			Count:  1 + rand.Intn(2),
+			ItemID:	possibleDrops[idx],
+			Count:	1 + rand.Intn(2),
 		})
 	}
 
@@ -106,6 +110,7 @@ func WitchDrops() []ZombieDropItem {
 }
 
 const SilverfishNetworkID = 39
+
 func NewSilverfish() *Monster {
 	m := NewMonster(SilverfishNetworkID, "Silverfish", 8, 0.4, 0.3, 1)
 	m.DropExpMin = 5
@@ -117,10 +122,12 @@ func SilverfishDrops() []ZombieDropItem {
 }
 
 const BatNetworkID = 19
+
 type Bat struct {
 	*Monster
-	Hanging bool
+	Hanging	bool
 }
+
 func NewBat() *Bat {
 	m := NewMonster(BatNetworkID, "Bat", 6, 0.5, 0.9, 0)
 	m.DropExpMin = 0

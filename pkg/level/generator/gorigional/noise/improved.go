@@ -7,10 +7,10 @@ import (
 )
 
 type ImprovedNoise struct {
-	permutations [512]int
-	xCoord       float64
-	yCoord       float64
-	zCoord       float64
+	permutations	[512]int
+	xCoord		float64
+	yCoord		float64
+	zCoord		float64
 }
 
 var gradX = []float64{1.0, -1.0, 1.0, -1.0, 1.0, -1.0, 1.0, -1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, -1.0, 0.0}
@@ -43,10 +43,10 @@ func NewImprovedNoise(rnd *rand.Random) *ImprovedNoise {
 	return n
 }
 
-func (n *ImprovedNoise) GetXCoord() float64     { return n.xCoord }
-func (n *ImprovedNoise) GetYCoord() float64     { return n.yCoord }
-func (n *ImprovedNoise) GetZCoord() float64     { return n.zCoord }
-func (n *ImprovedNoise) GetPermutations() []int { return n.permutations[:] }
+func (n *ImprovedNoise) GetXCoord() float64	{ return n.xCoord }
+func (n *ImprovedNoise) GetYCoord() float64	{ return n.yCoord }
+func (n *ImprovedNoise) GetZCoord() float64	{ return n.zCoord }
+func (n *ImprovedNoise) GetPermutations() []int	{ return n.permutations[:] }
 
 func lerp(t, a, b float64) float64 {
 	return a + t*(b-a)

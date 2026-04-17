@@ -6,18 +6,18 @@ import (
 
 type PardonCommand struct {
 	command.BaseCommand
-	server ServerInterface
+	server	ServerInterface
 }
 
 func NewPardonCommand(server ServerInterface) *PardonCommand {
 	return &PardonCommand{
 		BaseCommand: command.BaseCommand{
-			Name:        "pardon",
-			Description: "Unbans a player from the server",
-			Usage:       "/pardon <player>",
-			Permission:  "pocketmine.command.unban.player",
+			Name:		"pardon",
+			Description:	"Unbans a player from the server",
+			Usage:		"/pardon <player>",
+			Permission:	"pocketmine.command.unban.player",
 		},
-		server: server,
+		server:	server,
 	}
 }
 

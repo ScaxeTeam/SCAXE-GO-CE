@@ -8,18 +8,18 @@ import (
 
 type DeopCommand struct {
 	command.BaseCommand
-	Server Server
+	Server	Server
 }
 
 func NewDeopCommand(s Server) *DeopCommand {
 	return &DeopCommand{
 		BaseCommand: command.BaseCommand{
-			Name:        "deop",
-			Description: "Revokes operator status from a player.",
-			Usage:       "/deop <player>",
-			Permission:  "",
+			Name:		"deop",
+			Description:	"Revokes operator status from a player.",
+			Usage:		"/deop <player>",
+			Permission:	"",
 		},
-		Server: s,
+		Server:	s,
 	}
 }
 

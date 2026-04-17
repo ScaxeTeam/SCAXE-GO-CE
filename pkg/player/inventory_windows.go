@@ -7,28 +7,33 @@ import (
 	"github.com/scaxe/scaxe-go/pkg/logger"
 	"github.com/scaxe/scaxe-go/pkg/protocol"
 )
+
 const (
-	WindowIDPlayer   byte = 0x00
-	WindowIDArmor    byte = 0x78
-	WindowIDCreative byte = 0x79
-	WindowIDContainerMin byte = 0x01
-	WindowIDContainerMax byte = 0x77
+	WindowIDPlayer		byte	= 0x00
+	WindowIDArmor		byte	= 0x78
+	WindowIDCreative	byte	= 0x79
+	WindowIDContainerMin	byte	= 0x01
+	WindowIDContainerMax	byte	= 0x77
 )
+
 type InventoryWindows struct {
-	mu sync.RWMutex
-	windows map[byte]inventory.Inventory
-	invToWindow map[inventory.Inventory]byte
-	windowCnt byte
-	currentWindow inventory.Inventory
+	mu		sync.RWMutex
+	windows		map[byte]inventory.Inventory
+	invToWindow	map[inventory.Inventory]byte
+	windowCnt	byte
+	currentWindow	inventory.Inventory
 }
+
 func NewInventoryWindows() *InventoryWindows {
 	return &InventoryWindows{
-		windows:     make(map[byte]inventory.Inventory),
-		invToWindow: make(map[inventory.Inventory]byte),
-		windowCnt:   WindowIDContainerMin,
+		windows:	make(map[byte]inventory.Inventory),
+		invToWindow:	make(map[inventory.Inventory]byte),
+		windowCnt:	WindowIDContainerMin,
 	}
 }
+
 var _ inventory.Viewer = (*Player)(nil)
+
 func (p *Player) GetWindowID(inv inventory.Inventory) byte {
 	p.windows.mu.RLock()
 	defer p.windows.mu.RUnlock()

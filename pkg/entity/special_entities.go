@@ -3,16 +3,18 @@ package entity
 import "math/rand"
 
 const FishingHookNetworkID = 77
+
 type FishingHook struct {
 	Entity
-	OwnerID int64
-	WaitTimer int
-	Hooked bool
+	OwnerID		int64
+	WaitTimer	int
+	Hooked		bool
 }
+
 func NewFishingHook(ownerID int64) *FishingHook {
 	fh := &FishingHook{
-		OwnerID:   ownerID,
-		WaitTimer: 100 + rand.Intn(400),
+		OwnerID:	ownerID,
+		WaitTimer:	100 + rand.Intn(400),
 	}
 	fh.Entity.NetworkID = FishingHookNetworkID
 	fh.Entity.Width = 0.25
@@ -37,21 +39,23 @@ func (fh *FishingHook) IsHooked() bool {
 }
 
 const ExperienceOrbNetworkID = 69
+
 type ExperienceOrb struct {
 	Entity
-	Experience int
-	PickupDelay int
-	Age int
+	Experience	int
+	PickupDelay	int
+	Age		int
 }
 
 const (
-	ExperienceOrbMaxAge     = 6000
-	ExperienceOrbPickupDist = 2.0
+	ExperienceOrbMaxAge	= 6000
+	ExperienceOrbPickupDist	= 2.0
 )
+
 func NewExperienceOrb(experience int) *ExperienceOrb {
 	orb := &ExperienceOrb{
-		Experience:  experience,
-		PickupDelay: 10,
+		Experience:	experience,
+		PickupDelay:	10,
 	}
 	orb.Entity.NetworkID = ExperienceOrbNetworkID
 	orb.Entity.Width = 0.25
@@ -79,15 +83,17 @@ func (o *ExperienceOrb) GetExperience() int {
 }
 
 const BigFireballNetworkID = 85
+
 type BigFireball struct {
 	Entity
-	ShooterID int64
-	ExplosionPower float64
+	ShooterID	int64
+	ExplosionPower	float64
 }
+
 func NewBigFireball(shooterID int64) *BigFireball {
 	fb := &BigFireball{
-		ShooterID:      shooterID,
-		ExplosionPower: 1.0,
+		ShooterID:	shooterID,
+		ExplosionPower:	1.0,
 	}
 	fb.Entity.NetworkID = BigFireballNetworkID
 	fb.Entity.Width = 1.0
@@ -99,10 +105,12 @@ func NewBigFireball(shooterID int64) *BigFireball {
 }
 
 const SmallFireballNetworkID = 94
+
 type SmallFireball struct {
 	Entity
-	ShooterID int64
+	ShooterID	int64
 }
+
 func NewSmallFireball(shooterID int64) *SmallFireball {
 	fb := &SmallFireball{
 		ShooterID: shooterID,
@@ -117,10 +125,12 @@ func NewSmallFireball(shooterID int64) *SmallFireball {
 }
 
 const LavaSlimeNetworkID = 42
+
 type LavaSlime struct {
 	*Monster
-	Size int
+	Size	int
 }
+
 func NewLavaSlime() *LavaSlime {
 	size := 1 + rand.Intn(4)
 	m := NewMonster(LavaSlimeNetworkID, "Magma Cube", lavaSlimeHealthForSize(size),
@@ -129,8 +139,8 @@ func NewLavaSlime() *LavaSlime {
 	m.DropExpMax = 4
 
 	return &LavaSlime{
-		Monster: m,
-		Size:    size,
+		Monster:	m,
+		Size:		size,
 	}
 }
 func NewLavaSlimeWithSize(size int) *LavaSlime {
@@ -146,8 +156,8 @@ func NewLavaSlimeWithSize(size int) *LavaSlime {
 	m.DropExpMax = 4
 
 	return &LavaSlime{
-		Monster: m,
-		Size:    size,
+		Monster:	m,
+		Size:		size,
 	}
 }
 

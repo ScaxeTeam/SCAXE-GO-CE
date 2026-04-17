@@ -3,15 +3,18 @@ package entity
 import (
 	"math"
 )
+
 const ArrowNetworkID = 80
+
 type Arrow struct {
 	*Projectile
-	PunchKnockback float64
+	PunchKnockback	float64
 }
+
 func NewArrow(shooterID int64, critical bool) *Arrow {
 	a := &Arrow{
-		Projectile:     NewProjectile(shooterID),
-		PunchKnockback: 0,
+		Projectile:	NewProjectile(shooterID),
+		PunchKnockback:	0,
 	}
 	a.Entity.NetworkID = ArrowNetworkID
 	a.Entity.Width = 0.25
@@ -24,13 +27,15 @@ func NewArrow(shooterID int64, critical bool) *Arrow {
 
 	return a
 }
+
 type ArrowTickResult struct {
 	ProjectileTickResult
-	ShowCriticalParticle bool
-	ParticleX            float64
-	ParticleY            float64
-	ParticleZ            float64
+	ShowCriticalParticle	bool
+	ParticleX		float64
+	ParticleY		float64
+	ParticleZ		float64
 }
+
 func (a *Arrow) TickArrow(nearbyEntities []IEntity, isCollided bool) ArrowTickResult {
 	base := a.Projectile.TickProjectile(nearbyEntities, isCollided)
 
@@ -48,15 +53,17 @@ func (a *Arrow) TickArrow(nearbyEntities []IEntity, isCollided bool) ArrowTickRe
 
 	return result
 }
+
 type ArrowHitResult struct {
-	Damage       float64
-	KnockbackX   float64
-	KnockbackY   float64
-	KnockbackZ   float64
-	HasKnockback bool
-	TransferFire bool
-	FireDuration int
+	Damage		float64
+	KnockbackX	float64
+	KnockbackY	float64
+	KnockbackZ	float64
+	HasKnockback	bool
+	TransferFire	bool
+	FireDuration	int
 }
+
 func (a *Arrow) CalcArrowHit() ArrowHitResult {
 	result := ArrowHitResult{
 		Damage: a.Projectile.CalcHitDamage(),

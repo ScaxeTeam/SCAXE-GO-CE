@@ -3,19 +3,19 @@ package biomegrid
 type ZoomType int
 
 const (
-	ZoomNormal ZoomType = iota
+	ZoomNormal	ZoomType	= iota
 	ZoomBlurry
 )
 
 type ZoomMapLayer struct {
 	*BaseMapLayer
-	ZoomType ZoomType
+	ZoomType	ZoomType
 }
 
 func NewZoomMapLayer(seed int64, parent MapLayer, zoomType ZoomType) *ZoomMapLayer {
 	return &ZoomMapLayer{
-		BaseMapLayer: NewBaseMapLayer(seed, parent),
-		ZoomType:     zoomType,
+		BaseMapLayer:	NewBaseMapLayer(seed, parent),
+		ZoomType:	zoomType,
 	}
 }
 

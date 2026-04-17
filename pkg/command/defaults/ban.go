@@ -15,18 +15,18 @@ type BanServerInterface interface {
 
 type BanCommand struct {
 	command.BaseCommand
-	server ServerInterface
+	server	ServerInterface
 }
 
 func NewBanCommand(server ServerInterface) *BanCommand {
 	return &BanCommand{
 		BaseCommand: command.BaseCommand{
-			Name:        "ban",
-			Description: "Bans a player from the server",
-			Usage:       "/ban <player> [reason]",
-			Permission:  "pocketmine.command.ban.player",
+			Name:		"ban",
+			Description:	"Bans a player from the server",
+			Usage:		"/ban <player> [reason]",
+			Permission:	"pocketmine.command.ban.player",
 		},
-		server: server,
+		server:	server,
 	}
 }
 

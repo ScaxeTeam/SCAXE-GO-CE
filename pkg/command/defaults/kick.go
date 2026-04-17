@@ -8,18 +8,18 @@ import (
 
 type KickCommand struct {
 	command.BaseCommand
-	server ServerInterface
+	server	ServerInterface
 }
 
 func NewKickCommand(server ServerInterface) *KickCommand {
 	return &KickCommand{
 		BaseCommand: command.BaseCommand{
-			Name:        "kick",
-			Description: "Kicks a player from the server",
-			Usage:       "/kick <player> [reason]",
-			Permission:  "pocketmine.command.kick",
+			Name:		"kick",
+			Description:	"Kicks a player from the server",
+			Usage:		"/kick <player> [reason]",
+			Permission:	"pocketmine.command.kick",
 		},
-		server: server,
+		server:	server,
 	}
 }
 

@@ -7,10 +7,10 @@ type DropperBlock struct {
 func NewDropperBlock() *DropperBlock {
 	return &DropperBlock{
 		SolidBase: SolidBase{
-			BlockID:       DROPPER,
-			BlockName:     "Dropper",
-			BlockHardness: 3.5,
-			BlockToolType: ToolTypePickaxe,
+			BlockID:	DROPPER,
+			BlockName:	"Dropper",
+			BlockHardness:	3.5,
+			BlockToolType:	ToolTypePickaxe,
 		},
 	}
 }

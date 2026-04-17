@@ -9,45 +9,48 @@ import (
 )
 
 const (
-	RandomTickSpeed = 3
-	MaxScheduledUpdatesPerTick = 512
+	RandomTickSpeed			= 3
+	MaxScheduledUpdatesPerTick	= 512
 )
+
 var randomTickBlocks = map[byte]bool{
-	block.GRASS:        true,
-	block.FARMLAND:     true,
-	block.WHEAT_BLOCK:  true,
-	block.CARROT_BLOCK: true,
-	block.POTATO_BLOCK: true,
+	block.GRASS:		true,
+	block.FARMLAND:		true,
+	block.WHEAT_BLOCK:	true,
+	block.CARROT_BLOCK:	true,
+	block.POTATO_BLOCK:	true,
 
-	block.BEETROOT_BLOCK:  true,
-	block.SUGARCANE_BLOCK: true,
-	block.CACTUS:          true,
-	block.PUMPKIN_STEM:    true,
-	block.MELON_STEM:      true,
+	block.BEETROOT_BLOCK:	true,
+	block.SUGARCANE_BLOCK:	true,
+	block.CACTUS:		true,
+	block.PUMPKIN_STEM:	true,
+	block.MELON_STEM:	true,
 
-	block.SAPLING: true,
-	block.LEAVES:  true,
-	block.LEAVES2: true,
+	block.SAPLING:	true,
+	block.LEAVES:	true,
+	block.LEAVES2:	true,
 
-	block.SNOW_LAYER: true,
-	block.ICE:        true,
-	block.MYCELIUM:   true,
+	block.SNOW_LAYER:	true,
+	block.ICE:		true,
+	block.MYCELIUM:		true,
 
-	block.VINE: true,
-	block.FIRE: true,
+	block.VINE:	true,
+	block.FIRE:	true,
 }
+
 func RegisterRandomTickBlock(blockID byte) {
 	randomTickBlocks[blockID] = true
 }
+
 type ScheduledUpdate struct {
-	X, Y, Z  int32
-	Priority int64
-	index    int
+	X, Y, Z		int32
+	Priority	int64
+	index		int
 }
 type scheduledUpdateQueue []*ScheduledUpdate
 
-func (q scheduledUpdateQueue) Len() int           { return len(q) }
-func (q scheduledUpdateQueue) Less(i, j int) bool { return q[i].Priority < q[j].Priority }
+func (q scheduledUpdateQueue) Len() int			{ return len(q) }
+func (q scheduledUpdateQueue) Less(i, j int) bool	{ return q[i].Priority < q[j].Priority }
 func (q scheduledUpdateQueue) Swap(i, j int) {
 	q[i], q[j] = q[j], q[i]
 	q[i].index = i
@@ -70,15 +73,17 @@ func (q *scheduledUpdateQueue) Pop() interface{} {
 	*q = old[:n-1]
 	return item
 }
+
 type TickState struct {
-	updateQueue      scheduledUpdateQueue
-	updateQueueIndex map[int64]int64
-	currentTick int64
+	updateQueue		scheduledUpdateQueue
+	updateQueueIndex	map[int64]int64
+	currentTick		int64
 }
+
 func NewTickState() *TickState {
 	ts := &TickState{
-		updateQueue:      make(scheduledUpdateQueue, 0),
-		updateQueueIndex: make(map[int64]int64),
+		updateQueue:		make(scheduledUpdateQueue, 0),
+		updateQueueIndex:	make(map[int64]int64),
 	}
 	heap.Init(&ts.updateQueue)
 	return ts
@@ -96,10 +101,10 @@ func (l *Level) ScheduleUpdate(x, y, z int32, delay int) {
 
 	l.tickState.updateQueueIndex[hash] = int64(delay)
 	heap.Push(&l.tickState.updateQueue, &ScheduledUpdate{
-		X:        x,
-		Y:        y,
-		Z:        z,
-		Priority: l.tickState.currentTick + int64(delay),
+		X:		x,
+		Y:		y,
+		Z:		z,
+		Priority:	l.tickState.currentTick + int64(delay),
 	})
 }
 func (l *Level) processScheduledUpdates() {
@@ -124,9 +129,9 @@ func (l *Level) processScheduledUpdates() {
 		behavior := block.Registry.GetBehavior(bs.ID)
 		if behavior != nil {
 			ctx := &block.BlockContext{
-				X: int(item.X), Y: int(item.Y), Z: int(item.Z),
-				Meta:    bs.Meta,
-				Powered: l.getBlockPowered(bs.ID, bs.Meta, item.X, item.Y, item.Z),
+				X:	int(item.X), Y: int(item.Y), Z: int(item.Z),
+				Meta:		bs.Meta,
+				Powered:	l.getBlockPowered(bs.ID, bs.Meta, item.X, item.Y, item.Z),
 			}
 			behavior.OnUpdate(ctx, BlockUpdateScheduled)
 			l.applyBlockContextResult(ctx, item.X, item.Y, item.Z)
@@ -173,10 +178,10 @@ func (l *Level) tickChunk(chunk *world.Chunk) {
 				behavior := block.Registry.GetBehavior(blockID)
 				if behavior != nil {
 					ctx := &block.BlockContext{
-						X:    int(chunkX)*16 + x,
-						Y:    worldY,
-						Z:    int(chunkZ)*16 + z,
-						Meta: meta,
+						X:	int(chunkX)*16 + x,
+						Y:	worldY,
+						Z:	int(chunkZ)*16 + z,
+						Meta:	meta,
 					}
 					behavior.OnUpdate(ctx, BlockUpdateRandom)
 				}
@@ -205,9 +210,9 @@ func (l *Level) UpdateAround(x, y, z int32) {
 		behavior := block.Registry.GetBehavior(bs.ID)
 		if behavior != nil {
 			ctx := &block.BlockContext{
-				X: int(nx), Y: int(ny), Z: int(nz),
-				Meta:    bs.Meta,
-				Powered: l.getBlockPowered(bs.ID, bs.Meta, nx, ny, nz),
+				X:	int(nx), Y: int(ny), Z: int(nz),
+				Meta:		bs.Meta,
+				Powered:	l.getBlockPowered(bs.ID, bs.Meta, nx, ny, nz),
 			}
 			behavior.OnUpdate(ctx, BlockUpdateNormal)
 			l.applyBlockContextResult(ctx, nx, ny, nz)
@@ -219,8 +224,8 @@ func (l *Level) applyBlockContextResult(ctx *block.BlockContext, x, y, z int32) 
 	if ctx.ReplaceBlockID != 0 {
 		l.SetBlock(x, y, z, ctx.ReplaceBlockID, ctx.ReplaceBlockMeta, false)
 		l.PendingBlockUpdates = append(l.PendingBlockUpdates, PendingBlockUpdate{
-			X: x, Y: y, Z: z,
-			ID: ctx.ReplaceBlockID, Meta: ctx.ReplaceBlockMeta,
+			X:	x, Y: y, Z: z,
+			ID:	ctx.ReplaceBlockID, Meta: ctx.ReplaceBlockMeta,
 		})
 		l.UpdateAround(x, y, z)
 	}

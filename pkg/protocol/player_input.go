@@ -2,10 +2,10 @@ package protocol
 
 type PlayerInputPacket struct {
 	BasePacket
-	MotionX  float32
-	MotionY  float32
-	Jumping  bool
-	Sneaking bool
+	MotionX		float32
+	MotionY		float32
+	Jumping		bool
+	Sneaking	bool
 }
 
 func NewPlayerInputPacket() *PlayerInputPacket {

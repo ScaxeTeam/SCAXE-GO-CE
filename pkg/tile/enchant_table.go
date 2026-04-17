@@ -4,10 +4,12 @@ import (
 	"github.com/scaxe/scaxe-go/pkg/nbt"
 	"github.com/scaxe/scaxe-go/pkg/world"
 )
+
 type EnchantTable struct {
 	SpawnableBase
 	NameableBase
 }
+
 func NewEnchantTable(chunk *world.Chunk, nbtData *nbt.CompoundTag) Tile {
 	et := &EnchantTable{}
 	InitSpawnableBase(&et.SpawnableBase, TypeEnchantTable, chunk, nbtData)

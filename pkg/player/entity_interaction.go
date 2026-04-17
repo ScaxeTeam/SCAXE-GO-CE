@@ -10,18 +10,20 @@ import (
 )
 
 const (
-	InteractActionLeftClick    byte = 1
-	InteractActionRightClick   byte = 2
-	InteractActionLeaveVehicle byte = 3
-	AttackCooldownTicks = 10
-	DefaultKnockback = 0.4
+	InteractActionLeftClick		byte	= 1
+	InteractActionRightClick	byte	= 2
+	InteractActionLeaveVehicle	byte	= 3
+	AttackCooldownTicks			= 10
+	DefaultKnockback			= 0.4
 )
+
 type CombatState struct {
-	CPS            int
-	AttackCooldown int
-	MaxCPS         int
-	LastAttackTick int64
+	CPS		int
+	AttackCooldown	int
+	MaxCPS		int
+	LastAttackTick	int64
 }
+
 func newCombatState() *CombatState {
 	return &CombatState{
 		MaxCPS: 20,

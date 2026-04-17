@@ -6,9 +6,11 @@ import (
 	"github.com/scaxe/scaxe-go/pkg/nbt"
 	"github.com/scaxe/scaxe-go/pkg/world"
 )
+
 type MobSpawner struct {
 	SpawnableBase
 }
+
 func NewMobSpawner(chunk *world.Chunk, nbtData *nbt.CompoundTag) *MobSpawner {
 	s := &MobSpawner{}
 	if nbtData.Get("EntityId") == nil {

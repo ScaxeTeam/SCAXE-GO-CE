@@ -5,27 +5,27 @@ import (
 )
 
 const (
-	TextTypeRaw         byte = 0
-	TextTypeChat        byte = 1
-	TextTypeTranslation byte = 2
-	TextTypePopup       byte = 3
-	TextTypeTip         byte = 4
-	TextTypeSystem      byte = 5
+	TextTypeRaw		byte	= 0
+	TextTypeChat		byte	= 1
+	TextTypeTranslation	byte	= 2
+	TextTypePopup		byte	= 3
+	TextTypeTip		byte	= 4
+	TextTypeSystem		byte	= 5
 )
 
 type TextPacket struct {
 	BasePacket
-	TextType   byte
-	SourceName string
-	Message    string
-	Parameters []string
-	XUID       string
+	TextType	byte
+	SourceName	string
+	Message		string
+	Parameters	[]string
+	XUID		string
 }
 
 func NewTextPacket() *TextPacket {
 	return &TextPacket{
-		BasePacket: BasePacket{PacketID: IDText},
-		Parameters: make([]string, 0),
+		BasePacket:	BasePacket{PacketID: IDText},
+		Parameters:	make([]string, 0),
 	}
 }
 

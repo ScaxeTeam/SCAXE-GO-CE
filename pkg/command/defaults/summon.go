@@ -10,18 +10,18 @@ import (
 
 type SummonCommand struct {
 	command.BaseCommand
-	server ServerInterface
+	server	ServerInterface
 }
 
 func NewSummonCommand(server ServerInterface) *SummonCommand {
 	return &SummonCommand{
 		BaseCommand: command.BaseCommand{
-			Name:        "summon",
-			Description: "Spawns an entity",
-			Usage:       "/summon <entity> [x y z]",
-			Permission:  "pocketmine.command.summon",
+			Name:		"summon",
+			Description:	"Spawns an entity",
+			Usage:		"/summon <entity> [x y z]",
+			Permission:	"pocketmine.command.summon",
 		},
-		server: server,
+		server:	server,
 	}
 }
 

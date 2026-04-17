@@ -13,84 +13,84 @@ import (
 )
 
 const (
-	YMax = 128
-	YMin = 0
+	YMax	= 128
+	YMin	= 0
 
-	BlockUpdateNormal    = 1
-	BlockUpdateRandom    = 2
-	BlockUpdateScheduled = 3
-	BlockUpdateWeak      = 4
-	BlockUpdateTouch     = 5
-	BlockUpdateRedstone  = 6
+	BlockUpdateNormal	= 1
+	BlockUpdateRandom	= 2
+	BlockUpdateScheduled	= 3
+	BlockUpdateWeak		= 4
+	BlockUpdateTouch	= 5
+	BlockUpdateRedstone	= 6
 
-	TimeDay     = 0
-	TimeSunset  = 12000
-	TimeNight   = 14000
-	TimeSunrise = 23000
-	TimeFull    = 24000
+	TimeDay		= 0
+	TimeSunset	= 12000
+	TimeNight	= 14000
+	TimeSunrise	= 23000
+	TimeFull	= 24000
 
-	DimensionNormal = 0
-	DimensionNether = 1
-	DimensionEnd    = 2
+	DimensionNormal	= 0
+	DimensionNether	= 1
+	DimensionEnd	= 2
 )
 
 type Level struct {
-	mu sync.RWMutex
+	mu	sync.RWMutex
 
-	ID   int
-	Name string
-	Path string
+	ID	int
+	Name	string
+	Path	string
 
-	Provider Provider
+	Provider	Provider
 
-	Generator generator.Generator
-	Seed      int64
+	Generator	generator.Generator
+	Seed		int64
 
-	Chunks map[int64]*world.Chunk
+	Chunks	map[int64]*world.Chunk
 
-	Entities map[int64]entity.IEntity
+	Entities	map[int64]entity.IEntity
 
-	Time     int64
-	StopTime bool
+	Time		int64
+	StopTime	bool
 
-	Dimension int
+	Dimension	int
 
-	Closed bool
+	Closed	bool
 
-	Raining    bool
-	RainTime   int
-	Thundering bool
-	ThunderTime int
+	Raining		bool
+	RainTime	int
+	Thundering	bool
+	ThunderTime	int
 
-	tickState *TickState
-	Tiles     *tile.TileManager
+	tickState	*TickState
+	Tiles		*tile.TileManager
 
-	PendingBlockUpdates []PendingBlockUpdate
+	PendingBlockUpdates	[]PendingBlockUpdate
 }
 
 type PendingBlockUpdate struct {
-	X, Y, Z int32
-	ID      uint8
-	Meta    uint8
+	X, Y, Z	int32
+	ID	uint8
+	Meta	uint8
 }
 
 var levelCounter int = 1
 
 func NewLevel(name string, path string, provider Provider, generatorName string) *Level {
 	l := &Level{
-		ID:        levelCounter,
-		Name:      name,
-		Path:      path,
-		Provider:  provider,
-		Chunks:    make(map[int64]*world.Chunk),
-		Entities:  make(map[int64]entity.IEntity),
-		Time:      0,
-		StopTime:  false,
-		Dimension: DimensionNormal,
-		Closed:    false,
-		Seed:      12345,
-		tickState: NewTickState(),
-		Tiles:     tile.NewTileManager(),
+		ID:		levelCounter,
+		Name:		name,
+		Path:		path,
+		Provider:	provider,
+		Chunks:		make(map[int64]*world.Chunk),
+		Entities:	make(map[int64]entity.IEntity),
+		Time:		0,
+		StopTime:	false,
+		Dimension:	DimensionNormal,
+		Closed:		false,
+		Seed:		12345,
+		tickState:	NewTickState(),
+		Tiles:		tile.NewTileManager(),
 	}
 	levelCounter++
 
@@ -601,7 +601,7 @@ func (l *Level) tickPressurePlates() {
 		if meta&0x01 == 0 {
 			l.SetBlock(bx, by, bz, bid, meta|0x01, false)
 			l.PendingBlockUpdates = append(l.PendingBlockUpdates, PendingBlockUpdate{
-				X: bx, Y: by, Z: bz, ID: bid, Meta: meta | 0x01,
+				X:	bx, Y: by, Z: bz, ID: bid, Meta: meta | 0x01,
 			})
 			l.UpdateAround(bx, by, bz)
 		}

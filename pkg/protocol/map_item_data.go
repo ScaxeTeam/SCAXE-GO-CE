@@ -1,8 +1,8 @@
 package protocol
 
 const (
-	MapBitflagTextureUpdate    = 0x02
-	MapBitflagDecorationUpdate = 0x04
+	MapBitflagTextureUpdate		= 0x02
+	MapBitflagDecorationUpdate	= 0x04
 )
 
 type MapColor struct {
@@ -11,21 +11,21 @@ type MapColor struct {
 
 type ClientboundMapItemDataPacket struct {
 	BasePacket
-	MapID   int64
-	Type    int32
-	Scale   byte
-	Width   int32
-	Height  int32
-	XOffset int32
-	YOffset int32
-	Colors  [][]MapColor
+	MapID	int64
+	Type	int32
+	Scale	byte
+	Width	int32
+	Height	int32
+	XOffset	int32
+	YOffset	int32
+	Colors	[][]MapColor
 }
 
 func NewClientboundMapItemDataPacket() *ClientboundMapItemDataPacket {
 	return &ClientboundMapItemDataPacket{
-		BasePacket: BasePacket{PacketID: IDClientboundMapItemData},
-		Width:      128,
-		Height:     128,
+		BasePacket:	BasePacket{PacketID: IDClientboundMapItemData},
+		Width:		128,
+		Height:		128,
 	}
 }
 

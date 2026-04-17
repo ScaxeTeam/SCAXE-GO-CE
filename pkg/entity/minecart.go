@@ -1,47 +1,49 @@
 package entity
 
 const (
-	MinecartTypeNormal = 1
-	MinecartTypeChest  = 2
-	MinecartTypeHopper = 3
-	MinecartTypeTNT    = 4
+	MinecartTypeNormal	= 1
+	MinecartTypeChest	= 2
+	MinecartTypeHopper	= 3
+	MinecartTypeTNT		= 4
 )
 
 const (
-	MinecartStateInitial = 0
-	MinecartStateOnRail  = 1
-	MinecartStateOffRail = 2
+	MinecartStateInitial	= 0
+	MinecartStateOnRail	= 1
+	MinecartStateOffRail	= 2
 )
 
 const (
-	DirectionNorth = 2
-	DirectionSouth = 3
-	DirectionWest  = 4
-	DirectionEast  = 5
+	DirectionNorth	= 2
+	DirectionSouth	= 3
+	DirectionWest	= 4
+	DirectionEast	= 5
 )
+
 type MinecartBase struct {
 	*Entity
-	State int
-	MoveSpeed float64
-	Direction int
-	DisplayBlockID int
-	DisplayBlockMeta int
-	DisplayOffset int
-	HasDisplayBlock bool
-	MinecartType int
-	CartName string
-	DropItemID int
+	State			int
+	MoveSpeed		float64
+	Direction		int
+	DisplayBlockID		int
+	DisplayBlockMeta	int
+	DisplayOffset		int
+	HasDisplayBlock		bool
+	MinecartType		int
+	CartName		string
+	DropItemID		int
 }
+
 func NewMinecartBase(networkID int, name string, cartType int, dropItemID int) *MinecartBase {
 	m := &MinecartBase{
-		Entity:        NewEntity(),
-		State:         MinecartStateInitial,
-		MoveSpeed:     0.5,
-		Direction:     -1,
-		DisplayOffset: 6,
-		MinecartType:  cartType,
-		CartName:      name,
-		DropItemID:    dropItemID,
+		Entity:		NewEntity(),
+		State:		MinecartStateInitial,
+		MoveSpeed:	0.5,
+		Direction:	-1,
+		DisplayOffset:	6,
+		MinecartType:	cartType,
+		CartName:	name,
+		DropItemID:	dropItemID,
 	}
 
 	m.Entity.NetworkID = networkID
@@ -96,19 +98,22 @@ func (m *MinecartBase) GetDropItemID() int {
 }
 
 const MinecartNetworkID = 84
+
 func NewMinecart() *MinecartBase {
 	const MinecartItemID = 328
 	return NewMinecartBase(MinecartNetworkID, "Minecart", MinecartTypeNormal, MinecartItemID)
 }
 
 const MinecartChestNetworkID = 98
+
 type MinecartChest struct {
 	*MinecartBase
 }
+
 func NewMinecartChest() *MinecartChest {
 	const (
-		ChestMinecartItemID = 342
-		ChestBlockID        = 54
+		ChestMinecartItemID	= 342
+		ChestBlockID		= 54
 	)
 	base := NewMinecartBase(MinecartChestNetworkID, "Minecart with Chest", MinecartTypeChest, ChestMinecartItemID)
 	base.SetDisplayBlock(ChestBlockID, 0)
@@ -118,14 +123,16 @@ func NewMinecartChest() *MinecartChest {
 }
 
 const MinecartHopperNetworkID = 96
+
 type MinecartHopper struct {
 	*MinecartBase
-	Cooldown int
+	Cooldown	int
 }
+
 func NewMinecartHopper() *MinecartHopper {
 	const (
-		HopperMinecartItemID = 408
-		HopperBlockID        = 154
+		HopperMinecartItemID	= 408
+		HopperBlockID		= 154
 	)
 	base := NewMinecartBase(MinecartHopperNetworkID, "Minecart with Hopper", MinecartTypeHopper, HopperMinecartItemID)
 	base.SetDisplayBlock(HopperBlockID, 0)
@@ -147,15 +154,17 @@ func (h *MinecartHopper) TickCooldown() {
 }
 
 const MinecartTNTNetworkID = 97
+
 type MinecartTNT struct {
 	*MinecartBase
-	Primed bool
-	FuseTicks int
+	Primed		bool
+	FuseTicks	int
 }
+
 func NewMinecartTNT() *MinecartTNT {
 	const (
-		TNTMinecartItemID = 407
-		TNTBlockID        = 46
+		TNTMinecartItemID	= 407
+		TNTBlockID		= 46
 	)
 	base := NewMinecartBase(MinecartTNTNetworkID, "Minecart with TNT", MinecartTypeTNT, TNTMinecartItemID)
 	base.SetDisplayBlock(TNTBlockID, 0)
@@ -170,9 +179,11 @@ func (t *MinecartTNT) Prime() {
 func (t *MinecartTNT) IsPrimed() bool {
 	return t.Primed
 }
+
 type TNTTickResult struct {
 	ShouldExplode bool
 }
+
 func (t *MinecartTNT) TickTNT() TNTTickResult {
 	if !t.Primed {
 		return TNTTickResult{}

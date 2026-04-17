@@ -1,15 +1,15 @@
 package protocol
 
 const (
-	ActionRightClick   byte = 1
-	ActionLeftClick    byte = 2
-	ActionLeaveVehicle byte = 3
+	ActionRightClick	byte	= 1
+	ActionLeftClick		byte	= 2
+	ActionLeaveVehicle	byte	= 3
 )
 
 type InteractPacket struct {
 	BasePacket
-	Action byte
-	Target int64
+	Action	byte
+	Target	int64
 }
 
 func NewInteractPacket() *InteractPacket {

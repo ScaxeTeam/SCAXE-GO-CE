@@ -9,18 +9,18 @@ import (
 
 type TeleportCommand struct {
 	command.BaseCommand
-	server ServerInterface
+	server	ServerInterface
 }
 
 func NewTeleportCommand(server ServerInterface) *TeleportCommand {
 	return &TeleportCommand{
 		BaseCommand: command.BaseCommand{
-			Name:        "tp",
-			Description: "Teleports a player",
-			Usage:       "/tp <x> <y> <z> or /tp <player> or /tp <player> <x> <y> <z>",
-			Permission:  "pocketmine.command.teleport",
+			Name:		"tp",
+			Description:	"Teleports a player",
+			Usage:		"/tp <x> <y> <z> or /tp <player> or /tp <player> <x> <y> <z>",
+			Permission:	"pocketmine.command.teleport",
 		},
-		server: server,
+		server:	server,
 	}
 }
 

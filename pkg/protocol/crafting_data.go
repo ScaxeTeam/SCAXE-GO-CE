@@ -6,42 +6,42 @@ import (
 )
 
 const (
-	EntryShapeless   int32 = 0
-	EntryShaped      int32 = 1
-	EntryFurnace     int32 = 2
-	EntryFurnaceData int32 = 3
-	EntryEnchantList int32 = 4
+	EntryShapeless		int32	= 0
+	EntryShaped		int32	= 1
+	EntryFurnace		int32	= 2
+	EntryFurnaceData	int32	= 3
+	EntryEnchantList	int32	= 4
 )
 
 type ShapelessRecipe struct {
-	UUID   uuid.UUID
-	Inputs []item.Item
-	Output item.Item
+	UUID	uuid.UUID
+	Inputs	[]item.Item
+	Output	item.Item
 }
 
 type ShapedRecipe struct {
-	UUID   uuid.UUID
-	Width  int32
-	Height int32
-	Inputs []item.Item
-	Output item.Item
+	UUID	uuid.UUID
+	Width	int32
+	Height	int32
+	Inputs	[]item.Item
+	Output	item.Item
 }
 
 type FurnaceRecipe struct {
-	InputID   int32
-	InputMeta int32
-	Output    item.Item
+	InputID		int32
+	InputMeta	int32
+	Output		item.Item
 }
 
 type EnchantmentEntry struct {
-	Cost         int32
-	Enchantments []EnchantData
-	RandomName   string
+	Cost		int32
+	Enchantments	[]EnchantData
+	RandomName	string
 }
 
 type EnchantData struct {
-	ID    int32
-	Level int32
+	ID	int32
+	Level	int32
 }
 
 type EnchantmentList struct {
@@ -49,20 +49,20 @@ type EnchantmentList struct {
 }
 
 type CraftingEntry struct {
-	Type int32
-	Data []byte
+	Type	int32
+	Data	[]byte
 }
 
 type CraftingDataPacket struct {
 	BasePacket
-	Entries      []CraftingEntry
-	CleanRecipes bool
+	Entries		[]CraftingEntry
+	CleanRecipes	bool
 }
 
 func NewCraftingDataPacket() *CraftingDataPacket {
 	return &CraftingDataPacket{
-		BasePacket: BasePacket{PacketID: IDCraftingData},
-		Entries:    make([]CraftingEntry, 0),
+		BasePacket:	BasePacket{PacketID: IDCraftingData},
+		Entries:	make([]CraftingEntry, 0),
 	}
 }
 
@@ -84,8 +84,8 @@ func (p *CraftingDataPacket) AddShapelessRecipe(recipe ShapelessRecipe) {
 	stream.WriteUUID(recipe.UUID.String())
 
 	p.Entries = append(p.Entries, CraftingEntry{
-		Type: EntryShapeless,
-		Data: stream.Bytes(),
+		Type:	EntryShapeless,
+		Data:	stream.Bytes(),
 	})
 }
 
@@ -105,8 +105,8 @@ func (p *CraftingDataPacket) AddShapedRecipe(recipe ShapedRecipe) {
 	stream.WriteUUID(recipe.UUID.String())
 
 	p.Entries = append(p.Entries, CraftingEntry{
-		Type: EntryShaped,
-		Data: stream.Bytes(),
+		Type:	EntryShaped,
+		Data:	stream.Bytes(),
 	})
 }
 
@@ -125,8 +125,8 @@ func (p *CraftingDataPacket) AddFurnaceRecipe(recipe FurnaceRecipe) {
 	stream.WriteSlot(recipe.Output)
 
 	p.Entries = append(p.Entries, CraftingEntry{
-		Type: entryType,
-		Data: stream.Bytes(),
+		Type:	entryType,
+		Data:	stream.Bytes(),
 	})
 }
 
@@ -145,8 +145,8 @@ func (p *CraftingDataPacket) AddEnchantList(list EnchantmentList) {
 	}
 
 	p.Entries = append(p.Entries, CraftingEntry{
-		Type: EntryEnchantList,
-		Data: stream.Bytes(),
+		Type:	EntryEnchantList,
+		Data:	stream.Bytes(),
 	})
 }
 

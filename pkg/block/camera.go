@@ -7,10 +7,10 @@ type CameraBlock struct {
 func NewCameraBlock() *CameraBlock {
 	return &CameraBlock{
 		SolidBase: SolidBase{
-			BlockID:       CAMERA,
-			BlockName:     "Camera",
-			BlockHardness: -1,
-			BlockToolType: ToolTypeNone,
+			BlockID:	CAMERA,
+			BlockName:	"Camera",
+			BlockHardness:	-1,
+			BlockToolType:	ToolTypeNone,
 		},
 	}
 }

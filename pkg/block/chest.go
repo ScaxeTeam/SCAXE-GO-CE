@@ -1,15 +1,17 @@
 package block
+
 type ChestBlock struct {
 	TransparentBase
 }
+
 func NewChestBlock() *ChestBlock {
 	return &ChestBlock{
 		TransparentBase: TransparentBase{
-			BlockID:       CHEST,
-			BlockName:     "Chest",
-			BlockHardness: 2.5,
-			BlockToolType: ToolTypeAxe,
-			BlockCanPlace: true,
+			BlockID:	CHEST,
+			BlockName:	"Chest",
+			BlockHardness:	2.5,
+			BlockToolType:	ToolTypeAxe,
+			BlockCanPlace:	true,
 		},
 	}
 }
@@ -25,7 +27,9 @@ func (b *ChestBlock) GetFuelTime() int {
 func (b *ChestBlock) GetDrops(toolType, toolTier int) []Drop {
 	return []Drop{{ID: int(CHEST), Meta: 0, Count: 1}}
 }
+
 var ChestDirectionToMeta = [4]uint8{4, 2, 5, 3}
+
 func (b *ChestBlock) GetPlacementMeta(playerDirection int) uint8 {
 	if playerDirection < 0 || playerDirection > 3 {
 		playerDirection = 0
@@ -42,18 +46,20 @@ func GetPairSearchSides(meta uint8) []int {
 		return []int{2, 3, 4, 5}
 	}
 }
+
 type ChestBoundingBox struct {
-	MinX, MinY, MinZ float64
-	MaxX, MaxY, MaxZ float64
+	MinX, MinY, MinZ	float64
+	MaxX, MaxY, MaxZ	float64
 }
+
 func GetChestBoundingBox(x, y, z int) ChestBoundingBox {
 	return ChestBoundingBox{
-		MinX: float64(x) + 0.0625,
-		MinY: float64(y),
-		MinZ: float64(z) + 0.0625,
-		MaxX: float64(x) + 0.9375,
-		MaxY: float64(y) + 0.9475,
-		MaxZ: float64(z) + 0.9375,
+		MinX:	float64(x) + 0.0625,
+		MinY:	float64(y),
+		MinZ:	float64(z) + 0.0625,
+		MaxX:	float64(x) + 0.9375,
+		MaxY:	float64(y) + 0.9475,
+		MaxZ:	float64(z) + 0.9375,
 	}
 }
 

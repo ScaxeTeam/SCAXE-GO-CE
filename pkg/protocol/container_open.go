@@ -2,31 +2,31 @@ package protocol
 
 type ContainerOpenPacket struct {
 	BasePacket
-	WindowID byte
-	Type     byte
-	Slots    int16
-	X        int32
-	Y        int32
-	Z        int32
-	EntityID int64
+	WindowID	byte
+	Type		byte
+	Slots		int16
+	X		int32
+	Y		int32
+	Z		int32
+	EntityID	int64
 }
 
 const (
-	ContainerTypeChest     = 0
-	ContainerTypeWorkbench = 1
-	ContainerTypeFurnace   = 2
-	ContainerTypeEnchant   = 3
-	ContainerTypeBrewing   = 4
-	ContainerTypeAnvil     = 5
-	ContainerTypeDispenser = 6
-	ContainerTypeDropper   = 7
-	ContainerTypeHopper    = 8
+	ContainerTypeChest	= 0
+	ContainerTypeWorkbench	= 1
+	ContainerTypeFurnace	= 2
+	ContainerTypeEnchant	= 3
+	ContainerTypeBrewing	= 4
+	ContainerTypeAnvil	= 5
+	ContainerTypeDispenser	= 6
+	ContainerTypeDropper	= 7
+	ContainerTypeHopper	= 8
 )
 
 func NewContainerOpenPacket() *ContainerOpenPacket {
 	return &ContainerOpenPacket{
-		BasePacket: BasePacket{PacketID: IDContainerOpen},
-		EntityID:   -1,
+		BasePacket:	BasePacket{PacketID: IDContainerOpen},
+		EntityID:	-1,
 	}
 }
 

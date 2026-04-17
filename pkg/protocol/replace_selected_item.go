@@ -6,7 +6,7 @@ import (
 
 type ReplaceSelectedItemPacket struct {
 	BasePacket
-	Slot item.Item
+	Slot	item.Item
 }
 
 func NewReplaceSelectedItemPacket() *ReplaceSelectedItemPacket {

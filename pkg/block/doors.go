@@ -1,21 +1,22 @@
 package block
+
 type WoodDoorBlock struct {
 	DoorBase
-	dropItemID int
+	dropItemID	int
 }
 
 func newWoodDoor(blockID uint8, name string, dropItemID int) *WoodDoorBlock {
 	return &WoodDoorBlock{
 		DoorBase: DoorBase{
 			TransparentBase: TransparentBase{
-				BlockID:       blockID,
-				BlockName:     name,
-				BlockHardness: 3,
-				BlockToolType: ToolTypeAxe,
-				BlockCanPlace: true,
+				BlockID:	blockID,
+				BlockName:	name,
+				BlockHardness:	3,
+				BlockToolType:	ToolTypeAxe,
+				BlockCanPlace:	true,
 			},
 		},
-		dropItemID: dropItemID,
+		dropItemID:	dropItemID,
 	}
 }
 func (b *WoodDoorBlock) GetDrops(toolType, toolTier int) []Drop {
@@ -24,18 +25,20 @@ func (b *WoodDoorBlock) GetDrops(toolType, toolTier int) []Drop {
 func (b *WoodDoorBlock) GetFuelTime() int {
 	return 200
 }
+
 type IronDoorBlock struct {
 	DoorBase
 }
+
 func NewIronDoorBlock() *IronDoorBlock {
 	return &IronDoorBlock{
 		DoorBase: DoorBase{
 			TransparentBase: TransparentBase{
-				BlockID:       IRON_DOOR_BLOCK,
-				BlockName:     "Iron Door Block",
-				BlockHardness: 5,
-				BlockToolType: ToolTypePickaxe,
-				BlockCanPlace: true,
+				BlockID:	IRON_DOOR_BLOCK,
+				BlockName:	"Iron Door Block",
+				BlockHardness:	5,
+				BlockToolType:	ToolTypePickaxe,
+				BlockCanPlace:	true,
 			},
 		},
 	}
@@ -51,13 +54,13 @@ func (b *IronDoorBlock) GetDrops(toolType, toolTier int) []Drop {
 }
 
 const (
-	ItemWoodenDoor  = 324
-	ItemIronDoor    = 330
-	ItemSpruceDoor  = 427
-	ItemBirchDoor   = 428
-	ItemJungleDoor  = 429
-	ItemAcaciaDoor  = 430
-	ItemDarkOakDoor = 431
+	ItemWoodenDoor	= 324
+	ItemIronDoor	= 330
+	ItemSpruceDoor	= 427
+	ItemBirchDoor	= 428
+	ItemJungleDoor	= 429
+	ItemAcaciaDoor	= 430
+	ItemDarkOakDoor	= 431
 )
 
 func init() {

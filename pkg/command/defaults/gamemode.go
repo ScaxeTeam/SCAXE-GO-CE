@@ -32,10 +32,10 @@ func (c *GamemodeCommand) GetPermission() string {
 }
 
 const (
-	GamemodeSurvival  = 0
-	GamemodeCreative  = 1
-	GamemodeAdventure = 2
-	GamemodeSpectator = 3
+	GamemodeSurvival	= 0
+	GamemodeCreative	= 1
+	GamemodeAdventure	= 2
+	GamemodeSpectator	= 3
 )
 
 func (c *GamemodeCommand) Execute(sender command.CommandSender, args []string) bool {

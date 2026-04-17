@@ -12,43 +12,43 @@ import (
 )
 
 const (
-	CategoryServer = "SERVER"
-	CategoryPlayer = "PLAYER"
-	CategoryPacket = "PACKET"
-	CategoryDebug  = "DEBUG"
-	CategoryError  = "ERROR"
-	CategoryWarn   = "WARN"
+	CategoryServer	= "SERVER"
+	CategoryPlayer	= "PLAYER"
+	CategoryPacket	= "PACKET"
+	CategoryDebug	= "DEBUG"
+	CategoryError	= "ERROR"
+	CategoryWarn	= "WARN"
 )
 
 const (
-	colorReset   = "\033[0m"
-	colorRed     = "\033[31m"
-	colorGreen   = "\033[32m"
-	colorYellow  = "\033[33m"
-	colorBlue    = "\033[34m"
-	colorMagenta = "\033[35m"
-	colorCyan    = "\033[36m"
-	colorWhite   = "\033[37m"
-	colorGray    = "\033[90m"
-	colorBold    = "\033[1m"
+	colorReset	= "\033[0m"
+	colorRed	= "\033[31m"
+	colorGreen	= "\033[32m"
+	colorYellow	= "\033[33m"
+	colorBlue	= "\033[34m"
+	colorMagenta	= "\033[35m"
+	colorCyan	= "\033[36m"
+	colorWhite	= "\033[37m"
+	colorGray	= "\033[90m"
+	colorBold	= "\033[1m"
 )
 
 var (
-	mu            sync.Mutex
-	output        io.Writer = os.Stdout
-	logFile       *os.File
-	fileOutput    io.Writer
-	debugEnabled  bool = false
-	packetEnabled bool = false
-	colorEnabled  bool = true
-	initialized   bool = false
-	ansiRegex          = regexp.MustCompile(`\x1b\[[0-9;]*m`)
+	mu		sync.Mutex
+	output		io.Writer	= os.Stdout
+	logFile		*os.File
+	fileOutput	io.Writer
+	debugEnabled	bool	= false
+	packetEnabled	bool	= false
+	colorEnabled	bool	= true
+	initialized	bool	= false
+	ansiRegex		= regexp.MustCompile(`\x1b\[[0-9;]*m`)
 
-	debugRaknet bool = false
-	debugPacket bool = false
-	debugLevel  bool = false
-	debugEntity bool = false
-	debugPlayer bool = false
+	debugRaknet	bool	= false
+	debugPacket	bool	= false
+	debugLevel	bool	= false
+	debugEntity	bool	= false
+	debugPlayer	bool	= false
 )
 
 func Init(out io.Writer, debug bool) {
@@ -106,11 +106,11 @@ func SetDebug(enabled bool) {
 	}
 }
 
-func SetDebugRaknet(v bool)  { mu.Lock(); debugRaknet = v; mu.Unlock() }
-func SetDebugPacket(v bool)  { mu.Lock(); debugPacket = v; mu.Unlock() }
-func SetDebugLevel(v bool)   { mu.Lock(); debugLevel = v; mu.Unlock() }
-func SetDebugEntity(v bool)  { mu.Lock(); debugEntity = v; mu.Unlock() }
-func SetDebugPlayer(v bool)  { mu.Lock(); debugPlayer = v; mu.Unlock() }
+func SetDebugRaknet(v bool)	{ mu.Lock(); debugRaknet = v; mu.Unlock() }
+func SetDebugPacket(v bool)	{ mu.Lock(); debugPacket = v; mu.Unlock() }
+func SetDebugLevel(v bool)	{ mu.Lock(); debugLevel = v; mu.Unlock() }
+func SetDebugEntity(v bool)	{ mu.Lock(); debugEntity = v; mu.Unlock() }
+func SetDebugPlayer(v bool)	{ mu.Lock(); debugPlayer = v; mu.Unlock() }
 
 func SetPacketLogging(enabled bool) {
 	mu.Lock()
@@ -293,6 +293,27 @@ func DebugPlayer(msg string, args ...any) {
 	}
 	text := formatLog("PLAYER-DBG", colorGray, msg, args...)
 	write(text)
+}
+
+func ProxyDebug(msg string, args ...any) {
+	mu.Lock()
+	defer mu.Unlock()
+	if fileOutput == nil {
+		return
+	}
+	ts := time.Now().Format("15:04:05.000")
+	fullMsg := msg
+	if len(args) > 0 {
+		for i := 0; i+1 < len(args); i += 2 {
+			key := fmt.Sprintf("%v", args[i])
+			val := fmt.Sprintf("%v", args[i+1])
+			fullMsg += fmt.Sprintf(" %s=%s", key, val)
+		}
+		if len(args)%2 == 1 {
+			fullMsg += fmt.Sprintf(" %v", args[len(args)-1])
+		}
+	}
+	fmt.Fprintf(fileOutput, "%s [PROXY] %s\n", ts, fullMsg)
 }
 
 func Banner(serverName, version, address string, maxPlayers int) {

@@ -10,22 +10,22 @@ import (
 
 type SavannaBiome struct {
 	*BaseBiome
-	IsPlateau bool
+	IsPlateau	bool
 }
 
 func NewSavannaBiome() *SavannaBiome {
 	b := &SavannaBiome{
 		BaseBiome: &BaseBiome{
-			ID:              SAVANNA,
-			Name:            "Savanna",
-			BaseHeight:      0.125,
-			HeightVariation: 0.05,
-			Temperature:     1.2,
-			Rainfall:        0.0,
-			GroundCover:     []block.BlockState{block.NewBlockState(block.GRASS, 0), block.NewBlockState(block.DIRT, 0)},
-			Decorator:       NewDecorator(),
+			ID:			SAVANNA,
+			Name:			"Savanna",
+			BaseHeight:		0.125,
+			HeightVariation:	0.05,
+			Temperature:		1.2,
+			Rainfall:		0.0,
+			GroundCover:		[]block.BlockState{block.NewBlockState(block.GRASS, 0), block.NewBlockState(block.DIRT, 0)},
+			Decorator:		NewDecorator(),
 		},
-		IsPlateau: false,
+		IsPlateau:	false,
 	}
 	b.Decorator.TreesPerChunk = 1
 	b.Decorator.FlowersPerChunk = 4
@@ -36,16 +36,16 @@ func NewSavannaBiome() *SavannaBiome {
 func NewSavannaPlateauBiome() *SavannaBiome {
 	b := &SavannaBiome{
 		BaseBiome: &BaseBiome{
-			ID:              SAVANNA_PLATEAU,
-			Name:            "Savanna Plateau",
-			BaseHeight:      1.5,
-			HeightVariation: 0.025,
-			Temperature:     1.0,
-			Rainfall:        0.0,
-			GroundCover:     []block.BlockState{block.NewBlockState(block.GRASS, 0), block.NewBlockState(block.DIRT, 0)},
-			Decorator:       NewDecorator(),
+			ID:			SAVANNA_PLATEAU,
+			Name:			"Savanna Plateau",
+			BaseHeight:		1.5,
+			HeightVariation:	0.025,
+			Temperature:		1.0,
+			Rainfall:		0.0,
+			GroundCover:		[]block.BlockState{block.NewBlockState(block.GRASS, 0), block.NewBlockState(block.DIRT, 0)},
+			Decorator:		NewDecorator(),
 		},
-		IsPlateau: true,
+		IsPlateau:	true,
 	}
 	b.Decorator.TreesPerChunk = 1
 	b.Decorator.FlowersPerChunk = 4

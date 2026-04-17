@@ -7,14 +7,14 @@ import (
 )
 
 type OctavesNoise struct {
-	generators []*ImprovedNoise
-	octaves    int
+	generators	[]*ImprovedNoise
+	octaves		int
 }
 
 func NewOctavesNoise(rnd *rand.Random, octaves int) *OctavesNoise {
 	o := &OctavesNoise{
-		octaves:    octaves,
-		generators: make([]*ImprovedNoise, octaves),
+		octaves:	octaves,
+		generators:	make([]*ImprovedNoise, octaves),
 	}
 
 	for i := 0; i < octaves; i++ {

@@ -13,10 +13,10 @@ type RestartCommand struct {
 func NewRestartCommand() *RestartCommand {
 	return &RestartCommand{
 		BaseCommand: command.BaseCommand{
-			Name:        "restart",
-			Description: "Restarts the server",
-			Usage:       "/restart",
-			Permission:  "pocketmine.command.restart",
+			Name:		"restart",
+			Description:	"Restarts the server",
+			Usage:		"/restart",
+			Permission:	"pocketmine.command.restart",
 		},
 	}
 }
@@ -34,10 +34,10 @@ type BackupCommand struct {
 func NewBackupCommand() *BackupCommand {
 	return &BackupCommand{
 		BaseCommand: command.BaseCommand{
-			Name:        "backup",
-			Description: "Creates a backup of the world",
-			Usage:       "/backup",
-			Permission:  "pocketmine.command.backup",
+			Name:		"backup",
+			Description:	"Creates a backup of the world",
+			Usage:		"/backup",
+			Permission:	"pocketmine.command.backup",
 		},
 	}
 }
@@ -51,18 +51,18 @@ func (c *BackupCommand) Execute(sender command.CommandSender, args []string) boo
 
 type ChunkInfoCommand struct {
 	command.BaseCommand
-	server ServerInterface
+	server	ServerInterface
 }
 
 func NewChunkInfoCommand(server ServerInterface) *ChunkInfoCommand {
 	return &ChunkInfoCommand{
 		BaseCommand: command.BaseCommand{
-			Name:        "chunkinfo",
-			Description: "Shows chunk information",
-			Usage:       "/chunkinfo",
-			Permission:  "pocketmine.command.chunkinfo",
+			Name:		"chunkinfo",
+			Description:	"Shows chunk information",
+			Usage:		"/chunkinfo",
+			Permission:	"pocketmine.command.chunkinfo",
 		},
-		server: server,
+		server:	server,
 	}
 }
 
@@ -79,10 +79,10 @@ type BiomeCommand struct {
 func NewBiomeCommand() *BiomeCommand {
 	return &BiomeCommand{
 		BaseCommand: command.BaseCommand{
-			Name:        "biome",
-			Description: "Shows biome at current position",
-			Usage:       "/biome",
-			Permission:  "pocketmine.command.biome",
+			Name:		"biome",
+			Description:	"Shows biome at current position",
+			Usage:		"/biome",
+			Permission:	"pocketmine.command.biome",
 		},
 	}
 }
@@ -99,10 +99,10 @@ type DumpMemoryCommand struct {
 func NewDumpMemoryCommand() *DumpMemoryCommand {
 	return &DumpMemoryCommand{
 		BaseCommand: command.BaseCommand{
-			Name:        "dumpmemory",
-			Description: "Dumps memory information",
-			Usage:       "/dumpmemory",
-			Permission:  "pocketmine.command.dumpmemory",
+			Name:		"dumpmemory",
+			Description:	"Dumps memory information",
+			Usage:		"/dumpmemory",
+			Permission:	"pocketmine.command.dumpmemory",
 		},
 	}
 }
@@ -114,18 +114,18 @@ func (c *DumpMemoryCommand) Execute(sender command.CommandSender, args []string)
 
 type BanCidCommand struct {
 	command.BaseCommand
-	server ServerInterface
+	server	ServerInterface
 }
 
 func NewBanCidCommand(server ServerInterface) *BanCidCommand {
 	return &BanCidCommand{
 		BaseCommand: command.BaseCommand{
-			Name:        "ban-cid",
-			Description: "Bans a player by Client ID",
-			Usage:       "/ban-cid <cid> [reason]",
-			Permission:  "pocketmine.command.ban.cid",
+			Name:		"ban-cid",
+			Description:	"Bans a player by Client ID",
+			Usage:		"/ban-cid <cid> [reason]",
+			Permission:	"pocketmine.command.ban.cid",
 		},
-		server: server,
+		server:	server,
 	}
 }
 
@@ -152,10 +152,10 @@ type PardonCidCommand struct {
 func NewPardonCidCommand() *PardonCidCommand {
 	return &PardonCidCommand{
 		BaseCommand: command.BaseCommand{
-			Name:        "pardon-cid",
-			Description: "Unbans a Client ID",
-			Usage:       "/pardon-cid <cid>",
-			Permission:  "pocketmine.command.unban.cid",
+			Name:		"pardon-cid",
+			Description:	"Unbans a Client ID",
+			Usage:		"/pardon-cid <cid>",
+			Permission:	"pocketmine.command.unban.cid",
 		},
 	}
 }

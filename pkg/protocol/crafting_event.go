@@ -6,19 +6,19 @@ import (
 
 type CraftingEventPacket struct {
 	BasePacket
-	WindowID byte
-	Type     int32
-	UUID1    int64
-	UUID2    int64
-	Input    []item.Item
-	Output   []item.Item
+	WindowID	byte
+	Type		int32
+	UUID1		int64
+	UUID2		int64
+	Input		[]item.Item
+	Output		[]item.Item
 }
 
 func NewCraftingEventPacket() *CraftingEventPacket {
 	return &CraftingEventPacket{
-		BasePacket: BasePacket{PacketID: IDCraftingEvent},
-		Input:      make([]item.Item, 0),
-		Output:     make([]item.Item, 0),
+		BasePacket:	BasePacket{PacketID: IDCraftingEvent},
+		Input:		make([]item.Item, 0),
+		Output:		make([]item.Item, 0),
 	}
 }
 

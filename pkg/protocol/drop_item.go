@@ -6,8 +6,8 @@ import (
 
 type DropItemPacket struct {
 	BasePacket
-	Type byte
-	Item item.Item
+	Type	byte
+	Item	item.Item
 }
 
 func NewDropItemPacket() *DropItemPacket {

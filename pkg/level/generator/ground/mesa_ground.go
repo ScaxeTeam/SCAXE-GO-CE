@@ -8,24 +8,24 @@ import (
 )
 
 const (
-	BlockHardenedClay = 172
-	BlockRedSand      = 12
-	BlockRedSandstone = 179
+	BlockHardenedClay	= 172
+	BlockRedSand		= 12
+	BlockRedSandstone	= 179
 )
 
 var clayBands = []byte{1, 1, 4, 4, 7, 7, 4, 8, 1, 4, 1, 12, 12, 14, 14, 1}
 
 type MesaGroundGenerator struct {
 	*GroundGenerator
-	hasBryce  bool
-	hasForest bool
+	hasBryce	bool
+	hasForest	bool
 }
 
 func NewMesaGroundGenerator() *MesaGroundGenerator {
 	g := &MesaGroundGenerator{
-		GroundGenerator: NewGroundGenerator(),
-		hasBryce:        false,
-		hasForest:       false,
+		GroundGenerator:	NewGroundGenerator(),
+		hasBryce:		false,
+		hasForest:		false,
 	}
 	g.SetTopMaterial(BlockRedSand, 1)
 	g.SetGroundMaterial(BlockHardenedClay, 0)

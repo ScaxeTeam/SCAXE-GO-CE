@@ -5,23 +5,23 @@ import (
 )
 
 const (
-	ChunkOrderColumns byte = 0
-	ChunkOrderLayered byte = 1
+	ChunkOrderColumns	byte	= 0
+	ChunkOrderLayered	byte	= 1
 )
 
 type FullChunkDataPacket struct {
 	BasePacket
-	ChunkX int32
-	ChunkZ int32
-	Order  byte
-	Data   []byte
+	ChunkX	int32
+	ChunkZ	int32
+	Order	byte
+	Data	[]byte
 }
 
 func NewFullChunkDataPacket() *FullChunkDataPacket {
 	return &FullChunkDataPacket{
-		BasePacket: BasePacket{PacketID: IDFullChunkData},
-		Order:      ChunkOrderColumns,
-		Data:       make([]byte, 0),
+		BasePacket:	BasePacket{PacketID: IDFullChunkData},
+		Order:		ChunkOrderColumns,
+		Data:		make([]byte, 0),
 	}
 }
 

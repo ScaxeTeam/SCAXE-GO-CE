@@ -6,17 +6,19 @@ import (
 )
 
 const (
-	HopperSlots = 5
-	HopperCooldownTicks = 8
+	HopperSlots		= 5
+	HopperCooldownTicks	= 8
 )
+
 type Hopper struct {
 	SpawnableBase
 	ContainerBase
 	NameableBase
 
-	Cooldown   int
-	NeedUpdate bool
+	Cooldown	int
+	NeedUpdate	bool
 }
+
 func NewHopper(chunk *world.Chunk, nbtData *nbt.CompoundTag) Tile {
 	h := &Hopper{}
 	InitSpawnableBase(&h.SpawnableBase, TypeHopper, chunk, nbtData)

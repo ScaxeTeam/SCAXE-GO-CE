@@ -10,25 +10,25 @@ import (
 
 type MesaBiome struct {
 	*BaseBiome
-	HasTrees  bool
-	IsPlateau bool
-	clayBands []byte
+	HasTrees	bool
+	IsPlateau	bool
+	clayBands	[]byte
 }
 
 func NewMesaBiome() *MesaBiome {
 	b := &MesaBiome{
 		BaseBiome: &BaseBiome{
-			ID:              MESA,
-			Name:            "Mesa",
-			BaseHeight:      0.1,
-			HeightVariation: 0.2,
-			Temperature:     2.0,
-			Rainfall:        0.0,
-			GroundCover:     []block.BlockState{block.NewBlockState(block.RED_SANDSTONE, 0), block.NewBlockState(block.STAINED_CLAY, 1)},
-			Decorator:       NewDecorator(),
+			ID:			MESA,
+			Name:			"Mesa",
+			BaseHeight:		0.1,
+			HeightVariation:	0.2,
+			Temperature:		2.0,
+			Rainfall:		0.0,
+			GroundCover:		[]block.BlockState{block.NewBlockState(block.RED_SANDSTONE, 0), block.NewBlockState(block.STAINED_CLAY, 1)},
+			Decorator:		NewDecorator(),
 		},
-		HasTrees:  false,
-		IsPlateau: false,
+		HasTrees:	false,
+		IsPlateau:	false,
 	}
 	b.Decorator.DeadBushPerChunk = 20
 	b.Decorator.CactiPerChunk = 5
@@ -41,17 +41,17 @@ func NewMesaBiome() *MesaBiome {
 func NewMesaPlateauBiome() *MesaBiome {
 	b := &MesaBiome{
 		BaseBiome: &BaseBiome{
-			ID:              MESA_PLATEAU,
-			Name:            "Mesa Plateau",
-			BaseHeight:      1.5,
-			HeightVariation: 0.025,
-			Temperature:     2.0,
-			Rainfall:        0.0,
-			GroundCover:     []block.BlockState{block.NewBlockState(block.RED_SANDSTONE, 0), block.NewBlockState(block.STAINED_CLAY, 1)},
-			Decorator:       NewDecorator(),
+			ID:			MESA_PLATEAU,
+			Name:			"Mesa Plateau",
+			BaseHeight:		1.5,
+			HeightVariation:	0.025,
+			Temperature:		2.0,
+			Rainfall:		0.0,
+			GroundCover:		[]block.BlockState{block.NewBlockState(block.RED_SANDSTONE, 0), block.NewBlockState(block.STAINED_CLAY, 1)},
+			Decorator:		NewDecorator(),
 		},
-		HasTrees:  false,
-		IsPlateau: true,
+		HasTrees:	false,
+		IsPlateau:	true,
 	}
 	b.Decorator.DeadBushPerChunk = 20
 	b.Decorator.CactiPerChunk = 5
@@ -62,17 +62,17 @@ func NewMesaPlateauBiome() *MesaBiome {
 func NewMesaPlateauFBiome() *MesaBiome {
 	b := &MesaBiome{
 		BaseBiome: &BaseBiome{
-			ID:              MESA_PLATEAU_F,
-			Name:            "Mesa Plateau F",
-			BaseHeight:      1.5,
-			HeightVariation: 0.025,
-			Temperature:     2.0,
-			Rainfall:        0.0,
-			GroundCover:     []block.BlockState{block.NewBlockState(block.RED_SANDSTONE, 0), block.NewBlockState(block.STAINED_CLAY, 1)},
-			Decorator:       NewDecorator(),
+			ID:			MESA_PLATEAU_F,
+			Name:			"Mesa Plateau F",
+			BaseHeight:		1.5,
+			HeightVariation:	0.025,
+			Temperature:		2.0,
+			Rainfall:		0.0,
+			GroundCover:		[]block.BlockState{block.NewBlockState(block.RED_SANDSTONE, 0), block.NewBlockState(block.STAINED_CLAY, 1)},
+			Decorator:		NewDecorator(),
 		},
-		HasTrees:  true,
-		IsPlateau: true,
+		HasTrees:	true,
+		IsPlateau:	true,
 	}
 	b.Decorator.DeadBushPerChunk = 20
 	b.Decorator.CactiPerChunk = 5

@@ -6,21 +6,21 @@ import (
 
 type SimplexOctaveGenerator struct {
 	BaseOctaveGenerator
-	generators []*Simplex
+	generators	[]*Simplex
 }
 
 func NewSimplexOctaveGenerator(seed int64, octaves int, sizeX, sizeZ int) *SimplexOctaveGenerator {
 	g := &SimplexOctaveGenerator{
 		BaseOctaveGenerator: BaseOctaveGenerator{
-			Octaves: octaves,
-			SizeX:   sizeX,
-			SizeY:   1,
-			SizeZ:   sizeZ,
-			XScale:  1.0,
-			YScale:  1.0,
-			ZScale:  1.0,
+			Octaves:	octaves,
+			SizeX:		sizeX,
+			SizeY:		1,
+			SizeZ:		sizeZ,
+			XScale:		1.0,
+			YScale:		1.0,
+			ZScale:		1.0,
 		},
-		generators: make([]*Simplex, octaves),
+		generators:	make([]*Simplex, octaves),
 	}
 
 	r := rand.NewRandom(seed)

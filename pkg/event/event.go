@@ -1,12 +1,12 @@
 package event
 
 const (
-	PriorityMonitor = 0
-	PriorityHighest = 1
-	PriorityHigh    = 2
-	PriorityNormal  = 3
-	PriorityLow     = 4
-	PriorityLowest  = 5
+	PriorityMonitor	= 0
+	PriorityHighest	= 1
+	PriorityHigh	= 2
+	PriorityNormal	= 3
+	PriorityLow	= 4
+	PriorityLowest	= 5
 )
 
 type Event interface {
@@ -21,8 +21,8 @@ type Cancellable interface {
 }
 
 type BaseEvent struct {
-	name      string
-	cancelled bool
+	name		string
+	cancelled	bool
 }
 
 func NewBaseEvent(name string) *BaseEvent {
@@ -44,18 +44,18 @@ func (e *BaseEvent) SetCancelled(cancelled bool) {
 type Handler func(Event)
 
 type RegisteredListener struct {
-	handler         Handler
-	priority        int
-	ignoreCancelled bool
-	pluginName      string
+	handler		Handler
+	priority	int
+	ignoreCancelled	bool
+	pluginName	string
 }
 
 func NewRegisteredListener(handler Handler, priority int, ignoreCancelled bool, pluginName string) *RegisteredListener {
 	return &RegisteredListener{
-		handler:         handler,
-		priority:        priority,
-		ignoreCancelled: ignoreCancelled,
-		pluginName:      pluginName,
+		handler:		handler,
+		priority:		priority,
+		ignoreCancelled:	ignoreCancelled,
+		pluginName:		pluginName,
 	}
 }
 
@@ -78,22 +78,22 @@ func (r *RegisteredListener) Call(event Event) {
 }
 
 type HandlerList struct {
-	slots    map[int][]*RegisteredListener
-	handlers []*RegisteredListener
-	dirty    bool
+	slots		map[int][]*RegisteredListener
+	handlers	[]*RegisteredListener
+	dirty		bool
 }
 
 func NewHandlerList() *HandlerList {
 	return &HandlerList{
 		slots: map[int][]*RegisteredListener{
-			PriorityLowest:  {},
-			PriorityLow:     {},
-			PriorityNormal:  {},
-			PriorityHigh:    {},
-			PriorityHighest: {},
-			PriorityMonitor: {},
+			PriorityLowest:		{},
+			PriorityLow:		{},
+			PriorityNormal:		{},
+			PriorityHigh:		{},
+			PriorityHighest:	{},
+			PriorityMonitor:	{},
 		},
-		dirty: true,
+		dirty:	true,
 	}
 }
 

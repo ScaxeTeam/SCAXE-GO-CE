@@ -8,18 +8,18 @@ import (
 
 type GiveCommand struct {
 	command.BaseCommand
-	server ServerInterface
+	server	ServerInterface
 }
 
 func NewGiveCommand(server ServerInterface) *GiveCommand {
 	return &GiveCommand{
 		BaseCommand: command.BaseCommand{
-			Name:        "give",
-			Description: "Gives items to a player",
-			Usage:       "/give <player> <item[:data]> [amount]",
-			Permission:  "pocketmine.command.give",
+			Name:		"give",
+			Description:	"Gives items to a player",
+			Usage:		"/give <player> <item[:data]> [amount]",
+			Permission:	"pocketmine.command.give",
 		},
-		server: server,
+		server:	server,
 	}
 }
 

@@ -3,47 +3,47 @@ package entity
 type Human struct {
 	*Living
 
-	UUID     string
-	Username string
+	UUID		string
+	Username	string
 
-	SkinData string
-	SkinName string
+	SkinData	string
+	SkinName	string
 
-	Food       float64
-	MaxFood    float64
-	Saturation float64
-	Exhaustion float64
+	Food		float64
+	MaxFood		float64
+	Saturation	float64
+	Exhaustion	float64
 
-	FoodTickTimer int
-	FoodEnabled   bool
+	FoodTickTimer	int
+	FoodEnabled	bool
 
-	TotalXP    int
-	XPLevel    int
-	XPProgress float64
+	TotalXP		int
+	XPLevel		int
+	XPProgress	float64
 
-	Absorption int
+	Absorption	int
 
-	HeldItemSlot int
+	HeldItemSlot	int
 }
 
 func NewHuman() *Human {
 	h := &Human{
-		Living:        NewLiving(),
-		UUID:          "",
-		Username:      "",
-		SkinData:      "",
-		SkinName:      "",
-		Food:          20,
-		MaxFood:       20,
-		Saturation:    20,
-		Exhaustion:    0,
-		FoodTickTimer: 0,
-		FoodEnabled:   true,
-		TotalXP:       0,
-		XPLevel:       0,
-		XPProgress:    0,
-		Absorption:    0,
-		HeldItemSlot:  0,
+		Living:		NewLiving(),
+		UUID:		"",
+		Username:	"",
+		SkinData:	"",
+		SkinName:	"",
+		Food:		20,
+		MaxFood:	20,
+		Saturation:	20,
+		Exhaustion:	0,
+		FoodTickTimer:	0,
+		FoodEnabled:	true,
+		TotalXP:	0,
+		XPLevel:	0,
+		XPProgress:	0,
+		Absorption:	0,
+		HeldItemSlot:	0,
 	}
 	h.initHumanAttributes()
 	h.Height = 1.8

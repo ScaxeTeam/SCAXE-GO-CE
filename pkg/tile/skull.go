@@ -4,9 +4,11 @@ import (
 	"github.com/scaxe/scaxe-go/pkg/nbt"
 	"github.com/scaxe/scaxe-go/pkg/world"
 )
+
 type Skull struct {
 	SpawnableBase
 }
+
 func NewSkull(chunk *world.Chunk, nbtData *nbt.CompoundTag) *Skull {
 	s := &Skull{}
 

@@ -7,23 +7,26 @@ import (
 )
 
 const ZombieNetworkID = 32
+
 func NewZombie() *Monster {
 	m := NewMonster(ZombieNetworkID, "Zombie", 20, 0.6, 1.8, 4)
 	m.DropExpMin = 5
 	m.DropExpMax = 5
 	return m
 }
+
 type ZombieDropItem struct {
-	ItemID int
-	Meta   int
-	Count  int
+	ItemID	int
+	Meta	int
+	Count	int
 }
+
 func ZombieDrops() []ZombieDropItem {
 	const (
-		RottenFlesh = 367
-		IronIngot   = 265
-		Carrot      = 391
-		Potato      = 392
+		RottenFlesh	= 367
+		IronIngot	= 265
+		Carrot		= 391
+		Potato		= 392
 	)
 
 	drops := []ZombieDropItem{
@@ -44,6 +47,7 @@ func ZombieDrops() []ZombieDropItem {
 }
 
 const SkeletonNetworkID = 34
+
 func NewSkeleton() *Monster {
 	m := NewMonster(SkeletonNetworkID, "Skeleton", 20, 0.6, 1.8, 4)
 	m.DropExpMin = 5
@@ -52,8 +56,8 @@ func NewSkeleton() *Monster {
 }
 func SkeletonDrops() []ZombieDropItem {
 	const (
-		Bone  = 352
-		Arrow = 262
+		Bone	= 352
+		Arrow	= 262
 	)
 
 	drops := []ZombieDropItem{
@@ -67,12 +71,14 @@ func SkeletonDrops() []ZombieDropItem {
 }
 
 const CreeperNetworkID = 33
+
 type Creeper struct {
 	*Monster
-	Powered bool
-	SwellDirection int
-	SwellCounter int
+	Powered		bool
+	SwellDirection	int
+	SwellCounter	int
 }
+
 func NewCreeper() *Creeper {
 	m := NewMonster(CreeperNetworkID, "Creeper", 20, 0.6, 1.8, 0)
 	m.DropExpMin = 5
@@ -98,10 +104,12 @@ func (c *Creeper) SetSwelled(swelled bool) {
 func (c *Creeper) IsSwelled() bool {
 	return c.SwellDirection == 1
 }
+
 type CreeperTickResult struct {
-	HasUpdate     bool
-	ShouldExplode bool
+	HasUpdate	bool
+	ShouldExplode	bool
 }
+
 func (c *Creeper) TickCreeper() CreeperTickResult {
 	result := CreeperTickResult{}
 
@@ -150,6 +158,7 @@ func CreeperDrops() []ZombieDropItem {
 }
 
 const SpiderNetworkID = 35
+
 func NewSpider() *Monster {
 	m := NewMonster(SpiderNetworkID, "Spider", 16, 1.4, 0.9, 3)
 	m.DropExpMin = 5
@@ -158,8 +167,8 @@ func NewSpider() *Monster {
 }
 func SpiderDrops() []ZombieDropItem {
 	const (
-		SpiderEye = 375
-		String    = 287
+		SpiderEye	= 375
+		String		= 287
 	)
 	if rand.Intn(3) < 1 {
 		return []ZombieDropItem{{ItemID: SpiderEye, Count: 1}}

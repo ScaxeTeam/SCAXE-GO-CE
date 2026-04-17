@@ -7,9 +7,10 @@ import (
 	"github.com/scaxe/scaxe-go/pkg/level"
 	"github.com/scaxe/scaxe-go/pkg/player"
 )
+
 type levelAccessAdapter struct {
-	level  *level.Level
-	server *Server
+	level	*level.Level
+	server	*Server
 }
 type blockInfoAdapter struct {
 	id byte
@@ -54,6 +55,7 @@ func (a *levelAccessAdapter) GetNearestPlayer(x, y, z float64, maxDistance float
 func (a *levelAccessAdapter) GetEntities() []ai.MobEntity {
 	return nil
 }
+
 type playerEntityAdapter struct {
 	player *player.Player
 }

@@ -7,19 +7,20 @@ import (
 )
 
 const (
-	PigNetworkID   = 12
-	SheepNetworkID = 13
+	PigNetworkID	= 12
+	SheepNetworkID	= 13
 )
 
 const (
-	ItemRawPorkchop    = 319
-	ItemCookedPorkchop = 320
-	ItemRawChicken     = 365
-	ItemCookedChicken  = 366
-	ItemFeather        = 288
-	ItemCarrot         = 391
-	BlockWool = 35
+	ItemRawPorkchop		= 319
+	ItemCookedPorkchop	= 320
+	ItemRawChicken		= 365
+	ItemCookedChicken	= 366
+	ItemFeather		= 288
+	ItemCarrot		= 391
+	BlockWool		= 35
 )
+
 func NewPig() *Animal {
 	pig := NewAnimal(PigNetworkID, "Pig", 10, 0.9, 0.9, 0.25, 1.25)
 	pig.Entity.EyeHeight = 0.9
@@ -34,10 +35,12 @@ func PigDrops(isOnFire bool, count int) (int, int, int) {
 	}
 	return ItemRawPorkchop, 0, count
 }
+
 type Chicken struct {
 	*Animal
-	EggTimer int
+	EggTimer	int
 }
+
 func NewChicken() *Chicken {
 	c := &Chicken{
 		Animal: NewAnimal(ChickenNetworkID, "Chicken", 4, 0.4, 0.7, 0.25, 1.4),
@@ -54,10 +57,12 @@ func NewChicken() *Chicken {
 func (c *Chicken) ResetEggTimer() {
 	c.EggTimer = 3000 + rand.Intn(3001)
 }
+
 type ChickenTickResult struct {
 	AnimalTickResult
-	ShouldLayEgg bool
+	ShouldLayEgg	bool
 }
+
 func (c *Chicken) TickChicken() ChickenTickResult {
 	base := c.Animal.TickAnimal()
 	result := ChickenTickResult{AnimalTickResult: base}
@@ -82,14 +87,16 @@ func ChickenDrops(isOnFire bool, rand01 int, count int) (int, int, int) {
 	}
 	return ItemFeather, 0, count
 }
+
 type Sheep struct {
 	*Animal
-	Color int
-	Sheared bool
+	Color	int
+	Sheared	bool
 }
+
 var SheepColorWeights = []struct {
-	Color  int
-	Weight int
+	Color	int
+	Weight	int
 }{
 	{0, 20},
 	{1, 5},
@@ -108,6 +115,7 @@ var SheepColorWeights = []struct {
 	{14, 5},
 	{15, 5},
 }
+
 func GetRandomSheepColor() int {
 	totalWeight := 0
 	for _, cw := range SheepColorWeights {
@@ -126,9 +134,9 @@ func GetRandomSheepColor() int {
 }
 func NewSheep() *Sheep {
 	s := &Sheep{
-		Animal:  NewAnimal(SheepNetworkID, "Sheep", 8, 0.9, 1.3, 0.23, 1.25),
-		Color:   GetRandomSheepColor(),
-		Sheared: false,
+		Animal:		NewAnimal(SheepNetworkID, "Sheep", 8, 0.9, 1.3, 0.23, 1.25),
+		Color:		GetRandomSheepColor(),
+		Sheared:	false,
 	}
 	s.Animal.Entity.EyeHeight = 0.95 * 1.3
 	s.Animal.FeedFoodID = ItemWheat
@@ -138,9 +146,9 @@ func NewSheep() *Sheep {
 }
 func NewSheepWithColor(color int) *Sheep {
 	s := &Sheep{
-		Animal:  NewAnimal(SheepNetworkID, "Sheep", 8, 0.9, 1.3, 0.23, 1.25),
-		Color:   color,
-		Sheared: false,
+		Animal:		NewAnimal(SheepNetworkID, "Sheep", 8, 0.9, 1.3, 0.23, 1.25),
+		Color:		color,
+		Sheared:	false,
 	}
 	s.Animal.Entity.EyeHeight = 0.95 * 1.3
 	s.Animal.FeedFoodID = ItemWheat
@@ -187,12 +195,14 @@ func (s *Sheep) LoadSheepFromNBT() {
 		s.Sheared = s.Animal.Entity.NamedTag.GetByte("Sheared") == 1
 	}
 }
+
 var MobFactory = map[int]func() *Animal{
-	CowNetworkID:     NewCow,
-	PigNetworkID:     NewPig,
-	SheepNetworkID:   func() *Animal { return NewSheep().Animal },
-	ChickenNetworkID: func() *Animal { return NewChicken().Animal },
+	CowNetworkID:		NewCow,
+	PigNetworkID:		NewPig,
+	SheepNetworkID:		func() *Animal { return NewSheep().Animal },
+	ChickenNetworkID:	func() *Animal { return NewChicken().Animal },
 }
+
 func CreatePassiveMob(networkID int) *Animal {
 	if factory, ok := MobFactory[networkID]; ok {
 		return factory()

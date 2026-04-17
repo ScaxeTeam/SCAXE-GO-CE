@@ -9,18 +9,18 @@ import (
 
 type SetWorldSpawnCommand struct {
 	command.BaseCommand
-	server ServerInterface
+	server	ServerInterface
 }
 
 func NewSetWorldSpawnCommand(server ServerInterface) *SetWorldSpawnCommand {
 	return &SetWorldSpawnCommand{
 		BaseCommand: command.BaseCommand{
-			Name:        "setworldspawn",
-			Description: "Sets the world spawn point",
-			Usage:       "/setworldspawn [x y z]",
-			Permission:  "pocketmine.command.setworldspawn",
+			Name:		"setworldspawn",
+			Description:	"Sets the world spawn point",
+			Usage:		"/setworldspawn [x y z]",
+			Permission:	"pocketmine.command.setworldspawn",
 		},
-		server: server,
+		server:	server,
 	}
 }
 

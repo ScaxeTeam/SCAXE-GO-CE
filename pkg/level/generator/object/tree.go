@@ -10,26 +10,26 @@ import (
 )
 
 type Tree struct {
-	TrunkBlock int
-	LeafBlock  int
-	Type       int
-	TreeHeight int
-	Overrides  map[int]bool
+	TrunkBlock	int
+	LeafBlock	int
+	Type		int
+	TreeHeight	int
+	Overrides	map[int]bool
 }
 
 func NewBaseTree(trunk, leaf, typeData int) *Tree {
 	return &Tree{
-		TrunkBlock: trunk,
-		LeafBlock:  leaf,
-		Type:       typeData,
+		TrunkBlock:	trunk,
+		LeafBlock:	leaf,
+		Type:		typeData,
 		Overrides: map[int]bool{
-			0:                true,
-			block.SAPLING:    true,
-			block.LOG:        true,
-			block.LEAVES:     true,
-			block.SNOW_LAYER: true,
-			block.LEAVES2:    true,
-			block.WOOD2:      true,
+			0:			true,
+			block.SAPLING:		true,
+			block.LOG:		true,
+			block.LEAVES:		true,
+			block.SNOW_LAYER:	true,
+			block.LEAVES2:		true,
+			block.WOOD2:		true,
 		},
 	}
 }
@@ -144,7 +144,7 @@ func (ot *OakTree) Generate(level populator.ChunkManager, random *rand.Random, p
 
 type BirchTree struct {
 	*Tree
-	SuperBirch bool
+	SuperBirch	bool
 }
 
 func NewBirchTree(super bool) *BirchTree {

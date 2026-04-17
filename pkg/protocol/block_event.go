@@ -2,11 +2,11 @@ package protocol
 
 type BlockEventPacket struct {
 	BasePacket
-	X     int32
-	Y     int32
-	Z     int32
-	Case1 int32
-	Case2 int32
+	X	int32
+	Y	int32
+	Z	int32
+	Case1	int32
+	Case2	int32
 }
 
 func NewBlockEventPacket() *BlockEventPacket {

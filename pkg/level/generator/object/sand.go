@@ -8,14 +8,14 @@ import (
 )
 
 type Sand struct {
-	BlockID uint8
-	Radius  int
+	BlockID	uint8
+	Radius	int
 }
 
 func NewSand(blockID uint8, radius int) *Sand {
 	return &Sand{
-		BlockID: blockID,
-		Radius:  radius,
+		BlockID:	blockID,
+		Radius:		radius,
 	}
 }
 

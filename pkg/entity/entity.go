@@ -43,88 +43,88 @@ func NextEntityID() int64 {
 }
 
 type Entity struct {
-	ID        int64
-	NetworkID int
+	ID		int64
+	NetworkID	int
 
-	Position   *Vector3
-	LastPos    *Vector3
-	Motion     *Vector3
-	LastMotion *Vector3
-	Yaw        float64
-	Pitch      float64
-	LastYaw    float64
-	LastPitch  float64
-	OnGround   bool
+	Position	*Vector3
+	LastPos		*Vector3
+	Motion		*Vector3
+	LastMotion	*Vector3
+	Yaw		float64
+	Pitch		float64
+	LastYaw		float64
+	LastPitch	float64
+	OnGround	bool
 
-	BoundingBox *AxisAlignedBB
-	Width       float64
-	Height      float64
-	EyeHeight   float64
-	StepHeight  float64
+	BoundingBox	*AxisAlignedBB
+	Width		float64
+	Height		float64
+	EyeHeight	float64
+	StepHeight	float64
 
-	Health        int
-	MaxHealth     int
-	FireTicks     int
-	MaxFireTicks  int
-	Age           int
-	FallDistance  float64
-	TicksLived    int
-	NoDamageTicks int
-	CanCollide    bool
-	Closed        bool
-	Invulnerable  bool
+	Health		int
+	MaxHealth	int
+	FireTicks	int
+	MaxFireTicks	int
+	Age		int
+	FallDistance	float64
+	TicksLived	int
+	NoDamageTicks	int
+	CanCollide	bool
+	Closed		bool
+	Invulnerable	bool
 
-	Metadata   *MetadataStore
-	Attributes *AttributeMap
-	NamedTag   *nbt.CompoundTag
+	Metadata	*MetadataStore
+	Attributes	*AttributeMap
+	NamedTag	*nbt.CompoundTag
 
-	Gravity       float64
-	Drag          float64
-	MovementSpeed float64
-	SlowFall      bool
-	YSize         float64
+	Gravity		float64
+	Drag		float64
+	MovementSpeed	float64
+	SlowFall	bool
+	YSize		float64
 
-	Level ILevel
+	Level	ILevel
 
-	Tasks      *AITasks
-	MoveHelper *MoveHelper
-	LookHelper *LookHelper
-	JumpHelper *JumpHelper
+	Tasks		*AITasks
+	MoveHelper	*MoveHelper
+	LookHelper	*LookHelper
+	JumpHelper	*JumpHelper
 }
 
 func NewEntity() *Entity {
 	e := &Entity{
-		ID:            NextEntityID(),
-		NetworkID:     -1,
-		Position:      NewVector3(0, 0, 0),
-		LastPos:       NewVector3(0, 0, 0),
-		Motion:        NewVector3(0, 0, 0),
-		LastMotion:    NewVector3(0, 0, 0),
-		Yaw:           0,
-		Pitch:         0,
-		LastYaw:       0,
-		LastPitch:     0,
-		OnGround:      false,
-		BoundingBox:   NewAxisAlignedBB(0, 0, 0, 0, 0, 0),
-		Width:         0.6,
-		Height:        1.8,
-		EyeHeight:     1.62,
-		MovementSpeed: 0.25,
-		StepHeight:    0.6,
-		Health:        20,
-		MaxHealth:     20,
-		FireTicks:     0,
-		MaxFireTicks:  200,
-		FallDistance:  0,
-		TicksLived:    0,
-		NoDamageTicks: 0,
-		CanCollide:    true,
-		Invulnerable:  false,
-		Metadata:      NewMetadataStore(),
-		Attributes:    NewAttributeMap(),
-		NamedTag:      nbt.NewCompoundTag(""),
-		Gravity:       0.04,
-		Drag:          0.02,
+		ID:		NextEntityID(),
+		NetworkID:	-1,
+		Position:	NewVector3(0, 0, 0),
+		LastPos:	NewVector3(0, 0, 0),
+		Motion:		NewVector3(0, 0, 0),
+		LastMotion:	NewVector3(0, 0, 0),
+		Yaw:		0,
+		Pitch:		0,
+		LastYaw:	0,
+		LastPitch:	0,
+		OnGround:	false,
+		BoundingBox:	NewAxisAlignedBB(0, 0, 0, 0, 0, 0),
+		Width:		0.6,
+		Height:		1.8,
+		EyeHeight:	1.62,
+		MovementSpeed:	0.25,
+		StepHeight:	0.6,
+		Health:		20,
+		MaxHealth:	20,
+		FireTicks:	0,
+		MaxFireTicks:	200,
+		FallDistance:	0,
+		TicksLived:	0,
+		NoDamageTicks:	0,
+		CanCollide:	true,
+		Invulnerable:	false,
+		Metadata:	NewMetadataStore(),
+		Attributes:	NewAttributeMap(),
+		NamedTag:	nbt.NewCompoundTag(""),
+		Gravity:	0.04,
+		Drag:		0.02,
 	}
 	e.recalculateBoundingBox()
 	return e

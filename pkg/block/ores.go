@@ -1,29 +1,30 @@
 package block
+
 type OreBlock struct {
 	SolidBase
-	DropItemID   int
-	DropItemMeta int
-	DropMin      int
-	DropMax      int
-	MinTier      int
-	HasFortune   bool
+	DropItemID	int
+	DropItemMeta	int
+	DropMin		int
+	DropMax		int
+	MinTier		int
+	HasFortune	bool
 }
 
 func newOre(blockID uint8, name string, dropItemID, dropMeta, dropMin, dropMax, minTier int, hasFortune bool) *OreBlock {
 	return &OreBlock{
 		SolidBase: SolidBase{
-			BlockID:       blockID,
-			BlockName:     name,
-			BlockHardness: 3,
-			BlockToolType: ToolTypePickaxe,
-			BlockToolTier: minTier,
+			BlockID:	blockID,
+			BlockName:	name,
+			BlockHardness:	3,
+			BlockToolType:	ToolTypePickaxe,
+			BlockToolTier:	minTier,
 		},
-		DropItemID:   dropItemID,
-		DropItemMeta: dropMeta,
-		DropMin:      dropMin,
-		DropMax:      dropMax,
-		MinTier:      minTier,
-		HasFortune:   hasFortune,
+		DropItemID:	dropItemID,
+		DropItemMeta:	dropMeta,
+		DropMin:	dropMin,
+		DropMax:	dropMax,
+		MinTier:	minTier,
+		HasFortune:	hasFortune,
 	}
 }
 func (b *OreBlock) GetDrops(toolType, toolTier int) []Drop {
@@ -34,13 +35,14 @@ func (b *OreBlock) GetDrops(toolType, toolTier int) []Drop {
 }
 
 const (
-	ItemCoal         = 263
-	ItemDiamond      = 264
-	ItemDye          = 351
-	ItemRedstoneDust = 331
-	ItemEmerald      = 388
-	ItemNetherQuartz = 406
+	ItemCoal		= 263
+	ItemDiamond		= 264
+	ItemDye			= 351
+	ItemRedstoneDust	= 331
+	ItemEmerald		= 388
+	ItemNetherQuartz	= 406
 )
+
 type GlowingRedstoneOreBlock struct {
 	OreBlock
 }
@@ -49,18 +51,18 @@ func NewGlowingRedstoneOreBlock() *GlowingRedstoneOreBlock {
 	return &GlowingRedstoneOreBlock{
 		OreBlock: OreBlock{
 			SolidBase: SolidBase{
-				BlockID:         GLOWING_REDSTONE_ORE,
-				BlockName:       "Glowing Redstone Ore",
-				BlockHardness:   3,
-				BlockLightLevel: 9,
-				BlockToolType:   ToolTypePickaxe,
-				BlockToolTier:   TierIron,
+				BlockID:		GLOWING_REDSTONE_ORE,
+				BlockName:		"Glowing Redstone Ore",
+				BlockHardness:		3,
+				BlockLightLevel:	9,
+				BlockToolType:		ToolTypePickaxe,
+				BlockToolTier:		TierIron,
 			},
-			DropItemID: ItemRedstoneDust,
-			DropMin:    4,
-			DropMax:    5,
-			MinTier:    TierIron,
-			HasFortune: true,
+			DropItemID:	ItemRedstoneDust,
+			DropMin:	4,
+			DropMax:	5,
+			MinTier:	TierIron,
+			HasFortune:	true,
 		},
 	}
 }

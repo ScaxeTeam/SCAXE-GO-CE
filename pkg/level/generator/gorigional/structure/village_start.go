@@ -6,7 +6,7 @@ import (
 
 type VillageStart struct {
 	*StructureStart
-	Valid bool
+	Valid	bool
 }
 
 func NewVillageStart(worldSeed int64, rnd *rand.Random, chunkX, chunkZ, size int) *VillageStart {
@@ -68,12 +68,12 @@ func (v *VillageStart) UpdateBoundingBox() {
 		first := v.Components[0].GetBoundingBox()
 		if first != nil && v.BoundingBox == nil {
 			v.BoundingBox = &BoundingBox{
-				MinX: first.MinX,
-				MinY: first.MinY,
-				MinZ: first.MinZ,
-				MaxX: first.MaxX,
-				MaxY: first.MaxY,
-				MaxZ: first.MaxZ,
+				MinX:	first.MinX,
+				MinY:	first.MinY,
+				MinZ:	first.MinZ,
+				MaxX:	first.MaxX,
+				MaxY:	first.MaxY,
+				MaxZ:	first.MaxZ,
 			}
 		}
 

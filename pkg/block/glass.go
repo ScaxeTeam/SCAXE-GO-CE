@@ -1,4 +1,5 @@
 package block
+
 type GlassFullBlock struct {
 	TransparentBase
 }
@@ -6,16 +7,17 @@ type GlassFullBlock struct {
 func newGlass(blockID uint8, name string) *GlassFullBlock {
 	return &GlassFullBlock{
 		TransparentBase: TransparentBase{
-			BlockID:       blockID,
-			BlockName:     name,
-			BlockHardness: 0.3,
-			BlockCanPlace: true,
+			BlockID:	blockID,
+			BlockName:	name,
+			BlockHardness:	0.3,
+			BlockCanPlace:	true,
 		},
 	}
 }
 func (b *GlassFullBlock) GetDrops(toolType, toolTier int) []Drop {
 	return nil
 }
+
 type GlassPaneBlock struct {
 	TransparentBase
 }
@@ -23,25 +25,28 @@ type GlassPaneBlock struct {
 func newGlassPane(blockID uint8, name string) *GlassPaneBlock {
 	return &GlassPaneBlock{
 		TransparentBase: TransparentBase{
-			BlockID:       blockID,
-			BlockName:     name,
-			BlockHardness: 0.3,
-			BlockCanPlace: true,
+			BlockID:	blockID,
+			BlockName:	name,
+			BlockHardness:	0.3,
+			BlockCanPlace:	true,
 		},
 	}
 }
-func (b *GlassPaneBlock) IsSolid() bool { return false }
+func (b *GlassPaneBlock) IsSolid() bool	{ return false }
 func (b *GlassPaneBlock) GetDrops(toolType, toolTier int) []Drop {
 	return nil
 }
+
 type ThinConnections struct {
 	North, South, West, East bool
 }
 type ThinBoundingBox struct {
-	MinX, MinY, MinZ float64
-	MaxX, MaxY, MaxZ float64
+	MinX, MinY, MinZ	float64
+	MaxX, MaxY, MaxZ	float64
 }
+
 const ThinThickness = 0.125
+
 func CanThinConnect(targetID uint8, targetIsSolid, targetIsTransparent bool) bool {
 	if IsThinBlock(targetID) {
 		return true
@@ -77,6 +82,7 @@ func GetThinBoundingBox(x, y, z int, conn ThinConnections) ThinBoundingBox {
 
 	return ThinBoundingBox{fx + w, fy, fz + n, fx + e, fy + 1, fz + s}
 }
+
 var DyeColorNames = [16]string{
 	"White", "Orange", "Magenta", "Light Blue",
 	"Yellow", "Lime", "Pink", "Gray",
@@ -91,19 +97,20 @@ func init() {
 	Registry.Register(newGlassPane(STAINED_GLASS_PANE, "Stained Glass Pane"))
 	Registry.Register(&IronBarsBlock{
 		TransparentBase: TransparentBase{
-			BlockID:       IRON_BARS,
-			BlockName:     "Iron Bars",
-			BlockHardness: 5,
-			BlockToolType: ToolTypePickaxe,
-			BlockCanPlace: true,
+			BlockID:	IRON_BARS,
+			BlockName:	"Iron Bars",
+			BlockHardness:	5,
+			BlockToolType:	ToolTypePickaxe,
+			BlockCanPlace:	true,
 		},
 	})
 }
+
 type IronBarsBlock struct {
 	TransparentBase
 }
 
-func (b *IronBarsBlock) IsSolid() bool { return false }
+func (b *IronBarsBlock) IsSolid() bool	{ return false }
 
 func (b *IronBarsBlock) GetDrops(toolType, toolTier int) []Drop {
 	if toolType != ToolTypePickaxe {

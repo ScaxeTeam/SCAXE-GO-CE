@@ -2,13 +2,13 @@ package event
 
 type LevelEvent struct {
 	*BaseEvent
-	LevelName string
+	LevelName	string
 }
 
 func NewLevelEvent(name, levelName string) *LevelEvent {
 	return &LevelEvent{
-		BaseEvent: NewBaseEvent(name),
-		LevelName: levelName,
+		BaseEvent:	NewBaseEvent(name),
+		LevelName:	levelName,
 	}
 }
 
@@ -50,19 +50,19 @@ func (e *LevelUnloadEvent) GetHandlers() *HandlerList {
 
 type ChunkLoadEvent struct {
 	*LevelEvent
-	ChunkX int
-	ChunkZ int
-	IsNew  bool
+	ChunkX	int
+	ChunkZ	int
+	IsNew	bool
 }
 
 var chunkLoadHandlers = NewHandlerList()
 
 func NewChunkLoadEvent(levelName string, chunkX, chunkZ int, isNew bool) *ChunkLoadEvent {
 	return &ChunkLoadEvent{
-		LevelEvent: NewLevelEvent("ChunkLoadEvent", levelName),
-		ChunkX:     chunkX,
-		ChunkZ:     chunkZ,
-		IsNew:      isNew,
+		LevelEvent:	NewLevelEvent("ChunkLoadEvent", levelName),
+		ChunkX:		chunkX,
+		ChunkZ:		chunkZ,
+		IsNew:		isNew,
 	}
 }
 
@@ -72,17 +72,17 @@ func (e *ChunkLoadEvent) GetHandlers() *HandlerList {
 
 type ChunkUnloadEvent struct {
 	*LevelEvent
-	ChunkX int
-	ChunkZ int
+	ChunkX	int
+	ChunkZ	int
 }
 
 var chunkUnloadHandlers = NewHandlerList()
 
 func NewChunkUnloadEvent(levelName string, chunkX, chunkZ int) *ChunkUnloadEvent {
 	return &ChunkUnloadEvent{
-		LevelEvent: NewLevelEvent("ChunkUnloadEvent", levelName),
-		ChunkX:     chunkX,
-		ChunkZ:     chunkZ,
+		LevelEvent:	NewLevelEvent("ChunkUnloadEvent", levelName),
+		ChunkX:		chunkX,
+		ChunkZ:		chunkZ,
 	}
 }
 
@@ -92,17 +92,17 @@ func (e *ChunkUnloadEvent) GetHandlers() *HandlerList {
 
 type ChunkPopulateEvent struct {
 	*LevelEvent
-	ChunkX int
-	ChunkZ int
+	ChunkX	int
+	ChunkZ	int
 }
 
 var chunkPopulateHandlers = NewHandlerList()
 
 func NewChunkPopulateEvent(levelName string, chunkX, chunkZ int) *ChunkPopulateEvent {
 	return &ChunkPopulateEvent{
-		LevelEvent: NewLevelEvent("ChunkPopulateEvent", levelName),
-		ChunkX:     chunkX,
-		ChunkZ:     chunkZ,
+		LevelEvent:	NewLevelEvent("ChunkPopulateEvent", levelName),
+		ChunkX:		chunkX,
+		ChunkZ:		chunkZ,
 	}
 }
 
@@ -112,17 +112,17 @@ func (e *ChunkPopulateEvent) GetHandlers() *HandlerList {
 
 type SpawnChangeEvent struct {
 	*LevelEvent
-	OldX, OldY, OldZ float64
-	NewX, NewY, NewZ float64
+	OldX, OldY, OldZ	float64
+	NewX, NewY, NewZ	float64
 }
 
 var spawnChangeHandlers = NewHandlerList()
 
 func NewSpawnChangeEvent(levelName string, ox, oy, oz, nx, ny, nz float64) *SpawnChangeEvent {
 	return &SpawnChangeEvent{
-		LevelEvent: NewLevelEvent("SpawnChangeEvent", levelName),
-		OldX:       ox, OldY: oy, OldZ: oz,
-		NewX: nx, NewY: ny, NewZ: nz,
+		LevelEvent:	NewLevelEvent("SpawnChangeEvent", levelName),
+		OldX:		ox, OldY: oy, OldZ: oz,
+		NewX:	nx, NewY: ny, NewZ: nz,
 	}
 }
 
@@ -142,7 +142,7 @@ func NewLevelInitEvent(levelName string) *LevelInitEvent {
 	}
 }
 
-func (e *LevelInitEvent) GetHandlers() *HandlerList { return levelInitHandlers }
+func (e *LevelInitEvent) GetHandlers() *HandlerList	{ return levelInitHandlers }
 
 type LevelSaveEvent struct {
 	*LevelEvent
@@ -156,20 +156,20 @@ func NewLevelSaveEvent(levelName string) *LevelSaveEvent {
 	}
 }
 
-func (e *LevelSaveEvent) GetHandlers() *HandlerList { return levelSaveHandlers }
+func (e *LevelSaveEvent) GetHandlers() *HandlerList	{ return levelSaveHandlers }
 
 type WeatherChangeEvent struct {
 	*LevelEvent
-	ToRain bool
+	ToRain	bool
 }
 
 var weatherChangeHandlers = NewHandlerList()
 
 func NewWeatherChangeEvent(levelName string, toRain bool) *WeatherChangeEvent {
 	return &WeatherChangeEvent{
-		LevelEvent: NewLevelEvent("WeatherChangeEvent", levelName),
-		ToRain:     toRain,
+		LevelEvent:	NewLevelEvent("WeatherChangeEvent", levelName),
+		ToRain:		toRain,
 	}
 }
 
-func (e *WeatherChangeEvent) GetHandlers() *HandlerList { return weatherChangeHandlers }
+func (e *WeatherChangeEvent) GetHandlers() *HandlerList	{ return weatherChangeHandlers }

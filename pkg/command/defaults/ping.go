@@ -8,18 +8,18 @@ import (
 
 type PingCommand struct {
 	command.BaseCommand
-	server ServerInterface
+	server	ServerInterface
 }
 
 func NewPingCommand(server ServerInterface) *PingCommand {
 	return &PingCommand{
 		BaseCommand: command.BaseCommand{
-			Name:        "ping",
-			Description: "Shows your ping latency",
-			Usage:       "/ping",
-			Permission:  "",
+			Name:		"ping",
+			Description:	"Shows your ping latency",
+			Usage:		"/ping",
+			Permission:	"",
 		},
-		server: server,
+		server:	server,
 	}
 }
 

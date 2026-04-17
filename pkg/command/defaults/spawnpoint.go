@@ -9,18 +9,18 @@ import (
 
 type SpawnpointCommand struct {
 	command.BaseCommand
-	server ServerInterface
+	server	ServerInterface
 }
 
 func NewSpawnpointCommand(server ServerInterface) *SpawnpointCommand {
 	return &SpawnpointCommand{
 		BaseCommand: command.BaseCommand{
-			Name:        "spawnpoint",
-			Description: "Sets the spawn point for a player",
-			Usage:       "/spawnpoint [player] [x y z]",
-			Permission:  "pocketmine.command.spawnpoint",
+			Name:		"spawnpoint",
+			Description:	"Sets the spawn point for a player",
+			Usage:		"/spawnpoint [player] [x y z]",
+			Permission:	"pocketmine.command.spawnpoint",
 		},
-		server: server,
+		server:	server,
 	}
 }
 

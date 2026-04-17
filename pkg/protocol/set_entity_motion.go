@@ -2,10 +2,10 @@ package protocol
 
 type SetEntityMotionPacket struct {
 	BasePacket
-	EntityID int64
-	SpeedX   float32
-	SpeedY   float32
-	SpeedZ   float32
+	EntityID	int64
+	SpeedX		float32
+	SpeedY		float32
+	SpeedZ		float32
 }
 
 func NewSetEntityMotionPacket() *SetEntityMotionPacket {

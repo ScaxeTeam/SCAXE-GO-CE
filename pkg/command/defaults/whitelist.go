@@ -6,18 +6,18 @@ import (
 
 type WhitelistCommand struct {
 	command.BaseCommand
-	server ServerInterface
+	server	ServerInterface
 }
 
 func NewWhitelistCommand(server ServerInterface) *WhitelistCommand {
 	return &WhitelistCommand{
 		BaseCommand: command.BaseCommand{
-			Name:        "whitelist",
-			Description: "Manages the server whitelist",
-			Usage:       "/whitelist <on|off|add|remove|list|reload> [player]",
-			Permission:  "pocketmine.command.whitelist",
+			Name:		"whitelist",
+			Description:	"Manages the server whitelist",
+			Usage:		"/whitelist <on|off|add|remove|list|reload> [player]",
+			Permission:	"pocketmine.command.whitelist",
 		},
-		server: server,
+		server:	server,
 	}
 }
 

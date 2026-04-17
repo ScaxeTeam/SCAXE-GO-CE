@@ -7,17 +7,17 @@ type CauldronBlock struct {
 func NewCauldronBlock() *CauldronBlock {
 	return &CauldronBlock{
 		SolidBase: SolidBase{
-			BlockID:       CAULDRON_BLOCK,
-			BlockName:     "Cauldron",
-			BlockHardness: 2,
-			BlockToolType: ToolTypePickaxe,
+			BlockID:	CAULDRON_BLOCK,
+			BlockName:	"Cauldron",
+			BlockHardness:	2,
+			BlockToolType:	ToolTypePickaxe,
 		},
 	}
 }
 
 const (
-	CauldronEmpty = 0
-	CauldronFull  = 3
+	CauldronEmpty	= 0
+	CauldronFull	= 3
 )
 
 func (b *CauldronBlock) CanBeActivated() bool {

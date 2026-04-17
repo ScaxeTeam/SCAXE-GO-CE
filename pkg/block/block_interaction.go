@@ -1,23 +1,26 @@
 package block
+
 const (
-	BlockUpdateNormal    = 1
-	BlockUpdateRandom    = 2
-	BlockUpdateScheduled = 3
-	BlockUpdateWeak      = 4
+	BlockUpdateNormal	= 1
+	BlockUpdateRandom	= 2
+	BlockUpdateScheduled	= 3
+	BlockUpdateWeak		= 4
 )
+
 type BlockContext struct {
-	X, Y, Z                int
-	Meta                   uint8
-	Face                   int
-	ClickX, ClickY, ClickZ float64
+	X, Y, Z			int
+	Meta			uint8
+	Face			int
+	ClickX, ClickY, ClickZ	float64
 
-	Powered bool
+	Powered	bool
 
-	ReplaceBlockID   uint8
-	ReplaceBlockMeta uint8
-	ScheduleDelay    int
+	ReplaceBlockID		uint8
+	ReplaceBlockMeta	uint8
+	ScheduleDelay		int
 }
 type DefaultBlockInteraction struct{}
+
 func (d *DefaultBlockInteraction) Place(ctx *BlockContext) bool {
 	return true
 }

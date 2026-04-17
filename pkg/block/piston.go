@@ -7,10 +7,10 @@ type PistonBlock struct {
 func NewPistonBlock() *PistonBlock {
 	return &PistonBlock{
 		SolidBase: SolidBase{
-			BlockID:       PISTON,
-			BlockName:     "Piston",
-			BlockHardness: 0.5,
-			BlockToolType: ToolTypeNone,
+			BlockID:	PISTON,
+			BlockName:	"Piston",
+			BlockHardness:	0.5,
+			BlockToolType:	ToolTypeNone,
 		},
 	}
 }
@@ -46,10 +46,10 @@ type StickyPistonBlock struct {
 func NewStickyPistonBlock() *StickyPistonBlock {
 	return &StickyPistonBlock{
 		SolidBase: SolidBase{
-			BlockID:       STICKY_PISTON,
-			BlockName:     "Sticky Piston",
-			BlockHardness: 0.5,
-			BlockToolType: ToolTypeNone,
+			BlockID:	STICKY_PISTON,
+			BlockName:	"Sticky Piston",
+			BlockHardness:	0.5,
+			BlockToolType:	ToolTypeNone,
 		},
 	}
 }
@@ -80,11 +80,11 @@ type PistonHeadBlock struct {
 func NewPistonHeadBlock() *PistonHeadBlock {
 	return &PistonHeadBlock{
 		TransparentBase: TransparentBase{
-			BlockID:       PISTON_HEAD,
-			BlockName:     "Piston Head",
-			BlockHardness: 0.5,
-			BlockToolType: ToolTypeNone,
-			BlockCanPlace: false,
+			BlockID:	PISTON_HEAD,
+			BlockName:	"Piston Head",
+			BlockHardness:	0.5,
+			BlockToolType:	ToolTypeNone,
+			BlockCanPlace:	false,
 		},
 	}
 }
@@ -96,15 +96,16 @@ func (b *PistonHeadBlock) GetDrops(toolType, toolTier int) []Drop {
 }
 
 const (
-	PistonFacingDown  = 0
-	PistonFacingUp    = 1
-	PistonFacingNorth = 2
-	PistonFacingSouth = 3
-	PistonFacingWest  = 4
-	PistonFacingEast  = 5
+	PistonFacingDown	= 0
+	PistonFacingUp		= 1
+	PistonFacingNorth	= 2
+	PistonFacingSouth	= 3
+	PistonFacingWest	= 4
+	PistonFacingEast	= 5
 
-	PistonMaxPushDistance = 12
+	PistonMaxPushDistance	= 12
 )
+
 func PistonFacingOffset(facing int) (dx, dy, dz int) {
 	switch facing {
 	case PistonFacingDown:

@@ -1,8 +1,8 @@
 package entity
 
 type AxisAlignedBB struct {
-	MinX, MinY, MinZ float64
-	MaxX, MaxY, MaxZ float64
+	MinX, MinY, MinZ	float64
+	MaxX, MaxY, MaxZ	float64
 }
 
 func NewAxisAlignedBB(minX, minY, minZ, maxX, maxY, maxZ float64) *AxisAlignedBB {
@@ -16,8 +16,8 @@ func NewAxisAlignedBB(minX, minY, minZ, maxX, maxY, maxZ float64) *AxisAlignedBB
 		minZ, maxZ = maxZ, minZ
 	}
 	return &AxisAlignedBB{
-		MinX: minX, MinY: minY, MinZ: minZ,
-		MaxX: maxX, MaxY: maxY, MaxZ: maxZ,
+		MinX:	minX, MinY: minY, MinZ: minZ,
+		MaxX:	maxX, MaxY: maxY, MaxZ: maxZ,
 	}
 }
 

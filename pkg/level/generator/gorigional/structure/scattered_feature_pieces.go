@@ -6,10 +6,10 @@ import (
 
 type ScatteredFeaturePiece struct {
 	*StructureComponentBase
-	Width  int
-	Height int
-	Depth  int
-	HPos   int
+	Width	int
+	Height	int
+	Depth	int
+	HPos	int
 }
 
 func NewScatteredFeaturePiece(componentType int, rnd *rand.Random, x, y, z, width, height, depth int, facing int) *ScatteredFeaturePiece {
@@ -17,14 +17,14 @@ func NewScatteredFeaturePiece(componentType int, rnd *rand.Random, x, y, z, widt
 
 	return &ScatteredFeaturePiece{
 		StructureComponentBase: &StructureComponentBase{
-			ComponentType: componentType,
-			BoundingBox:   box,
-			CoordBaseMode: facing,
+			ComponentType:	componentType,
+			BoundingBox:	box,
+			CoordBaseMode:	facing,
 		},
-		Width:  width,
-		Height: height,
-		Depth:  depth,
-		HPos:   -1,
+		Width:	width,
+		Height:	height,
+		Depth:	depth,
+		HPos:	-1,
 	}
 }
 
@@ -77,7 +77,7 @@ func (p *ScatteredFeaturePiece) getTopSolidBlockY(w WorldAccess, x, z int) int {
 
 type DesertPyramid struct {
 	*ScatteredFeaturePiece
-	hasPlacedChest [4]bool
+	hasPlacedChest	[4]bool
 }
 
 func NewDesertPyramid(rnd *rand.Random, x, z int) *DesertPyramid {
@@ -190,10 +190,10 @@ func (d *DesertPyramid) AddComponentParts(w WorldAccess, rnd *rand.Random, box *
 
 type JunglePyramid struct {
 	*ScatteredFeaturePiece
-	placedMainChest   bool
-	placedHiddenChest bool
-	placedTrap1       bool
-	placedTrap2       bool
+	placedMainChest		bool
+	placedHiddenChest	bool
+	placedTrap1		bool
+	placedTrap2		bool
 }
 
 func NewJunglePyramid(rnd *rand.Random, x, z int) *JunglePyramid {
@@ -426,7 +426,7 @@ func (j *JunglePyramid) AddComponentParts(w WorldAccess, rnd *rand.Random, box *
 
 type SwampHut struct {
 	*ScatteredFeaturePiece
-	hasWitch bool
+	hasWitch	bool
 }
 
 func NewSwampHut(rnd *rand.Random, x, z int) *SwampHut {

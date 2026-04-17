@@ -12,17 +12,17 @@ func NewServerEvent(name string) *ServerEvent {
 
 type CommandEvent struct {
 	*ServerEvent
-	Command string
-	Sender  string
+	Command	string
+	Sender	string
 }
 
 var commandEventHandlers = NewHandlerList()
 
 func NewCommandEvent(command, sender string) *CommandEvent {
 	return &CommandEvent{
-		ServerEvent: NewServerEvent("CommandEvent"),
-		Command:     command,
-		Sender:      sender,
+		ServerEvent:	NewServerEvent("CommandEvent"),
+		Command:	command,
+		Sender:		sender,
 	}
 }
 
@@ -40,15 +40,15 @@ func (e *CommandEvent) SetCommand(cmd string) {
 
 type PluginEnableEvent struct {
 	*ServerEvent
-	PluginName string
+	PluginName	string
 }
 
 var pluginEnableHandlers = NewHandlerList()
 
 func NewPluginEnableEvent(pluginName string) *PluginEnableEvent {
 	return &PluginEnableEvent{
-		ServerEvent: NewServerEvent("PluginEnableEvent"),
-		PluginName:  pluginName,
+		ServerEvent:	NewServerEvent("PluginEnableEvent"),
+		PluginName:	pluginName,
 	}
 }
 
@@ -58,15 +58,15 @@ func (e *PluginEnableEvent) GetHandlers() *HandlerList {
 
 type PluginDisableEvent struct {
 	*ServerEvent
-	PluginName string
+	PluginName	string
 }
 
 var pluginDisableHandlers = NewHandlerList()
 
 func NewPluginDisableEvent(pluginName string) *PluginDisableEvent {
 	return &PluginDisableEvent{
-		ServerEvent: NewServerEvent("PluginDisableEvent"),
-		PluginName:  pluginName,
+		ServerEvent:	NewServerEvent("PluginDisableEvent"),
+		PluginName:	pluginName,
 	}
 }
 
@@ -76,17 +76,17 @@ func (e *PluginDisableEvent) GetHandlers() *HandlerList {
 
 type DataPacketReceiveEvent struct {
 	*ServerEvent
-	PlayerID int64
-	PacketID int
+	PlayerID	int64
+	PacketID	int
 }
 
 var dataPacketReceiveHandlers = NewHandlerList()
 
 func NewDataPacketReceiveEvent(playerID int64, packetID int) *DataPacketReceiveEvent {
 	return &DataPacketReceiveEvent{
-		ServerEvent: NewServerEvent("DataPacketReceiveEvent"),
-		PlayerID:    playerID,
-		PacketID:    packetID,
+		ServerEvent:	NewServerEvent("DataPacketReceiveEvent"),
+		PlayerID:	playerID,
+		PacketID:	packetID,
 	}
 }
 
@@ -96,17 +96,17 @@ func (e *DataPacketReceiveEvent) GetHandlers() *HandlerList {
 
 type DataPacketSendEvent struct {
 	*ServerEvent
-	PlayerID int64
-	PacketID int
+	PlayerID	int64
+	PacketID	int
 }
 
 var dataPacketSendHandlers = NewHandlerList()
 
 func NewDataPacketSendEvent(playerID int64, packetID int) *DataPacketSendEvent {
 	return &DataPacketSendEvent{
-		ServerEvent: NewServerEvent("DataPacketSendEvent"),
-		PlayerID:    playerID,
-		PacketID:    packetID,
+		ServerEvent:	NewServerEvent("DataPacketSendEvent"),
+		PlayerID:	playerID,
+		PacketID:	packetID,
 	}
 }
 
@@ -116,23 +116,23 @@ func (e *DataPacketSendEvent) GetHandlers() *HandlerList {
 
 type QueryRegenerateEvent struct {
 	*ServerEvent
-	ServerName    string
-	WorldName     string
-	OnlinePlayers int
-	MaxPlayers    int
-	GameMode      string
-	Version       string
+	ServerName	string
+	WorldName	string
+	OnlinePlayers	int
+	MaxPlayers	int
+	GameMode	string
+	Version		string
 }
 
 var queryRegenerateHandlers = NewHandlerList()
 
 func NewQueryRegenerateEvent(serverName, worldName string, online, max int) *QueryRegenerateEvent {
 	return &QueryRegenerateEvent{
-		ServerEvent:   NewServerEvent("QueryRegenerateEvent"),
-		ServerName:    serverName,
-		WorldName:     worldName,
-		OnlinePlayers: online,
-		MaxPlayers:    max,
+		ServerEvent:	NewServerEvent("QueryRegenerateEvent"),
+		ServerName:	serverName,
+		WorldName:	worldName,
+		OnlinePlayers:	online,
+		MaxPlayers:	max,
 	}
 }
 
@@ -142,21 +142,21 @@ func (e *QueryRegenerateEvent) GetHandlers() *HandlerList {
 
 type ServerCommandEvent struct {
 	*ServerEvent
-	Command string
+	Command	string
 }
 
 var serverCommandHandlers = NewHandlerList()
 
 func NewServerCommandEvent(command string) *ServerCommandEvent {
 	return &ServerCommandEvent{
-		ServerEvent: NewServerEvent("ServerCommandEvent"),
-		Command:     command,
+		ServerEvent:	NewServerEvent("ServerCommandEvent"),
+		Command:	command,
 	}
 }
 
-func (e *ServerCommandEvent) GetHandlers() *HandlerList { return serverCommandHandlers }
-func (e *ServerCommandEvent) GetCommand() string        { return e.Command }
-func (e *ServerCommandEvent) SetCommand(cmd string)     { e.Command = cmd }
+func (e *ServerCommandEvent) GetHandlers() *HandlerList	{ return serverCommandHandlers }
+func (e *ServerCommandEvent) GetCommand() string	{ return e.Command }
+func (e *ServerCommandEvent) SetCommand(cmd string)	{ e.Command = cmd }
 
 type RemoteServerCommandEvent struct {
 	*ServerCommandEvent
@@ -170,26 +170,26 @@ func NewRemoteServerCommandEvent(command string) *RemoteServerCommandEvent {
 	}
 }
 
-func (e *RemoteServerCommandEvent) GetHandlers() *HandlerList { return remoteServerCommandHandlers }
+func (e *RemoteServerCommandEvent) GetHandlers() *HandlerList	{ return remoteServerCommandHandlers }
 
 type LowMemoryEvent struct {
 	*ServerEvent
-	Memory       int64
-	MemoryLimit  int64
-	TriggerCount int
-	Global       bool
+	Memory		int64
+	MemoryLimit	int64
+	TriggerCount	int
+	Global		bool
 }
 
 var lowMemoryHandlers = NewHandlerList()
 
 func NewLowMemoryEvent(memory, memoryLimit int64, triggerCount int, global bool) *LowMemoryEvent {
 	return &LowMemoryEvent{
-		ServerEvent:  NewServerEvent("LowMemoryEvent"),
-		Memory:       memory,
-		MemoryLimit:  memoryLimit,
-		TriggerCount: triggerCount,
-		Global:       global,
+		ServerEvent:	NewServerEvent("LowMemoryEvent"),
+		Memory:		memory,
+		MemoryLimit:	memoryLimit,
+		TriggerCount:	triggerCount,
+		Global:		global,
 	}
 }
 
-func (e *LowMemoryEvent) GetHandlers() *HandlerList { return lowMemoryHandlers }
+func (e *LowMemoryEvent) GetHandlers() *HandlerList	{ return lowMemoryHandlers }

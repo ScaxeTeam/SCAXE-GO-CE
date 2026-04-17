@@ -7,20 +7,20 @@ import (
 
 type ItemEntity struct {
 	*Entity
-	Item        item.Item
-	PickupDelay int
-	Owner       string
-	Thrower     string
-	Age         int
-	Settled     bool
+	Item		item.Item
+	PickupDelay	int
+	Owner		string
+	Thrower		string
+	Age		int
+	Settled		bool
 }
 
 func NewItemEntity(it item.Item) *ItemEntity {
 	e := &ItemEntity{
-		Entity:      NewEntity(),
-		Item:        it,
-		PickupDelay: 10,
-		Age:         0,
+		Entity:		NewEntity(),
+		Item:		it,
+		PickupDelay:	10,
+		Age:		0,
 	}
 
 	e.Width = 0.25

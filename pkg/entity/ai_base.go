@@ -1,4 +1,5 @@
 package entity
+
 type AIGoal interface {
 	ShouldExecute() bool
 	ShouldContinueExecuting() bool
@@ -20,11 +21,11 @@ func (b *BaseAIGoal) IsInterruptible() bool {
 	return true
 }
 
-func (b *BaseAIGoal) StartExecuting() {}
+func (b *BaseAIGoal) StartExecuting()	{}
 
-func (b *BaseAIGoal) ResetTask() {}
+func (b *BaseAIGoal) ResetTask()	{}
 
-func (b *BaseAIGoal) UpdateTask() {}
+func (b *BaseAIGoal) UpdateTask()	{}
 
 func (b *BaseAIGoal) SetMutexBits(bits int) {
 	b.mutexBits = bits

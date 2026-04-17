@@ -15,51 +15,51 @@ type NoiseGenerator interface {
 }
 
 type Decorator struct {
-	TreesPerChunk         int
-	ExtraTreeChance       float64
-	FlowersPerChunk       int
-	GrassPerChunk         int
-	DeadBushPerChunk      int
-	MushroomsPerChunk     int
-	ReedsPerChunk         int
-	CactiPerChunk         int
-	WaterlilyPerChunk     int
-	GravelPatchesPerChunk int
-	SandPatchesPerChunk   int
-	ClayPerChunk          int
-	BigMushroomsPerChunk  int
-	GenerateFalls         bool
+	TreesPerChunk		int
+	ExtraTreeChance		float64
+	FlowersPerChunk		int
+	GrassPerChunk		int
+	DeadBushPerChunk	int
+	MushroomsPerChunk	int
+	ReedsPerChunk		int
+	CactiPerChunk		int
+	WaterlilyPerChunk	int
+	GravelPatchesPerChunk	int
+	SandPatchesPerChunk	int
+	ClayPerChunk		int
+	BigMushroomsPerChunk	int
+	GenerateFalls		bool
 
-	DirtGen *object.Ore
+	DirtGen	*object.Ore
 
-	FlowerNoise *noise.PerlinNoiseGenerator
+	FlowerNoise	*noise.PerlinNoiseGenerator
 
-	GravelOreGen *object.Ore
-	GraniteGen   *object.Ore
-	DioriteGen   *object.Ore
-	AndesiteGen  *object.Ore
-	CoalGen      *object.Ore
-	IronGen      *object.Ore
-	GoldGen      *object.Ore
-	RedstoneGen  *object.Ore
-	DiamondGen   *object.Ore
-	LapisGen     *object.Ore
+	GravelOreGen	*object.Ore
+	GraniteGen	*object.Ore
+	DioriteGen	*object.Ore
+	AndesiteGen	*object.Ore
+	CoalGen		*object.Ore
+	IronGen		*object.Ore
+	GoldGen		*object.Ore
+	RedstoneGen	*object.Ore
+	DiamondGen	*object.Ore
+	LapisGen	*object.Ore
 
-	SandGen        *object.Sand
-	GravelGen      *object.Sand
-	ClayGen        *object.Clay
-	MushroomBrGen  *object.Bush
-	MushroomRdGen  *object.Bush
-	FlowerYGen     *object.Bush
-	FlowerRGen     *object.Bush
-	GrassGen       *object.Grass
-	ReedGen        *object.Reed
-	CactusGen      *object.Cactus
-	WaterlilyGen   *object.Waterlily
-	PumpkinGen     *object.Pumpkin
-	DeadBushGen    *object.DeadBush
-	WaterSpringGen *object.Spring
-	LavaSpringGen  *object.Spring
+	SandGen		*object.Sand
+	GravelGen	*object.Sand
+	ClayGen		*object.Clay
+	MushroomBrGen	*object.Bush
+	MushroomRdGen	*object.Bush
+	FlowerYGen	*object.Bush
+	FlowerRGen	*object.Bush
+	GrassGen	*object.Grass
+	ReedGen		*object.Reed
+	CactusGen	*object.Cactus
+	WaterlilyGen	*object.Waterlily
+	PumpkinGen	*object.Pumpkin
+	DeadBushGen	*object.DeadBush
+	WaterSpringGen	*object.Spring
+	LavaSpringGen	*object.Spring
 }
 
 type BiomeProvider interface {
@@ -69,20 +69,20 @@ type BiomeProvider interface {
 
 func NewDecorator() *Decorator {
 	d := &Decorator{
-		TreesPerChunk:         0,
-		ExtraTreeChance:       0.1,
-		FlowersPerChunk:       2,
-		GrassPerChunk:         1,
-		DeadBushPerChunk:      0,
-		MushroomsPerChunk:     0,
-		ReedsPerChunk:         0,
-		CactiPerChunk:         0,
-		WaterlilyPerChunk:     0,
-		GravelPatchesPerChunk: 1,
-		SandPatchesPerChunk:   3,
-		ClayPerChunk:          1,
-		BigMushroomsPerChunk:  0,
-		GenerateFalls:         true,
+		TreesPerChunk:		0,
+		ExtraTreeChance:	0.1,
+		FlowersPerChunk:	2,
+		GrassPerChunk:		1,
+		DeadBushPerChunk:	0,
+		MushroomsPerChunk:	0,
+		ReedsPerChunk:		0,
+		CactiPerChunk:		0,
+		WaterlilyPerChunk:	0,
+		GravelPatchesPerChunk:	1,
+		SandPatchesPerChunk:	3,
+		ClayPerChunk:		1,
+		BigMushroomsPerChunk:	0,
+		GenerateFalls:		true,
 	}
 	d.InitOres()
 

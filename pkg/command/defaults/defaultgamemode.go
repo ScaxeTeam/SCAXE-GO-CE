@@ -6,18 +6,18 @@ import (
 
 type DefaultGamemodeCommand struct {
 	command.BaseCommand
-	server ServerInterface
+	server	ServerInterface
 }
 
 func NewDefaultGamemodeCommand(server ServerInterface) *DefaultGamemodeCommand {
 	return &DefaultGamemodeCommand{
 		BaseCommand: command.BaseCommand{
-			Name:        "defaultgamemode",
-			Description: "Sets the default gamemode for new players",
-			Usage:       "/defaultgamemode <mode>",
-			Permission:  "pocketmine.command.defaultgamemode",
+			Name:		"defaultgamemode",
+			Description:	"Sets the default gamemode for new players",
+			Usage:		"/defaultgamemode <mode>",
+			Permission:	"pocketmine.command.defaultgamemode",
 		},
-		server: server,
+		server:	server,
 	}
 }
 

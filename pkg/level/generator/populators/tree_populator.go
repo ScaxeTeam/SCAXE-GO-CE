@@ -9,16 +9,16 @@ import (
 )
 
 type TreePopulator struct {
-	BaseAmount   int
-	RandomAmount int
-	Type         int
+	BaseAmount	int
+	RandomAmount	int
+	Type		int
 }
 
 func NewTreePopulator(treeType int) *TreePopulator {
 	return &TreePopulator{
-		BaseAmount:   0,
-		RandomAmount: 1,
-		Type:         treeType,
+		BaseAmount:	0,
+		RandomAmount:	1,
+		Type:		treeType,
 	}
 }
 

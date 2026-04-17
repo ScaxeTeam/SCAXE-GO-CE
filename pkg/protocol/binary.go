@@ -12,23 +12,23 @@ import (
 )
 
 type BinaryStream struct {
-	buf    *bytes.Buffer
-	offset int
+	buf	*bytes.Buffer
+	offset	int
 }
 
 func NewBinaryStream() *BinaryStream {
 	logger.DebugPacket("NewBinaryStream", "action", "create empty stream")
 	return &BinaryStream{
-		buf:    new(bytes.Buffer),
-		offset: 0,
+		buf:	new(bytes.Buffer),
+		offset:	0,
 	}
 }
 
 func NewBinaryStreamFromBytes(data []byte) *BinaryStream {
 	logger.DebugPacket("NewBinaryStreamFromBytes", "size", len(data))
 	return &BinaryStream{
-		buf:    bytes.NewBuffer(data),
-		offset: 0,
+		buf:	bytes.NewBuffer(data),
+		offset:	0,
 	}
 }
 
@@ -567,8 +567,8 @@ func (b *BinaryStream) ReadSlot() (item.Item, error) {
 	_ = nbtData
 
 	return item.Item{
-		ID:    int(id),
-		Count: count,
-		Meta:  int(meta),
+		ID:	int(id),
+		Count:	count,
+		Meta:	int(meta),
 	}, nil
 }

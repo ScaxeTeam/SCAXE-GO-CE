@@ -10,16 +10,16 @@ type BlockSetter interface {
 }
 
 type MapGenBase struct {
-	Range     int
-	Rand      *rand.Random
-	WorldSeed int64
+	Range		int
+	Rand		*rand.Random
+	WorldSeed	int64
 }
 
 func NewMapGenBase(seed int64) *MapGenBase {
 	return &MapGenBase{
-		Range:     8,
-		Rand:      rand.NewRandom(seed),
-		WorldSeed: seed,
+		Range:		8,
+		Rand:		rand.NewRandom(seed),
+		WorldSeed:	seed,
 	}
 }
 

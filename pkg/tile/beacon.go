@@ -8,12 +8,14 @@ import (
 const (
 	TypeBeacon = "Beacon"
 )
+
 type Beacon struct {
 	SpawnableBase
 	NameableBase
-	Primary   int32
-	Secondary int32
+	Primary		int32
+	Secondary	int32
 }
+
 func NewBeacon(chunk *world.Chunk, nbtData *nbt.CompoundTag) Tile {
 	b := &Beacon{}
 	InitSpawnableBase(&b.SpawnableBase, TypeBeacon, chunk, nbtData)

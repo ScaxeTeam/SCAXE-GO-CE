@@ -32,17 +32,17 @@ func init() {
 }
 
 type PerlinNoiseGenerator struct {
-	perm    [512]int
-	offsetX float64
-	offsetY float64
-	offsetZ float64
+	perm	[512]int
+	offsetX	float64
+	offsetY	float64
+	offsetZ	float64
 }
 
 func NewPerlinNoiseGenerator(r *rand.Rand) *PerlinNoiseGenerator {
 	p := &PerlinNoiseGenerator{
-		offsetX: r.Float64() * 256,
-		offsetY: r.Float64() * 256,
-		offsetZ: r.Float64() * 256,
+		offsetX:	r.Float64() * 256,
+		offsetY:	r.Float64() * 256,
+		offsetZ:	r.Float64() * 256,
 	}
 
 	for i := 0; i < 256; i++ {

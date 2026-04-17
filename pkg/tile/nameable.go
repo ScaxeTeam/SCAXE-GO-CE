@@ -3,6 +3,7 @@ package tile
 import (
 	"github.com/scaxe/scaxe-go/pkg/nbt"
 )
+
 type Nameable interface {
 	GetCustomName() string
 	SetCustomName(name string)

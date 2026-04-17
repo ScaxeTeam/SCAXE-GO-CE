@@ -1,8 +1,8 @@
 package adapter
 
 type BlockState struct {
-	ID   uint8
-	Meta uint8
+	ID	uint8
+	Meta	uint8
 }
 
 func NewBlockState(id uint8, meta uint8) BlockState {

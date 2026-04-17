@@ -4,9 +4,11 @@ import (
 	"github.com/scaxe/scaxe-go/pkg/item"
 	"github.com/scaxe/scaxe-go/pkg/protocol"
 )
+
 type ContainerInventory struct {
 	*BaseInventory
 }
+
 func NewContainerInventory(holder InventoryHolder, invType *InventoryType, overrideSize int, overrideTitle string) *ContainerInventory {
 	return &ContainerInventory{
 		BaseInventory: NewBaseInventory(holder, invType, overrideSize, overrideTitle),

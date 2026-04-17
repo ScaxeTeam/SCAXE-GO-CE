@@ -10,22 +10,22 @@ import (
 
 type JungleBiome struct {
 	*BaseBiome
-	IsEdge bool
+	IsEdge	bool
 }
 
 func NewJungleBiome() *JungleBiome {
 	b := &JungleBiome{
 		BaseBiome: &BaseBiome{
-			ID:              JUNGLE,
-			Name:            "Jungle",
-			BaseHeight:      0.1,
-			HeightVariation: 0.2,
-			Temperature:     0.95,
-			Rainfall:        0.9,
-			GroundCover:     []block.BlockState{block.NewBlockState(block.GRASS, 0), block.NewBlockState(block.DIRT, 0)},
-			Decorator:       NewDecorator(),
+			ID:			JUNGLE,
+			Name:			"Jungle",
+			BaseHeight:		0.1,
+			HeightVariation:	0.2,
+			Temperature:		0.95,
+			Rainfall:		0.9,
+			GroundCover:		[]block.BlockState{block.NewBlockState(block.GRASS, 0), block.NewBlockState(block.DIRT, 0)},
+			Decorator:		NewDecorator(),
 		},
-		IsEdge: false,
+		IsEdge:	false,
 	}
 	b.Decorator.TreesPerChunk = 50
 	b.Decorator.GrassPerChunk = 25
@@ -37,16 +37,16 @@ func NewJungleBiome() *JungleBiome {
 func NewJungleEdgeBiome() *JungleBiome {
 	b := &JungleBiome{
 		BaseBiome: &BaseBiome{
-			ID:              JUNGLE_EDGE,
-			Name:            "Jungle Edge",
-			BaseHeight:      0.1,
-			HeightVariation: 0.2,
-			Temperature:     0.95,
-			Rainfall:        0.8,
-			GroundCover:     []block.BlockState{block.NewBlockState(block.GRASS, 0), block.NewBlockState(block.DIRT, 0)},
-			Decorator:       NewDecorator(),
+			ID:			JUNGLE_EDGE,
+			Name:			"Jungle Edge",
+			BaseHeight:		0.1,
+			HeightVariation:	0.2,
+			Temperature:		0.95,
+			Rainfall:		0.8,
+			GroundCover:		[]block.BlockState{block.NewBlockState(block.GRASS, 0), block.NewBlockState(block.DIRT, 0)},
+			Decorator:		NewDecorator(),
 		},
-		IsEdge: true,
+		IsEdge:	true,
 	}
 	b.Decorator.TreesPerChunk = 2
 	b.Decorator.GrassPerChunk = 3
@@ -57,16 +57,16 @@ func NewJungleEdgeBiome() *JungleBiome {
 func NewJungleHillsBiome() *JungleBiome {
 	b := &JungleBiome{
 		BaseBiome: &BaseBiome{
-			ID:              JUNGLE_HILLS,
-			Name:            "Jungle Hills",
-			BaseHeight:      0.45,
-			HeightVariation: 0.3,
-			Temperature:     0.95,
-			Rainfall:        0.9,
-			GroundCover:     []block.BlockState{block.NewBlockState(block.GRASS, 0), block.NewBlockState(block.DIRT, 0)},
-			Decorator:       NewDecorator(),
+			ID:			JUNGLE_HILLS,
+			Name:			"Jungle Hills",
+			BaseHeight:		0.45,
+			HeightVariation:	0.3,
+			Temperature:		0.95,
+			Rainfall:		0.9,
+			GroundCover:		[]block.BlockState{block.NewBlockState(block.GRASS, 0), block.NewBlockState(block.DIRT, 0)},
+			Decorator:		NewDecorator(),
 		},
-		IsEdge: false,
+		IsEdge:	false,
 	}
 	b.Decorator.TreesPerChunk = 50
 	b.Decorator.GrassPerChunk = 25

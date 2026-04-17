@@ -4,10 +4,13 @@ import (
 	"github.com/scaxe/scaxe-go/pkg/nbt"
 	"github.com/scaxe/scaxe-go/pkg/world"
 )
+
 type Dropper struct {
 	SpawnableBase
 }
+
 const DropperSize = 9
+
 func NewDropper(chunk *world.Chunk, nbtData *nbt.CompoundTag) *Dropper {
 	d := &Dropper{}
 	if nbtData.Get("Items") == nil {

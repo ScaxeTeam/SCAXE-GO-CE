@@ -16,9 +16,9 @@ func GetBiome(id uint8) Biome {
 func InitBiomes() {
 
 	Register(0, &BaseBiome{
-		ID: 0, Name: "Ocean",
-		BaseHeight: -1.0, HeightVariation: 0.1,
-		Temperature: 0.5, Rainfall: 0.5,
+		ID:	0, Name: "Ocean",
+		BaseHeight:	-1.0, HeightVariation: 0.1,
+		Temperature:	0.5, Rainfall: 0.5,
 	})
 
 	Register(1, NewPlainsBiome())
@@ -34,47 +34,47 @@ func InitBiomes() {
 	Register(6, NewSwampBiome())
 
 	Register(7, &BaseBiome{
-		ID: 7, Name: "River",
-		BaseHeight: -0.5, HeightVariation: 0.0,
-		Temperature: 0.5, Rainfall: 0.5,
-		Decorator: NewDecorator(),
+		ID:	7, Name: "River",
+		BaseHeight:	-0.5, HeightVariation: 0.0,
+		Temperature:	0.5, Rainfall: 0.5,
+		Decorator:	NewDecorator(),
 	})
 
 	Register(8, &BaseBiome{
-		ID: 8, Name: "Hell",
-		BaseHeight: 0.1, HeightVariation: 0.2,
-		Temperature: 2.0, Rainfall: 0.0,
-		Decorator: NewDecorator(),
+		ID:	8, Name: "Hell",
+		BaseHeight:	0.1, HeightVariation: 0.2,
+		Temperature:	2.0, Rainfall: 0.0,
+		Decorator:	NewDecorator(),
 	})
 
 	Register(9, &BaseBiome{
-		ID: 9, Name: "The End",
-		BaseHeight: 0.1, HeightVariation: 0.2,
-		Temperature: 0.5, Rainfall: 0.5,
-		Decorator: NewDecorator(),
+		ID:	9, Name: "The End",
+		BaseHeight:	0.1, HeightVariation: 0.2,
+		Temperature:	0.5, Rainfall: 0.5,
+		Decorator:	NewDecorator(),
 	})
 
 	Register(10, &BaseBiome{
-		ID: 10, Name: "Frozen Ocean",
-		BaseHeight: -1.0, HeightVariation: 0.1,
-		Temperature: 0.0, Rainfall: 0.5,
-		Decorator: NewDecorator(),
+		ID:	10, Name: "Frozen Ocean",
+		BaseHeight:	-1.0, HeightVariation: 0.1,
+		Temperature:	0.0, Rainfall: 0.5,
+		Decorator:	NewDecorator(),
 	})
 
 	Register(11, &BaseBiome{
-		ID: 11, Name: "Frozen River",
-		BaseHeight: -0.5, HeightVariation: 0.0,
-		Temperature: 0.0, Rainfall: 0.5,
-		Decorator: NewDecorator(),
+		ID:	11, Name: "Frozen River",
+		BaseHeight:	-0.5, HeightVariation: 0.0,
+		Temperature:	0.0, Rainfall: 0.5,
+		Decorator:	NewDecorator(),
 	})
 
 	Register(12, NewIcePlainsBiome())
 
 	Register(13, &BaseBiome{
-		ID: 13, Name: "Ice Mountains",
-		BaseHeight: 0.45, HeightVariation: 0.3,
-		Temperature: 0.0, Rainfall: 0.5,
-		Decorator: NewDecorator(),
+		ID:	13, Name: "Ice Mountains",
+		BaseHeight:	0.45, HeightVariation: 0.3,
+		Temperature:	0.0, Rainfall: 0.5,
+		Decorator:	NewDecorator(),
 	})
 
 	Register(14, NewMushroomIslandBiome(MUSHROOM_ISLAND))
@@ -84,24 +84,24 @@ func InitBiomes() {
 	Register(16, NewBeachBiome())
 
 	Register(17, &BaseBiome{
-		ID: 17, Name: "Desert Hills",
-		BaseHeight: 0.45, HeightVariation: 0.3,
-		Temperature: 2.0, Rainfall: 0.0,
-		Decorator: NewDecorator(),
+		ID:	17, Name: "Desert Hills",
+		BaseHeight:	0.45, HeightVariation: 0.3,
+		Temperature:	2.0, Rainfall: 0.0,
+		Decorator:	NewDecorator(),
 	})
 
 	Register(18, &BaseBiome{
-		ID: 18, Name: "Forest Hills",
-		BaseHeight: 0.45, HeightVariation: 0.3,
-		Temperature: 0.7, Rainfall: 0.8,
-		Decorator: NewDecorator(),
+		ID:	18, Name: "Forest Hills",
+		BaseHeight:	0.45, HeightVariation: 0.3,
+		Temperature:	0.7, Rainfall: 0.8,
+		Decorator:	NewDecorator(),
 	})
 
 	Register(19, &BaseBiome{
-		ID: 19, Name: "Taiga Hills",
-		BaseHeight: 0.45, HeightVariation: 0.3,
-		Temperature: 0.25, Rainfall: 0.8,
-		Decorator: NewDecorator(),
+		ID:	19, Name: "Taiga Hills",
+		BaseHeight:	0.45, HeightVariation: 0.3,
+		Temperature:	0.25, Rainfall: 0.8,
+		Decorator:	NewDecorator(),
 	})
 
 	Register(20, NewExtremeHillsEdgeBiome())
@@ -113,10 +113,10 @@ func InitBiomes() {
 	Register(23, NewJungleEdgeBiome())
 
 	Register(24, &BaseBiome{
-		ID: 24, Name: "Deep Ocean",
-		BaseHeight: -1.8, HeightVariation: 0.1,
-		Temperature: 0.5, Rainfall: 0.5,
-		Decorator: NewDecorator(),
+		ID:	24, Name: "Deep Ocean",
+		BaseHeight:	-1.8, HeightVariation: 0.1,
+		Temperature:	0.5, Rainfall: 0.5,
+		Decorator:	NewDecorator(),
 	})
 
 	Register(25, NewStoneBeachBiome())
@@ -126,10 +126,10 @@ func InitBiomes() {
 	Register(27, NewForestBiome(FOREST_BIRCH))
 
 	Register(28, &BaseBiome{
-		ID: 28, Name: "Birch Forest Hills",
-		BaseHeight: 0.45, HeightVariation: 0.3,
-		Temperature: 0.6, Rainfall: 0.6,
-		Decorator: NewDecorator(),
+		ID:	28, Name: "Birch Forest Hills",
+		BaseHeight:	0.45, HeightVariation: 0.3,
+		Temperature:	0.6, Rainfall: 0.6,
+		Decorator:	NewDecorator(),
 	})
 
 	Register(29, NewRoofedForestBiome())
@@ -157,9 +157,9 @@ func InitBiomes() {
 	Register(129, NewSunflowerPlainsBiome())
 
 	Register(130, &BaseBiome{
-		ID: 130, Name: "Desert M",
-		BaseHeight: 0.225, HeightVariation: 0.25,
-		Temperature: 2.0, Rainfall: 0.0,
+		ID:	130, Name: "Desert M",
+		BaseHeight:	0.225, HeightVariation: 0.25,
+		Temperature:	2.0, Rainfall: 0.0,
 	})
 
 	Register(140, NewIcePlainsSpikesBiome())

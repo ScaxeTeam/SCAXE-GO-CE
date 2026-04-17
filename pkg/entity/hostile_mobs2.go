@@ -7,12 +7,14 @@ import (
 )
 
 const EndermanNetworkID = 38
+
 type Enderman struct {
 	*Monster
-	CarriedBlockID int
-	CarriedBlockMeta int
-	Trembling bool
+	CarriedBlockID		int
+	CarriedBlockMeta	int
+	Trembling		bool
 }
+
 func NewEnderman() *Enderman {
 	m := NewMonster(EndermanNetworkID, "Enderman", 40, 0.6, 2.9, 7)
 	m.DropExpMin = 5
@@ -59,10 +61,12 @@ func EndermanDrops() []ZombieDropItem {
 }
 
 const BlazeNetworkID = 43
+
 type Blaze struct {
 	*Monster
-	Charging bool
+	Charging	bool
 }
+
 func NewBlaze() *Blaze {
 	m := NewMonster(BlazeNetworkID, "Blaze", 20, 0.6, 1.8, 6)
 	m.DropExpMin = 10
@@ -91,10 +95,12 @@ func BlazeDrops() []ZombieDropItem {
 }
 
 const GhastNetworkID = 41
+
 type Ghast struct {
 	*Monster
-	Charging bool
+	Charging	bool
 }
+
 func NewGhast() *Ghast {
 	m := NewMonster(GhastNetworkID, "Ghast", 10, 4.0, 4.0, 0)
 	m.DropExpMin = 5
@@ -112,8 +118,8 @@ func (g *Ghast) IsCharging() bool {
 }
 func GhastDrops() []ZombieDropItem {
 	const (
-		GhastTear = 370
-		Gunpowder = 289
+		GhastTear	= 370
+		Gunpowder	= 289
 	)
 	drops := []ZombieDropItem{
 		{ItemID: Gunpowder, Count: rand.Intn(2) + 1},
@@ -125,10 +131,12 @@ func GhastDrops() []ZombieDropItem {
 }
 
 const SlimeNetworkID = 37
+
 type Slime struct {
 	*Monster
-	Size int
+	Size	int
 }
+
 func NewSlime() *Slime {
 	size := 1 + rand.Intn(4)
 	m := NewMonster(SlimeNetworkID, "Slime", slimeHealthForSize(size), 0.6, 0.6, slimeDamageForSize(size))
@@ -136,8 +144,8 @@ func NewSlime() *Slime {
 	m.DropExpMax = 4
 
 	return &Slime{
-		Monster: m,
-		Size:    size,
+		Monster:	m,
+		Size:		size,
 	}
 }
 func NewSlimeWithSize(size int) *Slime {
@@ -152,8 +160,8 @@ func NewSlimeWithSize(size int) *Slime {
 	m.DropExpMax = 4
 
 	return &Slime{
-		Monster: m,
-		Size:    size,
+		Monster:	m,
+		Size:		size,
 	}
 }
 func slimeHealthForSize(size int) int {

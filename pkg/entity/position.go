@@ -5,12 +5,12 @@ import (
 )
 
 const (
-	SideDown  = 0
-	SideUp    = 1
-	SideNorth = 2
-	SideSouth = 3
-	SideWest  = 4
-	SideEast  = 5
+	SideDown	= 0
+	SideUp		= 1
+	SideNorth	= 2
+	SideSouth	= 3
+	SideWest	= 4
+	SideEast	= 5
 )
 
 type Vector3 struct {
@@ -63,33 +63,33 @@ func (v *Vector3) FloorZ() int {
 
 func (v *Vector3) Floor() *Vector3 {
 	return &Vector3{
-		X: float64(v.FloorX()),
-		Y: float64(v.FloorY()),
-		Z: float64(v.FloorZ()),
+		X:	float64(v.FloorX()),
+		Y:	float64(v.FloorY()),
+		Z:	float64(v.FloorZ()),
 	}
 }
 
 func (v *Vector3) Ceil() *Vector3 {
 	return &Vector3{
-		X: math.Ceil(v.X),
-		Y: math.Ceil(v.Y),
-		Z: math.Ceil(v.Z),
+		X:	math.Ceil(v.X),
+		Y:	math.Ceil(v.Y),
+		Z:	math.Ceil(v.Z),
 	}
 }
 
 func (v *Vector3) Round() *Vector3 {
 	return &Vector3{
-		X: math.Round(v.X),
-		Y: math.Round(v.Y),
-		Z: math.Round(v.Z),
+		X:	math.Round(v.X),
+		Y:	math.Round(v.Y),
+		Z:	math.Round(v.Z),
 	}
 }
 
 func (v *Vector3) Abs() *Vector3 {
 	return &Vector3{
-		X: math.Abs(v.X),
-		Y: math.Abs(v.Y),
-		Z: math.Abs(v.Z),
+		X:	math.Abs(v.X),
+		Y:	math.Abs(v.Y),
+		Z:	math.Abs(v.Z),
 	}
 }
 
@@ -115,9 +115,9 @@ func (v *Vector3) Dot(other *Vector3) float64 {
 
 func (v *Vector3) Cross(other *Vector3) *Vector3 {
 	return &Vector3{
-		X: v.Y*other.Z - v.Z*other.Y,
-		Y: v.Z*other.X - v.X*other.Z,
-		Z: v.X*other.Y - v.Y*other.X,
+		X:	v.Y*other.Z - v.Z*other.Y,
+		Y:	v.Z*other.X - v.X*other.Z,
+		Z:	v.X*other.Y - v.Y*other.X,
 	}
 }
 
@@ -168,14 +168,14 @@ func (v *Vector3) Clone() *Vector3 {
 
 type Location struct {
 	*Vector3
-	Yaw   float32
-	Pitch float32
+	Yaw	float32
+	Pitch	float32
 }
 
 func NewLocation(x, y, z float64, yaw, pitch float32) *Location {
 	return &Location{
-		Vector3: NewVector3(x, y, z),
-		Yaw:     yaw,
-		Pitch:   pitch,
+		Vector3:	NewVector3(x, y, z),
+		Yaw:		yaw,
+		Pitch:		pitch,
 	}
 }

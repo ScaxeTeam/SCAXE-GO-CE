@@ -1,57 +1,57 @@
 package layer
 
 const (
-	BiomeOcean               = 0
-	BiomePlains              = 1
-	BiomeDesert              = 2
-	BiomeExtremeHills        = 3
-	BiomeForest              = 4
-	BiomeTaiga               = 5
-	BiomeSwampland           = 6
-	BiomeRiver               = 7
-	BiomeHell                = 8
-	BiomeSky                 = 9
-	BiomeFrozenOcean         = 10
-	BiomeFrozenRiver         = 11
-	BiomeIcePlains           = 12
-	BiomeIceMountains        = 13
-	BiomeMushroomIsland      = 14
-	BiomeMushroomIslandShore = 15
-	BiomeBeach               = 16
-	BiomeDesertHills         = 17
-	BiomeForestHills         = 18
-	BiomeTaigaHills          = 19
-	BiomeExtremeHillsEdge    = 20
-	BiomeJungle              = 21
-	BiomeJungleHills         = 22
-	BiomeJungleEdge          = 23
-	BiomeDeepOcean           = 24
-	BiomeStoneBeach          = 25
-	BiomeColdBeach           = 26
-	BiomeBirchForest         = 27
-	BiomeBirchForestHills    = 28
-	BiomeRoofedForest        = 29
-	BiomeColdTaiga           = 30
-	BiomeColdTaigaHills      = 31
-	BiomeMegaTaiga           = 32
-	BiomeMegaTaigaHills      = 33
-	BiomeExtremeHillsPlus    = 34
-	BiomeSavanna             = 35
-	BiomeSavannaPlateau      = 36
-	BiomeMesa                = 37
-	BiomeMesaPlateauF        = 38
-	BiomeMesaPlateau         = 39
+	BiomeOcean			= 0
+	BiomePlains			= 1
+	BiomeDesert			= 2
+	BiomeExtremeHills		= 3
+	BiomeForest			= 4
+	BiomeTaiga			= 5
+	BiomeSwampland			= 6
+	BiomeRiver			= 7
+	BiomeHell			= 8
+	BiomeSky			= 9
+	BiomeFrozenOcean		= 10
+	BiomeFrozenRiver		= 11
+	BiomeIcePlains			= 12
+	BiomeIceMountains		= 13
+	BiomeMushroomIsland		= 14
+	BiomeMushroomIslandShore	= 15
+	BiomeBeach			= 16
+	BiomeDesertHills		= 17
+	BiomeForestHills		= 18
+	BiomeTaigaHills			= 19
+	BiomeExtremeHillsEdge		= 20
+	BiomeJungle			= 21
+	BiomeJungleHills		= 22
+	BiomeJungleEdge			= 23
+	BiomeDeepOcean			= 24
+	BiomeStoneBeach			= 25
+	BiomeColdBeach			= 26
+	BiomeBirchForest		= 27
+	BiomeBirchForestHills		= 28
+	BiomeRoofedForest		= 29
+	BiomeColdTaiga			= 30
+	BiomeColdTaigaHills		= 31
+	BiomeMegaTaiga			= 32
+	BiomeMegaTaigaHills		= 33
+	BiomeExtremeHillsPlus		= 34
+	BiomeSavanna			= 35
+	BiomeSavannaPlateau		= 36
+	BiomeMesa			= 37
+	BiomeMesaPlateauF		= 38
+	BiomeMesaPlateau		= 39
 
-	BiomeMesaRock      = 37
-	BiomeMesaClearRock = 37
+	BiomeMesaRock		= 37
+	BiomeMesaClearRock	= 37
 )
 
 type GenLayerBiome struct {
 	*BaseLayer
-	warmBiomes   []int
-	mediumBiomes []int
-	coldBiomes   []int
-	iceBiomes    []int
+	warmBiomes	[]int
+	mediumBiomes	[]int
+	coldBiomes	[]int
+	iceBiomes	[]int
 }
 
 func NewGenLayerBiome(seed int64, parent GenLayer) *GenLayerBiome {

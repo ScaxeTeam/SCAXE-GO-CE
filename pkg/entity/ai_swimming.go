@@ -4,7 +4,7 @@ import "math/rand"
 
 type AISwimming struct {
 	BaseAIGoal
-	entity *Entity
+	entity	*Entity
 }
 
 func NewAISwimming(e *Entity) *AISwimming {

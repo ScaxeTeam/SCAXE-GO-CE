@@ -7,15 +7,15 @@ func init() {
 }
 
 type ArmorItem struct {
-	ID    int16
-	Count int8
-	Meta  uint16
+	ID	int16
+	Count	int8
+	Meta	uint16
 }
 
 type MobArmorEquipmentPacket struct {
 	BasePacket
-	EntityID int64
-	Slots    [4]ArmorItem
+	EntityID	int64
+	Slots		[4]ArmorItem
 }
 
 func NewMobArmorEquipmentPacket() *MobArmorEquipmentPacket {

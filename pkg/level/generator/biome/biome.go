@@ -13,48 +13,48 @@ type Generator interface {
 }
 
 const (
-	OCEAN                    = 0
-	PLAINS                   = 1
-	DESERT                   = 2
-	MOUNTAINS                = 3
-	FOREST                   = 4
-	TAIGA                    = 5
-	SWAMP                    = 6
-	RIVER                    = 7
-	HELL                     = 8
-	END                      = 9
-	FROZEN_OCEAN             = 10
-	FROZEN_RIVER             = 11
-	ICE_PLAINS               = 12
-	ICE_MOUNTAINS            = 13
-	MUSHROOM_ISLAND          = 14
-	MUSHROOM_ISLAND_SHORE    = 15
-	BEACH                    = 16
-	DESERT_HILLS             = 17
-	FOREST_HILLS             = 18
-	TAIGA_HILLS              = 19
-	SMALL_MOUNTAINS          = 20
-	JUNGLE                   = 21
-	JUNGLE_HILLS             = 22
-	JUNGLE_EDGE              = 23
-	DEEP_OCEAN               = 24
-	STONE_BEACH              = 25
-	COLD_BEACH               = 26
-	BIRCH_FOREST             = 27
-	BIRCH_FOREST_HILLS       = 28
-	ROOFED_FOREST            = 29
-	COLD_TAIGA               = 30
-	COLD_TAIGA_HILLS         = 31
-	MEGA_TAIGA               = 32
-	MEGA_TAIGA_HILLS         = 33
-	EXTREME_HILLS_PLUS_TREES = 34
-	SAVANNA                  = 35
-	SAVANNA_PLATEAU          = 36
-	MESA                     = 37
-	MESA_PLATEAU_F           = 38
-	MESA_PLATEAU             = 39
+	OCEAN				= 0
+	PLAINS				= 1
+	DESERT				= 2
+	MOUNTAINS			= 3
+	FOREST				= 4
+	TAIGA				= 5
+	SWAMP				= 6
+	RIVER				= 7
+	HELL				= 8
+	END				= 9
+	FROZEN_OCEAN			= 10
+	FROZEN_RIVER			= 11
+	ICE_PLAINS			= 12
+	ICE_MOUNTAINS			= 13
+	MUSHROOM_ISLAND			= 14
+	MUSHROOM_ISLAND_SHORE		= 15
+	BEACH				= 16
+	DESERT_HILLS			= 17
+	FOREST_HILLS			= 18
+	TAIGA_HILLS			= 19
+	SMALL_MOUNTAINS			= 20
+	JUNGLE				= 21
+	JUNGLE_HILLS			= 22
+	JUNGLE_EDGE			= 23
+	DEEP_OCEAN			= 24
+	STONE_BEACH			= 25
+	COLD_BEACH			= 26
+	BIRCH_FOREST			= 27
+	BIRCH_FOREST_HILLS		= 28
+	ROOFED_FOREST			= 29
+	COLD_TAIGA			= 30
+	COLD_TAIGA_HILLS		= 31
+	MEGA_TAIGA			= 32
+	MEGA_TAIGA_HILLS		= 33
+	EXTREME_HILLS_PLUS_TREES	= 34
+	SAVANNA				= 35
+	SAVANNA_PLATEAU			= 36
+	MESA				= 37
+	MESA_PLATEAU_F			= 38
+	MESA_PLATEAU			= 39
 
-	ICE_PLAINS_SPIKES = 140
+	ICE_PLAINS_SPIKES	= 140
 )
 
 type Biome interface {
@@ -77,15 +77,15 @@ type Biome interface {
 }
 
 type BaseBiome struct {
-	ID              uint8
-	Name            string
-	BaseHeight      float64
-	HeightVariation float64
-	Rainfall        float64
-	Temperature     float64
-	GroundCover     []block.BlockState
+	ID		uint8
+	Name		string
+	BaseHeight	float64
+	HeightVariation	float64
+	Rainfall	float64
+	Temperature	float64
+	GroundCover	[]block.BlockState
 
-	Decorator *Decorator
+	Decorator	*Decorator
 }
 
 func (b *BaseBiome) GetID() uint8 {

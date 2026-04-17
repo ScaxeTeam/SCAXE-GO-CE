@@ -8,18 +8,18 @@ import (
 
 type SayCommand struct {
 	command.BaseCommand
-	server ServerInterface
+	server	ServerInterface
 }
 
 func NewSayCommand(server ServerInterface) *SayCommand {
 	return &SayCommand{
 		BaseCommand: command.BaseCommand{
-			Name:        "say",
-			Description: "Broadcasts a message to all players",
-			Usage:       "/say <message>",
-			Permission:  "pocketmine.command.say",
+			Name:		"say",
+			Description:	"Broadcasts a message to all players",
+			Usage:		"/say <message>",
+			Permission:	"pocketmine.command.say",
 		},
-		server: server,
+		server:	server,
 	}
 }
 

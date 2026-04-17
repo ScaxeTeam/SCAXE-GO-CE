@@ -10,10 +10,10 @@ import (
 )
 
 type ParallelChunkGenerator struct {
-	baseSeed   int64
-	workers    int
-	generators []*ChunkGeneratorOverworld
-	mu         sync.Mutex
+	baseSeed	int64
+	workers		int
+	generators	[]*ChunkGeneratorOverworld
+	mu		sync.Mutex
 }
 
 func NewParallelChunkGenerator(seed int64, workers int) *ParallelChunkGenerator {
@@ -22,9 +22,9 @@ func NewParallelChunkGenerator(seed int64, workers int) *ParallelChunkGenerator 
 	}
 
 	pg := &ParallelChunkGenerator{
-		baseSeed:   seed,
-		workers:    workers,
-		generators: make([]*ChunkGeneratorOverworld, workers),
+		baseSeed:	seed,
+		workers:	workers,
+		generators:	make([]*ChunkGeneratorOverworld, workers),
 	}
 
 	for i := 0; i < workers; i++ {
@@ -115,9 +115,9 @@ func (pg *ParallelChunkGenerator) GenerateAndPopulateParallel(coords []ChunkCoor
 }
 
 type WorkerPoolNoise struct {
-	octaves []*noise.OctavesNoise
-	current int
-	mu      sync.Mutex
+	octaves	[]*noise.OctavesNoise
+	current	int
+	mu	sync.Mutex
 }
 
 func (wp *WorkerPoolNoise) GetNoise() *noise.OctavesNoise {

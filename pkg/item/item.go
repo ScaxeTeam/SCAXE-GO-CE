@@ -8,11 +8,11 @@ import (
 )
 
 type Item struct {
-	ID      int
-	Meta    int
-	Count   int
-	Name    string
-	NBTData *nbt.CompoundTag
+	ID	int
+	Meta	int
+	Count	int
+	Name	string
+	NBTData	*nbt.CompoundTag
 }
 
 func NewItem(id, meta, count int) Item {
@@ -21,10 +21,10 @@ func NewItem(id, meta, count int) Item {
 		count = 1
 	}
 	return Item{
-		ID:    id & 0xFFFF,
-		Meta:  meta & 0xFFFF,
-		Count: count,
-		Name:  GetItemName(id),
+		ID:	id & 0xFFFF,
+		Meta:	meta & 0xFFFF,
+		Count:	count,
+		Name:	GetItemName(id),
 	}
 }
 
@@ -232,10 +232,10 @@ func (i *Item) SetLore(lines []string) {
 
 func (i Item) Clone() Item {
 	clone := Item{
-		ID:    i.ID,
-		Meta:  i.Meta,
-		Count: i.Count,
-		Name:  i.Name,
+		ID:	i.ID,
+		Meta:	i.Meta,
+		Count:	i.Count,
+		Name:	i.Name,
 	}
 	if i.NBTData != nil {
 		clone.NBTData = i.NBTData.Clone().(*nbt.CompoundTag)

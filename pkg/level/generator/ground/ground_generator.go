@@ -7,17 +7,17 @@ import (
 )
 
 const (
-	BlockAir       = 0
-	BlockStone     = 1
-	BlockGrass     = 2
-	BlockDirt      = 3
-	BlockSand      = 12
-	BlockGravel    = 13
-	BlockSandstone = 24
-	BlockSnow      = 80
-	BlockIce       = 79
-	BlockMycelium  = 110
-	BlockWater     = 9
+	BlockAir	= 0
+	BlockStone	= 1
+	BlockGrass	= 2
+	BlockDirt	= 3
+	BlockSand	= 12
+	BlockGravel	= 13
+	BlockSandstone	= 24
+	BlockSnow	= 80
+	BlockIce	= 79
+	BlockMycelium	= 110
+	BlockWater	= 9
 )
 
 type Generator interface {
@@ -25,18 +25,18 @@ type Generator interface {
 }
 
 type GroundGenerator struct {
-	TopMaterial    int
-	TopMeta        byte
-	GroundMaterial int
-	GroundMeta     byte
+	TopMaterial	int
+	TopMeta		byte
+	GroundMaterial	int
+	GroundMeta	byte
 }
 
 func NewGroundGenerator() *GroundGenerator {
 	return &GroundGenerator{
-		TopMaterial:    BlockGrass,
-		TopMeta:        0,
-		GroundMaterial: BlockDirt,
-		GroundMeta:     0,
+		TopMaterial:	BlockGrass,
+		TopMeta:	0,
+		GroundMaterial:	BlockDirt,
+		GroundMeta:	0,
 	}
 }
 

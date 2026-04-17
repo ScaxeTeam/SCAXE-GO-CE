@@ -1,30 +1,30 @@
 package biomegrid
 
 const (
-	BiomeOcean          = 0
-	BiomePlains         = 1
-	BiomeDesert         = 2
-	BiomeExtremeHills   = 3
-	BiomeForest         = 4
-	BiomeTaiga          = 5
-	BiomeSwampland      = 6
-	BiomeRiver          = 7
-	BiomeFrozenOcean    = 10
-	BiomeFrozenRiver    = 11
-	BiomeIcePlains      = 12
-	BiomeIceMountains   = 13
-	BiomeMushroomIsland = 14
-	BiomeBeach          = 16
-	BiomeDesertHills    = 17
-	BiomeForestHills    = 18
-	BiomeTaigaHills     = 19
-	BiomeJungle         = 21
-	BiomeJungleHills    = 22
-	BiomeJungleEdge     = 23
-	BiomeDeepOcean      = 24
-	BiomeSavanna        = 35
-	BiomeSavannaPlateau = 36
-	BiomeMesa           = 37
+	BiomeOcean		= 0
+	BiomePlains		= 1
+	BiomeDesert		= 2
+	BiomeExtremeHills	= 3
+	BiomeForest		= 4
+	BiomeTaiga		= 5
+	BiomeSwampland		= 6
+	BiomeRiver		= 7
+	BiomeFrozenOcean	= 10
+	BiomeFrozenRiver	= 11
+	BiomeIcePlains		= 12
+	BiomeIceMountains	= 13
+	BiomeMushroomIsland	= 14
+	BiomeBeach		= 16
+	BiomeDesertHills	= 17
+	BiomeForestHills	= 18
+	BiomeTaigaHills		= 19
+	BiomeJungle		= 21
+	BiomeJungleHills	= 22
+	BiomeJungleEdge		= 23
+	BiomeDeepOcean		= 24
+	BiomeSavanna		= 35
+	BiomeSavannaPlateau	= 36
+	BiomeMesa		= 37
 )
 
 type BiomeMapLayer struct {
@@ -38,11 +38,11 @@ func NewBiomeMapLayer(seed int64, parent MapLayer) *BiomeMapLayer {
 }
 
 var (
-	warmBiomes    = []int{BiomeDesert, BiomeSavanna, BiomePlains}
-	wetBiomes     = []int{BiomeForest, BiomeSwampland, BiomePlains}
-	coldBiomes    = []int{BiomeTaiga, BiomeIcePlains, BiomeExtremeHills}
-	dryBiomes     = []int{BiomeDesert, BiomeSavanna, BiomeMesa}
-	defaultBiomes = []int{BiomePlains, BiomeForest, BiomeTaiga, BiomeExtremeHills}
+	warmBiomes	= []int{BiomeDesert, BiomeSavanna, BiomePlains}
+	wetBiomes	= []int{BiomeForest, BiomeSwampland, BiomePlains}
+	coldBiomes	= []int{BiomeTaiga, BiomeIcePlains, BiomeExtremeHills}
+	dryBiomes	= []int{BiomeDesert, BiomeSavanna, BiomeMesa}
+	defaultBiomes	= []int{BiomePlains, BiomeForest, BiomeTaiga, BiomeExtremeHills}
 )
 
 func (l *BiomeMapLayer) GenerateValues(x, z, sizeX, sizeZ int) []int {

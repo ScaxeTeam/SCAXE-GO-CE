@@ -2,23 +2,23 @@ package protocol
 
 type ExplodePacket struct {
 	BasePacket
-	X       float32
-	Y       float32
-	Z       float32
-	Radius  float32
-	Records []ExplodeRecord
+	X	float32
+	Y	float32
+	Z	float32
+	Radius	float32
+	Records	[]ExplodeRecord
 }
 
 type ExplodeRecord struct {
-	X int8
-	Y int8
-	Z int8
+	X	int8
+	Y	int8
+	Z	int8
 }
 
 func NewExplodePacket() *ExplodePacket {
 	return &ExplodePacket{
-		BasePacket: BasePacket{PacketID: IDExplode},
-		Records:    make([]ExplodeRecord, 0),
+		BasePacket:	BasePacket{PacketID: IDExplode},
+		Records:	make([]ExplodeRecord, 0),
 	}
 }
 

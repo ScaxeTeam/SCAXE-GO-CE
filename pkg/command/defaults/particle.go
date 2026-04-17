@@ -10,18 +10,18 @@ import (
 
 type ParticleCommand struct {
 	command.BaseCommand
-	server ServerInterface
+	server	ServerInterface
 }
 
 func NewParticleCommand(server ServerInterface) *ParticleCommand {
 	return &ParticleCommand{
 		BaseCommand: command.BaseCommand{
-			Name:        "particle",
-			Description: "Spawns particles",
-			Usage:       "/particle <name> <x> <y> <z> [data]",
-			Permission:  "pocketmine.command.particle",
+			Name:		"particle",
+			Description:	"Spawns particles",
+			Usage:		"/particle <name> <x> <y> <z> [data]",
+			Permission:	"pocketmine.command.particle",
 		},
-		server: server,
+		server:	server,
 	}
 }
 

@@ -2,9 +2,9 @@ package protocol
 
 type SetSpawnPositionPacket struct {
 	BasePacket
-	X int32
-	Y int32
-	Z int32
+	X	int32
+	Y	int32
+	Z	int32
 }
 
 func NewSetSpawnPositionPacket() *SetSpawnPositionPacket {

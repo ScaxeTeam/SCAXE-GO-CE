@@ -12,10 +12,10 @@ type VersionCommand struct {
 func NewVersionCommand() *VersionCommand {
 	return &VersionCommand{
 		BaseCommand: command.BaseCommand{
-			Name:        "ver",
-			Description: "Gets the version of this server including any plugins in use",
-			Usage:       "/ver",
-			Permission:  "pocketmine.command.version",
+			Name:		"ver",
+			Description:	"Gets the version of this server including any plugins in use",
+			Usage:		"/ver",
+			Permission:	"pocketmine.command.version",
 		},
 	}
 }

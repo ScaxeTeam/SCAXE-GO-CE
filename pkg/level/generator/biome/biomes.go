@@ -26,14 +26,14 @@ type PlainsBiome struct {
 func NewPlainsBiome() *PlainsBiome {
 	b := &PlainsBiome{
 		BaseBiome: &BaseBiome{
-			ID:              PLAINS,
-			Name:            "Plains",
-			BaseHeight:      0.125,
-			HeightVariation: 0.05,
-			Temperature:     0.8,
-			Rainfall:        0.4,
-			GroundCover:     []block.BlockState{block.NewBlockState(block.GRASS, 0), block.NewBlockState(block.DIRT, 0)},
-			Decorator:       NewDecorator(),
+			ID:			PLAINS,
+			Name:			"Plains",
+			BaseHeight:		0.125,
+			HeightVariation:	0.05,
+			Temperature:		0.8,
+			Rainfall:		0.4,
+			GroundCover:		[]block.BlockState{block.NewBlockState(block.GRASS, 0), block.NewBlockState(block.DIRT, 0)},
+			Decorator:		NewDecorator(),
 		},
 	}
 	b.Decorator.TreesPerChunk = 0
@@ -85,14 +85,14 @@ type DesertBiome struct {
 func NewDesertBiome() *DesertBiome {
 	b := &DesertBiome{
 		BaseBiome: &BaseBiome{
-			ID:              DESERT,
-			Name:            "Desert",
-			BaseHeight:      0.125,
-			HeightVariation: 0.05,
-			Temperature:     2.0,
-			Rainfall:        0.0,
-			GroundCover:     []block.BlockState{block.NewBlockState(block.SAND, 0), block.NewBlockState(block.SAND, 0), block.NewBlockState(block.SANDSTONE, 0)},
-			Decorator:       NewDecorator(),
+			ID:			DESERT,
+			Name:			"Desert",
+			BaseHeight:		0.125,
+			HeightVariation:	0.05,
+			Temperature:		2.0,
+			Rainfall:		0.0,
+			GroundCover:		[]block.BlockState{block.NewBlockState(block.SAND, 0), block.NewBlockState(block.SAND, 0), block.NewBlockState(block.SANDSTONE, 0)},
+			Decorator:		NewDecorator(),
 		},
 	}
 	b.Decorator.TreesPerChunk = -999
@@ -109,14 +109,14 @@ func (b *DesertBiome) Decorate(level populator.ChunkManager, r *rand.Random, pos
 
 type ForestBiome struct {
 	*BaseBiome
-	Type int
+	Type	int
 }
 
 const (
-	FOREST_NORMAL = 0
-	FOREST_FLOWER = 1
-	FOREST_BIRCH  = 2
-	FOREST_ROOFED = 3
+	FOREST_NORMAL	= 0
+	FOREST_FLOWER	= 1
+	FOREST_BIRCH	= 2
+	FOREST_ROOFED	= 3
 )
 
 func NewForestBiome(t int) *ForestBiome {
@@ -133,16 +133,16 @@ func NewForestBiome(t int) *ForestBiome {
 
 	b := &ForestBiome{
 		BaseBiome: &BaseBiome{
-			ID:              id,
-			Name:            name,
-			BaseHeight:      0.1,
-			HeightVariation: 0.2,
-			Temperature:     0.7,
-			Rainfall:        0.8,
-			GroundCover:     []block.BlockState{block.NewBlockState(block.GRASS, 0), block.NewBlockState(block.DIRT, 0)},
-			Decorator:       NewDecorator(),
+			ID:			id,
+			Name:			name,
+			BaseHeight:		0.1,
+			HeightVariation:	0.2,
+			Temperature:		0.7,
+			Rainfall:		0.8,
+			GroundCover:		[]block.BlockState{block.NewBlockState(block.GRASS, 0), block.NewBlockState(block.DIRT, 0)},
+			Decorator:		NewDecorator(),
 		},
-		Type: t,
+		Type:	t,
 	}
 
 	b.Decorator.TreesPerChunk = 10
@@ -221,14 +221,14 @@ type TaigaBiome struct {
 func NewTaigaBiome() *TaigaBiome {
 	b := &TaigaBiome{
 		BaseBiome: &BaseBiome{
-			ID:              TAIGA,
-			Name:            "Taiga",
-			BaseHeight:      0.2,
-			HeightVariation: 0.2,
-			Temperature:     0.25,
-			Rainfall:        0.8,
-			GroundCover:     []block.BlockState{block.NewBlockState(block.GRASS, 0), block.NewBlockState(block.DIRT, 0)},
-			Decorator:       NewDecorator(),
+			ID:			TAIGA,
+			Name:			"Taiga",
+			BaseHeight:		0.2,
+			HeightVariation:	0.2,
+			Temperature:		0.25,
+			Rainfall:		0.8,
+			GroundCover:		[]block.BlockState{block.NewBlockState(block.GRASS, 0), block.NewBlockState(block.DIRT, 0)},
+			Decorator:		NewDecorator(),
 		},
 	}
 	b.Decorator.TreesPerChunk = 10
@@ -246,27 +246,27 @@ func (b *TaigaBiome) GetTreeFeature(r *rand.Random) Generator {
 
 type MegaTaigaBiome struct {
 	*BaseBiome
-	IsSpruce bool
+	IsSpruce	bool
 }
 
 const (
-	MEGA_TAIGA_NORMAL = 0
-	MEGA_TAIGA_SPRUCE = 1
+	MEGA_TAIGA_NORMAL	= 0
+	MEGA_TAIGA_SPRUCE	= 1
 )
 
 func NewMegaTaigaBiome() *MegaTaigaBiome {
 	b := &MegaTaigaBiome{
 		BaseBiome: &BaseBiome{
-			ID:              MEGA_TAIGA,
-			Name:            "Mega Taiga",
-			BaseHeight:      0.2,
-			HeightVariation: 0.2,
-			Temperature:     0.3,
-			Rainfall:        0.8,
-			GroundCover:     []block.BlockState{block.NewBlockState(block.GRASS, 0), block.NewBlockState(block.DIRT, 0)},
-			Decorator:       NewDecorator(),
+			ID:			MEGA_TAIGA,
+			Name:			"Mega Taiga",
+			BaseHeight:		0.2,
+			HeightVariation:	0.2,
+			Temperature:		0.3,
+			Rainfall:		0.8,
+			GroundCover:		[]block.BlockState{block.NewBlockState(block.GRASS, 0), block.NewBlockState(block.DIRT, 0)},
+			Decorator:		NewDecorator(),
 		},
-		IsSpruce: false,
+		IsSpruce:	false,
 	}
 
 	b.Decorator.TreesPerChunk = 10
@@ -281,16 +281,16 @@ func NewMegaTaigaBiome() *MegaTaigaBiome {
 func NewMegaTaigaHillsBiome() *MegaTaigaBiome {
 	b := &MegaTaigaBiome{
 		BaseBiome: &BaseBiome{
-			ID:              MEGA_TAIGA_HILLS,
-			Name:            "Mega Taiga Hills",
-			BaseHeight:      0.45,
-			HeightVariation: 0.3,
-			Temperature:     0.3,
-			Rainfall:        0.8,
-			GroundCover:     []block.BlockState{block.NewBlockState(block.GRASS, 0), block.NewBlockState(block.DIRT, 0)},
-			Decorator:       NewDecorator(),
+			ID:			MEGA_TAIGA_HILLS,
+			Name:			"Mega Taiga Hills",
+			BaseHeight:		0.45,
+			HeightVariation:	0.3,
+			Temperature:		0.3,
+			Rainfall:		0.8,
+			GroundCover:		[]block.BlockState{block.NewBlockState(block.GRASS, 0), block.NewBlockState(block.DIRT, 0)},
+			Decorator:		NewDecorator(),
 		},
-		IsSpruce: true,
+		IsSpruce:	true,
 	}
 	b.Decorator.TreesPerChunk = 10
 	b.Decorator.GrassPerChunk = 7
@@ -348,14 +348,14 @@ type SwampBiome struct {
 func NewSwampBiome() *SwampBiome {
 	b := &SwampBiome{
 		BaseBiome: &BaseBiome{
-			ID:              SWAMP,
-			Name:            "Swamp",
-			BaseHeight:      -0.2,
-			HeightVariation: 0.1,
-			Temperature:     0.8,
-			Rainfall:        0.9,
-			GroundCover:     []block.BlockState{block.NewBlockState(block.GRASS, 0), block.NewBlockState(block.DIRT, 0)},
-			Decorator:       NewDecorator(),
+			ID:			SWAMP,
+			Name:			"Swamp",
+			BaseHeight:		-0.2,
+			HeightVariation:	0.1,
+			Temperature:		0.8,
+			Rainfall:		0.9,
+			GroundCover:		[]block.BlockState{block.NewBlockState(block.GRASS, 0), block.NewBlockState(block.DIRT, 0)},
+			Decorator:		NewDecorator(),
 		},
 	}
 	b.Decorator.TreesPerChunk = 2
@@ -386,15 +386,15 @@ type IcePlainsBiome struct {
 func NewIcePlainsBiome() *IcePlainsBiome {
 	b := &IcePlainsBiome{
 		BaseBiome: &BaseBiome{
-			ID:              ICE_PLAINS,
-			Name:            "Ice Plains",
-			BaseHeight:      0.125,
-			HeightVariation: 0.05,
-			Temperature:     0.0,
-			Rainfall:        0.5,
-			GroundCover:     []block.BlockState{block.NewBlockState(block.SNOW_BLOCK, 0), block.NewBlockState(block.DIRT, 0)},
+			ID:			ICE_PLAINS,
+			Name:			"Ice Plains",
+			BaseHeight:		0.125,
+			HeightVariation:	0.05,
+			Temperature:		0.0,
+			Rainfall:		0.5,
+			GroundCover:		[]block.BlockState{block.NewBlockState(block.SNOW_BLOCK, 0), block.NewBlockState(block.DIRT, 0)},
 
-			Decorator: NewDecorator(),
+			Decorator:	NewDecorator(),
 		},
 	}
 	b.Decorator.TreesPerChunk = 0
@@ -415,14 +415,14 @@ type IcePlainsSpikesBiome struct {
 func NewIcePlainsSpikesBiome() *IcePlainsSpikesBiome {
 	b := &IcePlainsSpikesBiome{
 		BaseBiome: &BaseBiome{
-			ID:              ICE_PLAINS_SPIKES,
-			Name:            "Ice Plains Spikes",
-			BaseHeight:      0.425,
-			HeightVariation: 0.45,
-			Temperature:     0.0,
-			Rainfall:        0.5,
-			GroundCover:     []block.BlockState{block.NewBlockState(block.SNOW_BLOCK, 0), block.NewBlockState(block.DIRT, 0)},
-			Decorator:       NewDecorator(),
+			ID:			ICE_PLAINS_SPIKES,
+			Name:			"Ice Plains Spikes",
+			BaseHeight:		0.425,
+			HeightVariation:	0.45,
+			Temperature:		0.0,
+			Rainfall:		0.5,
+			GroundCover:		[]block.BlockState{block.NewBlockState(block.SNOW_BLOCK, 0), block.NewBlockState(block.DIRT, 0)},
+			Decorator:		NewDecorator(),
 		},
 	}
 	b.Decorator.TreesPerChunk = 0
@@ -471,14 +471,14 @@ func NewMushroomIslandBiome(id uint8) *MushroomIslandBiome {
 
 	b := &MushroomIslandBiome{
 		BaseBiome: &BaseBiome{
-			ID:              id,
-			Name:            name,
-			BaseHeight:      height,
-			HeightVariation: variation,
-			Temperature:     0.9,
-			Rainfall:        1.0,
-			GroundCover:     []block.BlockState{block.NewBlockState(block.MYCELIUM, 0), block.NewBlockState(block.DIRT, 0)},
-			Decorator:       NewDecorator(),
+			ID:			id,
+			Name:			name,
+			BaseHeight:		height,
+			HeightVariation:	variation,
+			Temperature:		0.9,
+			Rainfall:		1.0,
+			GroundCover:		[]block.BlockState{block.NewBlockState(block.MYCELIUM, 0), block.NewBlockState(block.DIRT, 0)},
+			Decorator:		NewDecorator(),
 		},
 	}
 	b.Decorator.TreesPerChunk = 0

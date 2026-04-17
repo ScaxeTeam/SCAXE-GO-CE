@@ -5,18 +5,21 @@ import (
 	"github.com/scaxe/scaxe-go/pkg/nbt"
 	"github.com/scaxe/scaxe-go/pkg/world"
 )
+
 const ChestSize = 27
+
 type Chest struct {
 	SpawnableBase
 	ContainerBase
 	NameableBase
-	pairX int32
-	pairZ int32
+	pairX	int32
+	pairZ	int32
 }
+
 func NewChest(chunk *world.Chunk, nbtData *nbt.CompoundTag) *Chest {
 	c := &Chest{
-		pairX: -1,
-		pairZ: -1,
+		pairX:	-1,
+		pairZ:	-1,
 	}
 
 	InitSpawnableBase(&c.SpawnableBase, TypeChest, chunk, nbtData)

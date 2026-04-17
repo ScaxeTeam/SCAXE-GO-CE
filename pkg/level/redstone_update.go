@@ -116,8 +116,8 @@ func (l *Level) UpdateRedstoneWire(x, y, z int32) {
 
 	l.SetBlock(x, y, z, block.REDSTONE_WIRE, byte(newPower), false)
 	l.PendingBlockUpdates = append(l.PendingBlockUpdates, PendingBlockUpdate{
-		X: x, Y: y, Z: z,
-		ID: block.REDSTONE_WIRE, Meta: byte(newPower),
+		X:	x, Y: y, Z: z,
+		ID:	block.REDSTONE_WIRE, Meta: byte(newPower),
 	})
 
 	hOffsets := [4][2]int32{{-1, 0}, {1, 0}, {0, -1}, {0, 1}}
@@ -144,9 +144,9 @@ func (l *Level) notifyWireNeighbor(x, y, z int32) {
 	if behavior != nil {
 		bs := l.GetBlock(x, y, z)
 		ctx := &block.BlockContext{
-			X: int(x), Y: int(y), Z: int(z),
-			Meta:    bs.Meta,
-			Powered: l.getBlockPowered(bs.ID, bs.Meta, x, y, z),
+			X:	int(x), Y: int(y), Z: int(z),
+			Meta:		bs.Meta,
+			Powered:	l.getBlockPowered(bs.ID, bs.Meta, x, y, z),
 		}
 		behavior.OnUpdate(ctx, BlockUpdateNormal)
 		l.applyBlockContextResult(ctx, x, y, z)

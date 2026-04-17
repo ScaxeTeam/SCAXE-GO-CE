@@ -11,18 +11,18 @@ import (
 
 type FillCommand struct {
 	command.BaseCommand
-	server ServerInterface
+	server	ServerInterface
 }
 
 func NewFillCommand(server ServerInterface) *FillCommand {
 	return &FillCommand{
 		BaseCommand: command.BaseCommand{
-			Name:        "fill",
-			Description: "Fills a region with blocks",
-			Usage:       "/fill <x1> <y1> <z1> <x2> <y2> <z2> <block> [data]",
-			Permission:  "pocketmine.command.fill",
+			Name:		"fill",
+			Description:	"Fills a region with blocks",
+			Usage:		"/fill <x1> <y1> <z1> <x2> <y2> <z2> <block> [data]",
+			Permission:	"pocketmine.command.fill",
 		},
-		server: server,
+		server:	server,
 	}
 }
 

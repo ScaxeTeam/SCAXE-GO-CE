@@ -1,18 +1,18 @@
 package protocol
 
 const (
-	DimensionOverworld byte = 0
-	DimensionNether    byte = 1
-	DimensionEnd       byte = 2
+	DimensionOverworld	byte	= 0
+	DimensionNether		byte	= 1
+	DimensionEnd		byte	= 2
 )
 
 type ChangeDimensionPacket struct {
 	BasePacket
-	Dimension byte
-	X         float32
-	Y         float32
-	Z         float32
-	Unknown   bool
+	Dimension	byte
+	X		float32
+	Y		float32
+	Z		float32
+	Unknown		bool
 }
 
 func NewChangeDimensionPacket() *ChangeDimensionPacket {

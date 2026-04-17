@@ -27,10 +27,10 @@ type LuaPluginCommand struct {
 func NewLuaPluginCommand() *LuaPluginCommand {
 	return &LuaPluginCommand{
 		BaseCommand: command.BaseCommand{
-			Name:        "luaplugin",
-			Description: "Manage Lua plugins",
-			Usage:       "/luaplugin <list|reload|disable|enable> [name]",
-			Permission:  "scaxe.command.luaplugin",
+			Name:		"luaplugin",
+			Description:	"Manage Lua plugins",
+			Usage:		"/luaplugin <list|reload|disable|enable> [name]",
+			Permission:	"scaxe.command.luaplugin",
 		},
 	}
 }

@@ -84,8 +84,8 @@ func (a *ServerAPIAdapter) GetCurrentTick() int64 {
 }
 
 type PlayerAPIAdapter struct {
-	player *player.Player
-	server *Server
+	player	*player.Player
+	server	*Server
 }
 
 func (p *PlayerAPIAdapter) GetName() string {

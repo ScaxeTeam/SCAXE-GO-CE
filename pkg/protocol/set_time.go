@@ -2,15 +2,15 @@ package protocol
 
 type SetTimePacket struct {
 	BasePacket
-	Time    int32
-	Started bool
+	Time	int32
+	Started	bool
 }
 
 func NewSetTimePacket() *SetTimePacket {
 	return &SetTimePacket{
-		BasePacket: BasePacket{PacketID: IDSetTime},
-		Time:       0,
-		Started:    true,
+		BasePacket:	BasePacket{PacketID: IDSetTime},
+		Time:		0,
+		Started:	true,
 	}
 }
 

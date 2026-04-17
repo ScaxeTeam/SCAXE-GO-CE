@@ -5,6 +5,7 @@ import (
 
 	"github.com/scaxe/scaxe-go/pkg/item"
 )
+
 type InventoryHolder interface {
 	GetInventory() Inventory
 }
@@ -46,17 +47,18 @@ type Inventory interface {
 	OnSlotChange(index int, before item.Item, send bool)
 }
 type BaseInventory struct {
-	slots    []item.Item
-	name     string
-	title    string
-	size     int
-	invType  *InventoryType
-	holder   InventoryHolder
-	viewers  map[string]Viewer
-	maxStack int
+	slots		[]item.Item
+	name		string
+	title		string
+	size		int
+	invType		*InventoryType
+	holder		InventoryHolder
+	viewers		map[string]Viewer
+	maxStack	int
 
-	OnSlotChangeFunc func(slot int, item item.Item)
+	OnSlotChangeFunc	func(slot int, item item.Item)
 }
+
 func NewBaseInventory(holder InventoryHolder, invType *InventoryType, overrideSize int, overrideTitle string) *BaseInventory {
 	size := invType.GetDefaultSize()
 	if overrideSize > 0 {
@@ -68,35 +70,35 @@ func NewBaseInventory(holder InventoryHolder, invType *InventoryType, overrideSi
 	}
 
 	return &BaseInventory{
-		slots:    make([]item.Item, size),
-		name:     invType.GetDefaultTitle(),
-		title:    title,
-		size:     size,
-		invType:  invType,
-		holder:   holder,
-		viewers:  make(map[string]Viewer),
-		maxStack: 64,
+		slots:		make([]item.Item, size),
+		name:		invType.GetDefaultTitle(),
+		title:		title,
+		size:		size,
+		invType:	invType,
+		holder:		holder,
+		viewers:	make(map[string]Viewer),
+		maxStack:	64,
 	}
 }
 func NewSimpleInventory(name string, size int) *BaseInventory {
 	return &BaseInventory{
-		slots:    make([]item.Item, size),
-		name:     name,
-		title:    name,
-		size:     size,
-		viewers:  make(map[string]Viewer),
-		maxStack: 64,
+		slots:		make([]item.Item, size),
+		name:		name,
+		title:		name,
+		size:		size,
+		viewers:	make(map[string]Viewer),
+		maxStack:	64,
 	}
 }
 
-func (inv *BaseInventory) GetSize() int                  { return inv.size }
-func (inv *BaseInventory) GetName() string               { return inv.name }
-func (inv *BaseInventory) GetTitle() string              { return inv.title }
-func (inv *BaseInventory) GetMaxStackSize() int          { return inv.maxStack }
-func (inv *BaseInventory) SetMaxStackSize(s int)         { inv.maxStack = s }
-func (inv *BaseInventory) GetType() *InventoryType       { return inv.invType }
-func (inv *BaseInventory) GetHolder() InventoryHolder    { return inv.holder }
-func (inv *BaseInventory) GetViewers() map[string]Viewer { return inv.viewers }
+func (inv *BaseInventory) GetSize() int				{ return inv.size }
+func (inv *BaseInventory) GetName() string			{ return inv.name }
+func (inv *BaseInventory) GetTitle() string			{ return inv.title }
+func (inv *BaseInventory) GetMaxStackSize() int			{ return inv.maxStack }
+func (inv *BaseInventory) SetMaxStackSize(s int)		{ inv.maxStack = s }
+func (inv *BaseInventory) GetType() *InventoryType		{ return inv.invType }
+func (inv *BaseInventory) GetHolder() InventoryHolder		{ return inv.holder }
+func (inv *BaseInventory) GetViewers() map[string]Viewer	{ return inv.viewers }
 
 func (inv *BaseInventory) GetItem(slot int) item.Item {
 	if slot < 0 || slot >= inv.size {

@@ -7,10 +7,10 @@ type CocoaBlock struct {
 func NewCocoaBlock() *CocoaBlock {
 	return &CocoaBlock{
 		TransparentBase: TransparentBase{
-			BlockID:       COCOA_BLOCK,
-			BlockName:     "Cocoa Block",
-			BlockHardness: 0.2,
-			BlockToolType: ToolTypeNone,
+			BlockID:	COCOA_BLOCK,
+			BlockName:	"Cocoa Block",
+			BlockHardness:	0.2,
+			BlockToolType:	ToolTypeNone,
 		},
 	}
 }

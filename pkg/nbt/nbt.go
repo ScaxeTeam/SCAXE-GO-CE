@@ -11,24 +11,24 @@ import (
 )
 
 const (
-	TagEnd       byte = 0
-	TagByte      byte = 1
-	TagShort     byte = 2
-	TagInt       byte = 3
-	TagLong      byte = 4
-	TagFloat     byte = 5
-	TagDouble    byte = 6
-	TagByteArray byte = 7
-	TagString    byte = 8
-	TagList      byte = 9
-	TagCompound  byte = 10
-	TagIntArray  byte = 11
+	TagEnd		byte	= 0
+	TagByte		byte	= 1
+	TagShort	byte	= 2
+	TagInt		byte	= 3
+	TagLong		byte	= 4
+	TagFloat	byte	= 5
+	TagDouble	byte	= 6
+	TagByteArray	byte	= 7
+	TagString	byte	= 8
+	TagList		byte	= 9
+	TagCompound	byte	= 10
+	TagIntArray	byte	= 11
 )
 
 type Endianness int
 
 const (
-	LittleEndian Endianness = iota
+	LittleEndian	Endianness	= iota
 	BigEndian
 )
 
@@ -64,24 +64,24 @@ func NewEndTag() *EndTag {
 	return &EndTag{}
 }
 
-func (t *EndTag) Type() byte                   { return TagEnd }
-func (t *EndTag) Value() interface{}           { return nil }
-func (t *EndTag) SetValue(v interface{}) error { return nil }
-func (t *EndTag) Read(r *Reader) error         { return nil }
-func (t *EndTag) Write(w *Writer) error        { return nil }
-func (t *EndTag) String() string               { return "EndTag" }
+func (t *EndTag) Type() byte			{ return TagEnd }
+func (t *EndTag) Value() interface{}		{ return nil }
+func (t *EndTag) SetValue(v interface{}) error	{ return nil }
+func (t *EndTag) Read(r *Reader) error		{ return nil }
+func (t *EndTag) Write(w *Writer) error		{ return nil }
+func (t *EndTag) String() string		{ return "EndTag" }
 
 type ByteTag struct {
 	baseTag
-	value int8
+	value	int8
 }
 
 func NewByteTag(name string, value int8) *ByteTag {
 	return &ByteTag{baseTag: baseTag{name: name}, value: value}
 }
 
-func (t *ByteTag) Type() byte         { return TagByte }
-func (t *ByteTag) Value() interface{} { return t.value }
+func (t *ByteTag) Type() byte		{ return TagByte }
+func (t *ByteTag) Value() interface{}	{ return t.value }
 func (t *ByteTag) SetValue(v interface{}) error {
 	switch val := v.(type) {
 	case int8:
@@ -112,15 +112,15 @@ func (t *ByteTag) String() string {
 
 type ShortTag struct {
 	baseTag
-	value int16
+	value	int16
 }
 
 func NewShortTag(name string, value int16) *ShortTag {
 	return &ShortTag{baseTag: baseTag{name: name}, value: value}
 }
 
-func (t *ShortTag) Type() byte         { return TagShort }
-func (t *ShortTag) Value() interface{} { return t.value }
+func (t *ShortTag) Type() byte		{ return TagShort }
+func (t *ShortTag) Value() interface{}	{ return t.value }
 func (t *ShortTag) SetValue(v interface{}) error {
 	switch val := v.(type) {
 	case int16:
@@ -149,15 +149,15 @@ func (t *ShortTag) String() string {
 
 type IntTag struct {
 	baseTag
-	value int32
+	value	int32
 }
 
 func NewIntTag(name string, value int32) *IntTag {
 	return &IntTag{baseTag: baseTag{name: name}, value: value}
 }
 
-func (t *IntTag) Type() byte         { return TagInt }
-func (t *IntTag) Value() interface{} { return t.value }
+func (t *IntTag) Type() byte		{ return TagInt }
+func (t *IntTag) Value() interface{}	{ return t.value }
 func (t *IntTag) SetValue(v interface{}) error {
 	switch val := v.(type) {
 	case int32:
@@ -186,15 +186,15 @@ func (t *IntTag) String() string {
 
 type LongTag struct {
 	baseTag
-	value int64
+	value	int64
 }
 
 func NewLongTag(name string, value int64) *LongTag {
 	return &LongTag{baseTag: baseTag{name: name}, value: value}
 }
 
-func (t *LongTag) Type() byte         { return TagLong }
-func (t *LongTag) Value() interface{} { return t.value }
+func (t *LongTag) Type() byte		{ return TagLong }
+func (t *LongTag) Value() interface{}	{ return t.value }
 func (t *LongTag) SetValue(v interface{}) error {
 	switch val := v.(type) {
 	case int64:
@@ -223,15 +223,15 @@ func (t *LongTag) String() string {
 
 type FloatTag struct {
 	baseTag
-	value float32
+	value	float32
 }
 
 func NewFloatTag(name string, value float32) *FloatTag {
 	return &FloatTag{baseTag: baseTag{name: name}, value: value}
 }
 
-func (t *FloatTag) Type() byte         { return TagFloat }
-func (t *FloatTag) Value() interface{} { return t.value }
+func (t *FloatTag) Type() byte		{ return TagFloat }
+func (t *FloatTag) Value() interface{}	{ return t.value }
 func (t *FloatTag) SetValue(v interface{}) error {
 	switch val := v.(type) {
 	case float32:
@@ -260,15 +260,15 @@ func (t *FloatTag) String() string {
 
 type DoubleTag struct {
 	baseTag
-	value float64
+	value	float64
 }
 
 func NewDoubleTag(name string, value float64) *DoubleTag {
 	return &DoubleTag{baseTag: baseTag{name: name}, value: value}
 }
 
-func (t *DoubleTag) Type() byte         { return TagDouble }
-func (t *DoubleTag) Value() interface{} { return t.value }
+func (t *DoubleTag) Type() byte		{ return TagDouble }
+func (t *DoubleTag) Value() interface{}	{ return t.value }
 func (t *DoubleTag) SetValue(v interface{}) error {
 	switch val := v.(type) {
 	case float64:
@@ -297,15 +297,15 @@ func (t *DoubleTag) String() string {
 
 type ByteArrayTag struct {
 	baseTag
-	value []byte
+	value	[]byte
 }
 
 func NewByteArrayTag(name string, value []byte) *ByteArrayTag {
 	return &ByteArrayTag{baseTag: baseTag{name: name}, value: value}
 }
 
-func (t *ByteArrayTag) Type() byte         { return TagByteArray }
-func (t *ByteArrayTag) Value() interface{} { return t.value }
+func (t *ByteArrayTag) Type() byte		{ return TagByteArray }
+func (t *ByteArrayTag) Value() interface{}	{ return t.value }
 func (t *ByteArrayTag) SetValue(v interface{}) error {
 	if val, ok := v.([]byte); ok {
 		t.value = val
@@ -335,15 +335,15 @@ func (t *ByteArrayTag) String() string {
 
 type StringTag struct {
 	baseTag
-	value string
+	value	string
 }
 
 func NewStringTag(name string, value string) *StringTag {
 	return &StringTag{baseTag: baseTag{name: name}, value: value}
 }
 
-func (t *StringTag) Type() byte         { return TagString }
-func (t *StringTag) Value() interface{} { return t.value }
+func (t *StringTag) Type() byte		{ return TagString }
+func (t *StringTag) Value() interface{}	{ return t.value }
 func (t *StringTag) SetValue(v interface{}) error {
 	if val, ok := v.(string); ok {
 		t.value = val
@@ -368,19 +368,19 @@ func (t *StringTag) String() string {
 
 type ListTag struct {
 	baseTag
-	tagType byte
-	value   []Tag
+	tagType	byte
+	value	[]Tag
 }
 
 func NewListTag(name string, tagType byte) *ListTag {
 	return &ListTag{baseTag: baseTag{name: name}, tagType: tagType, value: []Tag{}}
 }
 
-func (t *ListTag) Type() byte              { return TagList }
-func (t *ListTag) Value() interface{}      { return t.value }
-func (t *ListTag) TagType() byte           { return t.tagType }
-func (t *ListTag) SetTagType(tagType byte) { t.tagType = tagType }
-func (t *ListTag) Len() int                { return len(t.value) }
+func (t *ListTag) Type() byte			{ return TagList }
+func (t *ListTag) Value() interface{}		{ return t.value }
+func (t *ListTag) TagType() byte		{ return t.tagType }
+func (t *ListTag) SetTagType(tagType byte)	{ t.tagType = tagType }
+func (t *ListTag) Len() int			{ return len(t.value) }
 
 func (t *ListTag) SetValue(v interface{}) error {
 	if val, ok := v.([]Tag); ok {
@@ -453,15 +453,15 @@ func (t *ListTag) String() string {
 
 type IntArrayTag struct {
 	baseTag
-	value []int32
+	value	[]int32
 }
 
 func NewIntArrayTag(name string, value []int32) *IntArrayTag {
 	return &IntArrayTag{baseTag: baseTag{name: name}, value: value}
 }
 
-func (t *IntArrayTag) Type() byte         { return TagIntArray }
-func (t *IntArrayTag) Value() interface{} { return t.value }
+func (t *IntArrayTag) Type() byte		{ return TagIntArray }
+func (t *IntArrayTag) Value() interface{}	{ return t.value }
 func (t *IntArrayTag) SetValue(v interface{}) error {
 	if val, ok := v.([]int32); ok {
 		t.value = val
@@ -501,20 +501,20 @@ func (t *IntArrayTag) String() string {
 
 type CompoundTag struct {
 	baseTag
-	value map[string]Tag
-	order []string
+	value	map[string]Tag
+	order	[]string
 }
 
 func NewCompoundTag(name string) *CompoundTag {
 	return &CompoundTag{
-		baseTag: baseTag{name: name},
-		value:   make(map[string]Tag),
-		order:   []string{},
+		baseTag:	baseTag{name: name},
+		value:		make(map[string]Tag),
+		order:		[]string{},
 	}
 }
 
-func (t *CompoundTag) Type() byte         { return TagCompound }
-func (t *CompoundTag) Value() interface{} { return t.value }
+func (t *CompoundTag) Type() byte		{ return TagCompound }
+func (t *CompoundTag) Value() interface{}	{ return t.value }
 func (t *CompoundTag) SetValue(v interface{}) error {
 	if val, ok := v.(map[string]Tag); ok {
 		t.value = val
@@ -706,9 +706,9 @@ func CreateTag(tagType byte) Tag {
 }
 
 type Reader struct {
-	r         io.Reader
-	endian    Endianness
-	byteOrder binary.ByteOrder
+	r		io.Reader
+	endian		Endianness
+	byteOrder	binary.ByteOrder
 }
 
 func NewReader(r io.Reader, endian Endianness) *Reader {
@@ -817,9 +817,9 @@ func (r *Reader) ReadTag() (Tag, error) {
 }
 
 type Writer struct {
-	w         io.Writer
-	endian    Endianness
-	byteOrder binary.ByteOrder
+	w		io.Writer
+	endian		Endianness
+	byteOrder	binary.ByteOrder
 }
 
 func NewWriter(w io.Writer, endian Endianness) *Writer {
@@ -914,8 +914,8 @@ func float64frombits(b uint64) float64 {
 }
 
 type NBT struct {
-	endian Endianness
-	data   *CompoundTag
+	endian	Endianness
+	data	*CompoundTag
 }
 
 func New(endian Endianness) *NBT {

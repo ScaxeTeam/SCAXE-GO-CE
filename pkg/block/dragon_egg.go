@@ -7,11 +7,11 @@ type DragonEggBlock struct {
 func NewDragonEggBlock() *DragonEggBlock {
 	return &DragonEggBlock{
 		TransparentBase: TransparentBase{
-			BlockID:         DRAGON_EGG,
-			BlockName:       "Dragon Egg",
-			BlockHardness:   3,
-			BlockLightLevel: 1,
-			BlockToolType:   ToolTypeNone,
+			BlockID:		DRAGON_EGG,
+			BlockName:		"Dragon Egg",
+			BlockHardness:		3,
+			BlockLightLevel:	1,
+			BlockToolType:		ToolTypeNone,
 		},
 	}
 }

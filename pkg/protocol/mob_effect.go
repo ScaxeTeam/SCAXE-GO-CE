@@ -2,18 +2,18 @@ package protocol
 
 type MobEffectPacket struct {
 	BasePacket
-	EntityID  int64
-	EventID   byte
-	EffectID  byte
-	Amplifier byte
-	Particles bool
-	Duration  int32
+	EntityID	int64
+	EventID		byte
+	EffectID	byte
+	Amplifier	byte
+	Particles	bool
+	Duration	int32
 }
 
 func NewMobEffectPacket() *MobEffectPacket {
 	return &MobEffectPacket{
-		BasePacket: BasePacket{PacketID: IDMobEffect},
-		Particles:  true,
+		BasePacket:	BasePacket{PacketID: IDMobEffect},
+		Particles:	true,
 	}
 }
 

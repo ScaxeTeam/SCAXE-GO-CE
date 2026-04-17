@@ -11,10 +11,10 @@ type PluginsCommand struct {
 func NewPluginsCommand() *PluginsCommand {
 	return &PluginsCommand{
 		BaseCommand: command.BaseCommand{
-			Name:        "plugins",
-			Description: "Lists all loaded plugins",
-			Usage:       "/plugins",
-			Permission:  "pocketmine.command.plugins",
+			Name:		"plugins",
+			Description:	"Lists all loaded plugins",
+			Usage:		"/plugins",
+			Permission:	"pocketmine.command.plugins",
 		},
 	}
 }
@@ -33,10 +33,10 @@ type GcCommand struct {
 func NewGcCommand() *GcCommand {
 	return &GcCommand{
 		BaseCommand: command.BaseCommand{
-			Name:        "gc",
-			Description: "Forces garbage collection",
-			Usage:       "/gc",
-			Permission:  "pocketmine.command.gc",
+			Name:		"gc",
+			Description:	"Forces garbage collection",
+			Usage:		"/gc",
+			Permission:	"pocketmine.command.gc",
 		},
 	}
 }
@@ -54,10 +54,10 @@ type TimingsCommand struct {
 func NewTimingsCommand() *TimingsCommand {
 	return &TimingsCommand{
 		BaseCommand: command.BaseCommand{
-			Name:        "timings",
-			Description: "Server timings profiler",
-			Usage:       "/timings <on|off|paste|reset>",
-			Permission:  "pocketmine.command.timings",
+			Name:		"timings",
+			Description:	"Server timings profiler",
+			Usage:		"/timings <on|off|paste|reset>",
+			Permission:	"pocketmine.command.timings",
 		},
 	}
 }

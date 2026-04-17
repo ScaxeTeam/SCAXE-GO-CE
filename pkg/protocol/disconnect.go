@@ -6,8 +6,8 @@ import (
 
 type DisconnectPacket struct {
 	BasePacket
-	HideDisconnectionScreen bool
-	Message                 string
+	HideDisconnectionScreen	bool
+	Message			string
 }
 
 func NewDisconnectPacket() *DisconnectPacket {

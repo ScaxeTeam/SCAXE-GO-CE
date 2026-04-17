@@ -7,17 +7,17 @@ import (
 
 type AILookIdle struct {
 	BaseAIGoal
-	entity     *Entity
-	lookHelper *LookHelper
-	lookX      float64
-	lookZ      float64
-	idleTime   int
+	entity		*Entity
+	lookHelper	*LookHelper
+	lookX		float64
+	lookZ		float64
+	idleTime	int
 }
 
 func NewAILookIdle(e *Entity, lh *LookHelper) *AILookIdle {
 	g := &AILookIdle{
-		entity:     e,
-		lookHelper: lh,
+		entity:		e,
+		lookHelper:	lh,
 	}
 	g.SetMutexBits(3)
 	return g

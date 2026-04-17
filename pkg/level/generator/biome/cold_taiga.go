@@ -12,13 +12,13 @@ type ColdTaigaBiome struct {
 func NewColdTaigaBiome() *ColdTaigaBiome {
 	b := &ColdTaigaBiome{
 		BaseBiome: &BaseBiome{
-			ID:              30,
-			Name:            "Cold Taiga",
-			BaseHeight:      0.2,
-			HeightVariation: 0.2,
-			Temperature:     -0.5,
-			Rainfall:        0.4,
-			Decorator:       NewDecorator(),
+			ID:			30,
+			Name:			"Cold Taiga",
+			BaseHeight:		0.2,
+			HeightVariation:	0.2,
+			Temperature:		-0.5,
+			Rainfall:		0.4,
+			Decorator:		NewDecorator(),
 		},
 	}
 
@@ -31,13 +31,13 @@ func NewColdTaigaBiome() *ColdTaigaBiome {
 func NewColdTaigaHillsBiome() *ColdTaigaBiome {
 	b := &ColdTaigaBiome{
 		BaseBiome: &BaseBiome{
-			ID:              31,
-			Name:            "Cold Taiga Hills",
-			BaseHeight:      0.45,
-			HeightVariation: 0.3,
-			Temperature:     -0.5,
-			Rainfall:        0.4,
-			Decorator:       NewDecorator(),
+			ID:			31,
+			Name:			"Cold Taiga Hills",
+			BaseHeight:		0.45,
+			HeightVariation:	0.3,
+			Temperature:		-0.5,
+			Rainfall:		0.4,
+			Decorator:		NewDecorator(),
 		},
 	}
 	b.Decorator.TreesPerChunk = 10

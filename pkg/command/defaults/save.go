@@ -6,18 +6,18 @@ import (
 
 type SaveCommand struct {
 	command.BaseCommand
-	server ServerInterface
+	server	ServerInterface
 }
 
 func NewSaveCommand(server ServerInterface) *SaveCommand {
 	return &SaveCommand{
 		BaseCommand: command.BaseCommand{
-			Name:        "save-all",
-			Description: "Saves all player and world data",
-			Usage:       "/save-all",
-			Permission:  "pocketmine.command.save.perform",
+			Name:		"save-all",
+			Description:	"Saves all player and world data",
+			Usage:		"/save-all",
+			Permission:	"pocketmine.command.save.perform",
 		},
-		server: server,
+		server:	server,
 	}
 }
 
@@ -31,18 +31,18 @@ func (c *SaveCommand) Execute(sender command.CommandSender, args []string) bool 
 
 type SaveOnCommand struct {
 	command.BaseCommand
-	server ServerInterface
+	server	ServerInterface
 }
 
 func NewSaveOnCommand(server ServerInterface) *SaveOnCommand {
 	return &SaveOnCommand{
 		BaseCommand: command.BaseCommand{
-			Name:        "save-on",
-			Description: "Enables automatic saving",
-			Usage:       "/save-on",
-			Permission:  "pocketmine.command.save.enable",
+			Name:		"save-on",
+			Description:	"Enables automatic saving",
+			Usage:		"/save-on",
+			Permission:	"pocketmine.command.save.enable",
 		},
-		server: server,
+		server:	server,
 	}
 }
 
@@ -54,18 +54,18 @@ func (c *SaveOnCommand) Execute(sender command.CommandSender, args []string) boo
 
 type SaveOffCommand struct {
 	command.BaseCommand
-	server ServerInterface
+	server	ServerInterface
 }
 
 func NewSaveOffCommand(server ServerInterface) *SaveOffCommand {
 	return &SaveOffCommand{
 		BaseCommand: command.BaseCommand{
-			Name:        "save-off",
-			Description: "Disables automatic saving",
-			Usage:       "/save-off",
-			Permission:  "pocketmine.command.save.disable",
+			Name:		"save-off",
+			Description:	"Disables automatic saving",
+			Usage:		"/save-off",
+			Permission:	"pocketmine.command.save.disable",
 		},
-		server: server,
+		server:	server,
 	}
 }
 

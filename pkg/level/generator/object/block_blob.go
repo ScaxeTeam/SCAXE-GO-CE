@@ -8,14 +8,14 @@ import (
 )
 
 type BlockBlob struct {
-	Block int
-	Size  int
+	Block	int
+	Size	int
 }
 
 func NewBlockBlob(blockId int, startRadius int) *BlockBlob {
 	return &BlockBlob{
-		Block: blockId,
-		Size:  startRadius,
+		Block:	blockId,
+		Size:	startRadius,
 	}
 }
 

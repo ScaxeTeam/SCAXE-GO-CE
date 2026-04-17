@@ -7,22 +7,25 @@ import (
 	"github.com/scaxe/scaxe-go/pkg/nbt"
 	"github.com/scaxe/scaxe-go/pkg/world"
 )
+
 const FurnaceSize = 3
 const (
-	FurnaceSlotInput  = 0
-	FurnaceSlotFuel   = 1
-	FurnaceSlotOutput = 2
+	FurnaceSlotInput	= 0
+	FurnaceSlotFuel		= 1
+	FurnaceSlotOutput	= 2
 )
+
 type Furnace struct {
 	SpawnableBase
 	ContainerBase
 	NameableBase
-	BurnTime  int16
-	CookTime  int16
-	MaxTime   int16
-	BurnTicks int16
-	needUpdate bool
+	BurnTime	int16
+	CookTime	int16
+	MaxTime		int16
+	BurnTicks	int16
+	needUpdate	bool
 }
+
 func NewFurnace(chunk *world.Chunk, nbtData *nbt.CompoundTag) *Furnace {
 	f := &Furnace{
 		needUpdate: true,

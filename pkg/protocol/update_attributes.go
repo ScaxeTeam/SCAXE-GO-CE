@@ -6,14 +6,14 @@ import (
 
 type UpdateAttributesPacket struct {
 	BasePacket
-	EntityID int64
-	Entries  []*attribute.Attribute
+	EntityID	int64
+	Entries		[]*attribute.Attribute
 }
 
 func NewUpdateAttributesPacket() *UpdateAttributesPacket {
 	return &UpdateAttributesPacket{
-		BasePacket: BasePacket{PacketID: IDUpdateAttributes},
-		Entries:    make([]*attribute.Attribute, 0),
+		BasePacket:	BasePacket{PacketID: IDUpdateAttributes},
+		Entries:	make([]*attribute.Attribute, 0),
 	}
 }
 

@@ -7,16 +7,16 @@ import (
 )
 
 const (
-	BlockGrass = 2
+	BlockGrass	= 2
 
-	BlockTallGrass    = 31
-	BlockYellowFlower = 37
-	BlockRedFlower    = 38
-	BlockCactus       = 81
-	BlockSugarCane    = 83
-	BlockPumpkin      = 86
-	BlockMelon        = 103
-	BlockDeadBush     = 32
+	BlockTallGrass		= 31
+	BlockYellowFlower	= 37
+	BlockRedFlower		= 38
+	BlockCactus		= 81
+	BlockSugarCane		= 83
+	BlockPumpkin		= 86
+	BlockMelon		= 103
+	BlockDeadBush		= 32
 )
 
 type TallGrass struct{}

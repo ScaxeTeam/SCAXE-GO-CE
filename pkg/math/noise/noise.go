@@ -13,19 +13,19 @@ type Generator interface {
 }
 
 type Noise struct {
-	Octaves     int
-	Persistence float64
-	Expansion   float64
-	OffsetX     float64
-	OffsetY     float64
-	OffsetZ     float64
+	Octaves		int
+	Persistence	float64
+	Expansion	float64
+	OffsetX		float64
+	OffsetY		float64
+	OffsetZ		float64
 }
 
 func NewNoise(octaves int, persistence, expansion float64) *Noise {
 	return &Noise{
-		Octaves:     octaves,
-		Persistence: persistence,
-		Expansion:   expansion,
+		Octaves:	octaves,
+		Persistence:	persistence,
+		Expansion:	expansion,
 	}
 }
 

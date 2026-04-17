@@ -2,30 +2,30 @@ package block
 
 type DaylightDetectorBlock struct {
 	TransparentBase
-	inverted bool
+	inverted	bool
 }
 
 func NewDaylightDetectorBlock() *DaylightDetectorBlock {
 	return &DaylightDetectorBlock{
 		TransparentBase: TransparentBase{
-			BlockID:       DAYLIGHT_SENSOR,
-			BlockName:     "Daylight Sensor",
-			BlockHardness: 0.2,
-			BlockToolType: ToolTypeAxe,
+			BlockID:	DAYLIGHT_SENSOR,
+			BlockName:	"Daylight Sensor",
+			BlockHardness:	0.2,
+			BlockToolType:	ToolTypeAxe,
 		},
-		inverted: false,
+		inverted:	false,
 	}
 }
 
 func NewInvertedDaylightDetectorBlock() *DaylightDetectorBlock {
 	return &DaylightDetectorBlock{
 		TransparentBase: TransparentBase{
-			BlockID:       DAYLIGHT_SENSOR_INVERTED,
-			BlockName:     "Daylight Sensor Inverted",
-			BlockHardness: 0.2,
-			BlockToolType: ToolTypeAxe,
+			BlockID:	DAYLIGHT_SENSOR_INVERTED,
+			BlockName:	"Daylight Sensor Inverted",
+			BlockHardness:	0.2,
+			BlockToolType:	ToolTypeAxe,
 		},
-		inverted: true,
+		inverted:	true,
 	}
 }
 

@@ -10,18 +10,19 @@ import (
 )
 
 const (
-	EntityEventHurtAnimation byte = 2
-	EntityEventDeathAnimation byte = 3
-	EntityEventRespawn byte = 18
-	FoodTickCycle = 80
-	ExhaustionPerSprint = 0.1
-	ExhaustionPerJump = 0.05
-	ExhaustionPerSprintJump = 0.2
-	ExhaustionPerHealthRegen = 3.0
+	EntityEventHurtAnimation	byte	= 2
+	EntityEventDeathAnimation	byte	= 3
+	EntityEventRespawn		byte	= 18
+	FoodTickCycle				= 80
+	ExhaustionPerSprint			= 0.1
+	ExhaustionPerJump			= 0.05
+	ExhaustionPerSprintJump			= 0.2
+	ExhaustionPerHealthRegen		= 3.0
 )
+
 type SurvivalState struct {
-	dead      bool
-	deathTime int
+	dead		bool
+	deathTime	int
 }
 
 func newSurvivalState() *SurvivalState {

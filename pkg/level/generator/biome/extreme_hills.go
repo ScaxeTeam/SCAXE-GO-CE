@@ -10,27 +10,27 @@ import (
 
 type ExtremeHillsBiome struct {
 	*BaseBiome
-	Type int
+	Type	int
 }
 
 const (
-	HILLS_NORMAL      = 0
-	HILLS_EXTRA_TREES = 1
-	HILLS_MUTATED     = 2
+	HILLS_NORMAL		= 0
+	HILLS_EXTRA_TREES	= 1
+	HILLS_MUTATED		= 2
 )
 
 func NewExtremeHillsBiome() *ExtremeHillsBiome {
 	b := &ExtremeHillsBiome{
 		BaseBiome: &BaseBiome{
-			ID:              3,
-			Name:            "Extreme Hills",
-			BaseHeight:      1.0,
-			HeightVariation: 0.5,
-			Temperature:     0.2,
-			Rainfall:        0.3,
-			Decorator:       NewDecorator(),
+			ID:			3,
+			Name:			"Extreme Hills",
+			BaseHeight:		1.0,
+			HeightVariation:	0.5,
+			Temperature:		0.2,
+			Rainfall:		0.3,
+			Decorator:		NewDecorator(),
 		},
-		Type: HILLS_NORMAL,
+		Type:	HILLS_NORMAL,
 	}
 
 	b.Decorator.TreesPerChunk = 0
@@ -40,15 +40,15 @@ func NewExtremeHillsBiome() *ExtremeHillsBiome {
 func NewExtremeHillsPlusBiome() *ExtremeHillsBiome {
 	b := &ExtremeHillsBiome{
 		BaseBiome: &BaseBiome{
-			ID:              34,
-			Name:            "Extreme Hills+",
-			BaseHeight:      1.0,
-			HeightVariation: 0.5,
-			Temperature:     0.2,
-			Rainfall:        0.3,
-			Decorator:       NewDecorator(),
+			ID:			34,
+			Name:			"Extreme Hills+",
+			BaseHeight:		1.0,
+			HeightVariation:	0.5,
+			Temperature:		0.2,
+			Rainfall:		0.3,
+			Decorator:		NewDecorator(),
 		},
-		Type: HILLS_EXTRA_TREES,
+		Type:	HILLS_EXTRA_TREES,
 	}
 
 	b.Decorator.TreesPerChunk = 3
@@ -58,15 +58,15 @@ func NewExtremeHillsPlusBiome() *ExtremeHillsBiome {
 func NewExtremeHillsEdgeBiome() *ExtremeHillsBiome {
 	b := &ExtremeHillsBiome{
 		BaseBiome: &BaseBiome{
-			ID:              20,
-			Name:            "Extreme Hills Edge",
-			BaseHeight:      0.8,
-			HeightVariation: 0.3,
-			Temperature:     0.2,
-			Rainfall:        0.3,
-			Decorator:       NewDecorator(),
+			ID:			20,
+			Name:			"Extreme Hills Edge",
+			BaseHeight:		0.8,
+			HeightVariation:	0.3,
+			Temperature:		0.2,
+			Rainfall:		0.3,
+			Decorator:		NewDecorator(),
 		},
-		Type: HILLS_NORMAL,
+		Type:	HILLS_NORMAL,
 	}
 	b.Decorator.TreesPerChunk = 0
 	return b

@@ -26,14 +26,14 @@ func getHeightAt(level populator.ChunkManager, x, z int32) int {
 func NewRoofedForestBiome() *RoofedForestBiome {
 	b := &RoofedForestBiome{
 		BaseBiome: &BaseBiome{
-			ID:              ROOFED_FOREST,
-			Name:            "Roofed Forest",
-			BaseHeight:      0.1,
-			HeightVariation: 0.2,
-			Temperature:     0.7,
-			Rainfall:        0.8,
-			GroundCover:     []block.BlockState{block.NewBlockState(block.GRASS, 0), block.NewBlockState(block.DIRT, 0)},
-			Decorator:       NewDecorator(),
+			ID:			ROOFED_FOREST,
+			Name:			"Roofed Forest",
+			BaseHeight:		0.1,
+			HeightVariation:	0.2,
+			Temperature:		0.7,
+			Rainfall:		0.8,
+			GroundCover:		[]block.BlockState{block.NewBlockState(block.GRASS, 0), block.NewBlockState(block.DIRT, 0)},
+			Decorator:		NewDecorator(),
 		},
 	}
 

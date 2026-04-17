@@ -12,6 +12,7 @@ import (
 	"github.com/scaxe/scaxe-go/pkg/logger"
 	"github.com/scaxe/scaxe-go/pkg/permission"
 	"github.com/scaxe/scaxe-go/pkg/protocol"
+	"github.com/scaxe/scaxe-go/pkg/proxy"
 	"github.com/scaxe/scaxe-go/pkg/raknet"
 	"github.com/scaxe/scaxe-go/pkg/world"
 )
@@ -22,72 +23,74 @@ var _ level.ChunkLoader = (*Player)(nil)
 
 type Player struct {
 	*entity.Human
-	mu sync.RWMutex
+	mu	sync.RWMutex
 
-	Session   *raknet.Session
-	ClientID  uint64
-	IPAddress string
-	Port      int
-	Protocol  int32
+	Session		*raknet.Session
+	ClientID	uint64
+	IPAddress	string
+	Port		int
+	Protocol	int32
+	XlatSession	*proxy.ProxySession
 
-	DisplayName string
+	DisplayName	string
 
-	Spawned        bool
-	Connected      bool
-	LoggedIn       bool
-	LoadingChunks  bool
-	SpawnReadyTick int64
-	Op             bool
-	Gamemode       int
+	Spawned		bool
+	Connected	bool
+	LoggedIn	bool
+	LoadingChunks	bool
+	SpawnReadyTick	int64
+	Op		bool
+	Gamemode	int
 
-	ChunkRadius    int32
-	LoadedChunks   map[int64]bool
-	chunkLoadQueue []int64
-	usedChunks     map[int64]bool
-	loadCounter    int
-	chunksPerTick  int
-	spawnThreshold int
-	ChunksToSend   []int64
+	ChunkRadius	int32
+	LoadedChunks	map[int64]bool
+	chunkLoadQueue	[]int64
+	usedChunks	map[int64]bool
+	loadCounter	int
+	chunksPerTick	int
+	spawnThreshold	int
+	ChunksToSend	[]int64
 
-	LastMoveTime int64
-	Ping         int
-	Difficulty   int
+	LastMoveTime	int64
+	Ping		int
+	Difficulty	int
 
-	Inventory *inventory.PlayerInventory
-	windows   *InventoryWindows
-	movement  *MovementState
-	combat    *CombatState
-	survival  *SurvivalState
+	Inventory	*inventory.PlayerInventory
+	windows		*InventoryWindows
+	movement	*MovementState
+	combat		*CombatState
+	survival	*SurvivalState
 }
 
 func NewPlayer(session *raknet.Session, ip string, port int) *Player {
 	p := &Player{
-		Human:          entity.NewHuman(),
-		Session:        session,
-		ClientID:       0,
-		IPAddress:      ip,
-		Port:           port,
-		Protocol:       0,
-		DisplayName:    "",
-		Spawned:        false,
-		Connected:      true,
-		LoggedIn:       false,
-		LoadingChunks:  false,
-		ChunkRadius:    4,
-		LoadedChunks:   make(map[int64]bool),
-		usedChunks:     make(map[int64]bool),
-		chunksPerTick:  4,
-		spawnThreshold: 16,
-		ChunksToSend:   nil,
-		LastMoveTime:   0,
-		Ping:           0,
-		Inventory:      inventory.NewPlayerInventory(),
-		Difficulty:     1,
-		windows:        NewInventoryWindows(),
-		movement:       newMovementState(),
-		combat:         newCombatState(),
-		survival:       newSurvivalState(),
+		Human:		entity.NewHuman(),
+		Session:	session,
+		ClientID:	0,
+		IPAddress:	ip,
+		Port:		port,
+		Protocol:	0,
+		DisplayName:	"",
+		Spawned:	false,
+		Connected:	true,
+		LoggedIn:	false,
+		LoadingChunks:	false,
+		ChunkRadius:	4,
+		LoadedChunks:	make(map[int64]bool),
+		usedChunks:	make(map[int64]bool),
+		chunksPerTick:	4,
+		spawnThreshold:	16,
+		ChunksToSend:	nil,
+		LastMoveTime:	0,
+		Ping:		0,
+		Inventory:	inventory.NewPlayerInventory(),
+		Difficulty:	1,
+		windows:	NewInventoryWindows(),
+		movement:	newMovementState(),
+		combat:		newCombatState(),
+		survival:	newSurvivalState(),
 	}
+	p.XlatSession = proxy.NewProxySession(p)
 
 	p.Inventory.OnSlotChangeFunc = func(slot int, it item.Item) {
 
@@ -281,9 +284,9 @@ func (p *Player) BroadcastArmorChange() {
 	armor := p.Inventory.GetArmorContents()
 	for i, it := range armor {
 		pk.Slots[i] = protocol.ArmorItem{
-			ID:    int16(it.ID),
-			Count: int8(it.Count),
-			Meta:  uint16(it.Meta),
+			ID:	int16(it.ID),
+			Count:	int8(it.Count),
+			Meta:	uint16(it.Meta),
 		}
 	}
 
@@ -743,15 +746,15 @@ func (p *Player) ClearAllChunks() {
 }
 
 const (
-	ActionStartBreak   int32 = 0
-	ActionAbortBreak   int32 = 1
-	ActionStopBreak    int32 = 2
-	ActionReleaseItem  int32 = 5
-	ActionStopSleeping int32 = 6
-	ActionRespawn      int32 = 7
-	ActionJump         int32 = 8
-	ActionStartSprint  int32 = 9
-	ActionStopSprint   int32 = 10
-	ActionStartSneak   int32 = 11
-	ActionStopSneak    int32 = 12
+	ActionStartBreak	int32	= 0
+	ActionAbortBreak	int32	= 1
+	ActionStopBreak		int32	= 2
+	ActionReleaseItem	int32	= 5
+	ActionStopSleeping	int32	= 6
+	ActionRespawn		int32	= 7
+	ActionJump		int32	= 8
+	ActionStartSprint	int32	= 9
+	ActionStopSprint	int32	= 10
+	ActionStartSneak	int32	= 11
+	ActionStopSneak		int32	= 12
 )

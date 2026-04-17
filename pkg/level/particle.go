@@ -1,40 +1,42 @@
 package level
 
 import "github.com/scaxe/scaxe-go/pkg/protocol"
+
 const (
-	ParticleBubble                int = 1
-	ParticleCritical              int = 2
-	ParticleSmoke                 int = 3
-	ParticleExplode               int = 4
-	ParticleWhiteSmoke            int = 5
-	ParticleFlame                 int = 6
-	ParticleLava                  int = 7
-	ParticleLargeSmoke            int = 8
-	ParticleRedstone              int = 9
-	ParticleItemBreak             int = 10
-	ParticleSnowballPoof          int = 11
-	ParticleLargeExplode          int = 12
-	ParticleHugeExplode           int = 13
-	ParticleMobFlame              int = 14
-	ParticleHeart                 int = 15
-	ParticleTerrain               int = 16
-	ParticleTownAura              int = 17
-	ParticlePortal                int = 18
-	ParticleWaterSplash           int = 19
-	ParticleWaterWake             int = 20
-	ParticleDripWater             int = 21
-	ParticleDripLava              int = 22
-	ParticleDust                  int = 23
-	ParticleMobSpell              int = 24
-	ParticleMobSpellAmbient       int = 25
-	ParticleMobSpellInstantaneous int = 26
-	ParticleInk                   int = 27
-	ParticleSlime                 int = 28
-	ParticleRainSplash            int = 29
-	ParticleVillagerAngry         int = 30
-	ParticleVillagerHappy         int = 31
-	ParticleEnchantmentTable      int = 32
+	ParticleBubble			int	= 1
+	ParticleCritical		int	= 2
+	ParticleSmoke			int	= 3
+	ParticleExplode			int	= 4
+	ParticleWhiteSmoke		int	= 5
+	ParticleFlame			int	= 6
+	ParticleLava			int	= 7
+	ParticleLargeSmoke		int	= 8
+	ParticleRedstone		int	= 9
+	ParticleItemBreak		int	= 10
+	ParticleSnowballPoof		int	= 11
+	ParticleLargeExplode		int	= 12
+	ParticleHugeExplode		int	= 13
+	ParticleMobFlame		int	= 14
+	ParticleHeart			int	= 15
+	ParticleTerrain			int	= 16
+	ParticleTownAura		int	= 17
+	ParticlePortal			int	= 18
+	ParticleWaterSplash		int	= 19
+	ParticleWaterWake		int	= 20
+	ParticleDripWater		int	= 21
+	ParticleDripLava		int	= 22
+	ParticleDust			int	= 23
+	ParticleMobSpell		int	= 24
+	ParticleMobSpellAmbient		int	= 25
+	ParticleMobSpellInstantaneous	int	= 26
+	ParticleInk			int	= 27
+	ParticleSlime			int	= 28
+	ParticleRainSplash		int	= 29
+	ParticleVillagerAngry		int	= 30
+	ParticleVillagerHappy		int	= 31
+	ParticleEnchantmentTable	int	= 32
 )
+
 func NewParticlePacket(x, y, z float32, particleType int, data int32) *protocol.LevelEventPacket {
 	pk := protocol.NewLevelEventPacket()
 	pk.EventID = uint16(protocol.EventAddParticleMask) | uint16(particleType&0xFFF)

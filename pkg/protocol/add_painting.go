@@ -2,12 +2,12 @@ package protocol
 
 type AddPaintingPacket struct {
 	BasePacket
-	EntityID  int64
-	X         int32
-	Y         int32
-	Z         int32
-	Direction int32
-	Title     string
+	EntityID	int64
+	X		int32
+	Y		int32
+	Z		int32
+	Direction	int32
+	Title		string
 }
 
 func NewAddPaintingPacket() *AddPaintingPacket {

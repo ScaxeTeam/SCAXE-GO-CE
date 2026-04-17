@@ -1,9 +1,9 @@
 package crafting
 
 type Item struct {
-	ID    int
-	Meta  int
-	Count int
+	ID	int
+	Meta	int
+	Count	int
 }
 
 func NewItem(id, meta, count int) *Item {
@@ -27,14 +27,14 @@ type Recipe interface {
 }
 
 type ShapelessRecipe struct {
-	result      *Item
-	ingredients []*Item
+	result		*Item
+	ingredients	[]*Item
 }
 
 func NewShapelessRecipe(result *Item, ingredients ...*Item) *ShapelessRecipe {
 	return &ShapelessRecipe{
-		result:      result,
-		ingredients: ingredients,
+		result:		result,
+		ingredients:	ingredients,
 	}
 }
 
@@ -76,11 +76,11 @@ func (r *ShapelessRecipe) Matches(items []*Item) bool {
 }
 
 type ShapedRecipe struct {
-	result *Item
-	shape  []string
-	keys   map[rune]*Item
-	width  int
-	height int
+	result	*Item
+	shape	[]string
+	keys	map[rune]*Item
+	width	int
+	height	int
 }
 
 func NewShapedRecipe(result *Item, shape ...string) *ShapedRecipe {
@@ -92,11 +92,11 @@ func NewShapedRecipe(result *Item, shape ...string) *ShapedRecipe {
 		}
 	}
 	return &ShapedRecipe{
-		result: result,
-		shape:  shape,
-		keys:   make(map[rune]*Item),
-		width:  width,
-		height: height,
+		result:	result,
+		shape:	shape,
+		keys:	make(map[rune]*Item),
+		width:	width,
+		height:	height,
 	}
 }
 
@@ -133,14 +133,14 @@ func (r *ShapedRecipe) Matches(items []*Item) bool {
 }
 
 type FurnaceRecipe struct {
-	result *Item
-	input  *Item
+	result	*Item
+	input	*Item
 }
 
 func NewFurnaceRecipe(result, input *Item) *FurnaceRecipe {
 	return &FurnaceRecipe{
-		result: result,
-		input:  input,
+		result:	result,
+		input:	input,
 	}
 }
 
@@ -164,16 +164,16 @@ func (r *FurnaceRecipe) Matches(items []*Item) bool {
 }
 
 type CraftingManager struct {
-	recipes        []Recipe
-	furnaceRecipes []*FurnaceRecipe
-	brewingRecipes []*BrewingRecipe
+	recipes		[]Recipe
+	furnaceRecipes	[]*FurnaceRecipe
+	brewingRecipes	[]*BrewingRecipe
 }
 
 func NewCraftingManager() *CraftingManager {
 	cm := &CraftingManager{
-		recipes:        make([]Recipe, 0),
-		furnaceRecipes: make([]*FurnaceRecipe, 0),
-		brewingRecipes: make([]*BrewingRecipe, 0),
+		recipes:	make([]Recipe, 0),
+		furnaceRecipes:	make([]*FurnaceRecipe, 0),
+		brewingRecipes:	make([]*BrewingRecipe, 0),
 	}
 	cm.registerDefaultRecipes()
 	cm.RegisterDefaultBrewingRecipes()

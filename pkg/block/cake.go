@@ -7,11 +7,11 @@ type CakeBlock struct {
 func NewCakeBlock() *CakeBlock {
 	return &CakeBlock{
 		TransparentBase: TransparentBase{
-			BlockID:       CAKE_BLOCK,
-			BlockName:     "Cake Block",
-			BlockHardness: 0.5,
-			BlockToolType: ToolTypeNone,
-			BlockCanPlace: false,
+			BlockID:	CAKE_BLOCK,
+			BlockName:	"Cake Block",
+			BlockHardness:	0.5,
+			BlockToolType:	ToolTypeNone,
+			BlockCanPlace:	false,
 		},
 	}
 }

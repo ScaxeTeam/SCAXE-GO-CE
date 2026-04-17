@@ -4,9 +4,11 @@ import (
 	"github.com/scaxe/scaxe-go/pkg/item"
 	"github.com/scaxe/scaxe-go/pkg/protocol"
 )
+
 type ChestInventory struct {
 	*ContainerInventory
 }
+
 func NewChestInventory(holder InventoryHolder) *ChestInventory {
 	return &ChestInventory{
 		ContainerInventory: NewContainerInventory(
@@ -45,11 +47,13 @@ func (c *ChestInventory) sendBlockEvent(case1, case2 int32) {
 		viewer.SendDataPacket(pk)
 	}
 }
+
 type DoubleChestInventory struct {
 	*ContainerInventory
-	left  *ChestInventory
-	right *ChestInventory
+	left	*ChestInventory
+	right	*ChestInventory
 }
+
 func NewDoubleChestInventory(leftHolder, rightHolder InventoryHolder, left, right *ChestInventory) *DoubleChestInventory {
 	d := &DoubleChestInventory{
 		ContainerInventory: NewContainerInventory(
@@ -57,16 +61,17 @@ func NewDoubleChestInventory(leftHolder, rightHolder InventoryHolder, left, righ
 			GetInventoryType(TypeDoubleChest),
 			0, "",
 		),
-		left:  left,
-		right: right,
+		left:	left,
+		right:	right,
 	}
 	return d
 }
 
-func (d *DoubleChestInventory) GetLeftSide() *ChestInventory  { return d.left }
-func (d *DoubleChestInventory) GetRightSide() *ChestInventory { return d.right }
+func (d *DoubleChestInventory) GetLeftSide() *ChestInventory	{ return d.left }
+func (d *DoubleChestInventory) GetRightSide() *ChestInventory	{ return d.right }
 
 const singleChestSize = 27
+
 func (d *DoubleChestInventory) GetItem(slot int) item.Item {
 	if slot < singleChestSize {
 		return d.left.GetItem(slot)

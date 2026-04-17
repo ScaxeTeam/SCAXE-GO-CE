@@ -5,20 +5,20 @@ import (
 )
 
 type Gaussian struct {
-	Size        int
-	Kernel1D    []float64
-	WeightSum1D float64
-	Kernel2D    [][]float64
-	WeightSum   float64
+	Size		int
+	Kernel1D	[]float64
+	WeightSum1D	float64
+	Kernel2D	[][]float64
+	WeightSum	float64
 }
 
 func NewGaussian(smoothSize int) *Gaussian {
 	g := &Gaussian{
-		Size:        smoothSize,
-		Kernel1D:    make([]float64, smoothSize*2+1),
-		Kernel2D:    make([][]float64, smoothSize*2+1),
-		WeightSum1D: 0,
-		WeightSum:   0,
+		Size:		smoothSize,
+		Kernel1D:	make([]float64, smoothSize*2+1),
+		Kernel2D:	make([][]float64, smoothSize*2+1),
+		WeightSum1D:	0,
+		WeightSum:	0,
 	}
 
 	bellSize := 1.0 / float64(smoothSize)

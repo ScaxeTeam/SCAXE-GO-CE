@@ -8,18 +8,18 @@ import (
 
 type SeedCommand struct {
 	command.BaseCommand
-	server ServerInterface
+	server	ServerInterface
 }
 
 func NewSeedCommand(server ServerInterface) *SeedCommand {
 	return &SeedCommand{
 		BaseCommand: command.BaseCommand{
-			Name:        "seed",
-			Description: "Shows the world seed",
-			Usage:       "/seed",
-			Permission:  "pocketmine.command.seed",
+			Name:		"seed",
+			Description:	"Shows the world seed",
+			Usage:		"/seed",
+			Permission:	"pocketmine.command.seed",
 		},
-		server: server,
+		server:	server,
 	}
 }
 

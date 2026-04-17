@@ -9,18 +9,18 @@ import (
 
 type BanIpCommand struct {
 	command.BaseCommand
-	server ServerInterface
+	server	ServerInterface
 }
 
 func NewBanIpCommand(server ServerInterface) *BanIpCommand {
 	return &BanIpCommand{
 		BaseCommand: command.BaseCommand{
-			Name:        "ban-ip",
-			Description: "Bans an IP address from the server",
-			Usage:       "/ban-ip <ip|player> [reason]",
-			Permission:  "pocketmine.command.ban.ip",
+			Name:		"ban-ip",
+			Description:	"Bans an IP address from the server",
+			Usage:		"/ban-ip <ip|player> [reason]",
+			Permission:	"pocketmine.command.ban.ip",
 		},
-		server: server,
+		server:	server,
 	}
 }
 
@@ -57,18 +57,18 @@ func (c *BanIpCommand) Execute(sender command.CommandSender, args []string) bool
 
 type PardonIpCommand struct {
 	command.BaseCommand
-	server ServerInterface
+	server	ServerInterface
 }
 
 func NewPardonIpCommand(server ServerInterface) *PardonIpCommand {
 	return &PardonIpCommand{
 		BaseCommand: command.BaseCommand{
-			Name:        "pardon-ip",
-			Description: "Unbans an IP address",
-			Usage:       "/pardon-ip <ip>",
-			Permission:  "pocketmine.command.unban.ip",
+			Name:		"pardon-ip",
+			Description:	"Unbans an IP address",
+			Usage:		"/pardon-ip <ip>",
+			Permission:	"pocketmine.command.unban.ip",
 		},
-		server: server,
+		server:	server,
 	}
 }
 
@@ -96,10 +96,10 @@ type BanListCommand struct {
 func NewBanListCommand() *BanListCommand {
 	return &BanListCommand{
 		BaseCommand: command.BaseCommand{
-			Name:        "banlist",
-			Description: "Shows the ban list",
-			Usage:       "/banlist [ips|players]",
-			Permission:  "pocketmine.command.banlist",
+			Name:		"banlist",
+			Description:	"Shows the ban list",
+			Usage:		"/banlist [ips|players]",
+			Permission:	"pocketmine.command.banlist",
 		},
 	}
 }

@@ -8,52 +8,56 @@ import (
 )
 
 const (
-	MaxTransactionsPerGroup = 50
-	TransactionTimeout = 8.0
+	MaxTransactionsPerGroup	= 50
+	TransactionTimeout	= 8.0
 )
+
 type Transaction struct {
-	inventory    Inventory
-	slot         int
-	sourceItem   item.Item
-	targetItem   item.Item
-	creationTime float64
+	inventory	Inventory
+	slot		int
+	sourceItem	item.Item
+	targetItem	item.Item
+	creationTime	float64
 }
+
 func NewTransaction(inv Inventory, slot int, sourceItem, targetItem item.Item) *Transaction {
 	return &Transaction{
-		inventory:    inv,
-		slot:         slot,
-		sourceItem:   sourceItem,
-		targetItem:   targetItem,
-		creationTime: float64(time.Now().UnixNano()) / 1e9,
+		inventory:	inv,
+		slot:		slot,
+		sourceItem:	sourceItem,
+		targetItem:	targetItem,
+		creationTime:	float64(time.Now().UnixNano()) / 1e9,
 	}
 }
 
-func (t *Transaction) GetInventory() Inventory  { return t.inventory }
-func (t *Transaction) GetSlot() int             { return t.slot }
-func (t *Transaction) GetSourceItem() item.Item { return t.sourceItem }
-func (t *Transaction) GetTargetItem() item.Item { return t.targetItem }
-func (t *Transaction) GetCreationTime() float64 { return t.creationTime }
+func (t *Transaction) GetInventory() Inventory	{ return t.inventory }
+func (t *Transaction) GetSlot() int		{ return t.slot }
+func (t *Transaction) GetSourceItem() item.Item	{ return t.sourceItem }
+func (t *Transaction) GetTargetItem() item.Item	{ return t.targetItem }
+func (t *Transaction) GetCreationTime() float64	{ return t.creationTime }
+
 type TransactionGroup struct {
-	source       Viewer
-	transactions []*Transaction
-	inventories  map[Inventory]bool
-	hasExecuted  bool
-	creationTime float64
-	OnExecute func(g *TransactionGroup) bool
+	source		Viewer
+	transactions	[]*Transaction
+	inventories	map[Inventory]bool
+	hasExecuted	bool
+	creationTime	float64
+	OnExecute	func(g *TransactionGroup) bool
 }
+
 func NewTransactionGroup(source Viewer) *TransactionGroup {
 	return &TransactionGroup{
-		source:       source,
-		transactions: make([]*Transaction, 0),
-		inventories:  make(map[Inventory]bool),
-		creationTime: float64(time.Now().UnixNano()) / 1e9,
+		source:		source,
+		transactions:	make([]*Transaction, 0),
+		inventories:	make(map[Inventory]bool),
+		creationTime:	float64(time.Now().UnixNano()) / 1e9,
 	}
 }
 
-func (g *TransactionGroup) GetSource() Viewer               { return g.source }
-func (g *TransactionGroup) GetCreationTime() float64        { return g.creationTime }
-func (g *TransactionGroup) GetTransactions() []*Transaction { return g.transactions }
-func (g *TransactionGroup) HasExecuted() bool               { return g.hasExecuted }
+func (g *TransactionGroup) GetSource() Viewer			{ return g.source }
+func (g *TransactionGroup) GetCreationTime() float64		{ return g.creationTime }
+func (g *TransactionGroup) GetTransactions() []*Transaction	{ return g.transactions }
+func (g *TransactionGroup) HasExecuted() bool			{ return g.hasExecuted }
 func (g *TransactionGroup) GetInventories() []Inventory {
 	invs := make([]Inventory, 0, len(g.inventories))
 	for inv := range g.inventories {

@@ -1,15 +1,17 @@
 package entity
 
 const (
-	SnowballNetworkID = 81
-	EggNetworkID      = 82
-	ChickenNetworkID  = 10
+	SnowballNetworkID	= 81
+	EggNetworkID		= 82
+	ChickenNetworkID	= 10
 
-	EggChickenSpawnChance = 8
+	EggChickenSpawnChance	= 8
 )
+
 type Snowball struct {
 	*Projectile
 }
+
 func NewSnowball(shooterID int64) *Snowball {
 	s := &Snowball{
 		Projectile: NewProjectile(shooterID),
@@ -25,13 +27,15 @@ func NewSnowball(shooterID int64) *Snowball {
 
 	return s
 }
+
 type ThrowableTickResult struct {
 	ProjectileTickResult
-	ShouldSpawnChicken bool
-	SpawnX             float64
-	SpawnY             float64
-	SpawnZ             float64
+	ShouldSpawnChicken	bool
+	SpawnX			float64
+	SpawnY			float64
+	SpawnZ			float64
 }
+
 func (s *Snowball) TickSnowball(nearbyEntities []IEntity, isCollided bool) ThrowableTickResult {
 	base := s.Projectile.TickProjectile(nearbyEntities, isCollided)
 
@@ -44,9 +48,11 @@ func (s *Snowball) TickSnowball(nearbyEntities []IEntity, isCollided bool) Throw
 
 	return result
 }
+
 type Egg struct {
 	*Projectile
 }
+
 func NewEgg(shooterID int64) *Egg {
 	e := &Egg{
 		Projectile: NewProjectile(shooterID),

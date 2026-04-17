@@ -7,23 +7,23 @@ import (
 )
 
 const (
-	BlockAir     = 0
-	BlockLog     = 17
-	BlockLeaves  = 18
-	BlockLog2    = 162
-	BlockLeaves2 = 161
-	BlockDirt    = 3
-	BlockGrass   = 2
-	BlockSapling = 6
+	BlockAir	= 0
+	BlockLog	= 17
+	BlockLeaves	= 18
+	BlockLog2	= 162
+	BlockLeaves2	= 161
+	BlockDirt	= 3
+	BlockGrass	= 2
+	BlockSapling	= 6
 )
 
 const (
-	WoodOak     = 0
-	WoodSpruce  = 1
-	WoodBirch   = 2
-	WoodJungle  = 3
-	WoodAcacia  = 0
-	WoodDarkOak = 1
+	WoodOak		= 0
+	WoodSpruce	= 1
+	WoodBirch	= 2
+	WoodJungle	= 3
+	WoodAcacia	= 0
+	WoodDarkOak	= 1
 )
 
 type Tree interface {
@@ -31,66 +31,66 @@ type Tree interface {
 }
 
 type GenericTree struct {
-	LogType    int
-	LogMeta    byte
-	LeavesType int
-	LeavesMeta byte
-	MinHeight  int
-	MaxHeight  int
+	LogType		int
+	LogMeta		byte
+	LeavesType	int
+	LeavesMeta	byte
+	MinHeight	int
+	MaxHeight	int
 }
 
 func NewOakTree() *GenericTree {
 	return &GenericTree{
-		LogType:    BlockLog,
-		LogMeta:    WoodOak,
-		LeavesType: BlockLeaves,
-		LeavesMeta: WoodOak,
-		MinHeight:  4,
-		MaxHeight:  7,
+		LogType:	BlockLog,
+		LogMeta:	WoodOak,
+		LeavesType:	BlockLeaves,
+		LeavesMeta:	WoodOak,
+		MinHeight:	4,
+		MaxHeight:	7,
 	}
 }
 
 func NewBirchTree() *GenericTree {
 	return &GenericTree{
-		LogType:    BlockLog,
-		LogMeta:    WoodBirch,
-		LeavesType: BlockLeaves,
-		LeavesMeta: WoodBirch,
-		MinHeight:  5,
-		MaxHeight:  8,
+		LogType:	BlockLog,
+		LogMeta:	WoodBirch,
+		LeavesType:	BlockLeaves,
+		LeavesMeta:	WoodBirch,
+		MinHeight:	5,
+		MaxHeight:	8,
 	}
 }
 
 func NewSpruceTree() *GenericTree {
 	return &GenericTree{
-		LogType:    BlockLog,
-		LogMeta:    WoodSpruce,
-		LeavesType: BlockLeaves,
-		LeavesMeta: WoodSpruce,
-		MinHeight:  6,
-		MaxHeight:  10,
+		LogType:	BlockLog,
+		LogMeta:	WoodSpruce,
+		LeavesType:	BlockLeaves,
+		LeavesMeta:	WoodSpruce,
+		MinHeight:	6,
+		MaxHeight:	10,
 	}
 }
 
 func NewJungleTree() *GenericTree {
 	return &GenericTree{
-		LogType:    BlockLog,
-		LogMeta:    WoodJungle,
-		LeavesType: BlockLeaves,
-		LeavesMeta: WoodJungle,
-		MinHeight:  4,
-		MaxHeight:  12,
+		LogType:	BlockLog,
+		LogMeta:	WoodJungle,
+		LeavesType:	BlockLeaves,
+		LeavesMeta:	WoodJungle,
+		MinHeight:	4,
+		MaxHeight:	12,
 	}
 }
 
 func NewAcaciaTree() *GenericTree {
 	return &GenericTree{
-		LogType:    BlockLog2,
-		LogMeta:    WoodAcacia,
-		LeavesType: BlockLeaves2,
-		LeavesMeta: WoodAcacia,
-		MinHeight:  5,
-		MaxHeight:  8,
+		LogType:	BlockLog2,
+		LogMeta:	WoodAcacia,
+		LeavesType:	BlockLeaves2,
+		LeavesMeta:	WoodAcacia,
+		MinHeight:	5,
+		MaxHeight:	8,
 	}
 }
 

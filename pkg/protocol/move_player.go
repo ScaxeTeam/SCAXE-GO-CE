@@ -2,27 +2,27 @@ package protocol
 
 type MovePlayerPacket struct {
 	BasePacket
-	EntityID int64
-	X        float32
-	Y        float32
-	Z        float32
-	Yaw      float32
-	BodyYaw  float32
-	Pitch    float32
-	Mode     byte
-	OnGround bool
+	EntityID	int64
+	X		float32
+	Y		float32
+	Z		float32
+	Yaw		float32
+	BodyYaw		float32
+	Pitch		float32
+	Mode		byte
+	OnGround	bool
 }
 
 const (
-	MovePlayerModeNormal   byte = 0
-	MovePlayerModeReset    byte = 1
-	MovePlayerModeRotation byte = 2
+	MovePlayerModeNormal	byte	= 0
+	MovePlayerModeReset	byte	= 1
+	MovePlayerModeRotation	byte	= 2
 )
 
 func NewMovePlayerPacket() *MovePlayerPacket {
 	return &MovePlayerPacket{
-		BasePacket: BasePacket{PacketID: IDMovePlayer},
-		Mode:       MovePlayerModeNormal,
+		BasePacket:	BasePacket{PacketID: IDMovePlayer},
+		Mode:		MovePlayerModeNormal,
 	}
 }
 

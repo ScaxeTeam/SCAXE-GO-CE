@@ -7,10 +7,10 @@ type MyceliumBlock struct {
 func NewMyceliumBlock() *MyceliumBlock {
 	return &MyceliumBlock{
 		SolidBase: SolidBase{
-			BlockID:       MYCELIUM,
-			BlockName:     "Mycelium",
-			BlockHardness: 0.6,
-			BlockToolType: ToolTypeShovel,
+			BlockID:	MYCELIUM,
+			BlockName:	"Mycelium",
+			BlockHardness:	0.6,
+			BlockToolType:	ToolTypeShovel,
 		},
 	}
 }

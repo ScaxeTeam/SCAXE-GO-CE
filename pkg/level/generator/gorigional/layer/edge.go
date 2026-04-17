@@ -3,20 +3,20 @@ package layer
 type EdgeMode int
 
 const (
-	CoolWarm EdgeMode = iota
+	CoolWarm	EdgeMode	= iota
 	HeatIce
 	Special
 )
 
 type GenLayerEdge struct {
 	*BaseLayer
-	Mode EdgeMode
+	Mode	EdgeMode
 }
 
 func NewGenLayerEdge(seed int64, parent GenLayer, mode EdgeMode) *GenLayerEdge {
 	l := &GenLayerEdge{
-		BaseLayer: NewBaseLayer(seed),
-		Mode:      mode,
+		BaseLayer:	NewBaseLayer(seed),
+		Mode:		mode,
 	}
 	l.Parent = parent
 	return l

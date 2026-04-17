@@ -11,10 +11,10 @@ type HelpCommand struct {
 func NewHelpCommand() *HelpCommand {
 	return &HelpCommand{
 		BaseCommand: command.BaseCommand{
-			Name:        "help",
-			Description: "Shows help for commands",
-			Usage:       "/help [command]",
-			Permission:  "",
+			Name:		"help",
+			Description:	"Shows help for commands",
+			Usage:		"/help [command]",
+			Permission:	"",
 		},
 	}
 }

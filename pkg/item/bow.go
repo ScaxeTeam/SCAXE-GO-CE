@@ -1,30 +1,34 @@
 package item
+
 type BowInfo struct {
-	ID         int
-	Name       string
-	Durability int
+	ID		int
+	Name		string
+	Durability	int
 }
 
 var bowInfo = BowInfo{
-	ID:         BOW,
-	Name:       "Bow",
-	Durability: 385,
+	ID:		BOW,
+	Name:		"Bow",
+	Durability:	385,
 }
+
 func IsBow(id int) bool {
 	return id == BOW
 }
 func GetBowInfo() *BowInfo {
 	return &bowInfo
 }
+
 type BowChargeState int
 
 const (
-	BowChargeNone   BowChargeState = iota
+	BowChargeNone	BowChargeState	= iota
 	BowChargeWeak
 	BowChargeMedium
 	BowChargeFull
 )
 const BowForceMultiplier = 3.0
+
 func CalcBowForce(useDurationTicks int) (force float64, state BowChargeState) {
 	if useDurationTicks < 0 {
 		return 0, BowChargeNone
@@ -58,20 +62,23 @@ func CalcBowDamage(force float64, isCritical bool) int {
 func IsBowCritical(force float64) bool {
 	return force >= 2.8
 }
+
 type ArrowInfo struct {
-	ID   int
-	Name string
+	ID	int
+	Name	string
 }
 
 var arrowInfo = ArrowInfo{
-	ID:   ARROW,
-	Name: "Arrow",
+	ID:	ARROW,
+	Name:	"Arrow",
 }
+
 func IsArrow(id int) bool {
 	return id == ARROW
 }
 func GetArrowInfo() *ArrowInfo {
 	return &arrowInfo
 }
+
 const ArrowMaxStackSize = 64
 const ArrowEntityNetworkID = 80

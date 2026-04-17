@@ -4,8 +4,8 @@ import "github.com/scaxe/scaxe-go/pkg/level/generator/biome"
 
 type GenLayerRiverMix struct {
 	*BaseLayer
-	biomePatternGeneratorChain GenLayer
-	riverPatternGeneratorChain GenLayer
+	biomePatternGeneratorChain	GenLayer
+	riverPatternGeneratorChain	GenLayer
 }
 
 func NewGenLayerRiverMix(baseSeed int64, biomeChain, riverChain GenLayer) *GenLayerRiverMix {

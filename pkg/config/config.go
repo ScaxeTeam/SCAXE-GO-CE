@@ -11,68 +11,74 @@ import (
 )
 
 type ServerConfig struct {
-	ServerName string
-	ServerPort int
-	ServerIP   string
-	MaxPlayers int
-	MOTD       string
+	ServerName	string
+	ServerPort	int
+	ServerIP	string
+	ServerMode	string
+	BackendAddress	string
+	BackendPort	int
+	MaxPlayers	int
+	MOTD		string
 
-	Gamemode        int
-	Difficulty      int
-	LevelName       string
-	LevelSeed       string
-	LevelType       string
-	SpawnProtection int
+	Gamemode	int
+	Difficulty	int
+	LevelName	string
+	LevelSeed	string
+	LevelType	string
+	SpawnProtection	int
 
-	OnlineMode  bool
-	WhiteList   bool
-	AllowFlight bool
-	Hardcore    bool
-	PvP         bool
+	OnlineMode	bool
+	WhiteList	bool
+	AllowFlight	bool
+	Hardcore	bool
+	PvP		bool
 
-	ViewDistance int
-	TickRate     int
+	ViewDistance	int
+	TickRate	int
 
-	DebugMode       bool
-	DebugItemPickup bool
-	DebugRaknet     bool
-	DebugPacket     bool
-	DebugLevel      bool
-	DebugEntity     bool
-	DebugPlayer     bool
+	DebugMode	bool
+	DebugItemPickup	bool
+	DebugRaknet	bool
+	DebugPacket	bool
+	DebugLevel	bool
+	DebugEntity	bool
+	DebugPlayer	bool
 
-	Properties map[string]string
+	Properties	map[string]string
 }
 
 func DefaultConfig() *ServerConfig {
 	logger.Debug("DefaultConfig", "action", "creating default configuration")
 	return &ServerConfig{
-		ServerName:      "Scaxe Go Server",
-		ServerPort:      19132,
-		ServerIP:        "0.0.0.0",
-		MaxPlayers:      20,
-		MOTD:            "A Scaxe Go Server",
-		Gamemode:        0,
-		Difficulty:      1,
-		LevelName:       "world",
-		LevelSeed:       "",
-		LevelType:       "gorigional",
-		SpawnProtection: 16,
-		OnlineMode:      false,
-		WhiteList:       false,
-		AllowFlight:     false,
-		Hardcore:        false,
-		PvP:             true,
-		ViewDistance:    8,
-		TickRate:        20,
-		DebugMode:       false,
-		DebugItemPickup: false,
-		DebugRaknet:     false,
-		DebugPacket:     false,
-		DebugLevel:      false,
-		DebugEntity:     false,
-		DebugPlayer:     false,
-		Properties:      make(map[string]string),
+		ServerName:		"Scaxe Go Server",
+		ServerPort:		19132,
+		ServerIP:		"0.0.0.0",
+		ServerMode:		"proxy",
+		BackendAddress:		"127.0.0.1",
+		BackendPort:		25565,
+		MaxPlayers:		20,
+		MOTD:			"A Scaxe Go Server",
+		Gamemode:		0,
+		Difficulty:		1,
+		LevelName:		"world",
+		LevelSeed:		"",
+		LevelType:		"gorigional",
+		SpawnProtection:	16,
+		OnlineMode:		false,
+		WhiteList:		false,
+		AllowFlight:		false,
+		Hardcore:		false,
+		PvP:			true,
+		ViewDistance:		8,
+		TickRate:		20,
+		DebugMode:		false,
+		DebugItemPickup:	false,
+		DebugRaknet:		false,
+		DebugPacket:		false,
+		DebugLevel:		false,
+		DebugEntity:		false,
+		DebugPlayer:		false,
+		Properties:		make(map[string]string),
 	}
 }
 
@@ -129,6 +135,15 @@ func Load(path string) (*ServerConfig, error) {
 		case "server-ip":
 			cfg.ServerIP = value
 			logger.Debug("Config.Load", "key", key, "value", value)
+		case "server-mode":
+			cfg.ServerMode = value
+			logger.Debug("Config.Load", "key", key, "value", value)
+		case "backend-address":
+			cfg.BackendAddress = value
+		case "backend-port":
+			if v, err := strconv.Atoi(value); err == nil {
+				cfg.BackendPort = v
+			}
 		case "max-players":
 			if v, err := strconv.Atoi(value); err == nil {
 				cfg.MaxPlayers = v
@@ -225,12 +240,12 @@ func (c *ServerConfig) Save(path string) error {
 	defer file.Close()
 
 	lines := []string{
-		"# Scaxe Go Server Properties",
-		"# Generated automatically",
-		"",
 		fmt.Sprintf("server-name=%s", c.ServerName),
 		fmt.Sprintf("server-port=%d", c.ServerPort),
 		fmt.Sprintf("server-ip=%s", c.ServerIP),
+		fmt.Sprintf("server-mode=%s", c.ServerMode),
+		fmt.Sprintf("backend-address=%s", c.BackendAddress),
+		fmt.Sprintf("backend-port=%d", c.BackendPort),
 		fmt.Sprintf("max-players=%d", c.MaxPlayers),
 		fmt.Sprintf("motd=%s", c.MOTD),
 		fmt.Sprintf("gamemode=%d", c.Gamemode),

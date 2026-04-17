@@ -14,111 +14,111 @@ import (
 )
 
 type ChunkGeneratorOverworld struct {
-	seed int64
+	seed	int64
 
-	minLimitPerlinNoise *noise.OctavesNoise
-	maxLimitPerlinNoise *noise.OctavesNoise
-	mainPerlinNoise     *noise.OctavesNoise
-	surfaceNoise        *noise.PerlinSimplexGenerator
-	scaleNoise          *noise.OctavesNoise
-	depthNoise          *noise.OctavesNoise
-	forestNoise         *noise.OctavesNoise
-	flowerNoise         *noise.PerlinNoiseGenerator
+	minLimitPerlinNoise	*noise.OctavesNoise
+	maxLimitPerlinNoise	*noise.OctavesNoise
+	mainPerlinNoise		*noise.OctavesNoise
+	surfaceNoise		*noise.PerlinSimplexGenerator
+	scaleNoise		*noise.OctavesNoise
+	depthNoise		*noise.OctavesNoise
+	forestNoise		*noise.OctavesNoise
+	flowerNoise		*noise.PerlinNoiseGenerator
 
-	genLayer layer.GenLayer
-	biomeGen layer.GenLayer
+	genLayer	layer.GenLayer
+	biomeGen	layer.GenLayer
 
-	caves            *structure.MapGenCaves
-	ravines          *structure.MapGenRavine
-	village          *structure.MapGenVillage
-	stronghold       *structure.MapGenStronghold
-	mineshaft        *structure.MapGenMineshaft
-	scatteredFeature *structure.MapGenScatteredFeature
+	caves			*structure.MapGenCaves
+	ravines			*structure.MapGenRavine
+	village			*structure.MapGenVillage
+	stronghold		*structure.MapGenStronghold
+	mineshaft		*structure.MapGenMineshaft
+	scatteredFeature	*structure.MapGenScatteredFeature
 
-	biomeWeights []float64
+	biomeWeights	[]float64
 
-	settings *ChunkGeneratorSettings
+	settings	*ChunkGeneratorSettings
 }
 
 type ChunkGeneratorSettings struct {
-	coordinateScale         float64
-	heightScale             float64
-	lowerLimitScale         float64
-	upperLimitScale         float64
-	depthNoiseScaleX        float64
-	depthNoiseScaleZ        float64
-	depthNoiseScaleExponent float64
-	mainNoiseScaleX         float64
-	mainNoiseScaleY         float64
-	mainNoiseScaleZ         float64
-	baseSize                float64
-	stretchY                float64
-	biomeDepthOffSet        float64
-	biomeDepthWeight        float64
-	biomeScaleOffset        float64
-	biomeScaleWeight        float64
-	seaLevel                int
-	ChunkManager            generator.ChunkManager
+	coordinateScale		float64
+	heightScale		float64
+	lowerLimitScale		float64
+	upperLimitScale		float64
+	depthNoiseScaleX	float64
+	depthNoiseScaleZ	float64
+	depthNoiseScaleExponent	float64
+	mainNoiseScaleX		float64
+	mainNoiseScaleY		float64
+	mainNoiseScaleZ		float64
+	baseSize		float64
+	stretchY		float64
+	biomeDepthOffSet	float64
+	biomeDepthWeight	float64
+	biomeScaleOffset	float64
+	biomeScaleWeight	float64
+	seaLevel		int
+	ChunkManager		generator.ChunkManager
 
-	useCaves        bool
-	useDungeons     bool
-	dungeonChance   int
-	useStrongholds  bool
-	useVillages     bool
-	useMineShafts   bool
-	useTemples      bool
-	useMonuments    bool
-	useMansions     bool
-	useRavines      bool
-	useWaterLakes   bool
-	waterLakeChance int
-	useLavaLakes    bool
-	lavaLakeChance  int
-	useLavaOceans   bool
-	fixedBiome      int
-	biomeSize       int
-	riverSize       int
-	MaxHeight       int
+	useCaves	bool
+	useDungeons	bool
+	dungeonChance	int
+	useStrongholds	bool
+	useVillages	bool
+	useMineShafts	bool
+	useTemples	bool
+	useMonuments	bool
+	useMansions	bool
+	useRavines	bool
+	useWaterLakes	bool
+	waterLakeChance	int
+	useLavaLakes	bool
+	lavaLakeChance	int
+	useLavaOceans	bool
+	fixedBiome	int
+	biomeSize	int
+	riverSize	int
+	MaxHeight	int
 }
 
 func DefaultSettings() *ChunkGeneratorSettings {
 	return &ChunkGeneratorSettings{
-		coordinateScale:         684.412,
-		heightScale:             684.412,
-		lowerLimitScale:         512.0,
-		upperLimitScale:         512.0,
-		depthNoiseScaleX:        200.0,
-		depthNoiseScaleZ:        200.0,
-		depthNoiseScaleExponent: 0.5,
-		mainNoiseScaleX:         80.0,
-		mainNoiseScaleY:         160.0,
-		mainNoiseScaleZ:         80.0,
-		baseSize:                8.5,
-		stretchY:                12.0,
-		biomeDepthOffSet:        0.0,
-		biomeDepthWeight:        1.0,
-		biomeScaleOffset:        0.0,
-		biomeScaleWeight:        1.0,
-		seaLevel:                63,
-		useCaves:                true,
-		useDungeons:             true,
-		dungeonChance:           8,
-		useStrongholds:          true,
-		useVillages:             true,
-		useMineShafts:           true,
-		useTemples:              true,
-		useMonuments:            true,
-		useMansions:             true,
-		useRavines:              true,
-		useWaterLakes:           true,
-		waterLakeChance:         80,
-		useLavaLakes:            true,
-		lavaLakeChance:          80,
-		useLavaOceans:           false,
-		fixedBiome:              -1,
-		biomeSize:               4,
-		riverSize:               4,
-		MaxHeight:               128,
+		coordinateScale:		684.412,
+		heightScale:			684.412,
+		lowerLimitScale:		512.0,
+		upperLimitScale:		512.0,
+		depthNoiseScaleX:		200.0,
+		depthNoiseScaleZ:		200.0,
+		depthNoiseScaleExponent:	0.5,
+		mainNoiseScaleX:		80.0,
+		mainNoiseScaleY:		160.0,
+		mainNoiseScaleZ:		80.0,
+		baseSize:			8.5,
+		stretchY:			12.0,
+		biomeDepthOffSet:		0.0,
+		biomeDepthWeight:		1.0,
+		biomeScaleOffset:		0.0,
+		biomeScaleWeight:		1.0,
+		seaLevel:			63,
+		useCaves:			true,
+		useDungeons:			true,
+		dungeonChance:			8,
+		useStrongholds:			true,
+		useVillages:			true,
+		useMineShafts:			true,
+		useTemples:			true,
+		useMonuments:			true,
+		useMansions:			true,
+		useRavines:			true,
+		useWaterLakes:			true,
+		waterLakeChance:		80,
+		useLavaLakes:			true,
+		lavaLakeChance:			80,
+		useLavaOceans:			false,
+		fixedBiome:			-1,
+		biomeSize:			4,
+		riverSize:			4,
+		MaxHeight:			128,
 	}
 }
 
@@ -131,31 +131,31 @@ func NewChunkGeneratorOverworld(seed int64) *ChunkGeneratorOverworld {
 	biomeSource := &genLayerAdapter{layer: genLayer}
 
 	g := &ChunkGeneratorOverworld{
-		seed:     seed,
-		settings: DefaultSettings(),
+		seed:		seed,
+		settings:	DefaultSettings(),
 
-		minLimitPerlinNoise: noise.NewOctavesNoise(rnd, 16),
-		maxLimitPerlinNoise: noise.NewOctavesNoise(rnd, 16),
-		mainPerlinNoise:     noise.NewOctavesNoise(rnd, 8),
+		minLimitPerlinNoise:	noise.NewOctavesNoise(rnd, 16),
+		maxLimitPerlinNoise:	noise.NewOctavesNoise(rnd, 16),
+		mainPerlinNoise:	noise.NewOctavesNoise(rnd, 8),
 
-		surfaceNoise: noise.NewPerlinSimplexGenerator(rnd, 4),
-		scaleNoise:   noise.NewOctavesNoise(rnd, 10),
+		surfaceNoise:	noise.NewPerlinSimplexGenerator(rnd, 4),
+		scaleNoise:	noise.NewOctavesNoise(rnd, 10),
 
-		depthNoise:  noise.NewOctavesNoise(rnd, 16),
-		forestNoise: noise.NewOctavesNoise(rnd, 8),
-		flowerNoise: noise.NewPerlinNoiseGenerator(rnd, 1),
+		depthNoise:	noise.NewOctavesNoise(rnd, 16),
+		forestNoise:	noise.NewOctavesNoise(rnd, 8),
+		flowerNoise:	noise.NewPerlinNoiseGenerator(rnd, 1),
 
-		biomeWeights: make([]float64, 25),
+		biomeWeights:	make([]float64, 25),
 
-		genLayer: genLayer,
-		biomeGen: biomeGen,
+		genLayer:	genLayer,
+		biomeGen:	biomeGen,
 
-		caves:            structure.NewMapGenCaves(seed),
-		ravines:          structure.NewMapGenRavine(seed),
-		village:          structure.NewMapGenVillage(seed),
-		stronghold:       structure.NewMapGenStronghold(seed),
-		mineshaft:        structure.NewMapGenMineshaft(seed),
-		scatteredFeature: structure.NewMapGenScatteredFeature(seed, biomeSource),
+		caves:			structure.NewMapGenCaves(seed),
+		ravines:		structure.NewMapGenRavine(seed),
+		village:		structure.NewMapGenVillage(seed),
+		stronghold:		structure.NewMapGenStronghold(seed),
+		mineshaft:		structure.NewMapGenMineshaft(seed),
+		scatteredFeature:	structure.NewMapGenScatteredFeature(seed, biomeSource),
 	}
 
 	for i := -2; i <= 2; i++ {

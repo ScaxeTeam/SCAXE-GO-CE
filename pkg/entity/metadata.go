@@ -7,79 +7,79 @@ import (
 )
 
 const (
-	DataTypeByte   = 0
-	DataTypeShort  = 1
-	DataTypeInt    = 2
-	DataTypeFloat  = 3
-	DataTypeString = 4
-	DataTypeSlot   = 5
-	DataTypePos    = 6
-	DataTypeLong   = 7
+	DataTypeByte	= 0
+	DataTypeShort	= 1
+	DataTypeInt	= 2
+	DataTypeFloat	= 3
+	DataTypeString	= 4
+	DataTypeSlot	= 5
+	DataTypePos	= 6
+	DataTypeLong	= 7
 )
 
 const (
-	DataFlags              = 0
-	DataAir                = 1
-	DataNameTag            = 2
-	DataShowNameTag        = 3
-	DataSilent             = 4
-	DataPotionColor        = 7
-	DataPotionAmbient      = 8
-	DataZombieIsBaby       = 12
-	DataAgeableFlags       = 14
-	DataAnimalFlags        = 14
-	DataIsBaby             = 14
-	DataNoAI               = 15
-	DataProfessionID       = 16
-	DataPotionID           = 16
-	DataSlimeSize          = 16
-	DataColorInfo          = 16
-	DataIsResting          = 16
-	DataCharge             = 16
-	DataPlayerFlags        = 16
-	DataHurtTime           = 17
-	DataPlayerBedPos       = 17
-	DataShooterID          = 17
-	DataOwnerEID           = 17
-	DataHurtDirection      = 18
-	DataRabbitType         = 18
-	DataCatType            = 18
-	DataHurtDamage         = 19
-	DataBlockInfo          = 20
-	DataWoodID             = 20
-	DataMinecartBlock      = 20
-	DataInLove             = 21
-	DataMinecartOffset     = 21
-	DataMinecartHasDisplay = 22
-	DataLeadHolder         = 23
-	DataLead               = 24
+	DataFlags		= 0
+	DataAir			= 1
+	DataNameTag		= 2
+	DataShowNameTag		= 3
+	DataSilent		= 4
+	DataPotionColor		= 7
+	DataPotionAmbient	= 8
+	DataZombieIsBaby	= 12
+	DataAgeableFlags	= 14
+	DataAnimalFlags		= 14
+	DataIsBaby		= 14
+	DataNoAI		= 15
+	DataProfessionID	= 16
+	DataPotionID		= 16
+	DataSlimeSize		= 16
+	DataColorInfo		= 16
+	DataIsResting		= 16
+	DataCharge		= 16
+	DataPlayerFlags		= 16
+	DataHurtTime		= 17
+	DataPlayerBedPos	= 17
+	DataShooterID		= 17
+	DataOwnerEID		= 17
+	DataHurtDirection	= 18
+	DataRabbitType		= 18
+	DataCatType		= 18
+	DataHurtDamage		= 19
+	DataBlockInfo		= 20
+	DataWoodID		= 20
+	DataMinecartBlock	= 20
+	DataInLove		= 21
+	DataMinecartOffset	= 21
+	DataMinecartHasDisplay	= 22
+	DataLeadHolder		= 23
+	DataLead		= 24
 )
 
 const (
-	DataFlagOnFire    = 0
-	DataFlagSneaking  = 1
-	DataFlagRiding    = 2
-	DataFlagSprinting = 3
-	DataFlagAction    = 4
-	DataFlagInvisible = 5
-	DataFlagTempted   = 6
+	DataFlagOnFire		= 0
+	DataFlagSneaking	= 1
+	DataFlagRiding		= 2
+	DataFlagSprinting	= 3
+	DataFlagAction		= 4
+	DataFlagInvisible	= 5
+	DataFlagTempted		= 6
 )
 
 const (
-	DataAnimalFlagIsBaby     = 0
-	DataAnimalFlagSitting    = 1
-	DataAnimalFlagAngry      = 2
-	DataAnimalFlagInterested = 3
+	DataAnimalFlagIsBaby		= 0
+	DataAnimalFlagSitting		= 1
+	DataAnimalFlagAngry		= 2
+	DataAnimalFlagInterested	= 3
 )
 
 const (
-	DataPlayerFlagSleep = 1
-	DataPlayerFlagDead  = 2
+	DataPlayerFlagSleep	= 1
+	DataPlayerFlagDead	= 2
 )
 
 type MetadataProperty struct {
-	Type  int
-	Value interface{}
+	Type	int
+	Value	interface{}
 }
 
 type MetadataStore struct {
@@ -201,8 +201,8 @@ func (m *MetadataStore) Clone() *MetadataStore {
 	}
 	for k, v := range m.Properties {
 		clone.Properties[k] = &MetadataProperty{
-			Type:  v.Type,
-			Value: v.Value,
+			Type:	v.Type,
+			Value:	v.Value,
 		}
 	}
 	return clone

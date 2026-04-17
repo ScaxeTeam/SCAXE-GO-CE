@@ -8,27 +8,27 @@ import (
 
 type PlayerListPacket struct {
 	BasePacket
-	Type    byte
-	Entries []PlayerListEntry
+	Type	byte
+	Entries	[]PlayerListEntry
 }
 
 const (
-	PlayerListTypeAdd    byte = 0
-	PlayerListTypeRemove byte = 1
+	PlayerListTypeAdd	byte	= 0
+	PlayerListTypeRemove	byte	= 1
 )
 
 type PlayerListEntry struct {
-	UUID     string
-	EntityID int64
-	Username string
-	SkinName string
-	SkinData string
+	UUID		string
+	EntityID	int64
+	Username	string
+	SkinName	string
+	SkinData	string
 }
 
 func NewPlayerListPacket() *PlayerListPacket {
 	return &PlayerListPacket{
-		BasePacket: BasePacket{PacketID: IDPlayerList},
-		Entries:    make([]PlayerListEntry, 0),
+		BasePacket:	BasePacket{PacketID: IDPlayerList},
+		Entries:	make([]PlayerListEntry, 0),
 	}
 }
 

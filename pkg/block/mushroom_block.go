@@ -7,10 +7,10 @@ type HugeMushroomBlock struct {
 func NewBrownMushroomBlock() *HugeMushroomBlock {
 	return &HugeMushroomBlock{
 		SolidBase: SolidBase{
-			BlockID:       BROWN_MUSHROOM_BLOCK,
-			BlockName:     "Brown Mushroom Block",
-			BlockHardness: 0.2,
-			BlockToolType: ToolTypeAxe,
+			BlockID:	BROWN_MUSHROOM_BLOCK,
+			BlockName:	"Brown Mushroom Block",
+			BlockHardness:	0.2,
+			BlockToolType:	ToolTypeAxe,
 		},
 	}
 }
@@ -18,10 +18,10 @@ func NewBrownMushroomBlock() *HugeMushroomBlock {
 func NewRedMushroomBlock() *HugeMushroomBlock {
 	return &HugeMushroomBlock{
 		SolidBase: SolidBase{
-			BlockID:       RED_MUSHROOM_BLOCK,
-			BlockName:     "Red Mushroom Block",
-			BlockHardness: 0.2,
-			BlockToolType: ToolTypeAxe,
+			BlockID:	RED_MUSHROOM_BLOCK,
+			BlockName:	"Red Mushroom Block",
+			BlockHardness:	0.2,
+			BlockToolType:	ToolTypeAxe,
 		},
 	}
 }

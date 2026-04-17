@@ -148,10 +148,10 @@ func biomesEqualOrMesaPlateau(a, b int) bool {
 type TempCategory int
 
 const (
-	TempCategoryOcean  TempCategory = 0
-	TempCategoryCold   TempCategory = 1
-	TempCategoryMedium TempCategory = 2
-	TempCategoryWarm   TempCategory = 3
+	TempCategoryOcean	TempCategory	= 0
+	TempCategoryCold	TempCategory	= 1
+	TempCategoryMedium	TempCategory	= 2
+	TempCategoryWarm	TempCategory	= 3
 )
 
 func getTempCategory(id int) TempCategory {

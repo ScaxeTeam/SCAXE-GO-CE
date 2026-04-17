@@ -4,19 +4,19 @@ import "math/rand"
 
 type AIPanic struct {
 	BaseAIGoal
-	entity     *Entity
-	moveHelper *MoveHelper
-	speed      float64
-	randPosX   float64
-	randPosY   float64
-	randPosZ   float64
+	entity		*Entity
+	moveHelper	*MoveHelper
+	speed		float64
+	randPosX	float64
+	randPosY	float64
+	randPosZ	float64
 }
 
 func NewAIPanic(e *Entity, mh *MoveHelper, speed float64) *AIPanic {
 	g := &AIPanic{
-		entity:     e,
-		moveHelper: mh,
-		speed:      speed,
+		entity:		e,
+		moveHelper:	mh,
+		speed:		speed,
 	}
 	g.SetMutexBits(1)
 	return g

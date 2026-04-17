@@ -11,9 +11,9 @@ import (
 )
 
 type AnvilProvider struct {
-	path    string
-	loaders map[uint64]*RegionLoader
-	mu      sync.Mutex
+	path	string
+	loaders	map[uint64]*RegionLoader
+	mu	sync.Mutex
 }
 
 var _ level.Provider = (*AnvilProvider)(nil)
@@ -33,8 +33,8 @@ func NewAnvilProvider(path string) (*AnvilProvider, error) {
 	}
 
 	return &AnvilProvider{
-		path:    path,
-		loaders: make(map[uint64]*RegionLoader),
+		path:		path,
+		loaders:	make(map[uint64]*RegionLoader),
 	}, nil
 }
 

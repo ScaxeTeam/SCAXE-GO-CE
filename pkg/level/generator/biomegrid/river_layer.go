@@ -2,20 +2,20 @@ package biomegrid
 
 type RiverMapLayer struct {
 	*BaseMapLayer
-	Merged MapLayer
+	Merged	MapLayer
 }
 
 func NewRiverMapLayer(seed int64, parent MapLayer) *RiverMapLayer {
 	return &RiverMapLayer{
-		BaseMapLayer: NewBaseMapLayer(seed, parent),
-		Merged:       nil,
+		BaseMapLayer:	NewBaseMapLayer(seed, parent),
+		Merged:		nil,
 	}
 }
 
 func NewRiverMapLayerMerged(seed int64, riverParent, biomeParent MapLayer) *RiverMapLayer {
 	return &RiverMapLayer{
-		BaseMapLayer: NewBaseMapLayer(seed, riverParent),
-		Merged:       biomeParent,
+		BaseMapLayer:	NewBaseMapLayer(seed, riverParent),
+		Merged:		biomeParent,
 	}
 }
 

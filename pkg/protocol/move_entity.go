@@ -2,17 +2,17 @@ package protocol
 
 type MoveEntityPacket struct {
 	BasePacket
-	Entities []MoveEntityEntry
+	Entities	[]MoveEntityEntry
 }
 
 type MoveEntityEntry struct {
-	EntityID int64
-	X        float32
-	Y        float32
-	Z        float32
-	Yaw      float32
-	HeadYaw  float32
-	Pitch    float32
+	EntityID	int64
+	X		float32
+	Y		float32
+	Z		float32
+	Yaw		float32
+	HeadYaw		float32
+	Pitch		float32
 }
 
 func NewMoveEntityPacket() *MoveEntityPacket {

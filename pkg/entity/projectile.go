@@ -5,26 +5,28 @@ import (
 
 	"github.com/scaxe/scaxe-go/pkg/nbt"
 )
+
 type Projectile struct {
 	*Entity
-	ShootingEntityID int64
-	BaseDamage float64
-	HadCollision bool
-	IsCritical bool
-	DragBeforeGravity bool
-	ProjectileAge int
-	MaxAge int
+	ShootingEntityID	int64
+	BaseDamage		float64
+	HadCollision		bool
+	IsCritical		bool
+	DragBeforeGravity	bool
+	ProjectileAge		int
+	MaxAge			int
 }
+
 func NewProjectile(shooterID int64) *Projectile {
 	p := &Projectile{
-		Entity:            NewEntity(),
-		ShootingEntityID:  shooterID,
-		BaseDamage:        0,
-		HadCollision:      false,
-		IsCritical:        false,
-		DragBeforeGravity: true,
-		ProjectileAge:     0,
-		MaxAge:            1200,
+		Entity:			NewEntity(),
+		ShootingEntityID:	shooterID,
+		BaseDamage:		0,
+		HadCollision:		false,
+		IsCritical:		false,
+		DragBeforeGravity:	true,
+		ProjectileAge:		0,
+		MaxAge:			1200,
 	}
 	p.Entity.Health = 1
 	p.Entity.MaxHealth = 1
@@ -36,13 +38,15 @@ func NewProjectile(shooterID int64) *Projectile {
 
 	return p
 }
+
 type ProjectileTickResult struct {
-	HasUpdate   bool
-	HitEntityID int64
-	HitBlock    bool
-	ShouldClose bool
-	Damage      float64
+	HasUpdate	bool
+	HitEntityID	int64
+	HitBlock	bool
+	ShouldClose	bool
+	Damage		float64
 }
+
 func (p *Projectile) TickProjectile(nearbyEntities []IEntity, isCollided bool) ProjectileTickResult {
 	result := ProjectileTickResult{}
 

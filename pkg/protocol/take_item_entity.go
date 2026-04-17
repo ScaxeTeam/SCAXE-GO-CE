@@ -2,8 +2,8 @@ package protocol
 
 type TakeItemEntityPacket struct {
 	BasePacket
-	Target   int64
-	EntityID int64
+	Target		int64
+	EntityID	int64
 }
 
 func NewTakeItemEntityPacket() *TakeItemEntityPacket {

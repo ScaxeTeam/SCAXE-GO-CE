@@ -8,29 +8,29 @@ import (
 type BiomeLookup func(temperature, rainfall, river, ocean, hills float64) uint8
 
 type BiomeSelector struct {
-	Fallback Biome
+	Fallback	Biome
 
-	Temperature *noise.Simplex
-	Rainfall    *noise.Simplex
-	River       *noise.Simplex
-	Ocean       *noise.Simplex
-	Hills       *noise.Simplex
+	Temperature	*noise.Simplex
+	Rainfall	*noise.Simplex
+	River		*noise.Simplex
+	Ocean		*noise.Simplex
+	Hills		*noise.Simplex
 
-	Biomes map[uint8]Biome
-	Lookup BiomeLookup
+	Biomes	map[uint8]Biome
+	Lookup	BiomeLookup
 }
 
 func NewBiomeSelector(r *rand.Random, lookup BiomeLookup, fallback Biome) *BiomeSelector {
 	return &BiomeSelector{
-		Fallback: fallback,
-		Lookup:   lookup,
-		Biomes:   make(map[uint8]Biome),
+		Fallback:	fallback,
+		Lookup:		lookup,
+		Biomes:		make(map[uint8]Biome),
 
-		Temperature: noise.NewSimplex(r, 2, 1.0/8.0, 1.0/2048.0),
-		Rainfall:    noise.NewSimplex(r, 2, 1.0/8.0, 1.0/2048.0),
-		River:       noise.NewSimplex(r, 6, 1.0/2.0, 1.0/1024.0),
-		Ocean:       noise.NewSimplex(r, 6, 1.0/2.0, 1.0/2048.0),
-		Hills:       noise.NewSimplex(r, 2, 1.0/2.0, 1.0/2048.0),
+		Temperature:	noise.NewSimplex(r, 2, 1.0/8.0, 1.0/2048.0),
+		Rainfall:	noise.NewSimplex(r, 2, 1.0/8.0, 1.0/2048.0),
+		River:		noise.NewSimplex(r, 6, 1.0/2.0, 1.0/1024.0),
+		Ocean:		noise.NewSimplex(r, 6, 1.0/2.0, 1.0/2048.0),
+		Hills:		noise.NewSimplex(r, 2, 1.0/2.0, 1.0/2048.0),
 	}
 }
 

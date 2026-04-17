@@ -7,10 +7,10 @@ type TripwireHookBlock struct {
 func NewTripwireHookBlock() *TripwireHookBlock {
 	return &TripwireHookBlock{
 		TransparentBase: TransparentBase{
-			BlockID:       TRIPWIRE_HOOK,
-			BlockName:     "Tripwire Hook",
-			BlockHardness: 0,
-			BlockToolType: ToolTypeNone,
+			BlockID:	TRIPWIRE_HOOK,
+			BlockName:	"Tripwire Hook",
+			BlockHardness:	0,
+			BlockToolType:	ToolTypeNone,
 		},
 	}
 }
@@ -42,10 +42,10 @@ type TripwireBlock struct {
 func NewTripwireBlock() *TripwireBlock {
 	return &TripwireBlock{
 		TransparentBase: TransparentBase{
-			BlockID:       TRIPWIRE,
-			BlockName:     "Tripwire",
-			BlockHardness: 0,
-			BlockToolType: ToolTypeNone,
+			BlockID:	TRIPWIRE,
+			BlockName:	"Tripwire",
+			BlockHardness:	0,
+			BlockToolType:	ToolTypeNone,
 		},
 	}
 }

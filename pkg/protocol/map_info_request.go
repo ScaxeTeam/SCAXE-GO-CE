@@ -2,7 +2,7 @@ package protocol
 
 type MapInfoRequestPacket struct {
 	BasePacket
-	MapID int64
+	MapID	int64
 }
 
 func NewMapInfoRequestPacket() *MapInfoRequestPacket {

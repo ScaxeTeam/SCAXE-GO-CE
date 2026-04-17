@@ -9,22 +9,22 @@ type BiomeSource interface {
 }
 
 type MapGenScatteredFeature struct {
-	worldSeed                           int64
-	maxDistanceBetweenScatteredFeatures int
-	minDistanceBetweenScatteredFeatures int
-	rand                                *rand.Random
-	biomeSource                         BiomeSource
-	structureMap                        map[int64]*StructureStart
+	worldSeed				int64
+	maxDistanceBetweenScatteredFeatures	int
+	minDistanceBetweenScatteredFeatures	int
+	rand					*rand.Random
+	biomeSource				BiomeSource
+	structureMap				map[int64]*StructureStart
 }
 
 func NewMapGenScatteredFeature(seed int64, biomeSource BiomeSource) *MapGenScatteredFeature {
 	m := &MapGenScatteredFeature{
-		worldSeed:                           seed,
-		maxDistanceBetweenScatteredFeatures: 32,
-		minDistanceBetweenScatteredFeatures: 8,
-		rand:                                rand.NewRandom(seed),
-		biomeSource:                         biomeSource,
-		structureMap:                        make(map[int64]*StructureStart),
+		worldSeed:				seed,
+		maxDistanceBetweenScatteredFeatures:	32,
+		minDistanceBetweenScatteredFeatures:	8,
+		rand:					rand.NewRandom(seed),
+		biomeSource:				biomeSource,
+		structureMap:				make(map[int64]*StructureStart),
 	}
 	return m
 }

@@ -4,12 +4,12 @@ import "math/rand"
 
 type AIWander struct {
 	BaseAIGoal
-	entity          *Entity
-	moveHelper      *MoveHelper
-	x, y, z         float64
-	speed           float64
-	executionChance int
-	mustUpdate      bool
+	entity		*Entity
+	moveHelper	*MoveHelper
+	x, y, z		float64
+	speed		float64
+	executionChance	int
+	mustUpdate	bool
 }
 
 func NewAIWander(e *Entity, mh *MoveHelper, speed float64) *AIWander {
@@ -18,10 +18,10 @@ func NewAIWander(e *Entity, mh *MoveHelper, speed float64) *AIWander {
 
 func NewAIWanderWithChance(e *Entity, mh *MoveHelper, speed float64, chance int) *AIWander {
 	g := &AIWander{
-		entity:          e,
-		moveHelper:      mh,
-		speed:           speed,
-		executionChance: chance,
+		entity:			e,
+		moveHelper:		mh,
+		speed:			speed,
+		executionChance:	chance,
 	}
 	g.SetMutexBits(1)
 	return g

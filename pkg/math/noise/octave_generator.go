@@ -11,13 +11,13 @@ type OctaveGenerator interface {
 }
 
 type BaseOctaveGenerator struct {
-	Octaves int
-	SizeX   int
-	SizeY   int
-	SizeZ   int
-	XScale  float64
-	YScale  float64
-	ZScale  float64
+	Octaves	int
+	SizeX	int
+	SizeY	int
+	SizeZ	int
+	XScale	float64
+	YScale	float64
+	ZScale	float64
 }
 
 func (g *BaseOctaveGenerator) SetXScale(scale float64) {

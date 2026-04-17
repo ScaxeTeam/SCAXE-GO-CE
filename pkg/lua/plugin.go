@@ -11,32 +11,32 @@ import (
 )
 
 type PluginMeta struct {
-	Name        string `yaml:"name"`
-	Version     string `yaml:"version"`
-	Author      string `yaml:"author"`
-	Description string `yaml:"description"`
-	Main        string `yaml:"main"`
+	Name		string	`yaml:"name"`
+	Version		string	`yaml:"version"`
+	Author		string	`yaml:"author"`
+	Description	string	`yaml:"description"`
+	Main		string	`yaml:"main"`
 }
 
 type Plugin struct {
-	Meta    PluginMeta
-	Dir     string
-	State   *lua.LState
-	Enabled bool
+	Meta	PluginMeta
+	Dir	string
+	State	*lua.LState
+	Enabled	bool
 
-	eventHandlers  map[string][]*lua.LFunction
-	schedulerTasks []*schedulerTask
-	nextTaskID     int
+	eventHandlers	map[string][]*lua.LFunction
+	schedulerTasks	[]*schedulerTask
+	nextTaskID	int
 }
 
 type schedulerTask struct {
-	id       int
-	callback *lua.LFunction
-	interval int64
-	delay    int64
-	nextRun  int64
-	repeat   bool
-	cancel   bool
+	id		int
+	callback	*lua.LFunction
+	interval	int64
+	delay		int64
+	nextRun		int64
+	repeat		bool
+	cancel		bool
 }
 
 func loadPluginMeta(dir string) (*PluginMeta, error) {
@@ -63,11 +63,11 @@ func loadPluginMeta(dir string) (*PluginMeta, error) {
 
 func newPlugin(meta *PluginMeta, dir string) *Plugin {
 	return &Plugin{
-		Meta:           *meta,
-		Dir:            dir,
-		Enabled:        false,
-		eventHandlers:  make(map[string][]*lua.LFunction),
-		schedulerTasks: make([]*schedulerTask, 0),
+		Meta:		*meta,
+		Dir:		dir,
+		Enabled:	false,
+		eventHandlers:	make(map[string][]*lua.LFunction),
+		schedulerTasks:	make([]*schedulerTask, 0),
 	}
 }
 
@@ -101,9 +101,9 @@ func (p *Plugin) enable() error {
 	onEnable := p.State.GetGlobal("onEnable")
 	if fn, ok := onEnable.(*lua.LFunction); ok {
 		if err := p.State.CallByParam(lua.P{
-			Fn:      fn,
-			NRet:    0,
-			Protect: true,
+			Fn:		fn,
+			NRet:		0,
+			Protect:	true,
 		}); err != nil {
 			return fmt.Errorf("onEnable error: %w", err)
 		}
@@ -118,9 +118,9 @@ func (p *Plugin) disable() {
 		onDisable := p.State.GetGlobal("onDisable")
 		if fn, ok := onDisable.(*lua.LFunction); ok {
 			_ = p.State.CallByParam(lua.P{
-				Fn:      fn,
-				NRet:    0,
-				Protect: true,
+				Fn:		fn,
+				NRet:		0,
+				Protect:	true,
 			})
 		}
 		p.State.Close()
@@ -143,9 +143,9 @@ func (p *Plugin) tick(currentTick int64) {
 		}
 		if currentTick >= task.nextRun {
 			if err := p.State.CallByParam(lua.P{
-				Fn:      task.callback,
-				NRet:    0,
-				Protect: true,
+				Fn:		task.callback,
+				NRet:		0,
+				Protect:	true,
 			}); err != nil {
 				fmt.Printf("[Plugin:%s] scheduler error: %v\n", p.Meta.Name, err)
 			}
@@ -171,9 +171,9 @@ func (p *Plugin) callEvent(eventName string, eventTable *lua.LTable) bool {
 	cancelled := false
 	for _, fn := range handlers {
 		if err := p.State.CallByParam(lua.P{
-			Fn:      fn,
-			NRet:    0,
-			Protect: true,
+			Fn:		fn,
+			NRet:		0,
+			Protect:	true,
 		}, eventTable); err != nil {
 			fmt.Printf("[Plugin:%s] event handler error for %s: %v\n", p.Meta.Name, eventName, err)
 			continue

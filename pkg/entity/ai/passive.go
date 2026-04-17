@@ -7,19 +7,19 @@ import (
 
 type StrollBehavior struct {
 	*BehaviorBase
-	Duration        int
-	TimeLeft        int
-	Speed           float64
-	SpeedMultiplier float64
+	Duration	int
+	TimeLeft	int
+	Speed		float64
+	SpeedMultiplier	float64
 }
 
 func NewStrollBehavior(mob MobEntity, duration int, speed, speedMultiplier float64) *StrollBehavior {
 	return &StrollBehavior{
-		BehaviorBase:    NewBehaviorBase(mob),
-		Duration:        duration,
-		TimeLeft:        duration,
-		Speed:           speed,
-		SpeedMultiplier: speedMultiplier,
+		BehaviorBase:		NewBehaviorBase(mob),
+		Duration:		duration,
+		TimeLeft:		duration,
+		Speed:			speed,
+		SpeedMultiplier:	speedMultiplier,
 	}
 }
 
@@ -94,16 +94,16 @@ func (s *StrollBehavior) OnEnd() {
 
 type RandomLookaroundBehavior struct {
 	*BehaviorBase
-	Duration  int
-	TimeLeft  int
-	TargetYaw float64
+	Duration	int
+	TimeLeft	int
+	TargetYaw	float64
 }
 
 func NewRandomLookaroundBehavior(mob MobEntity) *RandomLookaroundBehavior {
 	return &RandomLookaroundBehavior{
-		BehaviorBase: NewBehaviorBase(mob),
-		Duration:     40,
-		TimeLeft:     0,
+		BehaviorBase:	NewBehaviorBase(mob),
+		Duration:	40,
+		TimeLeft:	0,
 	}
 }
 
@@ -145,22 +145,22 @@ func (r *RandomLookaroundBehavior) OnTick() {
 	}
 }
 
-func (r *RandomLookaroundBehavior) OnEnd() {}
+func (r *RandomLookaroundBehavior) OnEnd()	{}
 
 type LookAtPlayerBehavior struct {
 	*BehaviorBase
-	LookDistance float64
-	Duration     int
-	TimeLeft     int
-	Target       PlayerEntity
+	LookDistance	float64
+	Duration	int
+	TimeLeft	int
+	Target		PlayerEntity
 }
 
 func NewLookAtPlayerBehavior(mob MobEntity, lookDistance float64) *LookAtPlayerBehavior {
 	return &LookAtPlayerBehavior{
-		BehaviorBase: NewBehaviorBase(mob),
-		LookDistance: lookDistance,
-		Duration:     60,
-		TimeLeft:     0,
+		BehaviorBase:	NewBehaviorBase(mob),
+		LookDistance:	lookDistance,
+		Duration:	60,
+		TimeLeft:	0,
 	}
 }
 
@@ -208,21 +208,21 @@ func (l *LookAtPlayerBehavior) OnEnd() {
 
 type PanicBehavior struct {
 	*BehaviorBase
-	Speed           float64
-	SpeedMultiplier float64
-	Duration        int
-	TimeLeft        int
-	Active          bool
+	Speed		float64
+	SpeedMultiplier	float64
+	Duration	int
+	TimeLeft	int
+	Active		bool
 }
 
 func NewPanicBehavior(mob MobEntity, speed, speedMultiplier float64) *PanicBehavior {
 	return &PanicBehavior{
-		BehaviorBase:    NewBehaviorBase(mob),
-		Speed:           speed,
-		SpeedMultiplier: speedMultiplier,
-		Duration:        60,
-		TimeLeft:        0,
-		Active:          false,
+		BehaviorBase:		NewBehaviorBase(mob),
+		Speed:			speed,
+		SpeedMultiplier:	speedMultiplier,
+		Duration:		60,
+		TimeLeft:		0,
+		Active:			false,
 	}
 }
 

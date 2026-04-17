@@ -7,15 +7,16 @@ type NetherWartBlock struct {
 func NewNetherWartBlock() *NetherWartBlock {
 	return &NetherWartBlock{
 		TransparentBase: TransparentBase{
-			BlockID:       NETHER_WART_BLOCK,
-			BlockName:     "Nether Wart",
-			BlockHardness: 0,
-			BlockToolType: ToolTypeNone,
+			BlockID:	NETHER_WART_BLOCK,
+			BlockName:	"Nether Wart",
+			BlockHardness:	0,
+			BlockToolType:	ToolTypeNone,
 		},
 	}
 }
 
 const NetherWartMaxAge = 3
+
 func NetherWartGetAge(meta uint8) int {
 	return int(meta & 0x03)
 }

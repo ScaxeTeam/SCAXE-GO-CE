@@ -7,20 +7,22 @@ import (
 )
 
 const (
-	FallingBlockNetworkID = 66
-	AnvilBlockID = 145
-	AnvilMaxFallDamage = 40.0
+	FallingBlockNetworkID	= 66
+	AnvilBlockID		= 145
+	AnvilMaxFallDamage	= 40.0
 )
+
 type FallingBlock struct {
 	*Entity
-	BlockID int
-	BlockMeta int
+	BlockID		int
+	BlockMeta	int
 }
+
 func NewFallingBlock(blockID, blockMeta int) *FallingBlock {
 	fb := &FallingBlock{
-		Entity:    NewEntity(),
-		BlockID:   blockID,
-		BlockMeta: blockMeta,
+		Entity:		NewEntity(),
+		BlockID:	blockID,
+		BlockMeta:	blockMeta,
 	}
 
 	fb.Entity.NetworkID = FallingBlockNetworkID
@@ -34,19 +36,21 @@ func NewFallingBlock(blockID, blockMeta int) *FallingBlock {
 
 	return fb
 }
+
 type FallingBlockTickResult struct {
-	HasUpdate    bool
-	Landed       bool
-	ShouldPlace  bool
-	ShouldDrop   bool
-	PlaceX       int
-	PlaceY       int
-	PlaceZ       int
-	PlaceBlockID int
-	PlaceMeta    int
-	IsAnvil      bool
-	AnvilDamage  float64
+	HasUpdate	bool
+	Landed		bool
+	ShouldPlace	bool
+	ShouldDrop	bool
+	PlaceX		int
+	PlaceY		int
+	PlaceZ		int
+	PlaceBlockID	int
+	PlaceMeta	int
+	IsAnvil		bool
+	AnvilDamage	float64
 }
+
 func (fb *FallingBlock) TickFallingBlock(landingBlockID int, landingBlockSolid bool, landingBlockLiquid bool) FallingBlockTickResult {
 	result := FallingBlockTickResult{}
 

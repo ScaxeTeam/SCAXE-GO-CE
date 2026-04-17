@@ -13,13 +13,13 @@ type BeachBiome struct {
 func NewBeachBiome() *BeachBiome {
 	b := &BeachBiome{
 		BaseBiome: &BaseBiome{
-			ID:              16,
-			Name:            "Beach",
-			BaseHeight:      0.0,
-			HeightVariation: 0.025,
-			Temperature:     0.8,
-			Rainfall:        0.4,
-			Decorator:       NewDecorator(),
+			ID:			16,
+			Name:			"Beach",
+			BaseHeight:		0.0,
+			HeightVariation:	0.025,
+			Temperature:		0.8,
+			Rainfall:		0.4,
+			Decorator:		NewDecorator(),
 		},
 	}
 
@@ -42,13 +42,13 @@ type StoneBeachBiome struct {
 func NewStoneBeachBiome() *StoneBeachBiome {
 	b := &StoneBeachBiome{
 		BaseBiome: &BaseBiome{
-			ID:              25,
-			Name:            "Stone Beach",
-			BaseHeight:      0.1,
-			HeightVariation: 0.8,
-			Temperature:     0.2,
-			Rainfall:        0.3,
-			Decorator:       NewDecorator(),
+			ID:			25,
+			Name:			"Stone Beach",
+			BaseHeight:		0.1,
+			HeightVariation:	0.8,
+			Temperature:		0.2,
+			Rainfall:		0.3,
+			Decorator:		NewDecorator(),
 		},
 	}
 
@@ -68,13 +68,13 @@ type ColdBeachBiome struct {
 func NewColdBeachBiome() *ColdBeachBiome {
 	b := &ColdBeachBiome{
 		BaseBiome: &BaseBiome{
-			ID:              26,
-			Name:            "Cold Beach",
-			BaseHeight:      0.0,
-			HeightVariation: 0.025,
-			Temperature:     0.05,
-			Rainfall:        0.3,
-			Decorator:       NewDecorator(),
+			ID:			26,
+			Name:			"Cold Beach",
+			BaseHeight:		0.0,
+			HeightVariation:	0.025,
+			Temperature:		0.05,
+			Rainfall:		0.3,
+			Decorator:		NewDecorator(),
 		},
 	}
 	b.Decorator.TreesPerChunk = -999

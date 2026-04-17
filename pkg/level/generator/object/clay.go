@@ -8,14 +8,14 @@ import (
 )
 
 type Clay struct {
-	BlockID    uint8
-	BlockCount int
+	BlockID		uint8
+	BlockCount	int
 }
 
 func NewClay(count int) *Clay {
 	return &Clay{
-		BlockID:    block.CLAY_BLOCK,
-		BlockCount: count,
+		BlockID:	block.CLAY_BLOCK,
+		BlockCount:	count,
 	}
 }
 

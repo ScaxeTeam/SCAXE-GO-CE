@@ -6,18 +6,18 @@ import (
 
 type KillCommand struct {
 	command.BaseCommand
-	server ServerInterface
+	server	ServerInterface
 }
 
 func NewKillCommand(server ServerInterface) *KillCommand {
 	return &KillCommand{
 		BaseCommand: command.BaseCommand{
-			Name:        "kill",
-			Description: "Kills a player",
-			Usage:       "/kill [player]",
-			Permission:  "pocketmine.command.kill",
+			Name:		"kill",
+			Description:	"Kills a player",
+			Usage:		"/kill [player]",
+			Permission:	"pocketmine.command.kill",
 		},
-		server: server,
+		server:	server,
 	}
 }
 

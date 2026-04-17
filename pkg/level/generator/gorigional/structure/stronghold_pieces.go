@@ -13,18 +13,18 @@ type StrongholdPiece struct {
 func NewStrongholdPiece(componentType int, rnd *rand.Random, box *BoundingBox, facing int) *StrongholdPiece {
 	return &StrongholdPiece{
 		StructureComponentBase: &StructureComponentBase{
-			ComponentType: componentType,
-			BoundingBox:   box,
-			CoordBaseMode: facing,
+			ComponentType:	componentType,
+			BoundingBox:	box,
+			CoordBaseMode:	facing,
 		},
 	}
 }
 
 type StrongholdPieceWeight struct {
-	PieceClass func(*StructureStart, *rand.Random, *BoundingBox, int) StructureComponent
-	Weight     int
-	Limit      int
-	Instances  int
+	PieceClass	func(*StructureStart, *rand.Random, *BoundingBox, int) StructureComponent
+	Weight		int
+	Limit		int
+	Instances	int
 }
 
 var StrongholdWeights = []*StrongholdPieceWeight{
@@ -250,7 +250,7 @@ func (s *StrongholdStairs2) AddComponentParts(wld WorldAccess, rnd *rand.Random,
 
 type StrongholdPortalRoom struct {
 	*StrongholdPiece
-	hasSpawner bool
+	hasSpawner	bool
 }
 
 func NewStrongholdPortalRoom(start *StructureStart, rnd *rand.Random, box *BoundingBox, facing int) StructureComponent {

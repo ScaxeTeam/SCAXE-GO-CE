@@ -6,19 +6,19 @@ import (
 
 type ContainerSetSlotPacket struct {
 	BasePacket
-	WindowID   byte
-	Slot       uint16
-	HotbarSlot uint16
-	Item       item.Item
+	WindowID	byte
+	Slot		uint16
+	HotbarSlot	uint16
+	Item		item.Item
 }
 
 func NewContainerSetSlotPacket(windowID byte, slot uint16, it item.Item) *ContainerSetSlotPacket {
 	return &ContainerSetSlotPacket{
-		BasePacket: BasePacket{PacketID: IDContainerSetSlot},
-		WindowID:   windowID,
-		Slot:       slot,
-		HotbarSlot: 0,
-		Item:       it,
+		BasePacket:	BasePacket{PacketID: IDContainerSetSlot},
+		WindowID:	windowID,
+		Slot:		slot,
+		HotbarSlot:	0,
+		Item:		it,
 	}
 }
 

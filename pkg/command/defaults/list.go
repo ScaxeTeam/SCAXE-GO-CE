@@ -9,18 +9,18 @@ import (
 
 type ListCommand struct {
 	command.BaseCommand
-	Server Server
+	Server	Server
 }
 
 func NewListCommand(s Server) *ListCommand {
 	return &ListCommand{
 		BaseCommand: command.BaseCommand{
-			Name:        "list",
-			Description: "Lists all online players",
-			Usage:       "/list",
-			Permission:  "pocketmine.command.list",
+			Name:		"list",
+			Description:	"Lists all online players",
+			Usage:		"/list",
+			Permission:	"pocketmine.command.list",
 		},
-		Server: s,
+		Server:	s,
 	}
 }
 

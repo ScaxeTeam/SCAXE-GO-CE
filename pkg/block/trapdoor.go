@@ -1,33 +1,36 @@
 package block
+
 type TrapdoorBlock struct {
 	TransparentBase
 }
+
 const (
-	TrapdoorMaskDirection = 0x03
-	TrapdoorMaskUpper     = 0x04
-	TrapdoorMaskOpened    = 0x08
+	TrapdoorMaskDirection	= 0x03
+	TrapdoorMaskUpper	= 0x04
+	TrapdoorMaskOpened	= 0x08
 )
+
 func NewTrapdoorBlock() *TrapdoorBlock {
 	return &TrapdoorBlock{
 		TransparentBase: TransparentBase{
-			BlockID:         TRAPDOOR,
-			BlockName:       "Wooden Trapdoor",
-			BlockHardness:   3,
-			BlockResistance: 15,
-			BlockToolType:   ToolTypeAxe,
-			BlockCanPlace:   true,
+			BlockID:		TRAPDOOR,
+			BlockName:		"Wooden Trapdoor",
+			BlockHardness:		3,
+			BlockResistance:	15,
+			BlockToolType:		ToolTypeAxe,
+			BlockCanPlace:		true,
 		},
 	}
 }
 func NewIronTrapdoorBlock() *TrapdoorBlock {
 	return &TrapdoorBlock{
 		TransparentBase: TransparentBase{
-			BlockID:         IRON_TRAPDOOR,
-			BlockName:       "Iron Trapdoor",
-			BlockHardness:   5,
-			BlockResistance: 25,
-			BlockToolType:   ToolTypePickaxe,
-			BlockCanPlace:   true,
+			BlockID:		IRON_TRAPDOOR,
+			BlockName:		"Iron Trapdoor",
+			BlockHardness:		5,
+			BlockResistance:	25,
+			BlockToolType:		ToolTypePickaxe,
+			BlockCanPlace:		true,
 		},
 	}
 }
@@ -67,7 +70,9 @@ func TrapdoorGetDirection(meta uint8) uint8 {
 func TrapdoorToggleOpen(meta uint8) uint8 {
 	return meta ^ TrapdoorMaskOpened
 }
+
 var TrapdoorDirectionToMeta = [4]uint8{1, 3, 0, 2}
+
 func GetTrapdoorPlacementMeta(playerDirection int, clickY float64, face int) uint8 {
 	meta := TrapdoorDirectionToMeta[playerDirection&0x03]
 	if (clickY > 0.5 && face != 1) || face == 0 {
@@ -75,10 +80,12 @@ func GetTrapdoorPlacementMeta(playerDirection int, clickY float64, face int) uin
 	}
 	return meta
 }
+
 type TrapdoorBoundingBox struct {
-	MinX, MinY, MinZ float64
-	MaxX, MaxY, MaxZ float64
+	MinX, MinY, MinZ	float64
+	MaxX, MaxY, MaxZ	float64
 }
+
 func GetTrapdoorBoundingBox(x, y, z int, meta uint8) TrapdoorBoundingBox {
 	fx, fy, fz := float64(x), float64(y), float64(z)
 	f := 0.1875

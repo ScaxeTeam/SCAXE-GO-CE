@@ -11,25 +11,25 @@ type DamageableEntity interface {
 
 type AttackEnemyBehavior struct {
 	*BehaviorBase
-	Speed            float64
-	SpeedMultiplier  float64
-	LookDistance     float64
-	AttackCooldown   int
-	TimeLeft         int
-	AttackPlayer     bool
-	TargetNetworkIDs []int
-	Enemy            interface{}
+	Speed			float64
+	SpeedMultiplier		float64
+	LookDistance		float64
+	AttackCooldown		int
+	TimeLeft		int
+	AttackPlayer		bool
+	TargetNetworkIDs	[]int
+	Enemy			interface{}
 }
 
 func NewAttackEnemyBehavior(mob MobEntity, targetIDs []int, attackPlayer bool, speed, multiplier float64) *AttackEnemyBehavior {
 	return &AttackEnemyBehavior{
-		BehaviorBase:     NewBehaviorBase(mob),
-		Speed:            speed,
-		SpeedMultiplier:  multiplier,
-		LookDistance:     16.0,
-		AttackCooldown:   35,
-		AttackPlayer:     attackPlayer,
-		TargetNetworkIDs: targetIDs,
+		BehaviorBase:		NewBehaviorBase(mob),
+		Speed:			speed,
+		SpeedMultiplier:	multiplier,
+		LookDistance:		16.0,
+		AttackCooldown:		35,
+		AttackPlayer:		attackPlayer,
+		TargetNetworkIDs:	targetIDs,
 	}
 }
 
@@ -196,18 +196,18 @@ type Exploder interface {
 
 type ExplodeBehavior struct {
 	*BehaviorBase
-	FuseTime     int
-	FuseLeft     int
-	ExplodeRange float64
-	Target       PlayerEntity
-	Fusing       bool
+	FuseTime	int
+	FuseLeft	int
+	ExplodeRange	float64
+	Target		PlayerEntity
+	Fusing		bool
 }
 
 func NewExplodeBehavior(mob MobEntity, fuseTime int, explodeRange float64) *ExplodeBehavior {
 	return &ExplodeBehavior{
-		BehaviorBase: NewBehaviorBase(mob),
-		FuseTime:     fuseTime,
-		ExplodeRange: explodeRange,
+		BehaviorBase:	NewBehaviorBase(mob),
+		FuseTime:	fuseTime,
+		ExplodeRange:	explodeRange,
 	}
 }
 

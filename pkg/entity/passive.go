@@ -7,21 +7,23 @@ import (
 const (
 	BabyGrowAge = -24000
 )
+
 type Animal struct {
 	*Entity
-	IsBabyFlag bool
-	InLove bool
-	AnimalAge int
-	DropExpMin int
-	DropExpMax int
-	FeedFoodID int
-	MobName string
+	IsBabyFlag	bool
+	InLove		bool
+	AnimalAge	int
+	DropExpMin	int
+	DropExpMax	int
+	FeedFoodID	int
+	MobName		string
 }
+
 func NewAnimal(networkID int, name string, maxHealth int, width, height float64, movementSpeed, panicSpeed float64) *Animal {
 	a := &Animal{
-		Entity:    NewEntity(),
-		MobName:   name,
-		AnimalAge: 0,
+		Entity:		NewEntity(),
+		MobName:	name,
+		AnimalAge:	0,
 	}
 
 	a.Entity.NetworkID = networkID
@@ -60,10 +62,12 @@ func (a *Animal) SetInLove(inLove bool) {
 func (a *Animal) IsInLove() bool {
 	return a.InLove
 }
+
 type AnimalTickResult struct {
-	HasUpdate bool
-	GrewUp    bool
+	HasUpdate	bool
+	GrewUp		bool
 }
+
 func (a *Animal) TickAnimal() AnimalTickResult {
 	result := AnimalTickResult{}
 
@@ -127,8 +131,10 @@ func (a *Animal) GetFeedFoodID() int {
 func (a *Animal) CanBeFedWith(itemID int) bool {
 	return a.FeedFoodID > 0 && itemID == a.FeedFoodID
 }
+
 const CowNetworkID = 11
 const ItemWheat = 296
+
 func NewCow() *Animal {
 	cow := NewAnimal(CowNetworkID, "Cow", 8, 0.9, 1.3, 0.20, 2.0)
 	cow.Entity.EyeHeight = 1.2
@@ -139,9 +145,9 @@ func NewCow() *Animal {
 }
 func CowDrops(isOnFire bool, rand01 int, count int) (int, int, int) {
 	const (
-		RawBeef    = 363
-		CookedBeef = 364
-		Leather    = 334
+		RawBeef		= 363
+		CookedBeef	= 364
+		Leather		= 334
 	)
 
 	if rand01 == 0 {

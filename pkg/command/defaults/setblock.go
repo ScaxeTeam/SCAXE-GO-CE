@@ -10,18 +10,18 @@ import (
 
 type SetBlockCommand struct {
 	command.BaseCommand
-	server ServerInterface
+	server	ServerInterface
 }
 
 func NewSetBlockCommand(server ServerInterface) *SetBlockCommand {
 	return &SetBlockCommand{
 		BaseCommand: command.BaseCommand{
-			Name:        "setblock",
-			Description: "Sets a block at a position",
-			Usage:       "/setblock <x> <y> <z> <block> [data]",
-			Permission:  "pocketmine.command.setblock",
+			Name:		"setblock",
+			Description:	"Sets a block at a position",
+			Usage:		"/setblock <x> <y> <z> <block> [data]",
+			Permission:	"pocketmine.command.setblock",
 		},
-		server: server,
+		server:	server,
 	}
 }
 

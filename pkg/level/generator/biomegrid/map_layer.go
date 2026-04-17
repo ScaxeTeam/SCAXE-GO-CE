@@ -9,16 +9,16 @@ type MapLayer interface {
 }
 
 type BaseMapLayer struct {
-	Seed   int64
-	Parent MapLayer
-	random *rand.Rand
+	Seed	int64
+	Parent	MapLayer
+	random	*rand.Rand
 }
 
 func NewBaseMapLayer(seed int64, parent MapLayer) *BaseMapLayer {
 	return &BaseMapLayer{
-		Seed:   seed,
-		Parent: parent,
-		random: rand.New(rand.NewSource(seed)),
+		Seed:	seed,
+		Parent:	parent,
+		random:	rand.New(rand.NewSource(seed)),
 	}
 }
 

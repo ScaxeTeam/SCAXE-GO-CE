@@ -1,20 +1,20 @@
 package gorigional
 
 type MathHelper struct {
-	CoordinateScale float64
-	HeightScale     float64
-	StretchY        float64
-	DepthNoiseScale float64
+	CoordinateScale	float64
+	HeightScale	float64
+	StretchY	float64
+	DepthNoiseScale	float64
 }
 
 func NewMathHelper() *MathHelper {
 	return &MathHelper{
 
-		CoordinateScale: 684.412,
-		HeightScale:     684.412,
+		CoordinateScale:	684.412,
+		HeightScale:		684.412,
 
-		StretchY:        12.0 * 2.0,
-		DepthNoiseScale: 200.0,
+		StretchY:		12.0 * 2.0,
+		DepthNoiseScale:	200.0,
 	}
 }
 

@@ -11,7 +11,7 @@ import (
 
 type BatchPacket struct {
 	BasePacket
-	Payload []byte
+	Payload	[]byte
 }
 
 func NewBatchPacket() *BatchPacket {

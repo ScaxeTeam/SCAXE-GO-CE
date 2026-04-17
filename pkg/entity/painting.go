@@ -5,11 +5,13 @@ import (
 )
 
 const PaintingNetworkID = 83
+
 type PaintingMotive struct {
-	Name   string
-	Width  int
-	Height int
+	Name	string
+	Width	int
+	Height	int
 }
+
 var AllPaintingMotives = []PaintingMotive{
 	{Name: "Kebab", Width: 1, Height: 1},
 	{Name: "Aztec", Width: 1, Height: 1},
@@ -58,19 +60,21 @@ func GetMotivesFittingSpace(width, height int) []PaintingMotive {
 	}
 	return result
 }
+
 type Painting struct {
 	*Entity
-	Motive string
-	Direction int
-	BlockX int
-	BlockY int
-	BlockZ int
+	Motive		string
+	Direction	int
+	BlockX		int
+	BlockY		int
+	BlockZ		int
 }
+
 func NewPainting(motive string, direction int) *Painting {
 	p := &Painting{
-		Entity:    NewEntity(),
-		Motive:    motive,
-		Direction: direction,
+		Entity:		NewEntity(),
+		Motive:		motive,
+		Direction:	direction,
 	}
 
 	p.Entity.NetworkID = PaintingNetworkID
@@ -110,7 +114,9 @@ func (p *Painting) LoadPaintingFromNBT() {
 	}
 	p.Direction = int(p.Entity.NamedTag.GetByte("Direction"))
 }
+
 const PaintingDropItemID = 321
+
 func (p *Painting) GetDrops() (itemID, meta, count int) {
 	return PaintingDropItemID, 0, 1
 }

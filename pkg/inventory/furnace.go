@@ -3,17 +3,20 @@ package inventory
 import (
 	"github.com/scaxe/scaxe-go/pkg/item"
 )
+
 const (
-	FurnaceSlotSmelting = 0
-	FurnaceSlotFuel     = 1
-	FurnaceSlotResult   = 2
+	FurnaceSlotSmelting	= 0
+	FurnaceSlotFuel		= 1
+	FurnaceSlotResult	= 2
 )
+
 type FurnaceUpdateNotifier interface {
 	SetNeedUpdate()
 }
 type FurnaceInventory struct {
 	*ContainerInventory
 }
+
 func NewFurnaceInventory(holder InventoryHolder) *FurnaceInventory {
 	f := &FurnaceInventory{
 		ContainerInventory: NewContainerInventory(

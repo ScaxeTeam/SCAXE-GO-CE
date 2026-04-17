@@ -13,24 +13,24 @@ import (
 )
 
 const (
-	IDUnconnectedPing         byte = 0x01
-	IDUnconnectedPingOpenConn byte = 0x02
-	IDUnconnectedPong         byte = 0x1c
-	IDOpenConnectionRequest1  byte = 0x05
-	IDOpenConnectionReply1    byte = 0x06
-	IDOpenConnectionRequest2  byte = 0x07
-	IDOpenConnectionReply2    byte = 0x08
+	IDUnconnectedPing		byte	= 0x01
+	IDUnconnectedPingOpenConn	byte	= 0x02
+	IDUnconnectedPong		byte	= 0x1c
+	IDOpenConnectionRequest1	byte	= 0x05
+	IDOpenConnectionReply1		byte	= 0x06
+	IDOpenConnectionRequest2	byte	= 0x07
+	IDOpenConnectionReply2		byte	= 0x08
 
-	IDConnectionRequest         byte = 0x09
-	IDConnectionRequestAccepted byte = 0x10
-	IDNewIncomingConnection     byte = 0x13
-	IDDisconnectNotification    byte = 0x15
-	IDIncompatibleProtocol      byte = 0x19
-	IDAcknowledge               byte = 0xc0
-	IDNAcknowledge              byte = 0xa0
+	IDConnectionRequest		byte	= 0x09
+	IDConnectionRequestAccepted	byte	= 0x10
+	IDNewIncomingConnection		byte	= 0x13
+	IDDisconnectNotification	byte	= 0x15
+	IDIncompatibleProtocol		byte	= 0x19
+	IDAcknowledge			byte	= 0xc0
+	IDNAcknowledge			byte	= 0xa0
 
-	IDCustom0 byte = 0x80
-	IDCustomF byte = 0x8f
+	IDCustom0	byte	= 0x80
+	IDCustomF	byte	= 0x8f
 )
 
 var RakNetMagic = []byte{
@@ -43,29 +43,29 @@ var RakNetMagic = []byte{
 var SupportedProtocols = []byte{7, 8}
 
 type Server struct {
-	conn     *net.UDPConn
-	address  string
-	serverID int64
-	pongData []byte
+	conn		*net.UDPConn
+	address		string
+	serverID	int64
+	pongData	[]byte
 
-	sessions   map[string]*Session
-	sessionsMu sync.RWMutex
+	sessions	map[string]*Session
+	sessionsMu	sync.RWMutex
 
-	OnConnect    func(*Session)
-	OnDisconnect func(*Session)
-	OnPacket     func(*Session, []byte)
+	OnConnect	func(*Session)
+	OnDisconnect	func(*Session)
+	OnPacket	func(*Session, []byte)
 
-	running bool
-	stopCh  chan struct{}
+	running	bool
+	stopCh	chan struct{}
 }
 
 func NewServer(address string) *Server {
 	logger.DebugRaknet("raknet.NewServer", "address", address)
 	return &Server{
-		address:  address,
-		serverID: rand.Int63(),
-		sessions: make(map[string]*Session),
-		stopCh:   make(chan struct{}),
+		address:	address,
+		serverID:	rand.Int63(),
+		sessions:	make(map[string]*Session),
+		stopCh:		make(chan struct{}),
 	}
 }
 

@@ -1,48 +1,51 @@
 package item
+
 type PickaxeInfo struct {
-	ID           int
-	Name         string
-	Tier         int
-	AttackDamage float64
-	Durability   int
+	ID		int
+	Name		string
+	Tier		int
+	AttackDamage	float64
+	Durability	int
 }
+
 var pickaxes = map[int]PickaxeInfo{
 	WOODEN_PICKAXE: {
-		ID:           WOODEN_PICKAXE,
-		Name:         "Wooden Pickaxe",
-		Tier:         TierWooden,
-		AttackDamage: 2,
-		Durability:   60,
+		ID:		WOODEN_PICKAXE,
+		Name:		"Wooden Pickaxe",
+		Tier:		TierWooden,
+		AttackDamage:	2,
+		Durability:	60,
 	},
 	STONE_PICKAXE: {
-		ID:           STONE_PICKAXE,
-		Name:         "Stone Pickaxe",
-		Tier:         TierStone,
-		AttackDamage: 3,
-		Durability:   132,
+		ID:		STONE_PICKAXE,
+		Name:		"Stone Pickaxe",
+		Tier:		TierStone,
+		AttackDamage:	3,
+		Durability:	132,
 	},
 	IRON_PICKAXE: {
-		ID:           IRON_PICKAXE,
-		Name:         "Iron Pickaxe",
-		Tier:         TierIron,
-		AttackDamage: 4,
-		Durability:   251,
+		ID:		IRON_PICKAXE,
+		Name:		"Iron Pickaxe",
+		Tier:		TierIron,
+		AttackDamage:	4,
+		Durability:	251,
 	},
 	GOLD_PICKAXE: {
-		ID:           GOLD_PICKAXE,
-		Name:         "Golden Pickaxe",
-		Tier:         TierGolden,
-		AttackDamage: 2,
-		Durability:   33,
+		ID:		GOLD_PICKAXE,
+		Name:		"Golden Pickaxe",
+		Tier:		TierGolden,
+		AttackDamage:	2,
+		Durability:	33,
 	},
 	DIAMOND_PICKAXE: {
-		ID:           DIAMOND_PICKAXE,
-		Name:         "Diamond Pickaxe",
-		Tier:         TierDiamond,
-		AttackDamage: 5,
-		Durability:   1562,
+		ID:		DIAMOND_PICKAXE,
+		Name:		"Diamond Pickaxe",
+		Tier:		TierDiamond,
+		AttackDamage:	5,
+		Durability:	1562,
 	},
 }
+
 func IsPickaxe(id int) bool {
 	_, ok := pickaxes[id]
 	return ok

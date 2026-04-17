@@ -5,24 +5,26 @@ import "math/rand"
 const LightningNetworkID = 93
 
 const (
-	LightningDamageMin = 8
-	LightningDamageMax = 20
-	LightningFireMin   = 3
-	LightningFireMax   = 8
-	LightningLifetime  = 20
-	LightningRangeX = 4.0
-	LightningRangeY = 3.0
-	LightningRangeZ = 4.0
-	LightningExplodeRadius = 10.0
+	LightningDamageMin	= 8
+	LightningDamageMax	= 20
+	LightningFireMin	= 3
+	LightningFireMax	= 8
+	LightningLifetime	= 20
+	LightningRangeX		= 4.0
+	LightningRangeY		= 3.0
+	LightningRangeZ		= 4.0
+	LightningExplodeRadius	= 10.0
 )
+
 type Lightning struct {
 	*Entity
-	Age int
+	Age	int
 }
+
 func NewLightning() *Lightning {
 	l := &Lightning{
-		Entity: NewEntity(),
-		Age:    0,
+		Entity:	NewEntity(),
+		Age:	0,
 	}
 
 	l.Entity.NetworkID = LightningNetworkID
@@ -38,9 +40,11 @@ func NewLightning() *Lightning {
 func (l *Lightning) GetName() string {
 	return "Lightning"
 }
+
 type LightningTickResult struct {
 	ShouldClose bool
 }
+
 func (l *Lightning) TickLightning() LightningTickResult {
 	l.Age++
 	if l.Age > LightningLifetime {
@@ -54,16 +58,18 @@ func CalcLightningDamage() int {
 func CalcLightningFireDuration() int {
 	return LightningFireMin + rand.Intn(LightningFireMax-LightningFireMin+1)
 }
+
 type LightningImpactInfo struct {
-	ShouldPlaceFire bool
-	FireX, FireY, FireZ int
-	RangeX, RangeY, RangeZ float64
+	ShouldPlaceFire		bool
+	FireX, FireY, FireZ	int
+	RangeX, RangeY, RangeZ	float64
 }
+
 func CalcImpact(lightningFire bool, hitBlockSolid, hitBlockLiquid bool, x, y, z float64) LightningImpactInfo {
 	info := LightningImpactInfo{
-		RangeX: LightningRangeX,
-		RangeY: LightningRangeY,
-		RangeZ: LightningRangeZ,
+		RangeX:	LightningRangeX,
+		RangeY:	LightningRangeY,
+		RangeZ:	LightningRangeZ,
 	}
 
 	if !lightningFire {

@@ -2,36 +2,36 @@ package block
 
 type saplingBlock struct{ DefaultBlockInteraction }
 
-func (b *saplingBlock) GetID() uint8                { return SAPLING }
-func (b *saplingBlock) GetName() string             { return "Sapling" }
-func (b *saplingBlock) GetHardness() float64        { return 0 }
-func (b *saplingBlock) GetBlastResistance() float64 { return 0 }
-func (b *saplingBlock) GetLightLevel() uint8        { return 0 }
-func (b *saplingBlock) GetLightFilter() uint8       { return 0 }
-func (b *saplingBlock) IsSolid() bool               { return false }
-func (b *saplingBlock) IsTransparent() bool         { return true }
-func (b *saplingBlock) CanBePlaced() bool           { return true }
-func (b *saplingBlock) CanBeReplaced() bool         { return false }
-func (b *saplingBlock) GetToolType() int            { return ToolTypeNone }
-func (b *saplingBlock) GetToolTier() int            { return 0 }
+func (b *saplingBlock) GetID() uint8			{ return SAPLING }
+func (b *saplingBlock) GetName() string			{ return "Sapling" }
+func (b *saplingBlock) GetHardness() float64		{ return 0 }
+func (b *saplingBlock) GetBlastResistance() float64	{ return 0 }
+func (b *saplingBlock) GetLightLevel() uint8		{ return 0 }
+func (b *saplingBlock) GetLightFilter() uint8		{ return 0 }
+func (b *saplingBlock) IsSolid() bool			{ return false }
+func (b *saplingBlock) IsTransparent() bool		{ return true }
+func (b *saplingBlock) CanBePlaced() bool		{ return true }
+func (b *saplingBlock) CanBeReplaced() bool		{ return false }
+func (b *saplingBlock) GetToolType() int		{ return ToolTypeNone }
+func (b *saplingBlock) GetToolTier() int		{ return 0 }
 func (b *saplingBlock) GetDrops(toolType, toolTier int) []Drop {
 	return []Drop{{ID: int(SAPLING), Meta: 0, Count: 1}}
 }
 
 type tallGrassBlock struct{ DefaultBlockInteraction }
 
-func (b *tallGrassBlock) GetID() uint8                { return TALL_GRASS }
-func (b *tallGrassBlock) GetName() string             { return "Tall Grass" }
-func (b *tallGrassBlock) GetHardness() float64        { return 0 }
-func (b *tallGrassBlock) GetBlastResistance() float64 { return 0 }
-func (b *tallGrassBlock) GetLightLevel() uint8        { return 0 }
-func (b *tallGrassBlock) GetLightFilter() uint8       { return 0 }
-func (b *tallGrassBlock) IsSolid() bool               { return false }
-func (b *tallGrassBlock) IsTransparent() bool         { return true }
-func (b *tallGrassBlock) CanBePlaced() bool           { return true }
-func (b *tallGrassBlock) CanBeReplaced() bool         { return true }
-func (b *tallGrassBlock) GetToolType() int            { return ToolTypeNone }
-func (b *tallGrassBlock) GetToolTier() int            { return 0 }
+func (b *tallGrassBlock) GetID() uint8			{ return TALL_GRASS }
+func (b *tallGrassBlock) GetName() string		{ return "Tall Grass" }
+func (b *tallGrassBlock) GetHardness() float64		{ return 0 }
+func (b *tallGrassBlock) GetBlastResistance() float64	{ return 0 }
+func (b *tallGrassBlock) GetLightLevel() uint8		{ return 0 }
+func (b *tallGrassBlock) GetLightFilter() uint8		{ return 0 }
+func (b *tallGrassBlock) IsSolid() bool			{ return false }
+func (b *tallGrassBlock) IsTransparent() bool		{ return true }
+func (b *tallGrassBlock) CanBePlaced() bool		{ return true }
+func (b *tallGrassBlock) CanBeReplaced() bool		{ return true }
+func (b *tallGrassBlock) GetToolType() int		{ return ToolTypeNone }
+func (b *tallGrassBlock) GetToolTier() int		{ return 0 }
 func (b *tallGrassBlock) GetDrops(toolType, toolTier int) []Drop {
 	if toolType == ToolTypeShears {
 		return []Drop{{ID: int(TALL_GRASS), Meta: 0, Count: 1}}
@@ -41,36 +41,36 @@ func (b *tallGrassBlock) GetDrops(toolType, toolTier int) []Drop {
 
 type bedBlock struct{ DefaultBlockInteraction }
 
-func (b *bedBlock) GetID() uint8                { return BED_BLOCK }
-func (b *bedBlock) GetName() string             { return "Bed Block" }
-func (b *bedBlock) GetHardness() float64        { return 0.2 }
-func (b *bedBlock) GetBlastResistance() float64 { return 1.0 }
-func (b *bedBlock) GetLightLevel() uint8        { return 0 }
-func (b *bedBlock) GetLightFilter() uint8       { return 0 }
-func (b *bedBlock) IsSolid() bool               { return true }
-func (b *bedBlock) IsTransparent() bool         { return true }
-func (b *bedBlock) CanBePlaced() bool           { return true }
-func (b *bedBlock) CanBeReplaced() bool         { return false }
-func (b *bedBlock) GetToolType() int            { return ToolTypeNone }
-func (b *bedBlock) GetToolTier() int            { return 0 }
+func (b *bedBlock) GetID() uint8		{ return BED_BLOCK }
+func (b *bedBlock) GetName() string		{ return "Bed Block" }
+func (b *bedBlock) GetHardness() float64	{ return 0.2 }
+func (b *bedBlock) GetBlastResistance() float64	{ return 1.0 }
+func (b *bedBlock) GetLightLevel() uint8	{ return 0 }
+func (b *bedBlock) GetLightFilter() uint8	{ return 0 }
+func (b *bedBlock) IsSolid() bool		{ return true }
+func (b *bedBlock) IsTransparent() bool		{ return true }
+func (b *bedBlock) CanBePlaced() bool		{ return true }
+func (b *bedBlock) CanBeReplaced() bool		{ return false }
+func (b *bedBlock) GetToolType() int		{ return ToolTypeNone }
+func (b *bedBlock) GetToolTier() int		{ return 0 }
 func (b *bedBlock) GetDrops(toolType, toolTier int) []Drop {
 	return []Drop{{ID: 355, Meta: 0, Count: 1}}
 }
 
 type doublePlantBlock struct{ DefaultBlockInteraction }
 
-func (b *doublePlantBlock) GetID() uint8                { return DOUBLE_PLANT }
-func (b *doublePlantBlock) GetName() string             { return "Double Plant" }
-func (b *doublePlantBlock) GetHardness() float64        { return 0 }
-func (b *doublePlantBlock) GetBlastResistance() float64 { return 0 }
-func (b *doublePlantBlock) GetLightLevel() uint8        { return 0 }
-func (b *doublePlantBlock) GetLightFilter() uint8       { return 0 }
-func (b *doublePlantBlock) IsSolid() bool               { return false }
-func (b *doublePlantBlock) IsTransparent() bool         { return true }
-func (b *doublePlantBlock) CanBePlaced() bool           { return true }
-func (b *doublePlantBlock) CanBeReplaced() bool         { return true }
-func (b *doublePlantBlock) GetToolType() int            { return ToolTypeNone }
-func (b *doublePlantBlock) GetToolTier() int            { return 0 }
+func (b *doublePlantBlock) GetID() uint8		{ return DOUBLE_PLANT }
+func (b *doublePlantBlock) GetName() string		{ return "Double Plant" }
+func (b *doublePlantBlock) GetHardness() float64	{ return 0 }
+func (b *doublePlantBlock) GetBlastResistance() float64	{ return 0 }
+func (b *doublePlantBlock) GetLightLevel() uint8	{ return 0 }
+func (b *doublePlantBlock) GetLightFilter() uint8	{ return 0 }
+func (b *doublePlantBlock) IsSolid() bool		{ return false }
+func (b *doublePlantBlock) IsTransparent() bool		{ return true }
+func (b *doublePlantBlock) CanBePlaced() bool		{ return true }
+func (b *doublePlantBlock) CanBeReplaced() bool		{ return true }
+func (b *doublePlantBlock) GetToolType() int		{ return ToolTypeNone }
+func (b *doublePlantBlock) GetToolTier() int		{ return 0 }
 func (b *doublePlantBlock) GetDrops(toolType, toolTier int) []Drop {
 	if toolType == ToolTypeShears {
 		return []Drop{{ID: int(DOUBLE_PLANT), Meta: 0, Count: 1}}
@@ -80,54 +80,54 @@ func (b *doublePlantBlock) GetDrops(toolType, toolTier int) []Drop {
 
 type waterLilyBlock struct{ DefaultBlockInteraction }
 
-func (b *waterLilyBlock) GetID() uint8                { return WATER_LILY }
-func (b *waterLilyBlock) GetName() string             { return "Lily Pad" }
-func (b *waterLilyBlock) GetHardness() float64        { return 0 }
-func (b *waterLilyBlock) GetBlastResistance() float64 { return 0 }
-func (b *waterLilyBlock) GetLightLevel() uint8        { return 0 }
-func (b *waterLilyBlock) GetLightFilter() uint8       { return 0 }
-func (b *waterLilyBlock) IsSolid() bool               { return false }
-func (b *waterLilyBlock) IsTransparent() bool         { return true }
-func (b *waterLilyBlock) CanBePlaced() bool           { return true }
-func (b *waterLilyBlock) CanBeReplaced() bool         { return false }
-func (b *waterLilyBlock) GetToolType() int            { return ToolTypeNone }
-func (b *waterLilyBlock) GetToolTier() int            { return 0 }
+func (b *waterLilyBlock) GetID() uint8			{ return WATER_LILY }
+func (b *waterLilyBlock) GetName() string		{ return "Lily Pad" }
+func (b *waterLilyBlock) GetHardness() float64		{ return 0 }
+func (b *waterLilyBlock) GetBlastResistance() float64	{ return 0 }
+func (b *waterLilyBlock) GetLightLevel() uint8		{ return 0 }
+func (b *waterLilyBlock) GetLightFilter() uint8		{ return 0 }
+func (b *waterLilyBlock) IsSolid() bool			{ return false }
+func (b *waterLilyBlock) IsTransparent() bool		{ return true }
+func (b *waterLilyBlock) CanBePlaced() bool		{ return true }
+func (b *waterLilyBlock) CanBeReplaced() bool		{ return false }
+func (b *waterLilyBlock) GetToolType() int		{ return ToolTypeNone }
+func (b *waterLilyBlock) GetToolTier() int		{ return 0 }
 func (b *waterLilyBlock) GetDrops(toolType, toolTier int) []Drop {
 	return []Drop{{ID: int(WATER_LILY), Meta: 0, Count: 1}}
 }
 
 type signPostBlock struct{ DefaultBlockInteraction }
 
-func (b *signPostBlock) GetID() uint8                { return SIGN_POST }
-func (b *signPostBlock) GetName() string             { return "Sign Post" }
-func (b *signPostBlock) GetHardness() float64        { return 1.0 }
-func (b *signPostBlock) GetBlastResistance() float64 { return 5.0 }
-func (b *signPostBlock) GetLightLevel() uint8        { return 0 }
-func (b *signPostBlock) GetLightFilter() uint8       { return 0 }
-func (b *signPostBlock) IsSolid() bool               { return false }
-func (b *signPostBlock) IsTransparent() bool         { return true }
-func (b *signPostBlock) CanBePlaced() bool           { return true }
-func (b *signPostBlock) CanBeReplaced() bool         { return false }
-func (b *signPostBlock) GetToolType() int            { return ToolTypeAxe }
-func (b *signPostBlock) GetToolTier() int            { return 0 }
+func (b *signPostBlock) GetID() uint8			{ return SIGN_POST }
+func (b *signPostBlock) GetName() string		{ return "Sign Post" }
+func (b *signPostBlock) GetHardness() float64		{ return 1.0 }
+func (b *signPostBlock) GetBlastResistance() float64	{ return 5.0 }
+func (b *signPostBlock) GetLightLevel() uint8		{ return 0 }
+func (b *signPostBlock) GetLightFilter() uint8		{ return 0 }
+func (b *signPostBlock) IsSolid() bool			{ return false }
+func (b *signPostBlock) IsTransparent() bool		{ return true }
+func (b *signPostBlock) CanBePlaced() bool		{ return true }
+func (b *signPostBlock) CanBeReplaced() bool		{ return false }
+func (b *signPostBlock) GetToolType() int		{ return ToolTypeAxe }
+func (b *signPostBlock) GetToolTier() int		{ return 0 }
 func (b *signPostBlock) GetDrops(toolType, toolTier int) []Drop {
 	return []Drop{{ID: 323, Meta: 0, Count: 1}}
 }
 
 type wallSignBlock struct{ DefaultBlockInteraction }
 
-func (b *wallSignBlock) GetID() uint8                { return WALL_SIGN }
-func (b *wallSignBlock) GetName() string             { return "Wall Sign" }
-func (b *wallSignBlock) GetHardness() float64        { return 1.0 }
-func (b *wallSignBlock) GetBlastResistance() float64 { return 5.0 }
-func (b *wallSignBlock) GetLightLevel() uint8        { return 0 }
-func (b *wallSignBlock) GetLightFilter() uint8       { return 0 }
-func (b *wallSignBlock) IsSolid() bool               { return false }
-func (b *wallSignBlock) IsTransparent() bool         { return true }
-func (b *wallSignBlock) CanBePlaced() bool           { return true }
-func (b *wallSignBlock) CanBeReplaced() bool         { return false }
-func (b *wallSignBlock) GetToolType() int            { return ToolTypeAxe }
-func (b *wallSignBlock) GetToolTier() int            { return 0 }
+func (b *wallSignBlock) GetID() uint8			{ return WALL_SIGN }
+func (b *wallSignBlock) GetName() string		{ return "Wall Sign" }
+func (b *wallSignBlock) GetHardness() float64		{ return 1.0 }
+func (b *wallSignBlock) GetBlastResistance() float64	{ return 5.0 }
+func (b *wallSignBlock) GetLightLevel() uint8		{ return 0 }
+func (b *wallSignBlock) GetLightFilter() uint8		{ return 0 }
+func (b *wallSignBlock) IsSolid() bool			{ return false }
+func (b *wallSignBlock) IsTransparent() bool		{ return true }
+func (b *wallSignBlock) CanBePlaced() bool		{ return true }
+func (b *wallSignBlock) CanBeReplaced() bool		{ return false }
+func (b *wallSignBlock) GetToolType() int		{ return ToolTypeAxe }
+func (b *wallSignBlock) GetToolTier() int		{ return 0 }
 func (b *wallSignBlock) GetDrops(toolType, toolTier int) []Drop {
 	return []Drop{{ID: 323, Meta: 0, Count: 1}}
 }

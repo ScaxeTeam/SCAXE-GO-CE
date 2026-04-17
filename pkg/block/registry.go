@@ -6,8 +6,8 @@ import (
 )
 
 type BlockState struct {
-	ID   uint8
-	Meta uint8
+	ID	uint8
+	Meta	uint8
 }
 
 func NewBlockState(id, meta uint8) BlockState {
@@ -70,20 +70,20 @@ type BlockBehavior interface {
 var Registry = &blockRegistry{}
 
 type blockRegistry struct {
-	mu sync.RWMutex
+	mu	sync.RWMutex
 
-	behaviors [256]BlockBehavior
+	behaviors	[256]BlockBehavior
 
-	fullList [4096]BlockState
+	fullList	[4096]BlockState
 
-	solid           [256]bool
-	transparent     [256]bool
-	hardness        [256]float64
-	lightLevel      [256]uint8
-	lightFilter     [256]uint8
-	blastResistance [256]float64
+	solid		[256]bool
+	transparent	[256]bool
+	hardness	[256]float64
+	lightLevel	[256]uint8
+	lightFilter	[256]uint8
+	blastResistance	[256]float64
 
-	initialized bool
+	initialized	bool
 }
 
 func (r *blockRegistry) Init() {

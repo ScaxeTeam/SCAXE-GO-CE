@@ -4,9 +4,11 @@ import (
 	"github.com/scaxe/scaxe-go/pkg/nbt"
 	"github.com/scaxe/scaxe-go/pkg/world"
 )
+
 type ItemFrame struct {
 	SpawnableBase
 }
+
 func NewItemFrame(chunk *world.Chunk, nbtData *nbt.CompoundTag) *ItemFrame {
 	f := &ItemFrame{}
 	if nbtData.Get("Item") == nil {

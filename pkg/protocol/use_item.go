@@ -6,12 +6,12 @@ import (
 
 type UseItemPacket struct {
 	BasePacket
-	X, Y, Z          int32
-	Face             byte
-	FX, FY, FZ       float32
-	PosX, PosY, PosZ float32
-	Slot             int32
-	Item             item.Item
+	X, Y, Z			int32
+	Face			byte
+	FX, FY, FZ		float32
+	PosX, PosY, PosZ	float32
+	Slot			int32
+	Item			item.Item
 }
 
 func NewUseItemPacket() *UseItemPacket {

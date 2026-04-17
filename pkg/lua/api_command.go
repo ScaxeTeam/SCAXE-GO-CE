@@ -7,9 +7,9 @@ import (
 
 type luaCommand struct {
 	command.BaseCommand
-	callback   *lua.LFunction
-	state      *lua.LState
-	pluginName string
+	callback	*lua.LFunction
+	state		*lua.LState
+	pluginName	string
 }
 
 func (c *luaCommand) Execute(sender command.CommandSender, args []string) bool {
@@ -27,9 +27,9 @@ func (c *luaCommand) Execute(sender command.CommandSender, args []string) bool {
 	}
 
 	if err := c.state.CallByParam(lua.P{
-		Fn:      c.callback,
-		NRet:    0,
-		Protect: true,
+		Fn:		c.callback,
+		NRet:		0,
+		Protect:	true,
 	}, senderTable, argsTable); err != nil {
 		sender.SendMessage("§cCommand error: " + err.Error())
 		return false
@@ -62,14 +62,14 @@ func registerCommandAPI(L *lua.LState, p *Plugin, server ServerAPI) {
 
 		cmd := &luaCommand{
 			BaseCommand: command.BaseCommand{
-				Name:        name,
-				Description: desc,
-				Usage:       usage,
-				Permission:  perm,
+				Name:		name,
+				Description:	desc,
+				Usage:		usage,
+				Permission:	perm,
 			},
-			callback:   fn,
-			state:      L,
-			pluginName: p.Meta.Name,
+			callback:	fn,
+			state:		L,
+			pluginName:	p.Meta.Name,
 		}
 
 		server.RegisterCommand(cmd)

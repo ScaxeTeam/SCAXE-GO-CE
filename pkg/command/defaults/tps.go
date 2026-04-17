@@ -9,18 +9,18 @@ import (
 
 type TpsCommand struct {
 	command.BaseCommand
-	server ServerInterface
+	server	ServerInterface
 }
 
 func NewTpsCommand(server ServerInterface) *TpsCommand {
 	return &TpsCommand{
 		BaseCommand: command.BaseCommand{
-			Name:        "tps",
-			Description: "Shows server TPS",
-			Usage:       "/tps",
-			Permission:  "pocketmine.command.tps",
+			Name:		"tps",
+			Description:	"Shows server TPS",
+			Usage:		"/tps",
+			Permission:	"pocketmine.command.tps",
 		},
-		server: server,
+		server:	server,
 	}
 }
 

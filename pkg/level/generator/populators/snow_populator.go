@@ -9,8 +9,8 @@ import (
 )
 
 const (
-	BlockSnowLayer = 78
-	BlockIce       = 79
+	BlockSnowLayer	= 78
+	BlockIce	= 79
 )
 
 type SnowPopulator struct{}

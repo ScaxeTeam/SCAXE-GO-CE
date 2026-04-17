@@ -6,33 +6,36 @@ import (
 )
 
 const (
-	MaxBrewTime = 400
-	BrewingSlots = 4
+	MaxBrewTime	= 400
+	BrewingSlots	= 4
 )
+
 var brewingIngredients = map[int16]bool{
-	372: true,
-	348: true,
-	331: true,
-	376: true,
-	378: true,
-	353: true,
-	382: true,
-	375: true,
-	370: true,
-	377: true,
-	396: true,
-	462: true,
-	414: true,
-	289: true,
+	372:	true,
+	348:	true,
+	331:	true,
+	376:	true,
+	378:	true,
+	353:	true,
+	382:	true,
+	375:	true,
+	370:	true,
+	377:	true,
+	396:	true,
+	462:	true,
+	414:	true,
+	289:	true,
 }
+
 type BrewingStand struct {
 	SpawnableBase
 	ContainerBase
 	NameableBase
 
-	CookTime   int16
-	NeedUpdate bool
+	CookTime	int16
+	NeedUpdate	bool
 }
+
 func NewBrewingStand(chunk *world.Chunk, nbtData *nbt.CompoundTag) Tile {
 	bs := &BrewingStand{}
 	InitSpawnableBase(&bs.SpawnableBase, TypeBrewingStand, chunk, nbtData)

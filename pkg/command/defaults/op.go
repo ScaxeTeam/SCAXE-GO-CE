@@ -8,18 +8,18 @@ import (
 
 type OpCommand struct {
 	command.BaseCommand
-	Server Server
+	Server	Server
 }
 
 func NewOpCommand(s Server) *OpCommand {
 	return &OpCommand{
 		BaseCommand: command.BaseCommand{
-			Name:        "op",
-			Description: "Grants operator status to a player.",
-			Usage:       "/op <player>",
-			Permission:  "",
+			Name:		"op",
+			Description:	"Grants operator status to a player.",
+			Usage:		"/op <player>",
+			Permission:	"",
 		},
-		Server: s,
+		Server:	s,
 	}
 }
 

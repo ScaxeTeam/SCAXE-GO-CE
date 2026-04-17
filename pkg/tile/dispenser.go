@@ -8,11 +8,13 @@ import (
 const (
 	DispenserSlots = 9
 )
+
 type Dispenser struct {
 	SpawnableBase
 	ContainerBase
 	NameableBase
 }
+
 func NewDispenser(chunk *world.Chunk, nbtData *nbt.CompoundTag) Tile {
 	d := &Dispenser{}
 	InitSpawnableBase(&d.SpawnableBase, TypeDispenser, chunk, nbtData)

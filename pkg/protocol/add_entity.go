@@ -2,24 +2,23 @@ package protocol
 
 type AddEntityPacket struct {
 	BasePacket
-	EntityID int64
-	Type     int32
-	X        float32
-	Y        float32
-	Z        float32
-	SpeedX   float32
-	SpeedY   float32
-	SpeedZ   float32
-	Yaw      float32
-	Pitch    float32
-	Metadata []byte
-
+	EntityID	int64
+	Type		int32
+	X		float32
+	Y		float32
+	Z		float32
+	SpeedX		float32
+	SpeedY		float32
+	SpeedZ		float32
+	Yaw		float32
+	Pitch		float32
+	Metadata	[]byte
 }
 
 func NewAddEntityPacket() *AddEntityPacket {
 	return &AddEntityPacket{
-		BasePacket: BasePacket{PacketID: IDAddEntity},
-		Metadata:   []byte{0x7f},
+		BasePacket:	BasePacket{PacketID: IDAddEntity},
+		Metadata:	[]byte{0x7f},
 	}
 }
 

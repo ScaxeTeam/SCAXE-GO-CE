@@ -3,12 +3,12 @@ package entity
 import "math"
 
 type MoveHelper struct {
-	Entity   *Entity
-	PosX     float64
-	PosY     float64
-	PosZ     float64
-	Speed    float64
-	IsMoving bool
+	Entity		*Entity
+	PosX		float64
+	PosY		float64
+	PosZ		float64
+	Speed		float64
+	IsMoving	bool
 }
 
 func NewMoveHelper(e *Entity) *MoveHelper {
@@ -52,22 +52,22 @@ func (m *MoveHelper) OnUpdateMoveHelper() {
 }
 
 type LookHelper struct {
-	Entity       *Entity
-	DeltaX       float64
-	DeltaZ       float64
-	IsLooking    bool
-	LookPosX     float64
-	LookPosY     float64
-	LookPosZ     float64
-	MaxYawTurn   float64
-	MaxPitchTurn float64
+	Entity		*Entity
+	DeltaX		float64
+	DeltaZ		float64
+	IsLooking	bool
+	LookPosX	float64
+	LookPosY	float64
+	LookPosZ	float64
+	MaxYawTurn	float64
+	MaxPitchTurn	float64
 }
 
 func NewLookHelper(e *Entity) *LookHelper {
 	return &LookHelper{
-		Entity:       e,
-		MaxYawTurn:   10.0,
-		MaxPitchTurn: 40.0,
+		Entity:		e,
+		MaxYawTurn:	10.0,
+		MaxPitchTurn:	40.0,
 	}
 }
 func (l *LookHelper) SetLookPosition(x, y, z, maxYaw, maxPitch float64) {
@@ -119,8 +119,8 @@ func wrapDegrees(deg float64) float64 {
 }
 
 type JumpHelper struct {
-	Entity    *Entity
-	IsJumping bool
+	Entity		*Entity
+	IsJumping	bool
 }
 
 func NewJumpHelper(e *Entity) *JumpHelper {

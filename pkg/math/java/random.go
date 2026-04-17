@@ -5,14 +5,14 @@ import (
 )
 
 const (
-	multiplier = 0x5DEECE66D
-	addend     = 0xB
-	mask       = (1 << 48) - 1
+	multiplier	= 0x5DEECE66D
+	addend		= 0xB
+	mask		= (1 << 48) - 1
 )
 
 type Random struct {
-	seed int64
-	mu sync.Mutex
+	seed	int64
+	mu	sync.Mutex
 }
 
 func NewRandom(seed int64) *Random {
@@ -80,6 +80,6 @@ func (r *Random) NextDouble() float64 {
 
 type GaussianRandom struct {
 	*Random
-	nextNextGaussian     float64
-	haveNextNextGaussian bool
+	nextNextGaussian	float64
+	haveNextNextGaussian	bool
 }

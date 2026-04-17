@@ -1,40 +1,40 @@
 package protocol
 
 type BlockRecord struct {
-	X         int32
-	Z         int32
-	Y         byte
-	BlockID   byte
-	BlockMeta byte
-	Flags     byte
+	X		int32
+	Z		int32
+	Y		byte
+	BlockID		byte
+	BlockMeta	byte
+	Flags		byte
 }
 
 type UpdateBlockPacket struct {
 	BasePacket
-	Records []BlockRecord
+	Records	[]BlockRecord
 }
 
 const (
-	UpdateBlockFlagNone         = 0x00
-	UpdateBlockFlagNeighborhood = 0x01
-	UpdateBlockFlagNetwork      = 0x02
-	UpdateBlockFlagNoGraphic    = 0x04
-	UpdateBlockFlagPriority     = 0x08
-	UpdateBlockPacketFlagAll    = UpdateBlockFlagNetwork | UpdateBlockFlagNeighborhood
+	UpdateBlockFlagNone		= 0x00
+	UpdateBlockFlagNeighborhood	= 0x01
+	UpdateBlockFlagNetwork		= 0x02
+	UpdateBlockFlagNoGraphic	= 0x04
+	UpdateBlockFlagPriority		= 0x08
+	UpdateBlockPacketFlagAll	= UpdateBlockFlagNetwork | UpdateBlockFlagNeighborhood
 )
 
 func NewUpdateBlockPacket(x, y, z int32, id, meta uint8) *UpdateBlockPacket {
 
 	return &UpdateBlockPacket{
-		BasePacket: BasePacket{PacketID: IDUpdateBlock},
+		BasePacket:	BasePacket{PacketID: IDUpdateBlock},
 		Records: []BlockRecord{
 			{
-				X:         x,
-				Z:         z,
-				Y:         byte(y),
-				BlockID:   id,
-				BlockMeta: meta,
-				Flags:     UpdateBlockFlagNetwork | UpdateBlockFlagNeighborhood,
+				X:		x,
+				Z:		z,
+				Y:		byte(y),
+				BlockID:	id,
+				BlockMeta:	meta,
+				Flags:		UpdateBlockFlagNetwork | UpdateBlockFlagNeighborhood,
 			},
 		},
 	}

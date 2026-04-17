@@ -9,52 +9,52 @@ import (
 )
 
 type OverworldGenerator struct {
-	Seed int64
+	Seed	int64
 
-	heightOctave     *noise.PerlinOctaveGenerator
-	roughnessOctave  *noise.PerlinOctaveGenerator
-	roughness2Octave *noise.PerlinOctaveGenerator
-	detailOctave     *noise.PerlinOctaveGenerator
-	surfaceOctave    *noise.SimplexOctaveGenerator
+	heightOctave		*noise.PerlinOctaveGenerator
+	roughnessOctave		*noise.PerlinOctaveGenerator
+	roughness2Octave	*noise.PerlinOctaveGenerator
+	detailOctave		*noise.PerlinOctaveGenerator
+	surfaceOctave		*noise.SimplexOctaveGenerator
 
-	density [5][5][17]float64
+	density	[5][5][17]float64
 
-	coordinateScale   float64
-	heightScale       float64
-	heightNoiseScaleX float64
-	heightNoiseScaleZ float64
-	detailNoiseScaleX float64
-	detailNoiseScaleY float64
-	detailNoiseScaleZ float64
-	surfaceScale      float64
-	baseSize          float64
-	stretchY          float64
-	biomeHeightOffset float64
-	biomeHeightWeight float64
-	biomeScaleOffset  float64
-	biomeScaleWeight  float64
+	coordinateScale		float64
+	heightScale		float64
+	heightNoiseScaleX	float64
+	heightNoiseScaleZ	float64
+	detailNoiseScaleX	float64
+	detailNoiseScaleY	float64
+	detailNoiseScaleZ	float64
+	surfaceScale		float64
+	baseSize		float64
+	stretchY		float64
+	biomeHeightOffset	float64
+	biomeHeightWeight	float64
+	biomeScaleOffset	float64
+	biomeScaleWeight	float64
 }
 
 func NewOverworldGenerator(seed int64) *OverworldGenerator {
 	r := rand.New(rand.NewSource(seed))
 
 	g := &OverworldGenerator{
-		Seed: seed,
+		Seed:	seed,
 
-		coordinateScale:   684.412,
-		heightScale:       684.412,
-		heightNoiseScaleX: 200.0,
-		heightNoiseScaleZ: 200.0,
-		detailNoiseScaleX: 80.0,
-		detailNoiseScaleY: 160.0,
-		detailNoiseScaleZ: 80.0,
-		surfaceScale:      0.0625,
-		baseSize:          8.5,
-		stretchY:          12.0,
-		biomeHeightOffset: 0.0,
-		biomeHeightWeight: 1.0,
-		biomeScaleOffset:  0.0,
-		biomeScaleWeight:  1.0,
+		coordinateScale:	684.412,
+		heightScale:		684.412,
+		heightNoiseScaleX:	200.0,
+		heightNoiseScaleZ:	200.0,
+		detailNoiseScaleX:	80.0,
+		detailNoiseScaleY:	160.0,
+		detailNoiseScaleZ:	80.0,
+		surfaceScale:		0.0625,
+		baseSize:		8.5,
+		stretchY:		12.0,
+		biomeHeightOffset:	0.0,
+		biomeHeightWeight:	1.0,
+		biomeScaleOffset:	0.0,
+		biomeScaleWeight:	1.0,
 	}
 
 	g.heightOctave = noise.NewPerlinOctaveGenerator2D(r, 16, 5, 5)

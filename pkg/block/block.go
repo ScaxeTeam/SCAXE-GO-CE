@@ -7,14 +7,14 @@ import (
 )
 
 type Block struct {
-	ID   uint8
-	Meta uint8
+	ID	uint8
+	Meta	uint8
 }
 
 func NewBlock(id, meta uint8) Block {
 	return Block{
-		ID:   id,
-		Meta: meta,
+		ID:	id,
+		Meta:	meta,
 	}
 }
 

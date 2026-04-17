@@ -2,28 +2,28 @@ package protocol
 
 type PlayerActionPacket struct {
 	BasePacket
-	EntityID int64
-	Action   int32
-	X        int32
-	Y        int32
-	Z        int32
-	Face     int32
+	EntityID	int64
+	Action		int32
+	X		int32
+	Y		int32
+	Z		int32
+	Face		int32
 }
 
 const (
-	ActionStartBreak         int32 = 0
-	ActionAbortBreak         int32 = 1
-	ActionStopBreak          int32 = 2
-	ActionReleaseItem        int32 = 5
-	ActionStopSleeping       int32 = 6
-	ActionRespawn            int32 = 7
-	ActionJump               int32 = 8
-	ActionStartSprint        int32 = 9
-	ActionStopSprint         int32 = 10
-	ActionStartSneak         int32 = 11
-	ActionStopSneak          int32 = 12
-	ActionDimensionChange    int32 = 13
-	ActionDimensionChangeAck int32 = 14
+	ActionStartBreak		int32	= 0
+	ActionAbortBreak		int32	= 1
+	ActionStopBreak			int32	= 2
+	ActionReleaseItem		int32	= 5
+	ActionStopSleeping		int32	= 6
+	ActionRespawn			int32	= 7
+	ActionJump			int32	= 8
+	ActionStartSprint		int32	= 9
+	ActionStopSprint		int32	= 10
+	ActionStartSneak		int32	= 11
+	ActionStopSneak			int32	= 12
+	ActionDimensionChange		int32	= 13
+	ActionDimensionChangeAck	int32	= 14
 )
 
 func NewPlayerActionPacket() *PlayerActionPacket {

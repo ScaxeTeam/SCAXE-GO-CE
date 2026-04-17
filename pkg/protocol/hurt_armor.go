@@ -2,7 +2,7 @@ package protocol
 
 type HurtArmorPacket struct {
 	BasePacket
-	Health int32
+	Health	int32
 }
 
 func NewHurtArmorPacket() *HurtArmorPacket {

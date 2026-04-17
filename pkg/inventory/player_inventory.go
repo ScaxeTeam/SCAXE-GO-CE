@@ -8,22 +8,24 @@ import (
 )
 
 const (
-	hotbarSize      = 9
-	playerInvSize   = 36
-	armorSlots      = 4
-	playerTotalSize = playerInvSize + armorSlots
-	SpecialArmor byte = 0x78
+	hotbarSize		= 9
+	playerInvSize		= 36
+	armorSlots		= 4
+	playerTotalSize		= playerInvSize + armorSlots
+	SpecialArmor	byte	= 0x78
 )
+
 type PlayerInventory struct {
 	*BaseInventory
-	itemInHandIndex int
-	hotbar          []int
+	itemInHandIndex	int
+	hotbar		[]int
 }
+
 func NewPlayerInventory() *PlayerInventory {
 	inv := &PlayerInventory{
-		BaseInventory:   NewSimpleInventory("Player Inventory", playerTotalSize),
-		itemInHandIndex: 0,
-		hotbar:          make([]int, hotbarSize),
+		BaseInventory:		NewSimpleInventory("Player Inventory", playerTotalSize),
+		itemInHandIndex:	0,
+		hotbar:			make([]int, hotbarSize),
 	}
 	for i := 0; i < hotbarSize; i++ {
 		inv.hotbar[i] = i
@@ -131,15 +133,15 @@ func (inv *PlayerInventory) SetArmorContents(items []item.Item) {
 	}
 }
 
-func (inv *PlayerInventory) GetHelmet() item.Item     { return inv.GetArmorItem(0) }
-func (inv *PlayerInventory) GetChestplate() item.Item { return inv.GetArmorItem(1) }
-func (inv *PlayerInventory) GetLeggings() item.Item   { return inv.GetArmorItem(2) }
-func (inv *PlayerInventory) GetBoots() item.Item      { return inv.GetArmorItem(3) }
+func (inv *PlayerInventory) GetHelmet() item.Item	{ return inv.GetArmorItem(0) }
+func (inv *PlayerInventory) GetChestplate() item.Item	{ return inv.GetArmorItem(1) }
+func (inv *PlayerInventory) GetLeggings() item.Item	{ return inv.GetArmorItem(2) }
+func (inv *PlayerInventory) GetBoots() item.Item	{ return inv.GetArmorItem(3) }
 
-func (inv *PlayerInventory) SetHelmet(it item.Item) error     { return inv.SetArmorItem(0, it) }
-func (inv *PlayerInventory) SetChestplate(it item.Item) error { return inv.SetArmorItem(1, it) }
-func (inv *PlayerInventory) SetLeggings(it item.Item) error   { return inv.SetArmorItem(2, it) }
-func (inv *PlayerInventory) SetBoots(it item.Item) error      { return inv.SetArmorItem(3, it) }
+func (inv *PlayerInventory) SetHelmet(it item.Item) error	{ return inv.SetArmorItem(0, it) }
+func (inv *PlayerInventory) SetChestplate(it item.Item) error	{ return inv.SetArmorItem(1, it) }
+func (inv *PlayerInventory) SetLeggings(it item.Item) error	{ return inv.SetArmorItem(2, it) }
+func (inv *PlayerInventory) SetBoots(it item.Item) error	{ return inv.SetArmorItem(3, it) }
 func (inv *PlayerInventory) SendContents(targets ...Viewer) {
 	totalSend := playerInvSize + hotbarSize
 	items := make([]item.Item, totalSend)

@@ -5,17 +5,17 @@ import (
 )
 
 const (
-	PlayStatusLoginSuccess               int32 = 0
-	PlayStatusLoginFailedClient          int32 = 1
-	PlayStatusLoginFailedServer          int32 = 2
-	PlayStatusPlayerSpawn                int32 = 3
-	PlayStatusLoginFailedInvalidTenant   int32 = 4
-	PlayStatusLoginFailedEditionMismatch int32 = 5
+	PlayStatusLoginSuccess			int32	= 0
+	PlayStatusLoginFailedClient		int32	= 1
+	PlayStatusLoginFailedServer		int32	= 2
+	PlayStatusPlayerSpawn			int32	= 3
+	PlayStatusLoginFailedInvalidTenant	int32	= 4
+	PlayStatusLoginFailedEditionMismatch	int32	= 5
 )
 
 type PlayStatusPacket struct {
 	BasePacket
-	Status int32
+	Status	int32
 }
 
 func NewPlayStatusPacket() *PlayStatusPacket {

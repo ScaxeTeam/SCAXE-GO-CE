@@ -6,10 +6,10 @@ func init() {
 
 type RemoveBlockPacket struct {
 	BasePacket
-	EntityID int64
-	X        int32
-	Z        int32
-	Y        byte
+	EntityID	int64
+	X		int32
+	Z		int32
+	Y		byte
 }
 
 func NewRemoveBlockPacket() *RemoveBlockPacket {

@@ -7,6 +7,7 @@ import (
 	"github.com/scaxe/scaxe-go/pkg/protocol"
 	"github.com/scaxe/scaxe-go/pkg/world"
 )
+
 type Spawnable interface {
 	Tile
 	GetSpawnCompound() *nbt.CompoundTag
@@ -23,6 +24,7 @@ type ChunkBroadcaster interface {
 type SpawnableBase struct {
 	BaseTile
 }
+
 func InitSpawnableBase(s *SpawnableBase, saveID string, chunk *world.Chunk, nbtData *nbt.CompoundTag) {
 	InitBaseTile(&s.BaseTile, saveID, chunk, nbtData)
 }

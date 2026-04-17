@@ -11,43 +11,43 @@ import (
 )
 
 type splitPacketData struct {
-	splitCount uint32
-	fragments  map[uint32][]byte
+	splitCount	uint32
+	fragments	map[uint32][]byte
 }
 
 type Session struct {
-	server    *Server
-	addr      *net.UDPAddr
-	mtu       uint16
-	clientID  uint64
-	connected bool
+	server		*Server
+	addr		*net.UDPAddr
+	mtu		uint16
+	clientID	uint64
+	connected	bool
 
-	sendSeqNum    uint32
-	receiveSeqNum uint32
+	sendSeqNum	uint32
+	receiveSeqNum	uint32
 
-	splitID      uint16
-	messageIndex uint32
+	splitID		uint16
+	messageIndex	uint32
 
-	receivedPackets map[uint32]bool
-	ackQueue        []uint32
+	receivedPackets	map[uint32]bool
+	ackQueue	[]uint32
 
-	splitPackets map[uint16]*splitPacketData
+	splitPackets	map[uint16]*splitPacketData
 
-	mu sync.Mutex
+	mu	sync.Mutex
 
-	lastActivity time.Time
+	lastActivity	time.Time
 }
 
 func NewSession(server *Server, addr *net.UDPAddr, mtu uint16, clientID uint64) *Session {
 	logger.DebugRaknet("raknet.NewSession", "address", addr.String(), "mtu", mtu, "clientID", clientID)
 	return &Session{
-		server:          server,
-		addr:            addr,
-		mtu:             mtu,
-		clientID:        clientID,
-		receivedPackets: make(map[uint32]bool),
-		splitPackets:    make(map[uint16]*splitPacketData),
-		lastActivity:    time.Now(),
+		server:			server,
+		addr:			addr,
+		mtu:			mtu,
+		clientID:		clientID,
+		receivedPackets:	make(map[uint32]bool),
+		splitPackets:		make(map[uint16]*splitPacketData),
+		lastActivity:		time.Now(),
 	}
 }
 
@@ -85,15 +85,15 @@ func (s *Session) handleDataPacket(data []byte) {
 }
 
 type encapsulatedPacket struct {
-	reliability  byte
-	hasSplit     bool
-	splitCount   uint32
-	splitID      uint16
-	splitIndex   uint32
-	messageIndex uint32
-	orderIndex   uint32
-	orderChannel byte
-	payload      []byte
+	reliability	byte
+	hasSplit	bool
+	splitCount	uint32
+	splitID		uint16
+	splitIndex	uint32
+	messageIndex	uint32
+	orderIndex	uint32
+	orderChannel	byte
+	payload		[]byte
 }
 
 func (s *Session) decodeEncapsulated(data []byte, offset int) (*encapsulatedPacket, int) {
@@ -227,8 +227,8 @@ func (s *Session) handleSplitPacket(pkt *encapsulatedPacket) []byte {
 	data, exists := s.splitPackets[splitID]
 	if !exists {
 		data = &splitPacketData{
-			splitCount: splitCount,
-			fragments:  make(map[uint32][]byte),
+			splitCount:	splitCount,
+			fragments:	make(map[uint32][]byte),
 		}
 		s.splitPackets[splitID] = data
 	}

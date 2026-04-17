@@ -8,18 +8,18 @@ import (
 
 type TimeCommand struct {
 	command.BaseCommand
-	server ServerInterface
+	server	ServerInterface
 }
 
 func NewTimeCommand(server ServerInterface) *TimeCommand {
 	return &TimeCommand{
 		BaseCommand: command.BaseCommand{
-			Name:        "time",
-			Description: "Changes or queries the world time",
-			Usage:       "/time <set|add|query> <value>",
-			Permission:  "pocketmine.command.time",
+			Name:		"time",
+			Description:	"Changes or queries the world time",
+			Usage:		"/time <set|add|query> <value>",
+			Permission:	"pocketmine.command.time",
 		},
-		server: server,
+		server:	server,
 	}
 }
 

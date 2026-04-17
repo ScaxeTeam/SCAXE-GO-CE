@@ -6,33 +6,33 @@ import (
 )
 
 const (
-	DataTypeByte   = 0
-	DataTypeShort  = 1
-	DataTypeInt    = 2
-	DataTypeFloat  = 3
-	DataTypeString = 4
-	DataTypeSlot   = 5
-	DataTypePos    = 6
-	DataTypeLong   = 7
+	DataTypeByte	= 0
+	DataTypeShort	= 1
+	DataTypeInt	= 2
+	DataTypeFloat	= 3
+	DataTypeString	= 4
+	DataTypeSlot	= 5
+	DataTypePos	= 6
+	DataTypeLong	= 7
 )
 
 const (
-	DataFlags         = 0
-	DataAir           = 1
-	DataNametag       = 2
-	DataShowNametag   = 3
-	DataNoAI          = 15
-	DataLeadHolder    = 23
-	DataLeadHolderEID = 23
+	DataFlags		= 0
+	DataAir			= 1
+	DataNametag		= 2
+	DataShowNametag		= 3
+	DataNoAI		= 15
+	DataLeadHolder		= 23
+	DataLeadHolderEID	= 23
 )
 
 const (
-	DataFlagOnFire    = 0
-	DataFlagSneaking  = 1
-	DataFlagRiding    = 2
-	DataFlagSprinting = 3
-	DataFlagAction    = 4
-	DataFlagInvisible = 5
+	DataFlagOnFire		= 0
+	DataFlagSneaking	= 1
+	DataFlagRiding		= 2
+	DataFlagSprinting	= 3
+	DataFlagAction		= 4
+	DataFlagInvisible	= 5
 )
 
 type MetadataMap map[int]interface{}

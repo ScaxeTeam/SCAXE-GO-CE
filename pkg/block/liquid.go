@@ -1,40 +1,44 @@
 package block
+
 type LiquidType uint8
 
 const (
-	LiquidTypeWater LiquidType = iota
+	LiquidTypeWater	LiquidType	= iota
 	LiquidTypeLava
 )
+
 type LiquidConfig struct {
-	Type              LiquidType
-	FlowingID         uint8
-	StillID           uint8
-	TickRate          int
-	FlowDecayPerBlock int
-	LightLevel        uint8
-	LightFilter       uint8
-	InfiniteSource    bool
+	Type			LiquidType
+	FlowingID		uint8
+	StillID			uint8
+	TickRate		int
+	FlowDecayPerBlock	int
+	LightLevel		uint8
+	LightFilter		uint8
+	InfiniteSource		bool
 }
+
 var WaterConfig = LiquidConfig{
-	Type:              LiquidTypeWater,
-	FlowingID:         WATER,
-	StillID:           STILL_WATER,
-	TickRate:          5,
-	FlowDecayPerBlock: 1,
-	LightLevel:        0,
-	LightFilter:       2,
-	InfiniteSource:    true,
+	Type:			LiquidTypeWater,
+	FlowingID:		WATER,
+	StillID:		STILL_WATER,
+	TickRate:		5,
+	FlowDecayPerBlock:	1,
+	LightLevel:		0,
+	LightFilter:		2,
+	InfiniteSource:		true,
 }
 var LavaConfig = LiquidConfig{
-	Type:              LiquidTypeLava,
-	FlowingID:         LAVA,
-	StillID:           STILL_LAVA,
-	TickRate:          30,
-	FlowDecayPerBlock: 2,
-	LightLevel:        15,
-	LightFilter:       0,
-	InfiniteSource:    false,
+	Type:			LiquidTypeLava,
+	FlowingID:		LAVA,
+	StillID:		STILL_LAVA,
+	TickRate:		30,
+	FlowDecayPerBlock:	2,
+	LightLevel:		15,
+	LightFilter:		0,
+	InfiniteSource:		false,
 }
+
 func LiquidIsSource(meta uint8) bool {
 	return meta == 0
 }
@@ -54,13 +58,15 @@ func LiquidGetFluidHeight(meta uint8) float64 {
 	}
 	return float64(d+1) / 9.0
 }
+
 type FlowCheckResult int
 
 const (
-	FlowBlocked FlowCheckResult = -1
-	FlowCanFlow FlowCheckResult = 0
-	FlowCanDown FlowCheckResult = 1
+	FlowBlocked	FlowCheckResult	= -1
+	FlowCanFlow	FlowCheckResult	= 0
+	FlowCanDown	FlowCheckResult	= 1
 )
+
 func LiquidFlowDecay(blockID, liquidFlowingID, liquidStillID, blockMeta uint8) int {
 	if blockID != liquidFlowingID && blockID != liquidStillID {
 		return -1
@@ -77,30 +83,35 @@ func LiquidEffectiveFlowDecay(blockID, liquidFlowingID, liquidStillID, blockMeta
 	}
 	return decay
 }
+
 type LiquidFlowVector struct {
 	X, Y, Z float64
 }
 type FlowDirection int
 
 const (
-	FlowNegX FlowDirection = 0
-	FlowPosX FlowDirection = 1
-	FlowNegZ FlowDirection = 2
-	FlowPosZ FlowDirection = 3
+	FlowNegX	FlowDirection	= 0
+	FlowPosX	FlowDirection	= 1
+	FlowNegZ	FlowDirection	= 2
+	FlowPosZ	FlowDirection	= 3
 )
+
 var FlowDirectionOffset = [4][2]int{
 	{-1, 0},
 	{1, 0},
 	{0, -1},
 	{0, 1},
 }
+
 func OppositeDirection(dir FlowDirection) FlowDirection {
 	return dir ^ 1
 }
+
 type SmallestFlowDecayResult struct {
-	Decay           int
-	AdjacentSources int
+	Decay		int
+	AdjacentSources	int
 }
+
 func GetSmallestFlowDecay(blockDecay int, currentDecay int, adjacentSources int) (int, int) {
 	if blockDecay < 0 {
 		return currentDecay, adjacentSources
@@ -116,11 +127,13 @@ func GetSmallestFlowDecay(blockDecay int, currentDecay int, adjacentSources int)
 	}
 	return blockDecay, adjacentSources
 }
+
 type BlockChecker interface {
 	GetBlockIDMeta(x, y, z int) (id uint8, meta uint8)
 	CanFlowInto(x, y, z int, liquidFlowingID, liquidStillID uint8) bool
 	CanBeFlowedInto(x, y, z int) bool
 }
+
 func CalculateFlowCost(
 	checker BlockChecker,
 	bx, by, bz int,
@@ -216,29 +229,30 @@ func GetOptimalFlowDirections(
 func blockHash(x, y, z int) int64 {
 	return (int64(x) << 32) | (int64(z) & 0xFFFFFFFF) ^ (int64(y) << 48)
 }
+
 type LiquidBlock struct {
 	TransparentBase
-	Config LiquidConfig
+	Config	LiquidConfig
 }
 
 func newLiquidBlock(id uint8, name string, config LiquidConfig) *LiquidBlock {
 	return &LiquidBlock{
 		TransparentBase: TransparentBase{
-			BlockID:          id,
-			BlockName:        name,
-			BlockHardness:    100,
-			BlockResistance:  500,
-			BlockLightLevel:  config.LightLevel,
-			BlockLightFilter: config.LightFilter,
+			BlockID:		id,
+			BlockName:		name,
+			BlockHardness:		100,
+			BlockResistance:	500,
+			BlockLightLevel:	config.LightLevel,
+			BlockLightFilter:	config.LightFilter,
 		},
-		Config: config,
+		Config:	config,
 	}
 }
 
-func (b *LiquidBlock) IsSolid() bool       { return false }
-func (b *LiquidBlock) IsTransparent() bool { return true }
-func (b *LiquidBlock) CanBePlaced() bool   { return false }
-func (b *LiquidBlock) CanBeReplaced() bool { return true }
+func (b *LiquidBlock) IsSolid() bool		{ return false }
+func (b *LiquidBlock) IsTransparent() bool	{ return true }
+func (b *LiquidBlock) CanBePlaced() bool	{ return false }
+func (b *LiquidBlock) CanBeReplaced() bool	{ return true }
 
 func (b *LiquidBlock) GetDrops(toolType, toolTier int) []Drop {
 	return nil

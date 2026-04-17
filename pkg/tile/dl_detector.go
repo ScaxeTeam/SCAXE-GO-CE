@@ -4,17 +4,20 @@ import (
 	"github.com/scaxe/scaxe-go/pkg/nbt"
 	"github.com/scaxe/scaxe-go/pkg/world"
 )
+
 type DLDetector struct {
 	SpawnableBase
-	lastType int32
+	lastType	int32
 }
+
 const (
-	TimeDay     int32 = 0
-	TimeSunset  int32 = 12000
-	TimeNight   int32 = 14000
-	TimeSunrise int32 = 23000
-	TimeFull    int32 = 24000
+	TimeDay		int32	= 0
+	TimeSunset	int32	= 12000
+	TimeNight	int32	= 14000
+	TimeSunrise	int32	= 23000
+	TimeFull	int32	= 24000
 )
+
 func NewDLDetector(chunk *world.Chunk, nbtData *nbt.CompoundTag) *DLDetector {
 	d := &DLDetector{}
 	InitSpawnableBase(&d.SpawnableBase, TypeDLDetector, chunk, nbtData)

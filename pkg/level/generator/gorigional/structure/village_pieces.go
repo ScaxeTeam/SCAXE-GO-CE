@@ -5,33 +5,33 @@ import (
 )
 
 type PieceWeight struct {
-	PieceClass       int
-	Weight           int
-	Limit            int
-	InstancesSpawned int
+	PieceClass		int
+	Weight			int
+	Limit			int
+	InstancesSpawned	int
 }
 
 const (
-	VillagePieceHouse4Garden = 0
-	VillagePieceChurch       = 1
-	VillagePieceLibrary      = 2
-	VillagePieceWoodHut      = 3
-	VillagePieceHall         = 4
-	VillagePieceField1       = 5
-	VillagePieceField2       = 6
-	VillagePieceHouse1       = 7
-	VillagePieceHouse2       = 8
-	VillagePieceHouse3       = 9
-	VillagePiecePath         = 10
-	VillagePieceStart        = 11
-	VillagePieceWell         = 12
+	VillagePieceHouse4Garden	= 0
+	VillagePieceChurch		= 1
+	VillagePieceLibrary		= 2
+	VillagePieceWoodHut		= 3
+	VillagePieceHall		= 4
+	VillagePieceField1		= 5
+	VillagePieceField2		= 6
+	VillagePieceHouse1		= 7
+	VillagePieceHouse2		= 8
+	VillagePieceHouse3		= 9
+	VillagePiecePath		= 10
+	VillagePieceStart		= 11
+	VillagePieceWell		= 12
 )
 
 func NewPieceWeight(pieceClass int, weight int, limit int) *PieceWeight {
 	return &PieceWeight{
-		PieceClass: pieceClass,
-		Weight:     weight,
-		Limit:      limit,
+		PieceClass:	pieceClass,
+		Weight:		weight,
+		Limit:		limit,
 	}
 }
 
@@ -68,7 +68,7 @@ func GetTotalWeight(list []*PieceWeight) int {
 
 type VillagePiece struct {
 	*StructureComponentBase
-	AvgGroundLevel int
+	AvgGroundLevel	int
 }
 
 func (v *VillagePiece) GetAverageGroundLevel(wld WorldAccess, box *BoundingBox) int {
@@ -163,11 +163,11 @@ func blocksMovement(blockID byte) bool {
 
 type VillageStartPiece struct {
 	*VillageWell
-	StructureVillageWeightedPieceList []*PieceWeight
-	PendingRoads                      []StructureComponent
-	PendingHouses                     []StructureComponent
-	TerrainType                       int
-	LastPlaced                        *PieceWeight
+	StructureVillageWeightedPieceList	[]*PieceWeight
+	PendingRoads				[]StructureComponent
+	PendingHouses				[]StructureComponent
+	TerrainType				int
+	LastPlaced				*PieceWeight
 }
 
 func NewVillageStartPiece(_ interface{}, _ int, rnd *rand.Random, x, z int, list []*PieceWeight, size int) *VillageStartPiece {
@@ -177,11 +177,11 @@ func NewVillageStartPiece(_ interface{}, _ int, rnd *rand.Random, x, z int, list
 	well.CoordBaseMode = dir
 
 	piece := &VillageStartPiece{
-		VillageWell:                       well,
-		StructureVillageWeightedPieceList: list,
-		PendingRoads:                      make([]StructureComponent, 0),
-		PendingHouses:                     make([]StructureComponent, 0),
-		TerrainType:                       size,
+		VillageWell:				well,
+		StructureVillageWeightedPieceList:	list,
+		PendingRoads:				make([]StructureComponent, 0),
+		PendingHouses:				make([]StructureComponent, 0),
+		TerrainType:				size,
 	}
 	piece.ComponentType = VillagePieceStart
 	return piece
@@ -219,10 +219,10 @@ func NewVillageWell(typeInt int, rnd *rand.Random, x, z int) *VillageWell {
 	return &VillageWell{
 		VillagePiece: &VillagePiece{
 			StructureComponentBase: &StructureComponentBase{
-				BoundingBox:   bb,
-				ComponentType: VillagePieceWell,
+				BoundingBox:	bb,
+				ComponentType:	VillagePieceWell,
 			},
-			AvgGroundLevel: -1,
+			AvgGroundLevel:	-1,
 		},
 	}
 }
@@ -276,7 +276,7 @@ func (w *VillageWell) AddComponentParts(wld WorldAccess, rnd *rand.Random, box *
 
 type VillagePath struct {
 	*VillagePiece
-	Length int
+	Length	int
 }
 
 func NewVillagePath(start *VillageStartPiece, typeInt int, rnd *rand.Random, bb *BoundingBox, facing int) *VillagePath {
@@ -290,13 +290,13 @@ func NewVillagePath(start *VillageStartPiece, typeInt int, rnd *rand.Random, bb 
 	return &VillagePath{
 		VillagePiece: &VillagePiece{
 			StructureComponentBase: &StructureComponentBase{
-				BoundingBox:   bb,
-				CoordBaseMode: facing,
-				ComponentType: VillagePiecePath,
+				BoundingBox:	bb,
+				CoordBaseMode:	facing,
+				ComponentType:	VillagePiecePath,
 			},
-			AvgGroundLevel: -1,
+			AvgGroundLevel:	-1,
 		},
-		Length: length,
+		Length:	length,
 	}
 }
 
@@ -343,14 +343,14 @@ func (p *VillagePath) BuildComponent(component StructureComponent, components *[
 func (p *VillagePath) AddComponentParts(wld WorldAccess, rnd *rand.Random, box *BoundingBox) bool {
 
 	const (
-		grassPathId = byte(198)
-		planksId    = byte(5)
-		gravelId    = byte(13)
-		cobbleId    = byte(4)
-		grassId     = byte(2)
-		sandId      = byte(12)
-		sandstoneId = byte(24)
-		redSandId   = byte(179)
+		grassPathId	= byte(198)
+		planksId	= byte(5)
+		gravelId	= byte(13)
+		cobbleId	= byte(4)
+		grassId		= byte(2)
+		sandId		= byte(12)
+		sandstoneId	= byte(24)
+		redSandId	= byte(179)
 	)
 
 	seaLevel := 63
@@ -405,11 +405,11 @@ func NewVillageHouse(start *VillageStartPiece, typeInt int, rnd *rand.Random, bb
 	return &VillageHouse{
 		VillagePiece: &VillagePiece{
 			StructureComponentBase: &StructureComponentBase{
-				BoundingBox:   bb,
-				CoordBaseMode: facing,
-				ComponentType: typeInt,
+				BoundingBox:	bb,
+				CoordBaseMode:	facing,
+				ComponentType:	typeInt,
 			},
-			AvgGroundLevel: -1,
+			AvgGroundLevel:	-1,
 		},
 	}
 }

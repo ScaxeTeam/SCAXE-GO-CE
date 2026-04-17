@@ -5,24 +5,26 @@ import (
 )
 
 const (
-	PrimedTNTNetworkID = 65
-	DefaultFuse = 80
-	ShortFuseMin = 10
-	ShortFuseMax = 30
-	DefaultExplosionForce = 4.0
+	PrimedTNTNetworkID	= 65
+	DefaultFuse		= 80
+	ShortFuseMin		= 10
+	ShortFuseMax		= 30
+	DefaultExplosionForce	= 4.0
 )
+
 type PrimedTNT struct {
 	*Entity
-	Fuse int
-	ExplosionForce float64
-	BlockBreaking bool
+	Fuse		int
+	ExplosionForce	float64
+	BlockBreaking	bool
 }
+
 func NewPrimedTNT(fuse int) *PrimedTNT {
 	t := &PrimedTNT{
-		Entity:         NewEntity(),
-		Fuse:           fuse,
-		ExplosionForce: DefaultExplosionForce,
-		BlockBreaking:  true,
+		Entity:		NewEntity(),
+		Fuse:		fuse,
+		ExplosionForce:	DefaultExplosionForce,
+		BlockBreaking:	true,
 	}
 
 	t.Entity.NetworkID = PrimedTNTNetworkID
@@ -36,15 +38,17 @@ func NewPrimedTNT(fuse int) *PrimedTNT {
 
 	return t
 }
+
 type PrimedTNTTickResult struct {
-	HasUpdate     bool
-	ShouldExplode bool
-	Force         float64
-	BlockBreaking bool
-	ExplodeX      float64
-	ExplodeY      float64
-	ExplodeZ      float64
+	HasUpdate	bool
+	ShouldExplode	bool
+	Force		float64
+	BlockBreaking	bool
+	ExplodeX	float64
+	ExplodeY	float64
+	ExplodeZ	float64
 }
+
 func (t *PrimedTNT) TickTNT() PrimedTNTTickResult {
 	result := PrimedTNTTickResult{}
 

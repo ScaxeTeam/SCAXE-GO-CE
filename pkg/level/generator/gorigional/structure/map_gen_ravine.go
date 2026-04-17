@@ -8,19 +8,19 @@ import (
 )
 
 type MapGenRavine struct {
-	rangeR    int
-	worldSeed int64
-	rand      *rand.Random
-	rs        []float64
-	MaxHeight int
+	rangeR		int
+	worldSeed	int64
+	rand		*rand.Random
+	rs		[]float64
+	MaxHeight	int
 }
 
 func NewMapGenRavine(seed int64) *MapGenRavine {
 	return &MapGenRavine{
-		rangeR:    8,
-		worldSeed: seed,
-		rand:      rand.NewRandom(seed),
-		MaxHeight: 256,
+		rangeR:		8,
+		worldSeed:	seed,
+		rand:		rand.NewRandom(seed),
+		MaxHeight:	256,
 	}
 }
 

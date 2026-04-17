@@ -1,20 +1,20 @@
 package world
 
 type ChunkSection struct {
-	Y          byte
-	Blocks     []byte
-	Data       []byte
-	BlockLight []byte
-	SkyLight   []byte
+	Y		byte
+	Blocks		[]byte
+	Data		[]byte
+	BlockLight	[]byte
+	SkyLight	[]byte
 }
 
 func NewChunkSection(y byte) *ChunkSection {
 	s := &ChunkSection{
-		Y:          y,
-		Blocks:     make([]byte, 4096),
-		Data:       make([]byte, 2048),
-		BlockLight: make([]byte, 2048),
-		SkyLight:   make([]byte, 2048),
+		Y:		y,
+		Blocks:		make([]byte, 4096),
+		Data:		make([]byte, 2048),
+		BlockLight:	make([]byte, 2048),
+		SkyLight:	make([]byte, 2048),
 	}
 
 	for i := range s.SkyLight {

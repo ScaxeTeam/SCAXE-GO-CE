@@ -10,17 +10,17 @@ import (
 )
 
 type MegaJungleTree struct {
-	baseHeight int
-	woodMeta   int
-	leafMeta   int
+	baseHeight	int
+	woodMeta	int
+	leafMeta	int
 }
 
 func NewMegaJungleTree() *MegaJungleTree {
 
 	return &MegaJungleTree{
-		baseHeight: 10,
-		woodMeta:   3,
-		leafMeta:   3,
+		baseHeight:	10,
+		woodMeta:	3,
+		leafMeta:	3,
 	}
 }
 

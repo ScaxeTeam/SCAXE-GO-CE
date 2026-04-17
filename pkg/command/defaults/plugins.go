@@ -11,10 +11,10 @@ type MakePluginCommand struct {
 func NewMakePluginCommand() *MakePluginCommand {
 	return &MakePluginCommand{
 		BaseCommand: command.BaseCommand{
-			Name:        "makeplugin",
-			Description: "Creates a plugin phar from source",
-			Usage:       "/makeplugin <plugin>",
-			Permission:  "pocketmine.command.makeplugin",
+			Name:		"makeplugin",
+			Description:	"Creates a plugin phar from source",
+			Usage:		"/makeplugin <plugin>",
+			Permission:	"pocketmine.command.makeplugin",
 		},
 	}
 }
@@ -36,10 +36,10 @@ type ExtractPluginCommand struct {
 func NewExtractPluginCommand() *ExtractPluginCommand {
 	return &ExtractPluginCommand{
 		BaseCommand: command.BaseCommand{
-			Name:        "extractplugin",
-			Description: "Extracts a plugin phar to source",
-			Usage:       "/extractplugin <plugin>",
-			Permission:  "pocketmine.command.extractplugin",
+			Name:		"extractplugin",
+			Description:	"Extracts a plugin phar to source",
+			Usage:		"/extractplugin <plugin>",
+			Permission:	"pocketmine.command.extractplugin",
 		},
 	}
 }
@@ -61,10 +61,10 @@ type ExtractPharCommand struct {
 func NewExtractPharCommand() *ExtractPharCommand {
 	return &ExtractPharCommand{
 		BaseCommand: command.BaseCommand{
-			Name:        "extractphar",
-			Description: "Extracts a phar file",
-			Usage:       "/extractphar <file>",
-			Permission:  "pocketmine.command.extractphar",
+			Name:		"extractphar",
+			Description:	"Extracts a phar file",
+			Usage:		"/extractphar <file>",
+			Permission:	"pocketmine.command.extractphar",
 		},
 	}
 }
@@ -85,10 +85,10 @@ type GeneratePluginCommand struct {
 func NewGeneratePluginCommand() *GeneratePluginCommand {
 	return &GeneratePluginCommand{
 		BaseCommand: command.BaseCommand{
-			Name:        "generateplugin",
-			Description: "Generates a plugin skeleton",
-			Usage:       "/generateplugin <name>",
-			Permission:  "pocketmine.command.generateplugin",
+			Name:		"generateplugin",
+			Description:	"Generates a plugin skeleton",
+			Usage:		"/generateplugin <name>",
+			Permission:	"pocketmine.command.generateplugin",
 		},
 	}
 }
@@ -110,10 +110,10 @@ type LvdatCommand struct {
 func NewLvdatCommand() *LvdatCommand {
 	return &LvdatCommand{
 		BaseCommand: command.BaseCommand{
-			Name:        "lvdat",
-			Description: "Shows level.dat information",
-			Usage:       "/lvdat [world]",
-			Permission:  "pocketmine.command.lvdat",
+			Name:		"lvdat",
+			Description:	"Shows level.dat information",
+			Usage:		"/lvdat [world]",
+			Permission:	"pocketmine.command.lvdat",
 		},
 	}
 }
@@ -131,18 +131,18 @@ func (c *LvdatCommand) Execute(sender command.CommandSender, args []string) bool
 
 type BanCidByNameCommand struct {
 	command.BaseCommand
-	server ServerInterface
+	server	ServerInterface
 }
 
 func NewBanCidByNameCommand(server ServerInterface) *BanCidByNameCommand {
 	return &BanCidByNameCommand{
 		BaseCommand: command.BaseCommand{
-			Name:        "ban-cid-byname",
-			Description: "Bans a player's CID by their name",
-			Usage:       "/ban-cid-byname <player> [reason]",
-			Permission:  "pocketmine.command.ban.cid",
+			Name:		"ban-cid-byname",
+			Description:	"Bans a player's CID by their name",
+			Usage:		"/ban-cid-byname <player> [reason]",
+			Permission:	"pocketmine.command.ban.cid",
 		},
-		server: server,
+		server:	server,
 	}
 }
 
@@ -157,18 +157,18 @@ func (c *BanCidByNameCommand) Execute(sender command.CommandSender, args []strin
 
 type BanIpByNameCommand struct {
 	command.BaseCommand
-	server ServerInterface
+	server	ServerInterface
 }
 
 func NewBanIpByNameCommand(server ServerInterface) *BanIpByNameCommand {
 	return &BanIpByNameCommand{
 		BaseCommand: command.BaseCommand{
-			Name:        "ban-ip-byname",
-			Description: "Bans a player's IP by their name",
-			Usage:       "/ban-ip-byname <player> [reason]",
-			Permission:  "pocketmine.command.ban.ip",
+			Name:		"ban-ip-byname",
+			Description:	"Bans a player's IP by their name",
+			Usage:		"/ban-ip-byname <player> [reason]",
+			Permission:	"pocketmine.command.ban.ip",
 		},
-		server: server,
+		server:	server,
 	}
 }
 

@@ -5,41 +5,41 @@ import (
 )
 
 const (
-	AttributeAbsorption      = 0
-	AttributeSaturation      = 1
-	AttributeExhaustion      = 2
-	AttributeKnockbackResist = 3
-	AttributeHealth          = 4
-	AttributeMovementSpeed   = 5
-	AttributeFollowRange     = 6
-	AttributeHunger          = 7
-	AttributeFood            = 7
-	AttributeAttackDamage    = 8
-	AttributeExperienceLevel = 9
-	AttributeExperience      = 10
+	AttributeAbsorption		= 0
+	AttributeSaturation		= 1
+	AttributeExhaustion		= 2
+	AttributeKnockbackResist	= 3
+	AttributeHealth			= 4
+	AttributeMovementSpeed		= 5
+	AttributeFollowRange		= 6
+	AttributeHunger			= 7
+	AttributeFood			= 7
+	AttributeAttackDamage		= 8
+	AttributeExperienceLevel	= 9
+	AttributeExperience		= 10
 )
 
 type Attribute struct {
-	ID           int
-	Name         string
-	MinValue     float64
-	MaxValue     float64
-	DefaultValue float64
-	CurrentValue float64
-	ShouldSend   bool
-	Dirty        bool
+	ID		int
+	Name		string
+	MinValue	float64
+	MaxValue	float64
+	DefaultValue	float64
+	CurrentValue	float64
+	ShouldSend	bool
+	Dirty		bool
 }
 
 func NewAttribute(id int, name string, minValue, maxValue, defaultValue float64, shouldSend bool) *Attribute {
 	return &Attribute{
-		ID:           id,
-		Name:         name,
-		MinValue:     minValue,
-		MaxValue:     maxValue,
-		DefaultValue: defaultValue,
-		CurrentValue: defaultValue,
-		ShouldSend:   shouldSend,
-		Dirty:        true,
+		ID:		id,
+		Name:		name,
+		MinValue:	minValue,
+		MaxValue:	maxValue,
+		DefaultValue:	defaultValue,
+		CurrentValue:	defaultValue,
+		ShouldSend:	shouldSend,
+		Dirty:		true,
 	}
 }
 
@@ -94,14 +94,14 @@ func (a *Attribute) MarkClean() {
 
 func (a *Attribute) Clone() *Attribute {
 	return &Attribute{
-		ID:           a.ID,
-		Name:         a.Name,
-		MinValue:     a.MinValue,
-		MaxValue:     a.MaxValue,
-		DefaultValue: a.DefaultValue,
-		CurrentValue: a.CurrentValue,
-		ShouldSend:   a.ShouldSend,
-		Dirty:        a.Dirty,
+		ID:		a.ID,
+		Name:		a.Name,
+		MinValue:	a.MinValue,
+		MaxValue:	a.MaxValue,
+		DefaultValue:	a.DefaultValue,
+		CurrentValue:	a.CurrentValue,
+		ShouldSend:	a.ShouldSend,
+		Dirty:		a.Dirty,
 	}
 }
 
@@ -142,17 +142,17 @@ func (am *AttributeMap) MarkAllClean() {
 const maxFloat = 3.4028234663852886e+38
 
 var DefaultAttributes = map[int]*Attribute{
-	AttributeAbsorption:      NewAttribute(AttributeAbsorption, "generic.absorption", 0, maxFloat, 0, true),
-	AttributeSaturation:      NewAttribute(AttributeSaturation, "player.saturation", 0, 20, 20, true),
-	AttributeExhaustion:      NewAttribute(AttributeExhaustion, "player.exhaustion", 0, 5, 0, true),
-	AttributeKnockbackResist: NewAttribute(AttributeKnockbackResist, "generic.knockbackResistance", 0, 1, 0, true),
-	AttributeHealth:          NewAttribute(AttributeHealth, "generic.health", 0, 20, 20, true),
-	AttributeMovementSpeed:   NewAttribute(AttributeMovementSpeed, "generic.movementSpeed", 0, maxFloat, 0.1, true),
-	AttributeFollowRange:     NewAttribute(AttributeFollowRange, "generic.followRange", 0, 2048, 16, false),
-	AttributeHunger:          NewAttribute(AttributeHunger, "player.hunger", 0, 20, 20, true),
-	AttributeAttackDamage:    NewAttribute(AttributeAttackDamage, "generic.attackDamage", 0, maxFloat, 1, false),
-	AttributeExperienceLevel: NewAttribute(AttributeExperienceLevel, "player.level", 0, 2147483647, 0, true),
-	AttributeExperience:      NewAttribute(AttributeExperience, "player.experience", 0, 1, 0, true),
+	AttributeAbsorption:		NewAttribute(AttributeAbsorption, "generic.absorption", 0, maxFloat, 0, true),
+	AttributeSaturation:		NewAttribute(AttributeSaturation, "player.saturation", 0, 20, 20, true),
+	AttributeExhaustion:		NewAttribute(AttributeExhaustion, "player.exhaustion", 0, 5, 0, true),
+	AttributeKnockbackResist:	NewAttribute(AttributeKnockbackResist, "generic.knockbackResistance", 0, 1, 0, true),
+	AttributeHealth:		NewAttribute(AttributeHealth, "generic.health", 0, 20, 20, true),
+	AttributeMovementSpeed:		NewAttribute(AttributeMovementSpeed, "generic.movementSpeed", 0, maxFloat, 0.1, true),
+	AttributeFollowRange:		NewAttribute(AttributeFollowRange, "generic.followRange", 0, 2048, 16, false),
+	AttributeHunger:		NewAttribute(AttributeHunger, "player.hunger", 0, 20, 20, true),
+	AttributeAttackDamage:		NewAttribute(AttributeAttackDamage, "generic.attackDamage", 0, maxFloat, 1, false),
+	AttributeExperienceLevel:	NewAttribute(AttributeExperienceLevel, "player.level", 0, 2147483647, 0, true),
+	AttributeExperience:		NewAttribute(AttributeExperience, "player.experience", 0, 1, 0, true),
 }
 
 func GetDefaultAttribute(id int) *Attribute {

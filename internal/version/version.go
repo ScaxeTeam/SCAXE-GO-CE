@@ -3,21 +3,21 @@ package version
 import "fmt"
 
 const (
-	Major = 0
+	Major	= 0
 
-	Minor = 3
+	Minor	= 3
 
-	Patch = 9
+	Patch	= 9
 
-	Codename = "rain+"
+	Codename	= "translatorX"
 
-	MinecraftVersion = "0.14.3"
+	MinecraftVersion	= "0.14.3"
 
-	ProtocolVersion = 70
+	ProtocolVersion	= 70
 )
 
 func String() string {
-	return fmt.Sprintf("%d.%d.%d", Major, Minor, Patch)
+	return fmt.Sprintf("%d.%d.%dAlpha1", Major, Minor, Patch)
 }
 
 func Full() string {

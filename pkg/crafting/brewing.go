@@ -1,16 +1,16 @@
 package crafting
 
 type BrewingRecipe struct {
-	result     *Item
-	ingredient *Item
-	potion     *Item
+	result		*Item
+	ingredient	*Item
+	potion		*Item
 }
 
 func NewBrewingRecipe(result, ingredient, potion *Item) *BrewingRecipe {
 	return &BrewingRecipe{
-		result:     result,
-		ingredient: ingredient,
-		potion:     potion,
+		result:		result,
+		ingredient:	ingredient,
+		potion:		potion,
 	}
 }
 
@@ -48,60 +48,60 @@ func (r *BrewingRecipe) Matches(items []*Item) bool {
 }
 
 const (
-	PotionWater              = 0
-	PotionMundane            = 1
-	PotionMundaneExtended    = 2
-	PotionThick              = 3
-	PotionAwkward            = 4
-	PotionNightVision        = 5
-	PotionNightVisionLong    = 6
-	PotionInvisibility       = 7
-	PotionInvisibilityLong   = 8
-	PotionLeaping            = 9
-	PotionLeapingLong        = 10
-	PotionLeapingStrong      = 11
-	PotionFireResistance     = 12
-	PotionFireResistanceLong = 13
-	PotionSwiftness          = 14
-	PotionSwiftnessLong      = 15
-	PotionSwiftnessStrong    = 16
-	PotionSlowness           = 17
-	PotionSlownessLong       = 18
-	PotionWaterBreathing     = 19
-	PotionWaterBreathingLong = 20
-	PotionHealing            = 21
-	PotionHealingStrong      = 22
-	PotionHarming            = 23
-	PotionHarmingStrong      = 24
-	PotionPoison             = 25
-	PotionPoisonLong         = 26
-	PotionPoisonStrong       = 27
-	PotionRegeneration       = 28
-	PotionRegenerationLong   = 29
-	PotionRegenerationStrong = 30
-	PotionStrength           = 31
-	PotionStrengthLong       = 32
-	PotionStrengthStrong     = 33
-	PotionWeakness           = 34
-	PotionWeaknessLong       = 35
+	PotionWater			= 0
+	PotionMundane			= 1
+	PotionMundaneExtended		= 2
+	PotionThick			= 3
+	PotionAwkward			= 4
+	PotionNightVision		= 5
+	PotionNightVisionLong		= 6
+	PotionInvisibility		= 7
+	PotionInvisibilityLong		= 8
+	PotionLeaping			= 9
+	PotionLeapingLong		= 10
+	PotionLeapingStrong		= 11
+	PotionFireResistance		= 12
+	PotionFireResistanceLong	= 13
+	PotionSwiftness			= 14
+	PotionSwiftnessLong		= 15
+	PotionSwiftnessStrong		= 16
+	PotionSlowness			= 17
+	PotionSlownessLong		= 18
+	PotionWaterBreathing		= 19
+	PotionWaterBreathingLong	= 20
+	PotionHealing			= 21
+	PotionHealingStrong		= 22
+	PotionHarming			= 23
+	PotionHarmingStrong		= 24
+	PotionPoison			= 25
+	PotionPoisonLong		= 26
+	PotionPoisonStrong		= 27
+	PotionRegeneration		= 28
+	PotionRegenerationLong		= 29
+	PotionRegenerationStrong	= 30
+	PotionStrength			= 31
+	PotionStrengthLong		= 32
+	PotionStrengthStrong		= 33
+	PotionWeakness			= 34
+	PotionWeaknessLong		= 35
 )
 
 const (
-	ItemPotion        = 373
-	ItemSplashPotion  = 438
-	ItemNetherWart    = 372
-	ItemRedstoneDust  = 331
-	ItemGlowstoneDust = 348
-	ItemFermentedEye  = 376
-	ItemGunpowder     = 289
-	ItemMagmaCream    = 378
-	ItemBlazeRod      = 369
-	ItemGhastTear     = 370
-	ItemSpiderEye     = 375
-	ItemGoldenCarrot  = 396
-	ItemSugar         = 353
-	ItemRabbitFoot    = 414
-	ItemPufferfish    = 462
+	ItemPotion		= 373
+	ItemSplashPotion	= 438
+	ItemNetherWart		= 372
+	ItemRedstoneDust	= 331
+	ItemGlowstoneDust	= 348
+	ItemFermentedEye	= 376
+	ItemGunpowder		= 289
+	ItemMagmaCream		= 378
+	ItemBlazeRod		= 369
+	ItemGhastTear		= 370
+	ItemSpiderEye		= 375
+	ItemGoldenCarrot	= 396
+	ItemSugar		= 353
+	ItemRabbitFoot		= 414
+	ItemPufferfish		= 462
 )
 
 func (m *CraftingManager) RegisterDefaultBrewingRecipes() {

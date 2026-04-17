@@ -2,27 +2,27 @@ package protocol
 
 type StartGamePacket struct {
 	BasePacket
-	Seed      int32
-	Dimension byte
-	Generator int32
-	Gamemode  int32
-	EntityID  int64
-	RuntimeID int64
-	SpawnX    int32
-	SpawnY    int32
-	SpawnZ    int32
-	X         float32
-	Y         float32
-	Z         float32
-	LevelID string
+	Seed		int32
+	Dimension	byte
+	Generator	int32
+	Gamemode	int32
+	EntityID	int64
+	RuntimeID	int64
+	SpawnX		int32
+	SpawnY		int32
+	SpawnZ		int32
+	X		float32
+	Y		float32
+	Z		float32
+	LevelID		string
 }
 
 func NewStartGamePacket() *StartGamePacket {
 	return &StartGamePacket{
-		BasePacket: BasePacket{PacketID: IDStartGame},
-		Dimension:  0,
-		Generator:  1,
-		Gamemode:   0,
+		BasePacket:	BasePacket{PacketID: IDStartGame},
+		Dimension:	0,
+		Generator:	1,
+		Gamemode:	0,
 	}
 }
 

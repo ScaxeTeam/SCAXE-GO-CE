@@ -5,16 +5,16 @@ import (
 )
 
 type MapGenMineshaft struct {
-	worldSeed int64
-	rand      *rand.Random
-	chance    float64
+	worldSeed	int64
+	rand		*rand.Random
+	chance		float64
 }
 
 func NewMapGenMineshaft(seed int64) *MapGenMineshaft {
 	return &MapGenMineshaft{
-		worldSeed: seed,
-		rand:      rand.NewRandom(seed),
-		chance:    0.004,
+		worldSeed:	seed,
+		rand:		rand.NewRandom(seed),
+		chance:		0.004,
 	}
 }
 

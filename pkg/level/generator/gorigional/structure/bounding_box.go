@@ -3,14 +3,14 @@ package structure
 import "fmt"
 
 type BoundingBox struct {
-	MinX, MinY, MinZ int
-	MaxX, MaxY, MaxZ int
+	MinX, MinY, MinZ	int
+	MaxX, MaxY, MaxZ	int
 }
 
 func NewBoundingBox(x1, y1, z1, x2, y2, z2 int) *BoundingBox {
 	b := &BoundingBox{
-		MinX: x1, MinY: y1, MinZ: z1,
-		MaxX: x2, MaxY: y2, MaxZ: z2,
+		MinX:	x1, MinY: y1, MinZ: z1,
+		MaxX:	x2, MaxY: y2, MaxZ: z2,
 	}
 
 	if b.MinX > b.MaxX {

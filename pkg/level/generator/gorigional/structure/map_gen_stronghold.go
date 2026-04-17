@@ -8,22 +8,22 @@ import (
 )
 
 type MapGenStronghold struct {
-	structureCoords []world.ChunkPos
-	worldSeed       int64
-	ran             *rand.Random
-	distance        float64
-	spread          int
-	structureMap    map[int64]*StructureStart
+	structureCoords	[]world.ChunkPos
+	worldSeed	int64
+	ran		*rand.Random
+	distance	float64
+	spread		int
+	structureMap	map[int64]*StructureStart
 }
 
 func NewMapGenStronghold(seed int64) *MapGenStronghold {
 	m := &MapGenStronghold{
-		worldSeed:       seed,
-		ran:             rand.NewRandom(seed),
-		distance:        32.0,
-		spread:          3,
-		structureCoords: make([]world.ChunkPos, 0, 128),
-		structureMap:    make(map[int64]*StructureStart),
+		worldSeed:		seed,
+		ran:			rand.NewRandom(seed),
+		distance:		32.0,
+		spread:			3,
+		structureCoords:	make([]world.ChunkPos, 0, 128),
+		structureMap:		make(map[int64]*StructureStart),
 	}
 	m.generatePositions()
 	return m

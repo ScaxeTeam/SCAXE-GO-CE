@@ -6,10 +6,10 @@ import (
 
 type ItemFrameDropItemPacket struct {
 	BasePacket
-	X        int32
-	Y        int32
-	Z        int32
-	DropItem item.Item
+	X		int32
+	Y		int32
+	Z		int32
+	DropItem	item.Item
 }
 
 func NewItemFrameDropItemPacket() *ItemFrameDropItemPacket {

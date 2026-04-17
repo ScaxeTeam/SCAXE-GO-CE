@@ -17,23 +17,23 @@ import (
 )
 
 const (
-	SectorSize = 4096
-	Headers    = 2
+	SectorSize	= 4096
+	Headers		= 2
 
-	CompressionGzip = 1
-	CompressionZlib = 2
+	CompressionGzip	= 1
+	CompressionZlib	= 2
 )
 
 type RegionLoader struct {
-	x, z int32
-	path string
-	file *os.File
-	mu   sync.Mutex
+	x, z	int32
+	path	string
+	file	*os.File
+	mu	sync.Mutex
 
-	locationTable [1024][2]uint32
-	timestamps    [1024]uint32
+	locationTable	[1024][2]uint32
+	timestamps	[1024]uint32
 
-	lastSector uint32
+	lastSector	uint32
 }
 
 func NewRegionLoader(basePath string, x, z int32) (*RegionLoader, error) {
@@ -50,10 +50,10 @@ func NewRegionLoader(basePath string, x, z int32) (*RegionLoader, error) {
 	}
 
 	rl := &RegionLoader{
-		x:    x,
-		z:    z,
-		path: path,
-		file: f,
+		x:	x,
+		z:	z,
+		path:	path,
+		file:	f,
 	}
 
 	stat, err := f.Stat()

@@ -2,7 +2,7 @@ package layer
 
 type GenLayerHills struct {
 	*BaseLayer
-	riverLayer GenLayer
+	riverLayer	GenLayer
 }
 
 func NewGenLayerHills(baseSeed int64, parent, riverLayer GenLayer) *GenLayerHills {

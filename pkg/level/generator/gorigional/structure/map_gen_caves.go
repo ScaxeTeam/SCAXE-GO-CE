@@ -11,13 +11,13 @@ import (
 
 type MapGenCaves struct {
 	*MapGenBase
-	MaxHeight int
+	MaxHeight	int
 }
 
 func NewMapGenCaves(seed int64) *MapGenCaves {
 	return &MapGenCaves{
-		MapGenBase: NewMapGenBase(seed),
-		MaxHeight:  256,
+		MapGenBase:	NewMapGenBase(seed),
+		MaxHeight:	256,
 	}
 }
 

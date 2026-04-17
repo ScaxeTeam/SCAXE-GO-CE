@@ -9,15 +9,15 @@ import (
 
 type JungleSmallTree struct {
 	*Tree
-	GenerateVines bool
+	GenerateVines	bool
 }
 
 func NewJungleSmallTree() *JungleSmallTree {
 
 	t := NewBaseTree(block.LOG, block.LEAVES, 3)
 	return &JungleSmallTree{
-		Tree:          t,
-		GenerateVines: true,
+		Tree:		t,
+		GenerateVines:	true,
 	}
 }
 

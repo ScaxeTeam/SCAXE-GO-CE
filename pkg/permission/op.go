@@ -10,20 +10,20 @@ import (
 )
 
 type OpEntry struct {
-	Name     string `json:"name"`
-	ClientID int64  `json:"cid"`
+	Name		string	`json:"name"`
+	ClientID	int64	`json:"cid"`
 }
 
 type OpManager struct {
-	mu       sync.RWMutex
-	ops      map[string]int64
-	filePath string
+	mu		sync.RWMutex
+	ops		map[string]int64
+	filePath	string
 }
 
 func NewOpManager(path string) *OpManager {
 	return &OpManager{
-		ops:      make(map[string]int64),
-		filePath: path,
+		ops:		make(map[string]int64),
+		filePath:	path,
 	}
 }
 

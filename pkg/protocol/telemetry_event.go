@@ -2,9 +2,9 @@ package protocol
 
 type TelemetryEventPacket struct {
 	BasePacket
-	EntityID  int64
-	EventID   int32
-	EventData byte
+	EntityID	int64
+	EventID		int32
+	EventData	byte
 }
 
 func NewTelemetryEventPacket() *TelemetryEventPacket {

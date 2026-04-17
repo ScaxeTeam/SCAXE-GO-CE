@@ -8,19 +8,19 @@ import (
 )
 
 const (
-	HUGE_MUSHROOM_ALL_INSIDE  = 0
-	HUGE_MUSHROOM_NORTH_WEST  = 1
-	HUGE_MUSHROOM_NORTH       = 2
-	HUGE_MUSHROOM_NORTH_EAST  = 3
-	HUGE_MUSHROOM_WEST        = 4
-	HUGE_MUSHROOM_CENTER      = 5
-	HUGE_MUSHROOM_EAST        = 6
-	HUGE_MUSHROOM_SOUTH_WEST  = 7
-	HUGE_MUSHROOM_SOUTH       = 8
-	HUGE_MUSHROOM_SOUTH_EAST  = 9
-	HUGE_MUSHROOM_STEM        = 10
-	HUGE_MUSHROOM_ALL_OUTSIDE = 14
-	HUGE_MUSHROOM_ALL_STEM    = 15
+	HUGE_MUSHROOM_ALL_INSIDE	= 0
+	HUGE_MUSHROOM_NORTH_WEST	= 1
+	HUGE_MUSHROOM_NORTH		= 2
+	HUGE_MUSHROOM_NORTH_EAST	= 3
+	HUGE_MUSHROOM_WEST		= 4
+	HUGE_MUSHROOM_CENTER		= 5
+	HUGE_MUSHROOM_EAST		= 6
+	HUGE_MUSHROOM_SOUTH_WEST	= 7
+	HUGE_MUSHROOM_SOUTH		= 8
+	HUGE_MUSHROOM_SOUTH_EAST	= 9
+	HUGE_MUSHROOM_STEM		= 10
+	HUGE_MUSHROOM_ALL_OUTSIDE	= 14
+	HUGE_MUSHROOM_ALL_STEM		= 15
 )
 
 type BigMushroom struct {
@@ -28,13 +28,13 @@ type BigMushroom struct {
 }
 
 var mushroomOverridable = map[uint8]bool{
-	block.AIR:        true,
-	block.SAPLING:    true,
-	block.LOG:        true,
-	block.LEAVES:     true,
-	block.SNOW_LAYER: true,
-	block.WOOD2:      true,
-	block.LEAVES2:    true,
+	block.AIR:		true,
+	block.SAPLING:		true,
+	block.LOG:		true,
+	block.LEAVES:		true,
+	block.SNOW_LAYER:	true,
+	block.WOOD2:		true,
+	block.LEAVES2:		true,
 }
 
 func NewBigMushroom(mushroomType uint8) *BigMushroom {

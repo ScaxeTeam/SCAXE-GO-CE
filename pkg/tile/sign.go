@@ -4,11 +4,13 @@ import (
 	"github.com/scaxe/scaxe-go/pkg/nbt"
 	"github.com/scaxe/scaxe-go/pkg/world"
 )
+
 type Sign struct {
 	SpawnableBase
 
-	text [4]string
+	text	[4]string
 }
+
 func NewSign(chunk *world.Chunk, nbtData *nbt.CompoundTag) *Sign {
 	s := &Sign{}
 	for i, key := range signTextKeys {
@@ -22,7 +24,9 @@ func NewSign(chunk *world.Chunk, nbtData *nbt.CompoundTag) *Sign {
 	InitSpawnableBase(&s.SpawnableBase, TypeSign, chunk, nbtData)
 	return s
 }
+
 var signTextKeys = [4]string{"Text1", "Text2", "Text3", "Text4"}
+
 func (s *Sign) GetText() [4]string {
 	return s.text
 }

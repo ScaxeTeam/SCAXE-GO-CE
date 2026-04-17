@@ -2,13 +2,13 @@ package biomegrid
 
 type ConstantBiomeMapLayer struct {
 	*BaseMapLayer
-	BiomeID int
+	BiomeID	int
 }
 
 func NewConstantBiomeMapLayer(seed int64, biomeID int) *ConstantBiomeMapLayer {
 	return &ConstantBiomeMapLayer{
-		BaseMapLayer: NewBaseMapLayer(seed, nil),
-		BiomeID:      biomeID,
+		BaseMapLayer:	NewBaseMapLayer(seed, nil),
+		BiomeID:	biomeID,
 	}
 }
 

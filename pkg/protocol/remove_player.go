@@ -6,8 +6,8 @@ import (
 
 type RemovePlayerPacket struct {
 	BasePacket
-	EntityID int64
-	UUID     uuid.UUID
+	EntityID	int64
+	UUID		uuid.UUID
 }
 
 func NewRemovePlayerPacket() *RemovePlayerPacket {

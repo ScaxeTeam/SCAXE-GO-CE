@@ -6,21 +6,21 @@ import (
 
 type PerlinOctaveGenerator struct {
 	BaseOctaveGenerator
-	generators []*PerlinNoiseGenerator
+	generators	[]*PerlinNoiseGenerator
 }
 
 func NewPerlinOctaveGenerator(r *rand.Rand, octaves int, sizeX, sizeY, sizeZ int) *PerlinOctaveGenerator {
 	g := &PerlinOctaveGenerator{
 		BaseOctaveGenerator: BaseOctaveGenerator{
-			Octaves: octaves,
-			SizeX:   sizeX,
-			SizeY:   sizeY,
-			SizeZ:   sizeZ,
-			XScale:  1.0,
-			YScale:  1.0,
-			ZScale:  1.0,
+			Octaves:	octaves,
+			SizeX:		sizeX,
+			SizeY:		sizeY,
+			SizeZ:		sizeZ,
+			XScale:		1.0,
+			YScale:		1.0,
+			ZScale:		1.0,
 		},
-		generators: make([]*PerlinNoiseGenerator, octaves),
+		generators:	make([]*PerlinNoiseGenerator, octaves),
 	}
 
 	for i := 0; i < octaves; i++ {

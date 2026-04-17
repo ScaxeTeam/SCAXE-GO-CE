@@ -11,9 +11,9 @@ type MineshaftPiece struct {
 func NewMineshaftPiece(componentType int, rnd *rand.Random, box *BoundingBox, facing int) *MineshaftPiece {
 	return &MineshaftPiece{
 		StructureComponentBase: &StructureComponentBase{
-			ComponentType: componentType,
-			BoundingBox:   box,
-			CoordBaseMode: facing,
+			ComponentType:	componentType,
+			BoundingBox:	box,
+			CoordBaseMode:	facing,
 		},
 	}
 }
@@ -130,9 +130,9 @@ func (m *MineshaftRoom) AddComponentParts(wld WorldAccess, rnd *rand.Random, box
 
 type MineshaftCorridor struct {
 	*MineshaftPiece
-	hasRails      bool
-	hasSpiders    bool
-	spawnerPlaced bool
+	hasRails	bool
+	hasSpiders	bool
+	spawnerPlaced	bool
 }
 
 func NewMineshaftCorridor(start *StructureStart, rnd *rand.Random, box *BoundingBox, facing int) *MineshaftCorridor {

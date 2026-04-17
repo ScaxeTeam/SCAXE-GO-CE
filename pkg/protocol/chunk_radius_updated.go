@@ -6,7 +6,7 @@ import (
 
 type ChunkRadiusUpdatedPacket struct {
 	BasePacket
-	Radius int32
+	Radius	int32
 }
 
 func NewChunkRadiusUpdatedPacket() *ChunkRadiusUpdatedPacket {

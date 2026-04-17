@@ -2,13 +2,13 @@ package protocol
 
 type SetDifficultyPacket struct {
 	BasePacket
-	Difficulty int32
+	Difficulty	int32
 }
 
 func NewSetDifficultyPacket() *SetDifficultyPacket {
 	return &SetDifficultyPacket{
-		BasePacket: BasePacket{PacketID: IDSetDifficulty},
-		Difficulty: 1,
+		BasePacket:	BasePacket{PacketID: IDSetDifficulty},
+		Difficulty:	1,
 	}
 }
 

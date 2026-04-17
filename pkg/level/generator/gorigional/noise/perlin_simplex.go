@@ -5,14 +5,14 @@ import (
 )
 
 type PerlinSimplexGenerator struct {
-	levels      int
-	noiseLevels []*SimplexNoise
+	levels		int
+	noiseLevels	[]*SimplexNoise
 }
 
 func NewPerlinSimplexGenerator(r *rand.Random, levels int) *PerlinSimplexGenerator {
 	g := &PerlinSimplexGenerator{
-		levels:      levels,
-		noiseLevels: make([]*SimplexNoise, levels),
+		levels:		levels,
+		noiseLevels:	make([]*SimplexNoise, levels),
 	}
 
 	for i := 0; i < levels; i++ {

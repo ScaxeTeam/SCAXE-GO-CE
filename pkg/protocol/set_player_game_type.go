@@ -6,7 +6,7 @@ func init() {
 
 type SetPlayerGameTypePacket struct {
 	BasePacket
-	Gamemode int32
+	Gamemode	int32
 }
 
 func NewSetPlayerGameTypePacket() *SetPlayerGameTypePacket {

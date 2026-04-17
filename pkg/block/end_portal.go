@@ -7,12 +7,12 @@ type EndPortalBlock struct {
 func NewEndPortalBlock() *EndPortalBlock {
 	return &EndPortalBlock{
 		TransparentBase: TransparentBase{
-			BlockID:         END_PORTAL,
-			BlockName:       "End Portal",
-			BlockHardness:   -1,
-			BlockLightLevel: 15,
-			BlockToolType:   ToolTypeNone,
-			BlockCanPlace:   false,
+			BlockID:		END_PORTAL,
+			BlockName:		"End Portal",
+			BlockHardness:		-1,
+			BlockLightLevel:	15,
+			BlockToolType:		ToolTypeNone,
+			BlockCanPlace:		false,
 		},
 	}
 }
@@ -28,11 +28,11 @@ type EndPortalFrameBlock struct {
 func NewEndPortalFrameBlock() *EndPortalFrameBlock {
 	return &EndPortalFrameBlock{
 		SolidBase: SolidBase{
-			BlockID:         END_PORTAL_FRAME,
-			BlockName:       "End Portal Frame",
-			BlockHardness:   -1,
-			BlockLightLevel: 1,
-			BlockToolType:   ToolTypeNone,
+			BlockID:		END_PORTAL_FRAME,
+			BlockName:		"End Portal Frame",
+			BlockHardness:		-1,
+			BlockLightLevel:	1,
+			BlockToolType:		ToolTypeNone,
 		},
 	}
 }

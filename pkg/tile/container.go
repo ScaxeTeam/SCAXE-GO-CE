@@ -4,6 +4,7 @@ import (
 	"github.com/scaxe/scaxe-go/pkg/item"
 	"github.com/scaxe/scaxe-go/pkg/nbt"
 )
+
 type Container interface {
 	GetItem(index int) item.Item
 	SetItem(index int, it item.Item)
@@ -12,6 +13,7 @@ type Container interface {
 type ContainerBase struct {
 	items []item.Item
 }
+
 func InitContainerBase(c *ContainerBase, size int) {
 	c.items = make([]item.Item, size)
 }

@@ -1,26 +1,26 @@
 package block
 
 const (
-	ToolTypeNone    = 0
-	ToolTypeSword   = 1
-	ToolTypeShovel  = 2
-	ToolTypePickaxe = 3
-	ToolTypeAxe     = 4
-	ToolTypeShears  = 5
+	ToolTypeNone	= 0
+	ToolTypeSword	= 1
+	ToolTypeShovel	= 2
+	ToolTypePickaxe	= 3
+	ToolTypeAxe	= 4
+	ToolTypeShears	= 5
 )
 
 const (
-	TierWooden  = 1
-	TierGolden  = 2
-	TierStone   = 3
-	TierIron    = 4
-	TierDiamond = 5
+	TierWooden	= 1
+	TierGolden	= 2
+	TierStone	= 3
+	TierIron	= 4
+	TierDiamond	= 5
 )
 
 type Drop struct {
-	ID    int
-	Meta  int
-	Count int
+	ID	int
+	Meta	int
+	Count	int
 }
 
 func NewDrop(id, meta, count int) Drop {
@@ -28,26 +28,26 @@ func NewDrop(id, meta, count int) Drop {
 }
 
 type BlockDrops struct {
-	Drops []Drop
-	WrongToolDrops []Drop
-	MinTier int
-	RequiredToolType int
+	Drops			[]Drop
+	WrongToolDrops		[]Drop
+	MinTier			int
+	RequiredToolType	int
 }
 
 func GetDefaultDrops(blockID, meta int) BlockDrops {
 	return BlockDrops{
-		Drops:            []Drop{{ID: blockID, Meta: meta, Count: 1}},
-		WrongToolDrops:   nil,
-		MinTier:          0,
-		RequiredToolType: ToolTypeNone,
+		Drops:			[]Drop{{ID: blockID, Meta: meta, Count: 1}},
+		WrongToolDrops:		nil,
+		MinTier:		0,
+		RequiredToolType:	ToolTypeNone,
 	}
 }
 
 type BlockBreakInfo struct {
-	Hardness         float64
-	BlastResistance  float64
-	RequiredToolType int
-	RequiredToolTier int
+	Hardness		float64
+	BlastResistance		float64
+	RequiredToolType	int
+	RequiredToolTier	int
 }
 
 func (b BlockBreakInfo) CanHarvestWith(toolType, toolTier int) bool {

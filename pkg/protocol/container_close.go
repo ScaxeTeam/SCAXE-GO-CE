@@ -2,7 +2,7 @@ package protocol
 
 type ContainerClosePacket struct {
 	BasePacket
-	WindowID byte
+	WindowID	byte
 }
 
 func NewContainerClosePacket() *ContainerClosePacket {

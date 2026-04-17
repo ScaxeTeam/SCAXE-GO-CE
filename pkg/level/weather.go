@@ -7,9 +7,9 @@ import (
 )
 
 const (
-	WeatherClear   = 0
-	WeatherRain    = 1
-	WeatherThunder = 2
+	WeatherClear	= 0
+	WeatherRain	= 1
+	WeatherThunder	= 2
 )
 
 func (l *Level) IsRaining() bool {

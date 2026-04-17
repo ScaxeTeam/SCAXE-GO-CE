@@ -8,8 +8,8 @@ import (
 )
 
 type ChunkPos struct {
-	X int32
-	Z int32
+	X	int32
+	Z	int32
 }
 
 const (
@@ -21,36 +21,36 @@ func ChunkHash(x, z int32) int64 {
 }
 
 type Chunk struct {
-	X int32
-	Z int32
+	X	int32
+	Z	int32
 
-	Sections [SectionCount]*ChunkSection
+	Sections	[SectionCount]*ChunkSection
 
-	BiomeColors [256]uint32
+	BiomeColors	[256]uint32
 
-	BiomeIds [256]uint8
+	BiomeIds	[256]uint8
 
-	HeightMap [256]byte
+	HeightMap	[256]byte
 
-	Entities []*nbt.CompoundTag
-	Tiles    []*nbt.CompoundTag
+	Entities	[]*nbt.CompoundTag
+	Tiles		[]*nbt.CompoundTag
 
-	Generated      bool
-	Populated      bool
-	LightPopulated bool
+	Generated	bool
+	Populated	bool
+	LightPopulated	bool
 
-	dirty        bool
-	cachedPacket []byte
+	dirty		bool
+	cachedPacket	[]byte
 }
 
 func NewChunk(x, z int32) *Chunk {
 	c := &Chunk{
-		X:              x,
-		Z:              z,
-		Generated:      true,
-		Populated:      true,
-		LightPopulated: true,
-		dirty:          true,
+		X:		x,
+		Z:		z,
+		Generated:	true,
+		Populated:	true,
+		LightPopulated:	true,
+		dirty:		true,
 	}
 
 	for i := range c.BiomeColors {

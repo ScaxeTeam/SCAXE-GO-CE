@@ -1,14 +1,16 @@
 package block
+
 type CraftingTableBlock struct {
 	SolidBase
 }
+
 func NewCraftingTableBlock() *CraftingTableBlock {
 	return &CraftingTableBlock{
 		SolidBase: SolidBase{
-			BlockID:       WORKBENCH,
-			BlockName:     "Crafting Table",
-			BlockHardness: 2.5,
-			BlockToolType: ToolTypeAxe,
+			BlockID:	WORKBENCH,
+			BlockName:	"Crafting Table",
+			BlockHardness:	2.5,
+			BlockToolType:	ToolTypeAxe,
 		},
 	}
 }

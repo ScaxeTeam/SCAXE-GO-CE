@@ -12,12 +12,12 @@ import (
 
 type LocateCommand struct {
 	command.BaseCommand
-	server ServerInterface
+	server	ServerInterface
 }
 
 type BiomeInfo struct {
-	ID   uint8
-	Name string
+	ID	uint8
+	Name	string
 }
 
 var knownBiomes = []BiomeInfo{
@@ -51,12 +51,12 @@ var knownBiomes = []BiomeInfo{
 func NewBiomeFindCommand(server ServerInterface) *LocateCommand {
 	return &LocateCommand{
 		BaseCommand: command.BaseCommand{
-			Name:        "bfind",
-			Description: "Find and teleport to specific biomes or structures",
-			Usage:       "/bfind - list | /bfind <num> - biome | /bfind village - village",
-			Permission:  "scaxe.command.bfind",
+			Name:		"bfind",
+			Description:	"Find and teleport to specific biomes or structures",
+			Usage:		"/bfind - list | /bfind <num> - biome | /bfind village - village",
+			Permission:	"scaxe.command.bfind",
 		},
-		server: server,
+		server:	server,
 	}
 }
 
@@ -225,18 +225,18 @@ func canVillageSpawnAt(seed int64, chunkX, chunkZ, distance int, rnd *rand.Rando
 
 type VillageLocateCommand struct {
 	command.BaseCommand
-	server ServerInterface
+	server	ServerInterface
 }
 
 func NewVillageLocateCommand(server ServerInterface) *VillageLocateCommand {
 	return &VillageLocateCommand{
 		BaseCommand: command.BaseCommand{
-			Name:        "locate",
-			Description: "Locate structures like villages",
-			Usage:       "/locate village",
-			Permission:  "scaxe.command.locate",
+			Name:		"locate",
+			Description:	"Locate structures like villages",
+			Usage:		"/locate village",
+			Permission:	"scaxe.command.locate",
 		},
-		server: server,
+		server:	server,
 	}
 }
 

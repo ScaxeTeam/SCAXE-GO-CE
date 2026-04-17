@@ -2,27 +2,27 @@ package event
 
 type InventoryEvent struct {
 	*BaseEvent
-	InventoryType int
+	InventoryType	int
 }
 
 func NewInventoryEvent(name string, invType int) *InventoryEvent {
 	return &InventoryEvent{
-		BaseEvent:     NewBaseEvent(name),
-		InventoryType: invType,
+		BaseEvent:	NewBaseEvent(name),
+		InventoryType:	invType,
 	}
 }
 
 type InventoryOpenEvent struct {
 	*InventoryEvent
-	PlayerID int64
+	PlayerID	int64
 }
 
 var inventoryOpenHandlers = NewHandlerList()
 
 func NewInventoryOpenEvent(playerID int64, invType int) *InventoryOpenEvent {
 	return &InventoryOpenEvent{
-		InventoryEvent: NewInventoryEvent("InventoryOpenEvent", invType),
-		PlayerID:       playerID,
+		InventoryEvent:	NewInventoryEvent("InventoryOpenEvent", invType),
+		PlayerID:	playerID,
 	}
 }
 
@@ -32,15 +32,15 @@ func (e *InventoryOpenEvent) GetHandlers() *HandlerList {
 
 type InventoryCloseEvent struct {
 	*InventoryEvent
-	PlayerID int64
+	PlayerID	int64
 }
 
 var inventoryCloseHandlers = NewHandlerList()
 
 func NewInventoryCloseEvent(playerID int64, invType int) *InventoryCloseEvent {
 	return &InventoryCloseEvent{
-		InventoryEvent: NewInventoryEvent("InventoryCloseEvent", invType),
-		PlayerID:       playerID,
+		InventoryEvent:	NewInventoryEvent("InventoryCloseEvent", invType),
+		PlayerID:	playerID,
 	}
 }
 
@@ -50,21 +50,21 @@ func (e *InventoryCloseEvent) GetHandlers() *HandlerList {
 
 type InventoryTransactionEvent struct {
 	*InventoryEvent
-	PlayerID  int64
-	Slot      int
-	OldItemID int
-	NewItemID int
+	PlayerID	int64
+	Slot		int
+	OldItemID	int
+	NewItemID	int
 }
 
 var inventoryTransactionHandlers = NewHandlerList()
 
 func NewInventoryTransactionEvent(playerID int64, slot, oldItem, newItem int) *InventoryTransactionEvent {
 	return &InventoryTransactionEvent{
-		InventoryEvent: NewInventoryEvent("InventoryTransactionEvent", 0),
-		PlayerID:       playerID,
-		Slot:           slot,
-		OldItemID:      oldItem,
-		NewItemID:      newItem,
+		InventoryEvent:	NewInventoryEvent("InventoryTransactionEvent", 0),
+		PlayerID:	playerID,
+		Slot:		slot,
+		OldItemID:	oldItem,
+		NewItemID:	newItem,
 	}
 }
 
@@ -74,17 +74,17 @@ func (e *InventoryTransactionEvent) GetHandlers() *HandlerList {
 
 type CraftItemEvent struct {
 	*InventoryEvent
-	PlayerID int64
-	ResultID int
+	PlayerID	int64
+	ResultID	int
 }
 
 var craftItemHandlers = NewHandlerList()
 
 func NewCraftItemEvent(playerID int64, resultID int) *CraftItemEvent {
 	return &CraftItemEvent{
-		InventoryEvent: NewInventoryEvent("CraftItemEvent", 0),
-		PlayerID:       playerID,
-		ResultID:       resultID,
+		InventoryEvent:	NewInventoryEvent("CraftItemEvent", 0),
+		PlayerID:	playerID,
+		ResultID:	resultID,
 	}
 }
 
@@ -94,19 +94,19 @@ func (e *CraftItemEvent) GetHandlers() *HandlerList {
 
 type FurnaceSmeltEvent struct {
 	*InventoryEvent
-	BlockX, BlockY, BlockZ int
-	SourceID               int
-	ResultID               int
+	BlockX, BlockY, BlockZ	int
+	SourceID		int
+	ResultID		int
 }
 
 var furnaceSmeltHandlers = NewHandlerList()
 
 func NewFurnaceSmeltEvent(bx, by, bz, sourceID, resultID int) *FurnaceSmeltEvent {
 	return &FurnaceSmeltEvent{
-		InventoryEvent: NewInventoryEvent("FurnaceSmeltEvent", 0),
-		BlockX:         bx, BlockY: by, BlockZ: bz,
-		SourceID: sourceID,
-		ResultID: resultID,
+		InventoryEvent:	NewInventoryEvent("FurnaceSmeltEvent", 0),
+		BlockX:		bx, BlockY: by, BlockZ: bz,
+		SourceID:	sourceID,
+		ResultID:	resultID,
 	}
 }
 
@@ -116,19 +116,19 @@ func (e *FurnaceSmeltEvent) GetHandlers() *HandlerList {
 
 type FurnaceBurnEvent struct {
 	*InventoryEvent
-	BlockX, BlockY, BlockZ int
-	FuelID                 int
-	BurnTime               int
+	BlockX, BlockY, BlockZ	int
+	FuelID			int
+	BurnTime		int
 }
 
 var furnaceBurnHandlers = NewHandlerList()
 
 func NewFurnaceBurnEvent(bx, by, bz, fuelID, burnTime int) *FurnaceBurnEvent {
 	return &FurnaceBurnEvent{
-		InventoryEvent: NewInventoryEvent("FurnaceBurnEvent", 0),
-		BlockX:         bx, BlockY: by, BlockZ: bz,
-		FuelID:   fuelID,
-		BurnTime: burnTime,
+		InventoryEvent:	NewInventoryEvent("FurnaceBurnEvent", 0),
+		BlockX:		bx, BlockY: by, BlockZ: bz,
+		FuelID:		fuelID,
+		BurnTime:	burnTime,
 	}
 }
 
@@ -138,32 +138,32 @@ func (e *FurnaceBurnEvent) GetHandlers() *HandlerList {
 
 type InventoryPickupItemEvent struct {
 	*InventoryEvent
-	ItemEntityID int64
+	ItemEntityID	int64
 }
 
 var inventoryPickupItemHandlers = NewHandlerList()
 
 func NewInventoryPickupItemEvent(invType int, itemEntityID int64) *InventoryPickupItemEvent {
 	return &InventoryPickupItemEvent{
-		InventoryEvent: NewInventoryEvent("InventoryPickupItemEvent", invType),
-		ItemEntityID:   itemEntityID,
+		InventoryEvent:	NewInventoryEvent("InventoryPickupItemEvent", invType),
+		ItemEntityID:	itemEntityID,
 	}
 }
 
-func (e *InventoryPickupItemEvent) GetHandlers() *HandlerList { return inventoryPickupItemHandlers }
+func (e *InventoryPickupItemEvent) GetHandlers() *HandlerList	{ return inventoryPickupItemHandlers }
 
 type InventoryPickupArrowEvent struct {
 	*InventoryEvent
-	ArrowEntityID int64
+	ArrowEntityID	int64
 }
 
 var inventoryPickupArrowHandlers = NewHandlerList()
 
 func NewInventoryPickupArrowEvent(invType int, arrowEntityID int64) *InventoryPickupArrowEvent {
 	return &InventoryPickupArrowEvent{
-		InventoryEvent: NewInventoryEvent("InventoryPickupArrowEvent", invType),
-		ArrowEntityID:  arrowEntityID,
+		InventoryEvent:	NewInventoryEvent("InventoryPickupArrowEvent", invType),
+		ArrowEntityID:	arrowEntityID,
 	}
 }
 
-func (e *InventoryPickupArrowEvent) GetHandlers() *HandlerList { return inventoryPickupArrowHandlers }
+func (e *InventoryPickupArrowEvent) GetHandlers() *HandlerList	{ return inventoryPickupArrowHandlers }

@@ -91,7 +91,7 @@ func (re *Reed) Generate(w populator.ChunkManager, r *rand.Random, pos world.Blo
 
 type Pumpkin struct{}
 
-func NewPumpkin() *Pumpkin { return &Pumpkin{} }
+func NewPumpkin() *Pumpkin	{ return &Pumpkin{} }
 
 func (p *Pumpkin) Generate(w populator.ChunkManager, r *rand.Random, pos world.BlockPos) bool {
 	for i := 0; i < 64; i++ {

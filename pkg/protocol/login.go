@@ -9,19 +9,19 @@ import (
 
 type LoginPacket struct {
 	BasePacket
-	Protocol      int32
-	Edition       byte
-	ChainData     string
-	ClientData    string
-	ClientUUID    string
-	ClientID      int64
-	Username      string
-	SkinID        string
-	SkinData      []byte
-	ServerAddress string
-	LanguageCode  string
-	DeviceOS      int32
-	DeviceModel   string
+	Protocol	int32
+	Edition		byte
+	ChainData	string
+	ClientData	string
+	ClientUUID	string
+	ClientID	int64
+	Username	string
+	SkinID		string
+	SkinData	[]byte
+	ServerAddress	string
+	LanguageCode	string
+	DeviceOS	int32
+	DeviceModel	string
 }
 
 func NewLoginPacket() *LoginPacket {

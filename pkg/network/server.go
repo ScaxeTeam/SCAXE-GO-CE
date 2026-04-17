@@ -12,21 +12,21 @@ import (
 )
 
 type Server struct {
-	listener *raknet.Listener
-	sessions map[string]*Session
-	mu       sync.RWMutex
+	listener	*raknet.Listener
+	sessions	map[string]*Session
+	mu		sync.RWMutex
 
-	Address    string
-	ServerName string
-	MaxPlayers int
-	MOTD       string
+	Address		string
+	ServerName	string
+	MaxPlayers	int
+	MOTD		string
 
-	OnSessionConnect    func(*Session)
-	OnSessionDisconnect func(*Session)
-	OnPacket            func(*Session, protocol.DataPacket)
+	OnSessionConnect	func(*Session)
+	OnSessionDisconnect	func(*Session)
+	OnPacket		func(*Session, protocol.DataPacket)
 
-	ctx    context.Context
-	cancel context.CancelFunc
+	ctx	context.Context
+	cancel	context.CancelFunc
 }
 
 func NewServer(address, serverName string, maxPlayers int) *Server {
@@ -35,13 +35,13 @@ func NewServer(address, serverName string, maxPlayers int) *Server {
 	ctx, cancel := context.WithCancel(context.Background())
 
 	return &Server{
-		sessions:   make(map[string]*Session),
-		Address:    address,
-		ServerName: serverName,
-		MaxPlayers: maxPlayers,
-		MOTD:       serverName,
-		ctx:        ctx,
-		cancel:     cancel,
+		sessions:	make(map[string]*Session),
+		Address:	address,
+		ServerName:	serverName,
+		MaxPlayers:	maxPlayers,
+		MOTD:		serverName,
+		ctx:		ctx,
+		cancel:		cancel,
 	}
 }
 
@@ -255,26 +255,26 @@ func (s *Server) buildMOTD() string {
 }
 
 type Session struct {
-	conn   net.Conn
-	server *Server
-	mu     sync.Mutex
+	conn	net.Conn
+	server	*Server
+	mu	sync.Mutex
 
-	Username string
-	UUID     string
-	Protocol int32
+	Username	string
+	UUID		string
+	Protocol	int32
 
-	ctx    context.Context
-	cancel context.CancelFunc
+	ctx	context.Context
+	cancel	context.CancelFunc
 }
 
 func NewSession(conn net.Conn, server *Server) *Session {
 	ctx, cancel := context.WithCancel(server.ctx)
 
 	session := &Session{
-		conn:   conn,
-		server: server,
-		ctx:    ctx,
-		cancel: cancel,
+		conn:	conn,
+		server:	server,
+		ctx:	ctx,
+		cancel:	cancel,
 	}
 
 	logger.Debug("NewSession", "address", conn.RemoteAddr().String())

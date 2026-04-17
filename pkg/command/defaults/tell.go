@@ -8,18 +8,18 @@ import (
 
 type TellCommand struct {
 	command.BaseCommand
-	server ServerInterface
+	server	ServerInterface
 }
 
 func NewTellCommand(server ServerInterface) *TellCommand {
 	return &TellCommand{
 		BaseCommand: command.BaseCommand{
-			Name:        "tell",
-			Description: "Sends a private message to a player",
-			Usage:       "/tell <player> <message>",
-			Permission:  "",
+			Name:		"tell",
+			Description:	"Sends a private message to a player",
+			Usage:		"/tell <player> <message>",
+			Permission:	"",
 		},
-		server: server,
+		server:	server,
 	}
 }
 

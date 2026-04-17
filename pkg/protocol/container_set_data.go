@@ -2,9 +2,9 @@ package protocol
 
 type ContainerSetDataPacket struct {
 	BasePacket
-	WindowID byte
-	Property uint16
-	Value    uint16
+	WindowID	byte
+	Property	uint16
+	Value		uint16
 }
 
 func NewContainerSetDataPacket() *ContainerSetDataPacket {

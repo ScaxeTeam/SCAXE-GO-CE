@@ -2,14 +2,14 @@ package protocol
 
 type SetEntityDataPacket struct {
 	BasePacket
-	EntityID int64
-	Metadata []byte
+	EntityID	int64
+	Metadata	[]byte
 }
 
 func NewSetEntityDataPacket() *SetEntityDataPacket {
 	return &SetEntityDataPacket{
-		BasePacket: BasePacket{PacketID: IDSetEntityData},
-		Metadata:   []byte{0x7f},
+		BasePacket:	BasePacket{PacketID: IDSetEntityData},
+		Metadata:	[]byte{0x7f},
 	}
 }
 

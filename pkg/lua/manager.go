@@ -11,17 +11,17 @@ import (
 )
 
 type PluginManager struct {
-	mu        sync.RWMutex
-	server    ServerAPI
-	plugins   map[string]*Plugin
-	pluginDir string
+	mu		sync.RWMutex
+	server		ServerAPI
+	plugins		map[string]*Plugin
+	pluginDir	string
 }
 
 func NewPluginManager(server ServerAPI, dir string) *PluginManager {
 	return &PluginManager{
-		server:    server,
-		plugins:   make(map[string]*Plugin),
-		pluginDir: dir,
+		server:		server,
+		plugins:	make(map[string]*Plugin),
+		pluginDir:	dir,
 	}
 }
 

@@ -28,9 +28,9 @@ func TestChunkHash(t *testing.T) {
 
 func TestQueueChunks(t *testing.T) {
 	p := &Player{
-		LoadedChunks:   make(map[int64]bool),
-		usedChunks:     make(map[int64]bool),
-		chunkLoadQueue: nil,
+		LoadedChunks:	make(map[int64]bool),
+		usedChunks:	make(map[int64]bool),
+		chunkLoadQueue:	nil,
 	}
 
 	hashes := []int64{
@@ -54,8 +54,8 @@ func TestQueueChunks(t *testing.T) {
 
 func TestGetLoadedChunkList(t *testing.T) {
 	p := &Player{
-		LoadedChunks: make(map[int64]bool),
-		usedChunks:   make(map[int64]bool),
+		LoadedChunks:	make(map[int64]bool),
+		usedChunks:	make(map[int64]bool),
 	}
 
 	p.MarkChunkLoaded(0, 0)
@@ -70,8 +70,8 @@ func TestGetLoadedChunkList(t *testing.T) {
 
 func TestUnloadChunk(t *testing.T) {
 	p := &Player{
-		LoadedChunks: make(map[int64]bool),
-		usedChunks:   make(map[int64]bool),
+		LoadedChunks:	make(map[int64]bool),
+		usedChunks:	make(map[int64]bool),
 	}
 
 	p.MarkChunkLoaded(5, 5)
@@ -87,8 +87,8 @@ func TestUnloadChunk(t *testing.T) {
 
 func TestChunkRadius(t *testing.T) {
 	p := &Player{
-		LoadedChunks: make(map[int64]bool),
-		usedChunks:   make(map[int64]bool),
+		LoadedChunks:	make(map[int64]bool),
+		usedChunks:	make(map[int64]bool),
 	}
 
 	p.SetChunkRadius(1)

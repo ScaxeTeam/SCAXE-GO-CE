@@ -1,5 +1,4 @@
 //go:build windows
-
 package logger
 
 import (
@@ -9,9 +8,9 @@ import (
 )
 
 var (
-	kernel32       = syscall.NewLazyDLL("kernel32.dll")
-	setConsoleMode = kernel32.NewProc("SetConsoleMode")
-	getConsoleMode = kernel32.NewProc("GetConsoleMode")
+	kernel32	= syscall.NewLazyDLL("kernel32.dll")
+	setConsoleMode	= kernel32.NewProc("SetConsoleMode")
+	getConsoleMode	= kernel32.NewProc("GetConsoleMode")
 )
 
 const (

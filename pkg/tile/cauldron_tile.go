@@ -4,9 +4,11 @@ import (
 	"github.com/scaxe/scaxe-go/pkg/nbt"
 	"github.com/scaxe/scaxe-go/pkg/world"
 )
+
 type Cauldron struct {
 	SpawnableBase
 }
+
 func NewCauldron(chunk *world.Chunk, nbtData *nbt.CompoundTag) *Cauldron {
 	c := &Cauldron{}
 

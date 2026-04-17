@@ -5,28 +5,28 @@ import (
 )
 
 var difficultyNames = map[string]int{
-	"peaceful": 0, "p": 0, "0": 0,
-	"easy": 1, "e": 1, "1": 1,
-	"normal": 2, "n": 2, "2": 2,
-	"hard": 3, "h": 3, "3": 3,
+	"peaceful":	0, "p": 0, "0": 0,
+	"easy":	1, "e": 1, "1": 1,
+	"normal":	2, "n": 2, "2": 2,
+	"hard":	3, "h": 3, "3": 3,
 }
 
 var difficultyLabels = []string{"Peaceful", "Easy", "Normal", "Hard"}
 
 type DifficultyCommand struct {
 	command.BaseCommand
-	server ServerInterface
+	server	ServerInterface
 }
 
 func NewDifficultyCommand(server ServerInterface) *DifficultyCommand {
 	return &DifficultyCommand{
 		BaseCommand: command.BaseCommand{
-			Name:        "difficulty",
-			Description: "Sets the server difficulty",
-			Usage:       "/difficulty <0-3|peaceful|easy|normal|hard>",
-			Permission:  "pocketmine.command.difficulty",
+			Name:		"difficulty",
+			Description:	"Sets the server difficulty",
+			Usage:		"/difficulty <0-3|peaceful|easy|normal|hard>",
+			Permission:	"pocketmine.command.difficulty",
 		},
-		server: server,
+		server:	server,
 	}
 }
 

@@ -14,9 +14,9 @@ func init() {
 
 func makeTestLevel(spawnX, spawnY, spawnZ float64) *Level {
 	l := &Level{
-		ID:     1,
-		Name:   "test",
-		Chunks: make(map[int64]*world.Chunk),
+		ID:	1,
+		Name:	"test",
+		Chunks:	make(map[int64]*world.Chunk),
 	}
 	l.Generator = &mockGen{spawn: world.NewVector3(spawnX, spawnY, spawnZ)}
 	return l
@@ -129,9 +129,9 @@ type mockGen struct {
 
 var _ generator.Generator = (*mockGen)(nil)
 
-func (g *mockGen) GetName() string                               { return "mock" }
-func (g *mockGen) Init(level generator.ChunkManager, seed int64) {}
-func (g *mockGen) GenerateChunk(cx, cz int32)                    {}
-func (g *mockGen) PopulateChunk(cx, cz int32)                    {}
-func (g *mockGen) GetSpawn() *world.Vector3                      { return g.spawn }
-func (g *mockGen) GetSettings() map[string]interface{}           { return nil }
+func (g *mockGen) GetName() string					{ return "mock" }
+func (g *mockGen) Init(level generator.ChunkManager, seed int64)	{}
+func (g *mockGen) GenerateChunk(cx, cz int32)				{}
+func (g *mockGen) PopulateChunk(cx, cz int32)				{}
+func (g *mockGen) GetSpawn() *world.Vector3				{ return g.spawn }
+func (g *mockGen) GetSettings() map[string]interface{}			{ return nil }

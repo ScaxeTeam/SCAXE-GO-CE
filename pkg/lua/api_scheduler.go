@@ -13,12 +13,12 @@ func registerSchedulerAPI(L *lua.LState, p *Plugin, server ServerAPI) {
 
 		p.nextTaskID++
 		task := &schedulerTask{
-			id:       p.nextTaskID,
-			callback: callback,
-			interval: 0,
-			delay:    delay,
-			nextRun:  server.GetCurrentTick() + delay,
-			repeat:   false,
+			id:		p.nextTaskID,
+			callback:	callback,
+			interval:	0,
+			delay:		delay,
+			nextRun:	server.GetCurrentTick() + delay,
+			repeat:		false,
 		}
 		p.schedulerTasks = append(p.schedulerTasks, task)
 
@@ -32,12 +32,12 @@ func registerSchedulerAPI(L *lua.LState, p *Plugin, server ServerAPI) {
 
 		p.nextTaskID++
 		task := &schedulerTask{
-			id:       p.nextTaskID,
-			callback: callback,
-			interval: interval,
-			delay:    interval,
-			nextRun:  server.GetCurrentTick() + interval,
-			repeat:   true,
+			id:		p.nextTaskID,
+			callback:	callback,
+			interval:	interval,
+			delay:		interval,
+			nextRun:	server.GetCurrentTick() + interval,
+			repeat:		true,
 		}
 		p.schedulerTasks = append(p.schedulerTasks, task)
 

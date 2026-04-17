@@ -2,17 +2,17 @@ package protocol
 
 type AnimatePacket struct {
 	BasePacket
-	Action   byte
-	EntityID int64
-	Float    float32
+	Action		byte
+	EntityID	int64
+	Float		float32
 }
 
 const (
-	AnimateActionSwingArm    byte = 1
-	AnimateActionStopSleep   byte = 3
-	AnimateActionCriticalHit byte = 4
-	AnimateActionRowRight    byte = 128
-	AnimateActionRowLeft     byte = 129
+	AnimateActionSwingArm		byte	= 1
+	AnimateActionStopSleep		byte	= 3
+	AnimateActionCriticalHit	byte	= 4
+	AnimateActionRowRight		byte	= 128
+	AnimateActionRowLeft		byte	= 129
 )
 
 func NewAnimatePacket() *AnimatePacket {

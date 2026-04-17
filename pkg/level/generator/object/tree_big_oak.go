@@ -10,38 +10,38 @@ import (
 )
 
 type BigOakTree struct {
-	basePos     world.BlockPos
-	heightLimit int
-	height      int
+	basePos		world.BlockPos
+	heightLimit	int
+	height		int
 
-	heightAttenuation float64
-	branchSlope       float64
-	scaleWidth        float64
-	leafDensity       float64
+	heightAttenuation	float64
+	branchSlope		float64
+	scaleWidth		float64
+	leafDensity		float64
 
-	trunkSize         int
-	heightLimitLimit  int
-	leafDistanceLimit int
+	trunkSize		int
+	heightLimitLimit	int
+	leafDistanceLimit	int
 
-	foliageCoords []foliageCoordinates
-	level         populator.ChunkManager
-	rand          *rand.Random
+	foliageCoords	[]foliageCoordinates
+	level		populator.ChunkManager
+	rand		*rand.Random
 }
 
 type foliageCoordinates struct {
 	world.BlockPos
-	branchBase int
+	branchBase	int
 }
 
 func NewBigOakTree() *BigOakTree {
 	return &BigOakTree{
-		heightAttenuation: 0.618,
-		branchSlope:       0.381,
-		scaleWidth:        1.0,
-		leafDensity:       1.0,
-		trunkSize:         1,
-		heightLimitLimit:  12,
-		leafDistanceLimit: 4,
+		heightAttenuation:	0.618,
+		branchSlope:		0.381,
+		scaleWidth:		1.0,
+		leafDensity:		1.0,
+		trunkSize:		1,
+		heightLimitLimit:	12,
+		leafDistanceLimit:	4,
 	}
 }
 
@@ -99,8 +99,8 @@ func (t *BigOakTree) generateLeafNodeList() {
 
 	t.foliageCoords = []foliageCoordinates{}
 	t.foliageCoords = append(t.foliageCoords, foliageCoordinates{
-		BlockPos:   t.basePos.Up(int32(k)),
-		branchBase: int(j),
+		BlockPos:	t.basePos.Up(int32(k)),
+		branchBase:	int(j),
 	})
 
 	for ; k >= 0; k-- {
@@ -137,8 +137,8 @@ func (t *BigOakTree) generateLeafNodeList() {
 
 					if t.checkBlockLine(blockpos2, blockpos) == -1 {
 						t.foliageCoords = append(t.foliageCoords, foliageCoordinates{
-							BlockPos:   blockpos,
-							branchBase: int(blockpos2.Y()),
+							BlockPos:	blockpos,
+							branchBase:	int(blockpos2.Y()),
 						})
 					}
 				}

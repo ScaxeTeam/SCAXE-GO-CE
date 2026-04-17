@@ -1,12 +1,12 @@
 package block
 
 const (
-	DoublePlantSunflower = 0
-	DoublePlantLilac     = 1
-	DoublePlantTallGrass = 2
-	DoublePlantLargeFern = 3
-	DoublePlantRoseBush  = 4
-	DoublePlantPeony     = 5
+	DoublePlantSunflower	= 0
+	DoublePlantLilac	= 1
+	DoublePlantTallGrass	= 2
+	DoublePlantLargeFern	= 3
+	DoublePlantRoseBush	= 4
+	DoublePlantPeony	= 5
 )
 
 type DoublePlantBlock struct {
@@ -16,10 +16,10 @@ type DoublePlantBlock struct {
 func NewDoublePlantBlock() *DoublePlantBlock {
 	return &DoublePlantBlock{
 		TransparentBase: TransparentBase{
-			BlockID:       DOUBLE_PLANT,
-			BlockName:     "Double Plant",
-			BlockHardness: 0,
-			BlockToolType: ToolTypeNone,
+			BlockID:	DOUBLE_PLANT,
+			BlockName:	"Double Plant",
+			BlockHardness:	0,
+			BlockToolType:	ToolTypeNone,
 		},
 	}
 }

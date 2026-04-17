@@ -2,7 +2,7 @@ package protocol
 
 type RemoveEntityPacket struct {
 	BasePacket
-	EntityID int64
+	EntityID	int64
 }
 
 func NewRemoveEntityPacket() *RemoveEntityPacket {

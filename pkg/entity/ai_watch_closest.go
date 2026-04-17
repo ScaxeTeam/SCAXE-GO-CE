@@ -7,12 +7,12 @@ import (
 
 type AIWatchClosest struct {
 	BaseAIGoal
-	entity        *Entity
-	lookHelper    *LookHelper
-	closestEntity *Entity
-	maxDistance   float64
-	lookTime      int
-	chance        float32
+	entity		*Entity
+	lookHelper	*LookHelper
+	closestEntity	*Entity
+	maxDistance	float64
+	lookTime	int
+	chance		float32
 }
 
 func NewAIWatchClosest(e *Entity, lh *LookHelper, maxDist float64) *AIWatchClosest {
@@ -21,10 +21,10 @@ func NewAIWatchClosest(e *Entity, lh *LookHelper, maxDist float64) *AIWatchClose
 
 func NewAIWatchClosestWithChance(e *Entity, lh *LookHelper, maxDist float64, chance float32) *AIWatchClosest {
 	g := &AIWatchClosest{
-		entity:      e,
-		lookHelper:  lh,
-		maxDistance: maxDist,
-		chance:      chance,
+		entity:		e,
+		lookHelper:	lh,
+		maxDistance:	maxDist,
+		chance:		chance,
 	}
 	g.SetMutexBits(2)
 	return g

@@ -3,20 +3,20 @@ package biomegrid
 type ClimateType int
 
 const (
-	ClimateWarmWet ClimateType = iota
+	ClimateWarmWet	ClimateType	= iota
 	ClimateColdDry
 	ClimateLargerBiomes
 )
 
 type WhittakerMapLayer struct {
 	*BaseMapLayer
-	Climate ClimateType
+	Climate	ClimateType
 }
 
 func NewWhittakerMapLayer(seed int64, parent MapLayer, climate ClimateType) *WhittakerMapLayer {
 	return &WhittakerMapLayer{
-		BaseMapLayer: NewBaseMapLayer(seed, parent),
-		Climate:      climate,
+		BaseMapLayer:	NewBaseMapLayer(seed, parent),
+		Climate:	climate,
 	}
 }
 

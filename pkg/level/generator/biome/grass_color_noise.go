@@ -28,8 +28,8 @@ func (p *PerlinNoiseGen) GetValue(x, z float64) float64 {
 }
 
 type simplexNoiseLocal struct {
-	xo, yo, zo float64
-	p          [512]int
+	xo, yo, zo	float64
+	p		[512]int
 }
 
 var grad3Local = [12][3]int{

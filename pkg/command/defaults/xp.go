@@ -8,18 +8,18 @@ import (
 
 type XpCommand struct {
 	command.BaseCommand
-	server ServerInterface
+	server	ServerInterface
 }
 
 func NewXpCommand(server ServerInterface) *XpCommand {
 	return &XpCommand{
 		BaseCommand: command.BaseCommand{
-			Name:        "xp",
-			Description: "Adds or removes player experience",
-			Usage:       "/xp <amount[L]> <player>",
-			Permission:  "pocketmine.command.xp",
+			Name:		"xp",
+			Description:	"Adds or removes player experience",
+			Usage:		"/xp <amount[L]> <player>",
+			Permission:	"pocketmine.command.xp",
 		},
-		server: server,
+		server:	server,
 	}
 }
 

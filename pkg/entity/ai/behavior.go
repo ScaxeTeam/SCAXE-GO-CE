@@ -97,15 +97,15 @@ func (b *BehaviorBase) Distance(x, y, z float64) float64 {
 }
 
 type BehaviorManager struct {
-	behaviors       []Behavior
-	currentBehavior Behavior
-	enabled         bool
+	behaviors	[]Behavior
+	currentBehavior	Behavior
+	enabled		bool
 }
 
 func NewBehaviorManager() *BehaviorManager {
 	return &BehaviorManager{
-		behaviors: make([]Behavior, 0),
-		enabled:   true,
+		behaviors:	make([]Behavior, 0),
+		enabled:	true,
 	}
 }
 

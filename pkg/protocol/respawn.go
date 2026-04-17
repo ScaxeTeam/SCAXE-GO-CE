@@ -2,9 +2,9 @@ package protocol
 
 type RespawnPacket struct {
 	BasePacket
-	X float32
-	Y float32
-	Z float32
+	X	float32
+	Y	float32
+	Z	float32
 }
 
 func NewRespawnPacket() *RespawnPacket {

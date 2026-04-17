@@ -11,11 +11,11 @@ type AsyncTask interface {
 }
 
 type BaseAsyncTask struct {
-	result    interface{}
-	resultMu  sync.RWMutex
-	finished  bool
-	cancelled bool
-	progress  chan interface{}
+	result		interface{}
+	resultMu	sync.RWMutex
+	finished	bool
+	cancelled	bool
+	progress	chan interface{}
 }
 
 func NewBaseAsyncTask() *BaseAsyncTask {
@@ -56,22 +56,22 @@ func (t *BaseAsyncTask) PublishProgress(progress interface{}) {
 	}
 }
 
-func (t *BaseAsyncTask) OnCompletion() {}
+func (t *BaseAsyncTask) OnCompletion()	{}
 
-func (t *BaseAsyncTask) OnProgressUpdate(progress interface{}) {}
+func (t *BaseAsyncTask) OnProgressUpdate(progress interface{})	{}
 
 type AsyncPool struct {
-	pending    chan *asyncTaskWrapper
-	results    chan *asyncTaskWrapper
-	workerSize int
-	wg         sync.WaitGroup
-	closed     bool
-	mu         sync.Mutex
+	pending		chan *asyncTaskWrapper
+	results		chan *asyncTaskWrapper
+	workerSize	int
+	wg		sync.WaitGroup
+	closed		bool
+	mu		sync.Mutex
 }
 
 type asyncTaskWrapper struct {
-	task AsyncTask
-	base *BaseAsyncTask
+	task	AsyncTask
+	base	*BaseAsyncTask
 }
 
 func NewAsyncPool(workers int) *AsyncPool {
@@ -79,9 +79,9 @@ func NewAsyncPool(workers int) *AsyncPool {
 		workers = 4
 	}
 	pool := &AsyncPool{
-		pending:    make(chan *asyncTaskWrapper, 1000),
-		results:    make(chan *asyncTaskWrapper, 1000),
-		workerSize: workers,
+		pending:	make(chan *asyncTaskWrapper, 1000),
+		results:	make(chan *asyncTaskWrapper, 1000),
+		workerSize:	workers,
 	}
 	pool.startWorkers()
 	return pool
@@ -181,15 +181,15 @@ func SubmitAsync(task AsyncTask) {
 
 type ClosureAsyncTask struct {
 	*BaseAsyncTask
-	runFn        func() interface{}
-	completionFn func(result interface{})
+	runFn		func() interface{}
+	completionFn	func(result interface{})
 }
 
 func NewClosureAsyncTask(runFn func() interface{}, completionFn func(result interface{})) *ClosureAsyncTask {
 	return &ClosureAsyncTask{
-		BaseAsyncTask: NewBaseAsyncTask(),
-		runFn:         runFn,
-		completionFn:  completionFn,
+		BaseAsyncTask:	NewBaseAsyncTask(),
+		runFn:		runFn,
+		completionFn:	completionFn,
 	}
 }
 

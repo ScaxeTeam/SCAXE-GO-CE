@@ -4,21 +4,24 @@ import (
 	"github.com/scaxe/scaxe-go/pkg/nbt"
 	"github.com/scaxe/scaxe-go/pkg/world"
 )
+
 var flowerPotAllowed = map[int16]bool{
-	31: true,
-	6:  true,
-	32: true,
-	37: true,
-	38: true,
-	39: true,
-	40: true,
-	81: true,
+	31:	true,
+	6:	true,
+	32:	true,
+	37:	true,
+	38:	true,
+	39:	true,
+	40:	true,
+	81:	true,
 }
+
 type FlowerPot struct {
 	SpawnableBase
-	PlantID   int16
-	PlantData int32
+	PlantID		int16
+	PlantData	int32
 }
+
 func NewFlowerPot(chunk *world.Chunk, nbtData *nbt.CompoundTag) Tile {
 	fp := &FlowerPot{}
 	InitSpawnableBase(&fp.SpawnableBase, TypeFlowerPot, chunk, nbtData)

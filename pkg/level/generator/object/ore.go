@@ -11,25 +11,25 @@ import (
 )
 
 type OreType struct {
-	Material     int
-	Meta         int
-	ClusterCount int
-	ClusterSize  int
-	MinHeight    int
-	MaxHeight    int
+	Material	int
+	Meta		int
+	ClusterCount	int
+	ClusterSize	int
+	MinHeight	int
+	MaxHeight	int
 }
 
 type Ore struct {
-	BlockID    uint8
-	BlockMeta  uint8
-	BlockCount int
+	BlockID		uint8
+	BlockMeta	uint8
+	BlockCount	int
 }
 
 func NewOre(id uint8, meta uint8, count int) *Ore {
 	return &Ore{
-		BlockID:    id,
-		BlockMeta:  meta,
-		BlockCount: count,
+		BlockID:	id,
+		BlockMeta:	meta,
+		BlockCount:	count,
 	}
 }
 

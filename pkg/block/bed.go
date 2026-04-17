@@ -7,11 +7,11 @@ type BedBlock struct {
 func NewBedBlock() *BedBlock {
 	return &BedBlock{
 		TransparentBase: TransparentBase{
-			BlockID:       BED_BLOCK,
-			BlockName:     "Bed Block",
-			BlockHardness: 0.2,
-			BlockToolType: ToolTypeNone,
-			BlockCanPlace: false,
+			BlockID:	BED_BLOCK,
+			BlockName:	"Bed Block",
+			BlockHardness:	0.2,
+			BlockToolType:	ToolTypeNone,
+			BlockCanPlace:	false,
 		},
 	}
 }

@@ -6,20 +6,20 @@ import (
 )
 
 type Flat struct {
-	level ChunkManager
-	seed  int64
+	level	ChunkManager
+	seed	int64
 
-	layers map[int]byte
+	layers	map[int]byte
 
-	options map[string]interface{}
+	options	map[string]interface{}
 }
 
 var _ Generator = (*Flat)(nil)
 
 func NewFlat(settings map[string]interface{}) Generator {
 	f := &Flat{
-		layers:  make(map[int]byte),
-		options: settings,
+		layers:		make(map[int]byte),
+		options:	settings,
 	}
 
 	f.layers[0] = byte(block.BEDROCK)

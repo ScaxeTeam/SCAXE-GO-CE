@@ -6,8 +6,8 @@ import (
 )
 
 type LightQueueNode struct {
-	XPos, YPos, ZPos int32
-	LightLevel       uint8
+	XPos, YPos, ZPos	int32
+	LightLevel		uint8
 }
 
 func (l *Level) GetBlockSkyLightAt(x, y, z int32) uint8 {

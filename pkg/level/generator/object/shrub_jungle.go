@@ -10,18 +10,18 @@ import (
 )
 
 type JungleBush struct {
-	LogBlockID  byte
-	LogMeta     byte
-	LeafBlockID byte
-	LeafMeta    byte
+	LogBlockID	byte
+	LogMeta		byte
+	LeafBlockID	byte
+	LeafMeta	byte
 }
 
 func NewJungleBush(logID, logMeta, leafID, leafMeta byte) *JungleBush {
 	return &JungleBush{
-		LogBlockID:  logID,
-		LogMeta:     logMeta,
-		LeafBlockID: leafID,
-		LeafMeta:    leafMeta,
+		LogBlockID:	logID,
+		LogMeta:	logMeta,
+		LeafBlockID:	leafID,
+		LeafMeta:	leafMeta,
 	}
 }
 

@@ -23,10 +23,10 @@ type Command interface {
 }
 
 type BaseCommand struct {
-	Name        string
-	Description string
-	Usage       string
-	Permission  string
+	Name		string
+	Description	string
+	Usage		string
+	Permission	string
 }
 
 func (c *BaseCommand) GetName() string {

@@ -7,6 +7,7 @@ import (
 	"github.com/scaxe/scaxe-go/pkg/level"
 	"github.com/scaxe/scaxe-go/pkg/logger"
 )
+
 func (p *Player) HandleUseItem(x, y, z int32, face int, fx, fy, fz float32) {
 	if !p.Spawned || !p.Connected {
 		return
@@ -47,10 +48,10 @@ func (p *Player) handleBlockPlace(lvl *level.Level, x, y, z int32, face int, fx,
 	clickedBehavior := block.Registry.GetBehavior(clickedBlock.ID)
 	if clickedBehavior != nil && clickedBehavior.CanBeActivated() {
 		ctx := &block.BlockContext{
-			X: int(x), Y: int(y), Z: int(z),
-			Meta:   clickedBlock.Meta,
-			Face:   face,
-			ClickX: float64(fx), ClickY: float64(fy), ClickZ: float64(fz),
+			X:	int(x), Y: int(y), Z: int(z),
+			Meta:	clickedBlock.Meta,
+			Face:	face,
+			ClickX:	float64(fx), ClickY: float64(fy), ClickZ: float64(fz),
 		}
 		if clickedBehavior.OnActivate(ctx, p.GetID()) {
 			return
@@ -67,10 +68,10 @@ func (p *Player) handleBlockPlace(lvl *level.Level, x, y, z int32, face int, fx,
 	placeBehavior := block.Registry.GetBehavior(uint8(heldItem.ID))
 	if placeBehavior != nil && placeBehavior.CanBePlaced() {
 		ctx := &block.BlockContext{
-			X: int(targetX), Y: int(targetY), Z: int(targetZ),
-			Meta:   uint8(heldItem.Meta),
-			Face:   face,
-			ClickX: float64(fx), ClickY: float64(fy), ClickZ: float64(fz),
+			X:	int(targetX), Y: int(targetY), Z: int(targetZ),
+			Meta:	uint8(heldItem.Meta),
+			Face:	face,
+			ClickX:	float64(fx), ClickY: float64(fy), ClickZ: float64(fz),
 		}
 
 		if placeBehavior.Place(ctx) {
@@ -124,8 +125,8 @@ func (p *Player) HandleRemoveBlock(x, y, z int32) {
 		return
 	}
 	ctx := &block.BlockContext{
-		X: int(x), Y: int(y), Z: int(z),
-		Meta: bs.Meta,
+		X:	int(x), Y: int(y), Z: int(z),
+		Meta:	bs.Meta,
 	}
 
 	if behavior.OnBreak(ctx, toolType, toolTier) {

@@ -5,18 +5,18 @@ import (
 )
 
 type MapGenVillage struct {
-	worldSeed    int64
-	distance     int
-	rand         *rand.Random
-	structureMap map[int64]*StructureStart
+	worldSeed	int64
+	distance	int
+	rand		*rand.Random
+	structureMap	map[int64]*StructureStart
 }
 
 func NewMapGenVillage(seed int64) *MapGenVillage {
 	return &MapGenVillage{
-		worldSeed:    seed,
-		distance:     32,
-		rand:         rand.NewRandom(seed),
-		structureMap: make(map[int64]*StructureStart),
+		worldSeed:	seed,
+		distance:	32,
+		rand:		rand.NewRandom(seed),
+		structureMap:	make(map[int64]*StructureStart),
 	}
 }
 

@@ -8,18 +8,18 @@ import (
 
 type MeCommand struct {
 	command.BaseCommand
-	server ServerInterface
+	server	ServerInterface
 }
 
 func NewMeCommand(server ServerInterface) *MeCommand {
 	return &MeCommand{
 		BaseCommand: command.BaseCommand{
-			Name:        "me",
-			Description: "Broadcasts an action message",
-			Usage:       "/me <action>",
-			Permission:  "",
+			Name:		"me",
+			Description:	"Broadcasts an action message",
+			Usage:		"/me <action>",
+			Permission:	"",
 		},
-		server: server,
+		server:	server,
 	}
 }
 

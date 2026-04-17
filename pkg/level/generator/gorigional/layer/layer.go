@@ -7,10 +7,10 @@ type GenLayer interface {
 }
 
 type BaseLayer struct {
-	Parent       GenLayer
-	BaseSeed     int64
-	WorldGenSeed int64
-	ChunkSeed    int64
+	Parent		GenLayer
+	BaseSeed	int64
+	WorldGenSeed	int64
+	ChunkSeed	int64
 }
 
 func NewBaseLayer(baseSeed int64) *BaseLayer {

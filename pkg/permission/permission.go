@@ -3,25 +3,25 @@ package permission
 import "strings"
 
 const (
-	DefaultOp    = "op"
-	DefaultNotOp = "notop"
-	DefaultTrue  = "true"
-	DefaultFalse = "false"
+	DefaultOp	= "op"
+	DefaultNotOp	= "notop"
+	DefaultTrue	= "true"
+	DefaultFalse	= "false"
 )
 
 type Permission struct {
-	Name        string
-	Description string
-	Default     string
-	Children    map[string]bool
+	Name		string
+	Description	string
+	Default		string
+	Children	map[string]bool
 }
 
 func NewPermission(name, description, defaultValue string) *Permission {
 	return &Permission{
-		Name:        name,
-		Description: description,
-		Default:     defaultValue,
-		Children:    make(map[string]bool),
+		Name:		name,
+		Description:	description,
+		Default:	defaultValue,
+		Children:	make(map[string]bool),
 	}
 }
 

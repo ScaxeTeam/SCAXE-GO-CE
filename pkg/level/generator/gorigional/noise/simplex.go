@@ -7,8 +7,8 @@ import (
 )
 
 type SimplexNoise struct {
-	xo, yo, zo float64
-	p          [512]int
+	xo, yo, zo	float64
+	p		[512]int
 }
 
 var grad3 = [12][3]int{

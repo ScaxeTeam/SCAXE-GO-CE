@@ -7,8 +7,8 @@ type Task interface {
 }
 
 type BaseTask struct {
-	name    string
-	handler *TaskHandler
+	name	string
+	handler	*TaskHandler
 }
 
 func NewBaseTask(name string) *BaseTask {
@@ -29,25 +29,25 @@ func (t *BaseTask) SetHandler(handler *TaskHandler) {
 	}
 }
 
-func (t *BaseTask) OnCancel() {}
+func (t *BaseTask) OnCancel()	{}
 
 type TaskHandler struct {
-	task      Task
-	taskID    int
-	delay     int
-	period    int
-	nextRun   int64
-	cancelled bool
+	task		Task
+	taskID		int
+	delay		int
+	period		int
+	nextRun		int64
+	cancelled	bool
 }
 
 func NewTaskHandler(task Task, taskID, delay, period int) *TaskHandler {
 	return &TaskHandler{
-		task:      task,
-		taskID:    taskID,
-		delay:     delay,
-		period:    period,
-		nextRun:   0,
-		cancelled: false,
+		task:		task,
+		taskID:		taskID,
+		delay:		delay,
+		period:		period,
+		nextRun:	0,
+		cancelled:	false,
 	}
 }
 
@@ -105,17 +105,17 @@ func (h *TaskHandler) Run(currentTick int64) {
 }
 
 type Scheduler struct {
-	tasks       map[int]*TaskHandler
-	queue       []*TaskHandler
-	nextID      int
-	currentTick int64
+	tasks		map[int]*TaskHandler
+	queue		[]*TaskHandler
+	nextID		int
+	currentTick	int64
 }
 
 func NewScheduler() *Scheduler {
 	return &Scheduler{
-		tasks:  make(map[int]*TaskHandler),
-		queue:  make([]*TaskHandler, 0),
-		nextID: 1,
+		tasks:	make(map[int]*TaskHandler),
+		queue:	make([]*TaskHandler, 0),
+		nextID:	1,
 	}
 }
 
@@ -239,13 +239,13 @@ func (s *Scheduler) GetTaskCount() int {
 
 type ClosureTask struct {
 	*BaseTask
-	fn func(int64)
+	fn	func(int64)
 }
 
 func NewClosureTask(name string, fn func(currentTick int64)) *ClosureTask {
 	return &ClosureTask{
-		BaseTask: NewBaseTask(name),
-		fn:       fn,
+		BaseTask:	NewBaseTask(name),
+		fn:		fn,
 	}
 }
 

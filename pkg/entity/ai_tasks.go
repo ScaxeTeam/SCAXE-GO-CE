@@ -1,32 +1,32 @@
 package entity
 
 type AITaskEntry struct {
-	Action   AIGoal
-	Priority int
-	Using    bool
+	Action		AIGoal
+	Priority	int
+	Using		bool
 }
 
 type AITasks struct {
-	taskEntries      []*AITaskEntry
-	executingEntries []*AITaskEntry
-	tickCount        int
-	tickRate         int
-	disabledFlags    int
+	taskEntries		[]*AITaskEntry
+	executingEntries	[]*AITaskEntry
+	tickCount		int
+	tickRate		int
+	disabledFlags		int
 }
 
 func NewAITasks() *AITasks {
 	return &AITasks{
-		taskEntries:      make([]*AITaskEntry, 0),
-		executingEntries: make([]*AITaskEntry, 0),
-		tickRate:         3,
+		taskEntries:		make([]*AITaskEntry, 0),
+		executingEntries:	make([]*AITaskEntry, 0),
+		tickRate:		3,
 	}
 }
 
 func (t *AITasks) AddTask(priority int, task AIGoal) {
 	t.taskEntries = append(t.taskEntries, &AITaskEntry{
-		Action:   task,
-		Priority: priority,
-		Using:    false,
+		Action:		task,
+		Priority:	priority,
+		Using:		false,
 	})
 }
 

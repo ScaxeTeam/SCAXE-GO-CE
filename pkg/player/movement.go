@@ -10,25 +10,27 @@ import (
 )
 
 const (
-	MoveBacklogSize = 100
-	MovesPerTick = 2
-	MaxMoveDistanceSq = 115.0
-	EyeHeight = 1.62
+	MoveBacklogSize		= 100
+	MovesPerTick		= 2
+	MaxMoveDistanceSq	= 115.0
+	EyeHeight		= 1.62
 )
+
 type MovementState struct {
-	LastX, LastY, LastZ float64
-	LastYaw, LastPitch  float64
-	lastPosInitialized  bool
-	MoveRateLimit float64
-	SpeedX, SpeedY, SpeedZ float64
-	Moving   bool
-	OnGround bool
-	Swimming bool
-	Climbing bool
-	FlightPossibility float64
-	AllowFlight       bool
-	IsCollided bool
+	LastX, LastY, LastZ	float64
+	LastYaw, LastPitch	float64
+	lastPosInitialized	bool
+	MoveRateLimit		float64
+	SpeedX, SpeedY, SpeedZ	float64
+	Moving			bool
+	OnGround		bool
+	Swimming		bool
+	Climbing		bool
+	FlightPossibility	float64
+	AllowFlight		bool
+	IsCollided		bool
 }
+
 func newMovementState() *MovementState {
 	return &MovementState{
 		MoveRateLimit: MoveBacklogSize,

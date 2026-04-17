@@ -5,18 +5,18 @@ import (
 )
 
 type StructureStart struct {
-	ChunkX      int
-	ChunkZ      int
-	Components  []StructureComponent
-	BoundingBox *BoundingBox
+	ChunkX		int
+	ChunkZ		int
+	Components	[]StructureComponent
+	BoundingBox	*BoundingBox
 }
 
 func NewStructureStart(chunkX, chunkZ int) *StructureStart {
 	return &StructureStart{
-		ChunkX:      chunkX,
-		ChunkZ:      chunkZ,
-		Components:  make([]StructureComponent, 0),
-		BoundingBox: NewBoundingBox(0, 0, 0, 0, 0, 0),
+		ChunkX:		chunkX,
+		ChunkZ:		chunkZ,
+		Components:	make([]StructureComponent, 0),
+		BoundingBox:	NewBoundingBox(0, 0, 0, 0, 0, 0),
 	}
 }
 
@@ -75,9 +75,9 @@ type StructureComponent interface {
 }
 
 type StructureComponentBase struct {
-	BoundingBox   *BoundingBox
-	CoordBaseMode int
-	ComponentType int
+	BoundingBox	*BoundingBox
+	CoordBaseMode	int
+	ComponentType	int
 }
 
 func (c *StructureComponentBase) GetBoundingBox() *BoundingBox {

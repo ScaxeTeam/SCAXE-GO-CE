@@ -2,9 +2,9 @@ package protocol
 
 type EntityEventPacket struct {
 	BasePacket
-	EntityID int64
-	Event    byte
-	Data     int32
+	EntityID	int64
+	Event		byte
+	Data		int32
 }
 
 func NewEntityEventPacket() *EntityEventPacket {

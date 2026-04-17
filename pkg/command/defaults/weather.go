@@ -5,25 +5,25 @@ import (
 )
 
 const (
-	WeatherClear   = 0
-	WeatherRain    = 1
-	WeatherThunder = 2
+	WeatherClear	= 0
+	WeatherRain	= 1
+	WeatherThunder	= 2
 )
 
 type WeatherCommand struct {
 	command.BaseCommand
-	server ServerInterface
+	server	ServerInterface
 }
 
 func NewWeatherCommand(server ServerInterface) *WeatherCommand {
 	return &WeatherCommand{
 		BaseCommand: command.BaseCommand{
-			Name:        "weather",
-			Description: "Sets the weather",
-			Usage:       "/weather <clear|rain|thunder> [duration]",
-			Permission:  "pocketmine.command.weather",
+			Name:		"weather",
+			Description:	"Sets the weather",
+			Usage:		"/weather <clear|rain|thunder> [duration]",
+			Permission:	"pocketmine.command.weather",
 		},
-		server: server,
+		server:	server,
 	}
 }
 

@@ -8,8 +8,8 @@ import (
 )
 
 type Bush struct {
-	BlockID   uint8
-	BlockMeta uint8
+	BlockID		uint8
+	BlockMeta	uint8
 }
 
 func NewBush(id, meta uint8) *Bush {

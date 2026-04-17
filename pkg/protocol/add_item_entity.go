@@ -4,16 +4,15 @@ import "github.com/scaxe/scaxe-go/pkg/item"
 
 type AddItemEntityPacket struct {
 	BasePacket
-	EntityID int64
-	Item     item.Item
-	X        float32
-	Y        float32
-	Z        float32
-	SpeedX   float32
-	SpeedY   float32
-	SpeedZ   float32
-	Metadata []byte
-
+	EntityID	int64
+	Item		item.Item
+	X		float32
+	Y		float32
+	Z		float32
+	SpeedX		float32
+	SpeedY		float32
+	SpeedZ		float32
+	Metadata	[]byte
 }
 
 func NewAddItemEntityPacket() *AddItemEntityPacket {

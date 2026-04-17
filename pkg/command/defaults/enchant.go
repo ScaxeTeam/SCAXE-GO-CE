@@ -8,46 +8,46 @@ import (
 
 type EnchantCommand struct {
 	command.BaseCommand
-	server ServerInterface
+	server	ServerInterface
 }
 
 func NewEnchantCommand(server ServerInterface) *EnchantCommand {
 	return &EnchantCommand{
 		BaseCommand: command.BaseCommand{
-			Name:        "enchant",
-			Description: "Enchants a player's held item",
-			Usage:       "/enchant <player> <enchantment> [level]",
-			Permission:  "pocketmine.command.enchant",
+			Name:		"enchant",
+			Description:	"Enchants a player's held item",
+			Usage:		"/enchant <player> <enchantment> [level]",
+			Permission:	"pocketmine.command.enchant",
 		},
-		server: server,
+		server:	server,
 	}
 }
 
 var enchantNames = map[string]int{
-	"protection":            0,
-	"fire_protection":       1,
-	"feather_falling":       2,
-	"blast_protection":      3,
-	"projectile_protection": 4,
-	"thorns":                5,
-	"respiration":           6,
-	"aqua_affinity":         8,
-	"sharpness":             9,
-	"smite":                 10,
-	"bane_of_arthropods":    11,
-	"knockback":             12,
-	"fire_aspect":           13,
-	"looting":               14,
-	"efficiency":            15,
-	"silk_touch":            16,
-	"unbreaking":            17,
-	"fortune":               18,
-	"power":                 19,
-	"punch":                 20,
-	"flame":                 21,
-	"infinity":              22,
-	"luck_of_the_sea":       23,
-	"lure":                  24,
+	"protection":			0,
+	"fire_protection":		1,
+	"feather_falling":		2,
+	"blast_protection":		3,
+	"projectile_protection":	4,
+	"thorns":			5,
+	"respiration":			6,
+	"aqua_affinity":		8,
+	"sharpness":			9,
+	"smite":			10,
+	"bane_of_arthropods":		11,
+	"knockback":			12,
+	"fire_aspect":			13,
+	"looting":			14,
+	"efficiency":			15,
+	"silk_touch":			16,
+	"unbreaking":			17,
+	"fortune":			18,
+	"power":			19,
+	"punch":			20,
+	"flame":			21,
+	"infinity":			22,
+	"luck_of_the_sea":		23,
+	"lure":				24,
 }
 
 func (c *EnchantCommand) Execute(sender command.CommandSender, args []string) bool {

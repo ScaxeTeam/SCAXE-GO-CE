@@ -4,9 +4,11 @@ import (
 	"github.com/scaxe/scaxe-go/pkg/nbt"
 	"github.com/scaxe/scaxe-go/pkg/world"
 )
+
 type Noteblock struct {
 	BaseTile
 }
+
 func NewNoteblock(chunk *world.Chunk, nbtData *nbt.CompoundTag) *Noteblock {
 	n := &Noteblock{}
 

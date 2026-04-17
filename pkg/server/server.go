@@ -24,47 +24,54 @@ import (
 	"github.com/scaxe/scaxe-go/pkg/permission"
 	"github.com/scaxe/scaxe-go/pkg/player"
 	"github.com/scaxe/scaxe-go/pkg/protocol"
+	"github.com/scaxe/scaxe-go/pkg/proxy/auth"
+	"github.com/scaxe/scaxe-go/pkg/proxy/ent"
+	"github.com/scaxe/scaxe-go/pkg/proxy/inv"
+	"github.com/scaxe/scaxe-go/pkg/proxy/world"
+	"github.com/scaxe/scaxe-go/pkg/proxy/xlat"
 	"github.com/scaxe/scaxe-go/pkg/raknet"
 	"github.com/scaxe/scaxe-go/pkg/scheduler"
 )
 
 const (
-	TicksPerSecond = 20
-	TickDuration   = time.Second / TicksPerSecond
+	TicksPerSecond	= 20
+	TickDuration	= time.Second / TicksPerSecond
 )
 
 type Server struct {
-	mu sync.RWMutex
+	mu	sync.RWMutex
 
-	Config *config.ServerConfig
+	Config	*config.ServerConfig
 
-	RakNet  *raknet.Server
-	Address string
+	RakNet	*raknet.Server
+	Address	string
 
-	Players       map[string]*player.Player
-	PlayersByName map[string]*player.Player
+	Players		map[string]*player.Player
+	PlayersByName	map[string]*player.Player
 
-	Level  *level.Level
-	Levels map[string]*level.Level
+	Level	*level.Level
+	Levels	map[string]*level.Level
 
-	Running     bool
-	CurrentTick int64
-	StartTime   time.Time
+	Running		bool
+	CurrentTick	int64
+	StartTime	time.Time
 
-	tickTimes    [20]time.Duration
-	tickTimeIdx  int
-	lastTickTime time.Time
+	tickTimes	[20]time.Duration
+	tickTimeIdx	int
+	lastTickTime	time.Time
 
-	packetBuffers   map[*player.Player][][]byte
-	packetBuffersMu sync.Mutex
+	packetBuffers	map[*player.Player][][]byte
+	packetBuffersMu	sync.Mutex
 
-	stopChan chan struct{}
+	stopChan	chan struct{}
 
-	CommandMap *command.CommandMap
+	CommandMap	*command.CommandMap
 
-	OpManager *permission.OpManager
+	OpManager	*permission.OpManager
 
-	PluginManager *luapkg.PluginManager
+	PluginManager	*luapkg.PluginManager
+
+	ProxyRouter	*xlat.Router
 }
 
 func NewServer(cfg *config.ServerConfig) *Server {
@@ -73,15 +80,15 @@ func NewServer(cfg *config.ServerConfig) *Server {
 	player.DebugItemPickup = cfg.DebugItemPickup
 
 	s := &Server{
-		Config:        cfg,
-		Address:       address,
-		Players:       make(map[string]*player.Player),
-		PlayersByName: make(map[string]*player.Player),
-		Levels:        make(map[string]*level.Level),
-		Running:       false,
-		CurrentTick:   0,
-		packetBuffers: make(map[*player.Player][][]byte),
-		stopChan:      make(chan struct{}),
+		Config:		cfg,
+		Address:	address,
+		Players:	make(map[string]*player.Player),
+		PlayersByName:	make(map[string]*player.Player),
+		Levels:		make(map[string]*level.Level),
+		Running:	false,
+		CurrentTick:	0,
+		packetBuffers:	make(map[*player.Player][][]byte),
+		stopChan:	make(chan struct{}),
 	}
 
 	return s
@@ -130,26 +137,77 @@ func (s *Server) Start() error {
 	logger.Banner(s.Config.ServerName, "SCAXE-GO "+version.String(), s.Address, s.Config.MaxPlayers)
 	logger.Server("Server started successfully", "tps", TicksPerSecond)
 
-	levelPath := "worlds/" + s.Config.LevelName
-	provider, err := anvil.NewAnvilProvider(levelPath)
-	if err != nil {
-		return fmt.Errorf("failed to create level provider: %v", err)
-	}
+	if s.Config.ServerMode == "proxy" {
+		logger.Server("=======================================")
+		logger.Server("   STARTING IN DUAL-TRACK PROXY MODE   ")
+		logger.Server("=======================================")
 
-	s.Level = level.NewLevel(s.Config.LevelName, levelPath, provider, s.Config.LevelType)
-	s.Levels[s.Config.LevelName] = s.Level
+		s.ProxyRouter = xlat.NewRouter()
 
-	spawn := s.Level.GetSpawnLocation()
-	spawnCX := int32(spawn.X) >> 4
-	spawnCZ := int32(spawn.Z) >> 4
-	const spawnChunkRadius = 3
-	logger.Server("Preparing spawn area", "cx", spawnCX, "cz", spawnCZ, "radius", spawnChunkRadius)
-	for x := spawnCX - spawnChunkRadius; x <= spawnCX+spawnChunkRadius; x++ {
-		for z := spawnCZ - spawnChunkRadius; z <= spawnCZ+spawnChunkRadius; z++ {
-			s.Level.GetChunk(x, z, true)
+		s.ProxyRouter.RegisterPE(protocol.IDLogin, &auth.PELoginTranslator{
+			JEAddress:	s.Config.BackendAddress,
+			JEPort:		uint16(s.Config.BackendPort),
+		})
+		s.ProxyRouter.RegisterPE(protocol.IDMovePlayer, &world.MovePlayerTranslator{})
+
+		actionTranslator := &world.ActionTranslator{}
+		s.ProxyRouter.RegisterPE(protocol.IDPlayerAction, actionTranslator)
+		s.ProxyRouter.RegisterPE(protocol.IDUseItem, actionTranslator)
+
+		s.ProxyRouter.RegisterJE(0x02, &auth.JELoginTranslator{})
+		s.ProxyRouter.RegisterJE(0x01, &auth.JELoginTranslator{})
+		chunkTranslator := &world.ChunkTranslator{}
+		s.ProxyRouter.RegisterJE(0x21, chunkTranslator)
+		s.ProxyRouter.RegisterJE(0x23, chunkTranslator)
+		s.ProxyRouter.RegisterJE(0x24, chunkTranslator)
+		s.ProxyRouter.RegisterJE(0x26, chunkTranslator)
+		s.ProxyRouter.RegisterJE(0x08, chunkTranslator)
+
+		entTranslator := &ent.EntityTranslator{}
+		s.ProxyRouter.RegisterJE(0x04, entTranslator)
+		s.ProxyRouter.RegisterJE(0x0C, entTranslator)
+		s.ProxyRouter.RegisterJE(0x0F, entTranslator)
+		s.ProxyRouter.RegisterJE(0x13, entTranslator)
+		s.ProxyRouter.RegisterJE(0x14, entTranslator)
+		s.ProxyRouter.RegisterJE(0x15, entTranslator)
+		s.ProxyRouter.RegisterJE(0x16, entTranslator)
+		s.ProxyRouter.RegisterJE(0x17, entTranslator)
+		s.ProxyRouter.RegisterJE(0x18, entTranslator)
+
+		invTranslator := &inv.InvTranslator{}
+		s.ProxyRouter.RegisterJE(0x2D, invTranslator)
+		s.ProxyRouter.RegisterJE(0x2E, invTranslator)
+		s.ProxyRouter.RegisterJE(0x2F, invTranslator)
+		s.ProxyRouter.RegisterJE(0x30, invTranslator)
+		s.ProxyRouter.RegisterJE(0x32, invTranslator)
+
+		s.ProxyRouter.RegisterJE(0x00, &world.KeepAliveTranslator{})
+
+		s.ProxyRouter.RegisterJE(0x03, &ent.TimeTranslator{})
+
+		logger.Server("AnyConvert Proxy Engine fully armed and operational.")
+	} else {
+		levelPath := "worlds/" + s.Config.LevelName
+		provider, err := anvil.NewAnvilProvider(levelPath)
+		if err != nil {
+			return fmt.Errorf("failed to create level provider: %v", err)
 		}
+
+		s.Level = level.NewLevel(s.Config.LevelName, levelPath, provider, s.Config.LevelType)
+		s.Levels[s.Config.LevelName] = s.Level
+
+		spawn := s.Level.GetSpawnLocation()
+		spawnCX := int32(spawn.X) >> 4
+		spawnCZ := int32(spawn.Z) >> 4
+		const spawnChunkRadius = 3
+		logger.Server("Preparing spawn area", "cx", spawnCX, "cz", spawnCZ, "radius", spawnChunkRadius)
+		for x := spawnCX - spawnChunkRadius; x <= spawnCX+spawnChunkRadius; x++ {
+			for z := spawnCZ - spawnChunkRadius; z <= spawnCZ+spawnChunkRadius; z++ {
+				s.Level.GetChunk(x, z, true)
+			}
+		}
+		logger.Server("Spawn area ready", "chunks", (spawnChunkRadius*2+1)*(spawnChunkRadius*2+1))
 	}
-	logger.Server("Spawn area ready", "chunks", (spawnChunkRadius*2+1)*(spawnChunkRadius*2+1))
 
 	s.PluginManager = luapkg.NewPluginManager(NewServerAPIAdapter(s), "plugins")
 	if err := s.PluginManager.LoadAll(); err != nil {
@@ -301,11 +359,11 @@ func (s *Server) updatePlayerListAdd(p *player.Player) {
 	pk := protocol.NewPlayerListPacket()
 	pk.Type = protocol.PlayerListTypeAdd
 	pk.Entries = []protocol.PlayerListEntry{{
-		UUID:     p.UUID,
-		EntityID: p.GetID(),
-		Username: p.Username,
-		SkinName: p.SkinName,
-		SkinData: p.SkinData,
+		UUID:		p.UUID,
+		EntityID:	p.GetID(),
+		Username:	p.Username,
+		SkinName:	p.SkinName,
+		SkinData:	p.SkinData,
 	}}
 
 	for _, other := range s.GetOnlinePlayers() {
@@ -333,11 +391,11 @@ func (s *Server) sendExistingPlayersTo(newPlayer *player.Player) {
 	for _, p := range players {
 		if p != newPlayer && p.Spawned {
 			pk.Entries = append(pk.Entries, protocol.PlayerListEntry{
-				UUID:     p.UUID,
-				EntityID: p.GetID(),
-				Username: p.Username,
-				SkinName: p.SkinName,
-				SkinData: p.SkinData,
+				UUID:		p.UUID,
+				EntityID:	p.GetID(),
+				Username:	p.Username,
+				SkinName:	p.SkinName,
+				SkinData:	p.SkinData,
 			})
 		}
 	}
@@ -370,11 +428,11 @@ func (s *Server) spawnPlayerTo(p *player.Player, viewer *player.Player) {
 	pk := protocol.NewPlayerListPacket()
 	pk.Type = protocol.PlayerListTypeAdd
 	pk.Entries = []protocol.PlayerListEntry{{
-		UUID:     p.UUID,
-		EntityID: p.GetID(),
-		Username: p.Username,
-		SkinName: p.SkinName,
-		SkinData: p.SkinData,
+		UUID:		p.UUID,
+		EntityID:	p.GetID(),
+		Username:	p.Username,
+		SkinName:	p.SkinName,
+		SkinData:	p.SkinData,
 	}}
 	s.sendPacket(viewer, pk)
 
@@ -493,13 +551,13 @@ func (s *Server) tick() {
 			if hasMove || hasRot {
 				pos := e.GetPosition()
 				entry := protocol.MoveEntityEntry{
-					EntityID: e.GetID(),
-					X:        float32(pos.X),
-					Y:        float32(pos.Y + e.GetEyeHeight()),
-					Z:        float32(pos.Z),
-					Yaw:      float32(e.GetYaw()),
-					HeadYaw:  float32(e.GetYaw()),
-					Pitch:    float32(e.GetPitch()),
+					EntityID:	e.GetID(),
+					X:		float32(pos.X),
+					Y:		float32(pos.Y + e.GetEyeHeight()),
+					Z:		float32(pos.Z),
+					Yaw:		float32(e.GetYaw()),
+					HeadYaw:	float32(e.GetYaw()),
+					Pitch:		float32(e.GetPitch()),
 				}
 				pk.Entities = append(pk.Entities, entry)
 			}
@@ -629,6 +687,64 @@ func (s *Server) handlePacket(session *raknet.Session, data []byte) {
 	stream := protocol.NewBinaryStreamFromBytes(data[1:])
 	if err := pkt.Decode(stream); err != nil {
 		logger.Error("Failed to decode packet", "packet", pkt.Name(), "error", err)
+		return
+	}
+
+	if s.Config.ServerMode == "proxy" {
+		if s.ProxyRouter != nil {
+			err := s.ProxyRouter.HandlePE(p.XlatSession, pkt)
+			if err != nil {
+				logger.Warn("Failed to route PE packet", "id", packetID, "err", err)
+			}
+
+			if _, ok := pkt.(*protocol.LoginPacket); ok {
+				logger.Server("LoginPacket translation done! Checking jeConn...")
+				if jeConn := p.XlatSession.GetJE(); jeConn != nil {
+					logger.Server("jeConn is active. Spawning background socket reader.")
+					go func(session *player.Player) {
+						logger.Server("Background JE reader started.")
+						for {
+							id, payload, err := jeConn.ReadPacket()
+							if err != nil {
+								logger.ProxyDebug("!!! JE Backend connection CLOSED",
+									"err", err.Error(),
+									"player", session.Username)
+								logger.Warn("JE Backend connection closed", "err", err)
+								session.Close()
+								break
+							}
+							logger.ProxyDebug("<<< JE PKT received",
+								"id", fmt.Sprintf("0x%02X", id),
+								"len", len(payload))
+							if routeErr := s.ProxyRouter.HandleJE(session.XlatSession, id, payload); routeErr != nil {
+								logger.ProxyDebug("!!! JE PKT route error",
+									"id", fmt.Sprintf("0x%02X", id),
+									"err", routeErr.Error())
+							}
+						}
+					}(p)
+				} else {
+					logger.Warn("jeConn is NULL inside ProxySession?!")
+				}
+			}
+		}
+
+		if reqRadius, ok := pkt.(*protocol.RequestChunkRadiusPacket); ok {
+			logger.ProxyDebug("<<< PE RequestChunkRadius", "radius", reqRadius.Radius)
+			radius := reqRadius.Radius
+			if radius < 4 {
+				radius = 4
+			}
+			if radius > 16 {
+				radius = 16
+			}
+			p.SetChunkRadius(radius)
+			response := protocol.NewChunkRadiusUpdatedPacket()
+			response.Radius = radius
+			s.sendPacket(p, response)
+			logger.ProxyDebug(">>> Proxy: ChunkRadiusUpdated sent", "player", p.Username, "radius", radius)
+		}
+
 		return
 	}
 
@@ -975,8 +1091,8 @@ func (s *Server) checkChunks(p *player.Player) {
 	}
 
 	type chunkEntry struct {
-		x, z int32
-		dist int32
+		x, z	int32
+		dist	int32
 	}
 	var pending []chunkEntry
 
@@ -1254,7 +1370,7 @@ func (s *Server) handleDropItem(p *player.Player, pkt *protocol.DropItemPacket) 
 	motionZ := float32(z * force)
 
 	dropX := float32(p.Position.X)
-	dropY := float32(p.Position.Y - 0.32) // Position.Y is eye-height (feet+1.62), -0.32 = chest level
+	dropY := float32(p.Position.Y - 0.32)
 	dropZ := float32(p.Position.Z)
 
 	s.dropItemWithMotion(dropX, dropY, dropZ, droppedItem, motionX, motionY, motionZ, 40)
@@ -1283,11 +1399,11 @@ func (s *Server) handleUseItem(p *player.Player, pkt *protocol.UseItemPacket) {
 		behavior := block.Registry.GetBehavior(clickedBid)
 		if behavior != nil && behavior.CanBeActivated() {
 			ctx := &block.BlockContext{
-				X:    int(pkt.X),
-				Y:    int(pkt.Y),
-				Z:    int(pkt.Z),
-				Meta: clickedMeta,
-				Face: int(pkt.Face),
+				X:	int(pkt.X),
+				Y:	int(pkt.Y),
+				Z:	int(pkt.Z),
+				Meta:	clickedMeta,
+				Face:	int(pkt.Face),
 			}
 
 			if behavior.OnActivate(ctx, p.GetEntityID()) {
@@ -1429,21 +1545,21 @@ func (s *Server) handleBlockActivation(p *player.Player, bid, meta byte, x, y, z
 		result = block.CraftingTableOnActivate()
 	case block.HOPPER_BLOCK:
 		result = block.ActivateResult{
-			Handled:       true,
-			OpenInventory: true,
-			InventoryType: block.InventoryTypeChest,
+			Handled:	true,
+			OpenInventory:	true,
+			InventoryType:	block.InventoryTypeChest,
 		}
 	case block.DISPENSER, block.DROPPER:
 		result = block.ActivateResult{
-			Handled:       true,
-			OpenInventory: true,
-			InventoryType: block.InventoryTypeChest,
+			Handled:	true,
+			OpenInventory:	true,
+			InventoryType:	block.InventoryTypeChest,
 		}
 	case block.BREWING_STAND_BLOCK:
 		result = block.ActivateResult{
-			Handled:       true,
-			OpenInventory: true,
-			InventoryType: block.InventoryTypeBrewingStand,
+			Handled:	true,
+			OpenInventory:	true,
+			InventoryType:	block.InventoryTypeBrewingStand,
 		}
 	case block.CAKE_BLOCK:
 		if meta < 6 {
@@ -1456,9 +1572,9 @@ func (s *Server) handleBlockActivation(p *player.Player, bid, meta byte, x, y, z
 				return
 			}
 			result = block.ActivateResult{
-				Handled:    true,
-				NewMeta:    newMeta,
-				MetaChange: true,
+				Handled:	true,
+				NewMeta:	newMeta,
+				MetaChange:	true,
 			}
 		} else {
 			return
@@ -1476,16 +1592,16 @@ func (s *Server) handleBlockActivation(p *player.Player, bid, meta byte, x, y, z
 	case block.LEVER:
 		newMeta := meta ^ 0x08
 		result = block.ActivateResult{
-			Handled:    true,
-			NewMeta:    newMeta,
-			MetaChange: true,
+			Handled:	true,
+			NewMeta:	newMeta,
+			MetaChange:	true,
 		}
 	case block.STONE_BUTTON, block.WOODEN_BUTTON:
 		newMeta := meta | 0x08
 		result = block.ActivateResult{
-			Handled:    true,
-			NewMeta:    newMeta,
-			MetaChange: true,
+			Handled:	true,
+			NewMeta:	newMeta,
+			MetaChange:	true,
 		}
 		delay := 20
 		if bid == block.WOODEN_BUTTON {

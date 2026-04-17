@@ -8,36 +8,40 @@ import (
 	"github.com/scaxe/scaxe-go/pkg/nbt"
 	"github.com/scaxe/scaxe-go/pkg/world"
 )
+
 const (
-	TypeSign         = "Sign"
-	TypeChest        = "Chest"
-	TypeFurnace      = "Furnace"
-	TypeFlowerPot    = "FlowerPot"
-	TypeMobSpawner   = "MobSpawner"
-	TypeSkull        = "Skull"
-	TypeBrewingStand = "BrewingStand"
-	TypeEnchantTable = "EnchantTable"
-	TypeItemFrame    = "ItemFrame"
-	TypeDispenser    = "Dispenser"
-	TypeDropper      = "Dropper"
-	TypeDLDetector   = "DLDetector"
-	TypeCauldron     = "Cauldron"
-	TypeHopper       = "Hopper"
-	TypeComparator   = "Comparator"
-	TypeNoteblock    = "Noteblock"
+	TypeSign		= "Sign"
+	TypeChest		= "Chest"
+	TypeFurnace		= "Furnace"
+	TypeFlowerPot		= "FlowerPot"
+	TypeMobSpawner		= "MobSpawner"
+	TypeSkull		= "Skull"
+	TypeBrewingStand	= "BrewingStand"
+	TypeEnchantTable	= "EnchantTable"
+	TypeItemFrame		= "ItemFrame"
+	TypeDispenser		= "Dispenser"
+	TypeDropper		= "Dropper"
+	TypeDLDetector		= "DLDetector"
+	TypeCauldron		= "Cauldron"
+	TypeHopper		= "Hopper"
+	TypeComparator		= "Comparator"
+	TypeNoteblock		= "Noteblock"
 )
+
 var tileCounter int64
 
 func nextTileID() int64 {
 	return atomic.AddInt64(&tileCounter, 1)
 }
+
 type TileFactory func(chunk *world.Chunk, nbtData *nbt.CompoundTag) Tile
 
 var (
-	registryMu sync.RWMutex
-	knownTiles = map[string]TileFactory{}
-	shortNames = map[string]string{}
+	registryMu	sync.RWMutex
+	knownTiles	= map[string]TileFactory{}
+	shortNames	= map[string]string{}
 )
+
 func RegisterTile(typeName string, factory TileFactory) {
 	registryMu.Lock()
 	defer registryMu.Unlock()
@@ -53,6 +57,7 @@ func CreateTile(typeName string, chunk *world.Chunk, nbtData *nbt.CompoundTag) T
 	}
 	return factory(chunk, nbtData)
 }
+
 type Tile interface {
 	GetID() int64
 	GetSaveID() string
@@ -66,17 +71,18 @@ type Tile interface {
 	Close()
 }
 type BaseTile struct {
-	id     int64
-	saveID string
-	name   string
+	id	int64
+	saveID	string
+	name	string
 
-	X, Y, Z int32
+	X, Y, Z	int32
 
-	Chunk *world.Chunk
-	NBT   *nbt.CompoundTag
+	Chunk	*world.Chunk
+	NBT	*nbt.CompoundTag
 
-	closed bool
+	closed	bool
 }
+
 func InitBaseTile(t *BaseTile, saveID string, chunk *world.Chunk, nbtData *nbt.CompoundTag) {
 	t.id = nextTileID()
 	t.saveID = saveID
@@ -134,17 +140,19 @@ func (t *BaseTile) Close() {
 func (t *BaseTile) String() string {
 	return fmt.Sprintf("Tile(%s, id=%d, pos=[%d,%d,%d])", t.saveID, t.id, t.X, t.Y, t.Z)
 }
+
 type TileManager struct {
-	mu          sync.RWMutex
-	tiles       map[int64]Tile
-	tilesByPos  map[int64]Tile
-	updateTiles map[int64]Tile
+	mu		sync.RWMutex
+	tiles		map[int64]Tile
+	tilesByPos	map[int64]Tile
+	updateTiles	map[int64]Tile
 }
+
 func NewTileManager() *TileManager {
 	return &TileManager{
-		tiles:       make(map[int64]Tile),
-		tilesByPos:  make(map[int64]Tile),
-		updateTiles: make(map[int64]Tile),
+		tiles:		make(map[int64]Tile),
+		tilesByPos:	make(map[int64]Tile),
+		updateTiles:	make(map[int64]Tile),
 	}
 }
 func posHash(x, y, z int32) int64 {
