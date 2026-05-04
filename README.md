@@ -18,7 +18,7 @@
 
 ## Features
 
-- **AnyConvert Translation Engine** - Native proxy mode connecting MCPE 0.14.3 clients directly to Java Edition backend servers.
+- **AnyConvert Translation Engine** - Native proxy mode connecting MCPE 0.14.3 clients to Java Edition 1.7.10-compatible backend servers.
 - **High-Precision World Generation** - Based on Overworld core algorithm logic, 93.77% terrain consistency.
 - **Bit-Level GenLayer Precision** - Biome system achieves 99.9% bit-level accuracy.
 - **1:1 Block Property Parity** - 182 registered blocks with properties matching PHP core exactly.
@@ -35,12 +35,16 @@ The `translatorX` branch introduces an experimental native proxy engine for MCPE
 
 ### Current Status
 
-translatorX is under active development. Protocol translation, world/chunk mapping, entity synchronization, and login routing may still contain incomplete or experimental behavior.
+translatorX is an experimental branch preserved for reference and compatibility testing.
+
+This branch is not part of the main SCAXE-GO release path. Public feature development is currently paused, and no public roadmap is provided.
+
+Critical fixes may be reviewed at the maintainers' discretion. Feature requests, protocol expansion requests, and production-support requests may be closed if they are outside the current maintenance scope.
 
 Production use is not recommended unless you understand the current limitations.
 
 ### Proxy Capabilities
-- **Protocol Bridging**: Bidirectional translation between MCPE 0.14.3 (Protocol 70) and Java Edition backend.
+- **Protocol Bridging**: Bidirectional translation between MCPE 0.14.3 (Protocol 70) and Java Edition 1.7.10-compatible backends.
 - **World Translation**: Real-time chunk mapping and environmental time synchronization.
 - **Entity Translation**: Dynamic mapping of entity IDs, metadata, and movement between Java and Bedrock.
 - **Authentication**: Seamless handshake and login proxy routing.
