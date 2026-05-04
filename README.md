@@ -266,6 +266,16 @@ This project is licensed under the GNU Affero General Public License v3.0 (AGPL-
 
 
 <div align="center">
+---
+
+## Unofficial Redistributions Notice
+
+SCAXE-GO is an official SCAXE Team project. Some third-party projects may claim to be based on older SCAXE / ScaxePHP / Genisys-related code, but they are not maintained, tested, audited, endorsed, or distributed by SCAXE Team unless explicitly listed by us.
+
+Users should be careful with third-party redistributions, especially when source code or binaries are distributed only as archive files such as `src.zip`, `bin(Windows).zip`, or `bin(Linux).7z`. Archive-based distribution is not automatically a license violation, but it reduces auditability and makes it harder to verify source history, source/binary correspondence, and GPL/LGPL/AGPL compliance.
+
+For details, see [Unofficial Redistributions Notice](docs/UNOFFICIAL_REDISTRIBUTIONS.md).
+
 
 **Made by SCAXE Team**
 
