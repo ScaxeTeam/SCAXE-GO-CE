@@ -725,10 +725,8 @@ func (h *VillageHouse) addComponentPartsHouse2(wld WorldAccess, rnd *rand.Random
 		h.SetBlockState(wld, stoneStairsNorth, stairsNorthMeta, i, 0, -1, box)
 	}
 
-	h.SetBlockState(wld, 0, 0, 1, 1, 0, box)
-	h.SetBlockState(wld, 0, 0, 1, 2, 0, box)
-	h.SetBlockState(wld, 64, 1, 1, 1, 0, box)
-	h.SetBlockState(wld, 64, 8, 1, 2, 0, box)
+	h.SetBlockState(wld, 64, 5, 3, 1, 1, box)
+	h.SetBlockState(wld, 64, 8, 3, 2, 1, box)
 
 	for l := 0; l < 6; l++ {
 		for k := 0; k < 9; k++ {
