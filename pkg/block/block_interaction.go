@@ -1,10 +1,12 @@
 package block
+
 const (
 	BlockUpdateNormal    = 1
 	BlockUpdateRandom    = 2
 	BlockUpdateScheduled = 3
 	BlockUpdateWeak      = 4
 )
+
 type BlockContext struct {
 	X, Y, Z                int
 	Meta                   uint8
@@ -18,6 +20,7 @@ type BlockContext struct {
 	ScheduleDelay    int
 }
 type DefaultBlockInteraction struct{}
+
 func (d *DefaultBlockInteraction) Place(ctx *BlockContext) bool {
 	return true
 }
@@ -66,5 +69,8 @@ func (d *DefaultBlockInteraction) GetStrongPower(face int, meta uint8) int {
 	return 0
 }
 func (d *DefaultBlockInteraction) GetWeakPower(face int, meta uint8) int {
+	return 0
+}
+func (d *DefaultBlockInteraction) GetPlacementMeta(playerDirection int, face int, clickY float64) uint8 {
 	return 0
 }

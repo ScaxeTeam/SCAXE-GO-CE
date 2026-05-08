@@ -14,7 +14,7 @@ func NewPistonBlock() *PistonBlock {
 		},
 	}
 }
-func (b *PistonBlock) GetPlacementMeta(playerDirection int) uint8 {
+func (b *PistonBlock) GetPlacementMeta(playerDirection int, face int, clickY float64) uint8 {
 	switch playerDirection {
 	case 0:
 		return 3
@@ -54,7 +54,7 @@ func NewStickyPistonBlock() *StickyPistonBlock {
 	}
 }
 
-func (b *StickyPistonBlock) GetPlacementMeta(playerDirection int) uint8 {
+func (b *StickyPistonBlock) GetPlacementMeta(playerDirection int, face int, clickY float64) uint8 {
 	switch playerDirection {
 	case 0:
 		return 3
@@ -105,6 +105,7 @@ const (
 
 	PistonMaxPushDistance = 12
 )
+
 func PistonFacingOffset(facing int) (dx, dy, dz int) {
 	switch facing {
 	case PistonFacingDown:

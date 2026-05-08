@@ -24,7 +24,7 @@ func TripwireHookIsTriggered(meta uint8) bool {
 	return meta&0x08 != 0
 }
 
-func (b *TripwireHookBlock) GetPlacementMeta(playerDirection int) uint8 {
+func (b *TripwireHookBlock) GetPlacementMeta(playerDirection int, face int, clickY float64) uint8 {
 	if playerDirection < 0 || playerDirection > 3 {
 		return 0
 	}

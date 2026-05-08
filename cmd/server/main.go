@@ -125,6 +125,7 @@ func main() {
 
 	srv.Stop()
 	logger.Close()
+	os.Exit(0)
 }
 
 func printHelp() {

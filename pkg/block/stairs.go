@@ -1,7 +1,9 @@
 package block
+
 type StairBlock struct {
 	TransparentBase
 }
+
 const (
 	StairMaskDirection  = 0x03
 	StairMaskUpsideDown = 0x04
@@ -19,6 +21,14 @@ func newStair(blockID uint8, name string, toolType int) *StairBlock {
 		},
 	}
 }
+func (b *StairBlock) GetPlacementMeta(playerDirection int, face int, clickY float64) uint8 {
+	meta := StairDirectionToMeta[playerDirection&0x03]
+	if (clickY > 0.5 && face != 1) || face == 0 {
+		meta |= StairMaskUpsideDown
+	}
+	return meta
+}
+
 func (b *StairBlock) GetDrops(toolType, toolTier int) []Drop {
 	if b.BlockToolType == ToolTypePickaxe && toolType != ToolTypePickaxe {
 		return nil
@@ -28,7 +38,9 @@ func (b *StairBlock) GetDrops(toolType, toolTier int) []Drop {
 
 func StairIsUpsideDown(meta uint8) bool  { return meta&StairMaskUpsideDown != 0 }
 func StairGetDirection(meta uint8) uint8 { return meta & StairMaskDirection }
+
 var StairDirectionToMeta = [4]uint8{0, 2, 1, 3}
+
 func GetStairPlacementMeta(playerDirection int, clickY float64, face int) uint8 {
 	meta := StairDirectionToMeta[playerDirection&0x03]
 	if (clickY > 0.5 && face != 1) || face == 0 {
@@ -36,12 +48,14 @@ func GetStairPlacementMeta(playerDirection int, clickY float64, face int) uint8 
 	}
 	return meta
 }
+
 type StairBoundingBox struct {
 	SlabMinX, SlabMinY, SlabMinZ float64
 	SlabMaxX, SlabMaxY, SlabMaxZ float64
 	StepMinX, StepMinY, StepMinZ float64
 	StepMaxX, StepMaxY, StepMaxZ float64
 }
+
 func GetStairBoundingBoxes(x, y, z int, meta uint8) StairBoundingBox {
 	fx, fy, fz := float64(x), float64(y), float64(z)
 

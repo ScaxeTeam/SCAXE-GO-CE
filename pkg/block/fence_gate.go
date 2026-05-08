@@ -1,7 +1,9 @@
 package block
+
 type FenceGateBlock struct {
 	TransparentBase
 }
+
 const (
 	FenceGateMaskDirection = 0x03
 	FenceGateMaskOpen      = 0x04
@@ -19,6 +21,10 @@ func newFenceGate(blockID uint8, name string) *FenceGateBlock {
 		},
 	}
 }
+func (b *FenceGateBlock) GetPlacementMeta(playerDirection int, face int, clickY float64) uint8 {
+	return GetFenceGatePlacementMeta(playerDirection)
+}
+
 func (b *FenceGateBlock) CanBeActivated() bool {
 	return true
 }
@@ -40,15 +46,19 @@ func FenceGateGetDirection(meta uint8) uint8 {
 func FenceGateToggleOpen(meta uint8) uint8 {
 	return meta ^ FenceGateMaskOpen
 }
+
 var FenceGateDirectionToMeta = [4]uint8{3, 0, 1, 2}
+
 func GetFenceGatePlacementMeta(playerDirection int) uint8 {
 	return FenceGateDirectionToMeta[playerDirection&0x03]
 }
+
 type FenceGateBoundingBox struct {
 	MinX, MinY, MinZ float64
 	MaxX, MaxY, MaxZ float64
 	HasCollision     bool
 }
+
 func GetFenceGateBoundingBox(x, y, z int, meta uint8) FenceGateBoundingBox {
 	fx, fy, fz := float64(x), float64(y), float64(z)
 

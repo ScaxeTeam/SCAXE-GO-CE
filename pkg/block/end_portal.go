@@ -50,7 +50,7 @@ func EndPortalFrameGetDirection(meta uint8) int {
 	return int(meta & 0x03)
 }
 
-func (b *EndPortalFrameBlock) GetPlacementMeta(playerDirection int) uint8 {
+func (b *EndPortalFrameBlock) GetPlacementMeta(playerDirection int, face int, clickY float64) uint8 {
 	if playerDirection < 0 || playerDirection > 3 {
 		return 0
 	}

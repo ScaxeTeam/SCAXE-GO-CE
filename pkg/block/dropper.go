@@ -21,7 +21,7 @@ func (b *DropperBlock) CanBeActivated() bool {
 func (b *DropperBlock) OnActivate(ctx *BlockContext, playerID int64) bool {
 	return true
 }
-func (b *DropperBlock) GetPlacementMeta(playerDirection int) uint8 {
+func (b *DropperBlock) GetPlacementMeta(playerDirection int, face int, clickY float64) uint8 {
 	if playerDirection < 0 || playerDirection > 3 {
 		playerDirection = 0
 	}

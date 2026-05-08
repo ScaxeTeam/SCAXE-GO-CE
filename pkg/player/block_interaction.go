@@ -7,6 +7,7 @@ import (
 	"github.com/scaxe/scaxe-go/pkg/level"
 	"github.com/scaxe/scaxe-go/pkg/logger"
 )
+
 func (p *Player) HandleUseItem(x, y, z int32, face int, fx, fy, fz float32) {
 	if !p.Spawned || !p.Connected {
 		return
@@ -208,6 +209,7 @@ func (p *Player) canInteract(x, y, z float64, maxDistance float64) bool {
 
 	return (targetDot - eyeDot) >= -math.Sqrt(3)/2
 }
+
 func getBlockSide(x, y, z int32, face int) (int32, int32, int32) {
 	switch face {
 	case 0:

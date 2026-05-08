@@ -1,7 +1,9 @@
 package block
+
 type DoorBase struct {
 	TransparentBase
 }
+
 func (b *DoorBase) IsSolid() bool {
 	return false
 }
@@ -11,6 +13,7 @@ func (b *DoorBase) CanBeActivated() bool {
 func (b *DoorBase) OnActivate(ctx *BlockContext, playerID int64) bool {
 	return true
 }
+
 const (
 	DoorMetaDirection  = 0x03
 	DoorMetaOpen       = 0x04
@@ -18,6 +21,7 @@ const (
 	DoorMetaHingeRight = 0x01
 	DoorMetaPowered    = 0x02
 )
+
 func DoorIsTopHalf(meta uint8) bool {
 	return meta&DoorMetaTop != 0
 }
@@ -33,7 +37,9 @@ func DoorToggleOpen(bottomMeta uint8) uint8 {
 func DoorIsHingeRight(topMeta uint8) bool {
 	return topMeta&DoorMetaHingeRight != 0
 }
+
 var DoorPlacementFaces = [4]int{3, 4, 2, 5}
+
 func GetDoorPlacementMeta(playerDirection int) uint8 {
 	return uint8(playerDirection) & DoorMetaDirection
 }
@@ -47,11 +53,14 @@ func GetDoorTopMeta(hingeRight bool) uint8 {
 func ShouldHingeRight(sameBlockOnRight bool, leftTransparent bool, rightTransparent bool) bool {
 	return sameBlockOnRight || (!leftTransparent && rightTransparent)
 }
+
 const DoorThickness = 0.1875
+
 type DoorBoundingBox struct {
 	MinX, MinY, MinZ float64
 	MaxX, MaxY, MaxZ float64
 }
+
 func GetDoorBoundingBox(x, y, z int, direction uint8, isOpen bool, isRight bool) DoorBoundingBox {
 	fx, fy, fz := float64(x), float64(y), float64(z)
 	f := DoorThickness
@@ -102,12 +111,14 @@ func GetDoorBoundingBox(x, y, z int, direction uint8, isOpen bool, isRight bool)
 
 	return bb
 }
+
 type DoorFullState struct {
 	Direction  uint8
 	IsOpen     bool
 	IsTopHalf  bool
 	HingeRight bool
 }
+
 func ParseDoorState(thisMeta uint8, otherHalfMeta uint8) DoorFullState {
 	var topMeta, bottomMeta uint8
 	isTop := DoorIsTopHalf(thisMeta)

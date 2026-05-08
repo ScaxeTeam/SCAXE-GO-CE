@@ -1,7 +1,9 @@
 package block
+
 type ChestBlock struct {
 	TransparentBase
 }
+
 func NewChestBlock() *ChestBlock {
 	return &ChestBlock{
 		TransparentBase: TransparentBase{
@@ -25,8 +27,10 @@ func (b *ChestBlock) GetFuelTime() int {
 func (b *ChestBlock) GetDrops(toolType, toolTier int) []Drop {
 	return []Drop{{ID: int(CHEST), Meta: 0, Count: 1}}
 }
-var ChestDirectionToMeta = [4]uint8{4, 2, 5, 3}
-func (b *ChestBlock) GetPlacementMeta(playerDirection int) uint8 {
+
+var ChestDirectionToMeta = [4]uint8{3, 4, 2, 5}
+
+func (b *ChestBlock) GetPlacementMeta(playerDirection int, face int, clickY float64) uint8 {
 	if playerDirection < 0 || playerDirection > 3 {
 		playerDirection = 0
 	}
@@ -42,10 +46,12 @@ func GetPairSearchSides(meta uint8) []int {
 		return []int{2, 3, 4, 5}
 	}
 }
+
 type ChestBoundingBox struct {
 	MinX, MinY, MinZ float64
 	MaxX, MaxY, MaxZ float64
 }
+
 func GetChestBoundingBox(x, y, z int) ChestBoundingBox {
 	return ChestBoundingBox{
 		MinX: float64(x) + 0.0625,

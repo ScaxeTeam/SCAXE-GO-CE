@@ -1339,43 +1339,17 @@ func (s *Server) handleUseItem(p *player.Player, pkt *protocol.UseItemPacket) {
 				s.sendPacket(p, revertPk)
 				return
 			}
+			playerDirection := yawToDirection(p.Yaw)
 			placeMeta := byte(held.Meta)
-			switch byte(placeID) {
-			case block.LEVER, block.STONE_BUTTON, block.WOODEN_BUTTON:
-				switch pkt.Face {
-				case 0:
-					placeMeta = 0
-				case 1:
-					placeMeta = 5
-				case 2:
-					placeMeta = 4
-				case 3:
-					placeMeta = 3
-				case 4:
-					placeMeta = 2
-				case 5:
-					placeMeta = 1
-				}
-			case block.TORCH, block.REDSTONE_TORCH, block.UNLIT_REDSTONE_TORCH:
-				switch pkt.Face {
-				case 1:
-					placeMeta = 5
-				case 2:
-					placeMeta = 4
-				case 3:
-					placeMeta = 3
-				case 4:
-					placeMeta = 2
-				case 5:
-					placeMeta = 1
-				default:
-					placeMeta = 5
-				}
+			if bh := block.Registry.GetBehavior(byte(placeID)); bh != nil {
+				placeMeta = bh.GetPlacementMeta(playerDirection, int(pkt.Face), float64(pkt.FY))
 			}
 
 			s.Level.SetBlock(tx, ty, tz, byte(placeID), placeMeta, false)
 
-			logger.Player("Placed block", "player", p.Username, "block", placeID, "x", tx, "y", ty, "z", tz)
+			logger.Player("Placed block", "player", p.Username, "block", placeID,
+				"x", tx, "y", ty, "z", tz,
+				"Yaw", p.Yaw, "meta", placeMeta, "face", pkt.Face)
 
 			updatePk := protocol.NewUpdateBlockPacket(tx, ty, tz, uint8(placeID), placeMeta)
 			s.BroadcastPacket(updatePk)
@@ -1405,6 +1379,21 @@ func (s *Server) handleUseItem(p *player.Player, pkt *protocol.UseItemPacket) {
 
 		logger.Player("Used item in air", "player", p.Username, "item", pkt.Item.ID)
 	}
+}
+
+func yawToDirection(yaw float64) int {
+	yaw = math.Mod(yaw, 360)
+	if yaw < 0 {
+		yaw += 360
+	}
+	if yaw >= 315 || yaw < 45 {
+		return 1
+	} else if yaw >= 45 && yaw < 135 {
+		return 2
+	} else if yaw >= 135 && yaw < 225 {
+		return 3
+	}
+	return 0
 }
 func (s *Server) handleBlockActivation(p *player.Player, bid, meta byte, x, y, z int32) {
 	var result block.ActivateResult

@@ -21,9 +21,10 @@ func (b *DispenserBlock) CanBeActivated() bool {
 func (b *DispenserBlock) OnActivate(ctx *BlockContext, playerID int64) bool {
 	return true
 }
+
 var DispenserDirectionToMeta = [4]uint8{3, 4, 2, 5}
 
-func (b *DispenserBlock) GetPlacementMeta(playerDirection int) uint8 {
+func (b *DispenserBlock) GetPlacementMeta(playerDirection int, face int, clickY float64) uint8 {
 	if playerDirection < 0 || playerDirection > 3 {
 		playerDirection = 0
 	}

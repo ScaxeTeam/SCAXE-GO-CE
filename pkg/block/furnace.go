@@ -1,7 +1,9 @@
 package block
+
 type FurnaceBlock struct {
 	SolidBase
 }
+
 func NewFurnaceBlock() *FurnaceBlock {
 	return &FurnaceBlock{
 		SolidBase: SolidBase{
@@ -36,8 +38,10 @@ func (b *FurnaceBlock) GetDrops(toolType, toolTier int) []Drop {
 	}
 	return []Drop{{ID: int(FURNACE), Meta: 0, Count: 1}}
 }
+
 var FurnaceDirectionToMeta = [4]uint8{4, 2, 5, 3}
-func (b *FurnaceBlock) GetPlacementMeta(playerDirection int) uint8 {
+
+func (b *FurnaceBlock) GetPlacementMeta(playerDirection int, face int, clickY float64) uint8 {
 	if playerDirection < 0 || playerDirection > 3 {
 		playerDirection = 0
 	}

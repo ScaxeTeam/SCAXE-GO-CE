@@ -21,7 +21,7 @@ func (b *HopperBlock) CanBeActivated() bool {
 func (b *HopperBlock) OnActivate(ctx *BlockContext, playerID int64) bool {
 	return true
 }
-func (b *HopperBlock) GetPlacementMeta(playerDirection int) uint8 {
+func (b *HopperBlock) GetPlacementMeta(playerDirection int, face int, clickY float64) uint8 {
 	switch playerDirection {
 	case 0:
 		return 3

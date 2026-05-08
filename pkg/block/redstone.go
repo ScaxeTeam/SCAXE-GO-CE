@@ -24,6 +24,22 @@ func (b *redstoneTorchBlock) GetWeakPower(face int, meta uint8) int {
 func (b *redstoneTorchBlock) GetStrongPower(face int, meta uint8) int {
 	return 0
 }
+func (b *redstoneTorchBlock) GetPlacementMeta(playerDirection int, face int, clickY float64) uint8 {
+	switch face {
+	case 1:
+		return 5
+	case 2:
+		return 4
+	case 3:
+		return 3
+	case 4:
+		return 2
+	case 5:
+		return 1
+	default:
+		return 5
+	}
+}
 func (b *redstoneTorchBlock) OnUpdate(ctx *BlockContext, updateType int) bool {
 	if updateType == BlockUpdateNormal && ctx.Powered {
 		ctx.ScheduleDelay = 2
@@ -51,6 +67,22 @@ func (b *unlitRedstoneTorchBlock) GetToolType() int            { return ToolType
 func (b *unlitRedstoneTorchBlock) GetToolTier() int            { return 0 }
 func (b *unlitRedstoneTorchBlock) GetDrops(toolType, toolTier int) []Drop {
 	return []Drop{{ID: int(REDSTONE_TORCH), Meta: 0, Count: 1}}
+}
+func (b *unlitRedstoneTorchBlock) GetPlacementMeta(playerDirection int, face int, clickY float64) uint8 {
+	switch face {
+	case 1:
+		return 5
+	case 2:
+		return 4
+	case 3:
+		return 3
+	case 4:
+		return 2
+	case 5:
+		return 1
+	default:
+		return 5
+	}
 }
 func (b *unlitRedstoneTorchBlock) OnUpdate(ctx *BlockContext, updateType int) bool {
 	if updateType == BlockUpdateNormal && !ctx.Powered {
@@ -135,7 +167,25 @@ func (b *leverBlock) GetDrops(toolType, toolTier int) []Drop {
 }
 func (b *leverBlock) CanBeActivated() bool                              { return true }
 func (b *leverBlock) OnActivate(ctx *BlockContext, playerID int64) bool { return true }
-func (b *leverBlock) IsPowerSource() bool                               { return true }
+func (b *leverBlock) GetPlacementMeta(playerDirection int, face int, clickY float64) uint8 {
+	switch face {
+	case 0:
+		return 0
+	case 1:
+		return 5
+	case 2:
+		return 4
+	case 3:
+		return 3
+	case 4:
+		return 2
+	case 5:
+		return 1
+	default:
+		return 0
+	}
+}
+func (b *leverBlock) IsPowerSource() bool { return true }
 func (b *leverBlock) GetStrongPower(face int, meta uint8) int {
 	if meta&0x08 != 0 {
 		return 15
@@ -168,7 +218,10 @@ func (b *stoneButtonBlock) GetDrops(toolType, toolTier int) []Drop {
 }
 func (b *stoneButtonBlock) CanBeActivated() bool                              { return true }
 func (b *stoneButtonBlock) OnActivate(ctx *BlockContext, playerID int64) bool { return true }
-func (b *stoneButtonBlock) IsPowerSource() bool                               { return true }
+func (b *stoneButtonBlock) GetPlacementMeta(playerDirection int, face int, clickY float64) uint8 {
+	return uint8(face)
+}
+func (b *stoneButtonBlock) IsPowerSource() bool { return true }
 func (b *stoneButtonBlock) GetStrongPower(face int, meta uint8) int {
 	if meta&0x08 != 0 {
 		return 15
@@ -208,7 +261,10 @@ func (b *woodenButtonBlock) GetDrops(toolType, toolTier int) []Drop {
 }
 func (b *woodenButtonBlock) CanBeActivated() bool                              { return true }
 func (b *woodenButtonBlock) OnActivate(ctx *BlockContext, playerID int64) bool { return true }
-func (b *woodenButtonBlock) IsPowerSource() bool                               { return true }
+func (b *woodenButtonBlock) GetPlacementMeta(playerDirection int, face int, clickY float64) uint8 {
+	return uint8(face)
+}
+func (b *woodenButtonBlock) IsPowerSource() bool { return true }
 func (b *woodenButtonBlock) GetStrongPower(face int, meta uint8) int {
 	if meta&0x08 != 0 {
 		return 15
@@ -399,4 +455,5 @@ func init() {
 	Registry.Register(&woodenPressurePlateBlock{})
 	Registry.Register(&lightWeightedPressurePlateBlock{})
 	Registry.Register(&heavyWeightedPressurePlateBlock{})
+	Registry.Register(&torchBlock{})
 }
